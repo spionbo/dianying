@@ -1,0 +1,99 @@
+body, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, table, th, td { margin: 0; padding: 0; }
+address, cite, em, i { font-style: normal; }
+h1,h2,h3,h4,h5,h6{ font-weight: normal;}
+body{ margin:0 auto; color:#fff; -webkit-appearance: none; background:#fff; font-family:'PingFang SC','STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif; color: #878C92;}
+li { list-style: none; }
+html,body{ max-width:750px; height:100%; margin:0 auto;}
+a { color:#535862; text-decoration: none; }
+a:hover { color:#c40000; text-decoration: none; }
+img { border: 0; }
+table { border-collapse: collapse; border-spacing: 0; }
+input[type="button"], input[type="submit"], input[type="reset"] { cursor: pointer;-webkit-appearance: none; }
+/* close commented backslash hack */
+::-webkit-input-placeholder{ font-size:.75rem;  }
+body{  background:#eee;-webkit-overflow-scrolling: touch; }
+/* public */
+input{outline: none;}
+a{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+i{ display:block; }
+#APP{
+    max-width:750px;
+    height:100%;
+    margin:0 auto;
+    .content-bg{
+        height:100%;
+        display:flex;
+        align-items:flex-end;
+        background:url(../images/bg2.jpg);
+        background-size:100% auto;
+        &.bg1{
+            background-image:url(../images/bg3.jpg);
+        }
+        &.bg2{
+            background-image:url(../images/bg4.jpg);
+        }
+    }
+}
+.container{
+    width:100%;
+    background:url(../images/bg.png);
+    background-size:100% auto;
+    box-sizing:border-box;
+    color:#fff;
+    .title{
+        background:url("../images/bishua.png") no-repeat;
+        background-size:auto 100%;
+        font-size:18px;
+        padding-left:20px;
+    }
+    .content{ padding:10px;}
+    p{
+        padding:5px 0;
+        font-size:14px;
+        word-wrap: break-word;
+    }
+}
+.nav{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    z-index:999;
+    height:153px;
+    background:url(../images/shuzhuo.png) no-repeat;
+    background-size:contain;
+    .left-menu{
+        position:absolute;
+        left:0;
+        bottom:-100px;
+        width:228px;
+        height:230px;
+        background:url(../images/chelun.png) no-repeat;
+        background-size:contain;
+        transform:rotate(-20deg);
+        li{
+            position:absolute;
+            text-indent:-9999em;
+            &.home{
+                left:53px;
+                top:10px;
+                width:47px;
+                height:31px;
+            }
+        }
+    }
+}
+
+.contact{
+    .item{
+        padding:10px 0;
+        overflow:hidden;
+        .tit{
+            float:left;
+            width:80px;
+        }
+        .cnt{
+            padding-left:90px;
+        }
+    }
+}
