@@ -75,7 +75,8 @@ gulp.task('css', function () {
 
 gulp.task('img', function () {
     gulp.src([
-            'images/*.{png,jpg,gif,ico}'
+            'images/*.{png,jpg,gif,ico}',
+            'images/**/*.{png,jpg,gif,ico}'
 
         ])
         .pipe(imagemin({
