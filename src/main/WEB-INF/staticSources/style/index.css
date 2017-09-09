@@ -165,3 +165,44 @@ i{
         }
     }
 }
+#Nav{
+    border:1px solid #ddd;
+    margin-bottom:15px;
+    padding:15px;
+    background-color:#fff;
+    .middle{
+        overflow:hidden;
+    }
+    dl{
+
+        float:left;
+        font-size:14px;
+        line-height: 24px;
+        dt{
+            padding-bottom: 10px;
+            padding-left:30px;
+            overflow: hidden;
+        }
+        h3{ 
+            float:left; 
+            padding:3px 15px; 
+            font-size:16px;
+            background-color: #eee 
+        }
+        a{ 
+            margin-left: 30px;
+            color:#666;  
+            white-space: nowrap;
+        }
+        &.hot{
+            width:270px;
+        }
+        &.adress{
+            width:190px;
+            margin:0 50px;
+        }
+        &.type{
+
+        }
+    }
+}
