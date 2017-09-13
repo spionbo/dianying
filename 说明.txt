@@ -1,4 +1,5 @@
 http://rank.chinaz.com/
+https://pan.baidu.com/share/link?uk=3173524616&shareid=1897513694
 
 电影
 买电影票
@@ -37,3 +38,12 @@ http://www.ttmeiju.com/ 美剧
 
 技术要求：
 搜索资源关联
+
+
+百度资源：
+百度ID 名称 分享的资源数量  是否存在该ID 失效时间（到了该时间删除）
+资源列表：
+id 百度ID 资源名称 格示(jpg,mp3) type类型(图片，doc，pdf视频等) 创建时间  爬取时间
+
+在线视频｜图片｜文档等
+ID，百度ID 格示 大小 访问量，创建时间 ， 爬取时间，豆瓣评分
