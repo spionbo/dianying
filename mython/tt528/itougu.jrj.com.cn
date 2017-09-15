@@ -21,7 +21,7 @@
 <link href="http://js.jrjimg.cn/zqt-red-1000/css/LoginDialog.css" rel="stylesheet">
     <link rel="stylesheet" href="http://js.jrjimg.cn/zqt-red-1000/css/index/2016/itougu-index.min.css">
 	<link href="http://i0.jrjimg.cn/zqt-red-1000/focus/focus20170214caogu/web/css/it_index_new.css" rel="stylesheet">
-<style type="text/css" id="zuoxia" media="screen">.zuoxiajiao{overflow:hidden;width:334px;bottom:0; border:3px solid #ff4b24;border-top: 0;left:50%; position: fixed;font-size: 14px;margin-left:160px;background:#fff;z-index:100; }.zuoxiah {text-align: center;color: #fff; line-height: 33px;background:#ff4b24 ;position: relative; cursor: pointer;}.zuoxiah i{background:#fff;right:13px; top:15px;width:15px;height: 3px; position: absolute;}.zuoxiadown .zuoxiah i{width:0;height: 0;border:7px solid #ff4b24;border-bottom:7px solid #fff ;top:6px;overflow: hidden;}.zuoxiaimg img{width:100%;height:90px;vertical-align: top;}.zuoxiad{overflow:hidden;color: #333;}.zuoxiad li{overflow:hidden; margin-left: 14px;}.zuoxiad i{float: left;width:4px;height: 4px;border-radius: 50%;background: #ff4b24;    margin-top: 13px;margin-right: 7px;}.zuoxiad li a{float: left;width:200px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap; line-height: 30px;color: #333;}.zuoxiad ul{float: left;padding:8px 0;height:150px;}.zuoxiad li a:hover{color:#2e7cd7;text-decoration: underline;}.zuoxiacanvas{width:95px; margin-top:20px;margin-right:11px;background:#f8f8f8;float:right; text-align: center; padding-top: 12px;}.zuoxiacanvas div{border:1px solid #000;width:80px;height:80px; margin:0 auto;}.zuoxiacanvas span{color:#ff4b24;display: block;line-height: 30px; font-size: 12px;}.zuoxiacanvas:hover {text-decoration:none;}.zuoxiaqrcode{position:relative;}.zuoxiaqrcode b{position:absolute;width:20px;height:20px;background:url(http://i0.jrjimg.cn/zqt-red-1000/focus/focus20170523pingce/xiaologo.png);top:30px;left:30px;}</style><script src="https://hm.baidu.com/hm.js?dc9a0fda26a6b170d190c1fcebdb238c"></script><script src="//push.zhanzhang.baidu.com/push.js"></script><script src="//hm.baidu.com/hm.js?c77a251daf5b4add0e873b9f65f749b2"></script><script src="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=418183"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_24.css"></head>
+<style type="text/css" id="zuoxia" media="screen">.zuoxiajiao{overflow:hidden;width:334px;bottom:0; border:3px solid #ff4b24;border-top: 0;left:50%; position: fixed;font-size: 14px;margin-left:160px;background:#fff;z-index:100; }.zuoxiah {text-align: center;color: #fff; line-height: 33px;background:#ff4b24 ;position: relative; cursor: pointer;}.zuoxiah i{background:#fff;right:13px; top:15px;width:15px;height: 3px; position: absolute;}.zuoxiadown .zuoxiah i{width:0;height: 0;border:7px solid #ff4b24;border-bottom:7px solid #fff ;top:6px;overflow: hidden;}.zuoxiaimg img{width:100%;height:90px;vertical-align: top;}.zuoxiad{overflow:hidden;color: #333;}.zuoxiad li{overflow:hidden; margin-left: 14px;}.zuoxiad i{float: left;width:4px;height: 4px;border-radius: 50%;background: #ff4b24;    margin-top: 13px;margin-right: 7px;}.zuoxiad li a{float: left;width:200px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap; line-height: 30px;color: #333;}.zuoxiad ul{float: left;padding:8px 0;height:150px;}.zuoxiad li a:hover{color:#2e7cd7;text-decoration: underline;}.zuoxiacanvas{width:95px; margin-top:20px;margin-right:11px;background:#f8f8f8;float:right; text-align: center; padding-top: 12px;}.zuoxiacanvas div{border:1px solid #000;width:80px;height:80px; margin:0 auto;}.zuoxiacanvas span{color:#ff4b24;display: block;line-height: 30px; font-size: 12px;}.zuoxiacanvas:hover {text-decoration:none;}.zuoxiaqrcode{position:relative;}.zuoxiaqrcode b{position:absolute;width:20px;height:20px;background:url(http://i0.jrjimg.cn/zqt-red-1000/focus/focus20170523pingce/xiaologo.png);top:30px;left:30px;}</style><script src="https://hm.baidu.com/hm.js?dc9a0fda26a6b170d190c1fcebdb238c"></script><script src="//push.zhanzhang.baidu.com/push.js"></script><script src="//hm.baidu.com/hm.js?c77a251daf5b4add0e873b9f65f749b2"></script><script src="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=418184"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_24.css"></head>
 
 <body><div class="jrj_sb" style="visibility: hidden;"></div>
 	<!--site-top-->
@@ -173,25 +173,25 @@
             <!-- 首页看直播:start -->
                     <script type="text/javascript">
         var liveListConsult = [
-            	            	            	{ avatar: 'http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg', name: '趋势巡航', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/110324010087988026/', desc: '\u8D8B\u52BF\u5DE1\u822A\u7684\u76F4\u64AD\u95F4', watcher: 1732, url: 'http://itougu.jrj.com.cn/live/62'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201601/18/itougu/itougu_14531030364481.jpg', name: '淘气天尊', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/090327010021588866/', desc: '\u6DD8\u6C14\u5929\u5C0A\u7684\u76F4\u64AD\u95F4', watcher: 1601, url: 'http://itougu.jrj.com.cn/live/554'},
-	                        	            	            	{ avatar: 'http://i5.jrjimg.cn/201311/25/hp/hp_13853654813961_m.jpg', name: '空空道人', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/131125010091356081/', desc: '\u7A7A\u7A7A\u9053\u4EBA\u7684\u76F4\u64AD\u95F4', watcher: 1545, url: 'http://itougu.jrj.com.cn/live/1198'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/08/itougu/itougu_14968899547001.jpg', name: '涨停王者', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/130718010073409548/', desc: '\u6DA8\u505C\u738B\u8005\u7684\u76F4\u64AD\u95F4', watcher: 1409, url: 'http://itougu.jrj.com.cn/live/26'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg', name: '伦哥量化', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/091124010076736396/', desc: '\u4F26\u54E5\u91CF\u5316\u7684\u76F4\u64AD\u95F4', watcher: 1277, url: 'http://itougu.jrj.com.cn/live/70'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009465176831.jpg', name: '宇辉战舰', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/120925010007087899/', desc: '\u5B87\u8F89\u6218\u8230\u7684\u76F4\u64AD\u95F4', watcher: 1037, url: 'http://itougu.jrj.com.cn/live/144'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967120257341.jpg', name: '不败女王', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150424010084778643/', desc: '\u4E0D\u8D25\u5973\u738B\u7684\u76F4\u64AD\u95F4', watcher: 880, url: 'http://itougu.jrj.com.cn/live/194'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975809097661.jpg', name: '考拉小良', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150208010093147322/', desc: '\u8003\u62C9\u5C0F\u826F\u7684\u76F4\u64AD\u95F4', watcher: 870, url: 'http://itougu.jrj.com.cn/live/106'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg', name: '波段女神', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/170405010003083784/', desc: '\u6CE2\u6BB5\u5973\u795E\u7684\u76F4\u64AD\u95F4', watcher: 748, url: 'http://itougu.jrj.com.cn/live/2561'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201601/20/itougu/itougu_14532721031211.jpg', name: '沐阳', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/120217010043425631/', desc: '\u6C90\u9633\u7684\u76F4\u64AD\u95F4', watcher: 666, url: 'http://itougu.jrj.com.cn/live/117'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009526503651.jpg', name: '超短金手', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141206010034004020/', desc: '\u8D85\u77ED\u91D1\u624B\u7684\u76F4\u64AD\u95F4', watcher: 640, url: 'http://itougu.jrj.com.cn/live/289'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975896887241.jpg', name: '张贵杰', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141205010056369904/', desc: '\u5F20\u8D35\u6770\u7684\u76F4\u64AD\u95F4', watcher: 571, url: 'http://itougu.jrj.com.cn/live/23'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/14/itougu/itougu_14974067760291.jpg', name: 'T者为王', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150925010083059121/', desc: 'T\u8005\u4E3A\u738B\u7684\u76F4\u64AD\u95F4', watcher: 558, url: 'http://itougu.jrj.com.cn/live/470'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/23/itougu/itougu_14982099834191.jpg', name: '猎人X', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150831010078177717/', desc: '\u730E\u4EBAX\u7684\u76F4\u64AD\u95F4', watcher: 409, url: 'http://itougu.jrj.com.cn/live/374'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009470253111.jpg', name: '闪电黑马', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/110924010002855062/', desc: '\u95EA\u7535\u9ED1\u9A6C\u7684\u76F4\u64AD\u95F4', watcher: 383, url: 'http://itougu.jrj.com.cn/live/59'},
-	                        	            	            	{ avatar: 'http://i5.jrjimg.cn/201501/06/hp/hp_14205513995411_m.jpg', name: '崔总直播', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141221010086616010/', desc: '\u5D14\u603B\u76F4\u64AD\u7684\u76F4\u64AD\u95F4', watcher: 349, url: 'http://itougu.jrj.com.cn/live/129'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201705/26/itougu/itougu_14957606564241.jpg', name: '元芳看盘', org: '深圳 新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/121019010014863319/', desc: '\u5143\u82B3\u770B\u76D8\u7684\u76F4\u64AD\u95F4', watcher: 325, url: 'http://itougu.jrj.com.cn/live/43'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/24/itougu/itougu_15008847198761.jpg', name: '宁静的光', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/130624010011537551/', desc: '\u5B81\u9759\u7684\u5149\u7684\u76F4\u64AD\u95F4', watcher: 314, url: 'http://itougu.jrj.com.cn/live/68'},
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg', name: '蚂蚁搬家', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150706010037869395/', desc: '\u8682\u8681\u642C\u5BB6\u7684\u76F4\u64AD\u95F4', watcher: 313, url: 'http://itougu.jrj.com.cn/live/272'},
+            	            	            	{ avatar: 'http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg', name: '趋势巡航', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/110324010087988026/', desc: '\u8D8B\u52BF\u5DE1\u822A\u7684\u76F4\u64AD\u95F4', watcher: 1742, url: 'http://itougu.jrj.com.cn/live/62'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201601/18/itougu/itougu_14531030364481.jpg', name: '淘气天尊', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/090327010021588866/', desc: '\u6DD8\u6C14\u5929\u5C0A\u7684\u76F4\u64AD\u95F4', watcher: 1606, url: 'http://itougu.jrj.com.cn/live/554'},
+	                        	            	            	{ avatar: 'http://i5.jrjimg.cn/201311/25/hp/hp_13853654813961_m.jpg', name: '空空道人', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/131125010091356081/', desc: '\u7A7A\u7A7A\u9053\u4EBA\u7684\u76F4\u64AD\u95F4', watcher: 1550, url: 'http://itougu.jrj.com.cn/live/1198'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/08/itougu/itougu_14968899547001.jpg', name: '涨停王者', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/130718010073409548/', desc: '\u6DA8\u505C\u738B\u8005\u7684\u76F4\u64AD\u95F4', watcher: 1448, url: 'http://itougu.jrj.com.cn/live/26'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg', name: '伦哥量化', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/091124010076736396/', desc: '\u4F26\u54E5\u91CF\u5316\u7684\u76F4\u64AD\u95F4', watcher: 1281, url: 'http://itougu.jrj.com.cn/live/70'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009465176831.jpg', name: '宇辉战舰', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/120925010007087899/', desc: '\u5B87\u8F89\u6218\u8230\u7684\u76F4\u64AD\u95F4', watcher: 1038, url: 'http://itougu.jrj.com.cn/live/144'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975809097661.jpg', name: '考拉小良', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150208010093147322/', desc: '\u8003\u62C9\u5C0F\u826F\u7684\u76F4\u64AD\u95F4', watcher: 918, url: 'http://itougu.jrj.com.cn/live/106'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967120257341.jpg', name: '不败女王', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150424010084778643/', desc: '\u4E0D\u8D25\u5973\u738B\u7684\u76F4\u64AD\u95F4', watcher: 894, url: 'http://itougu.jrj.com.cn/live/194'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg', name: '波段女神', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/170405010003083784/', desc: '\u6CE2\u6BB5\u5973\u795E\u7684\u76F4\u64AD\u95F4', watcher: 766, url: 'http://itougu.jrj.com.cn/live/2561'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009526503651.jpg', name: '超短金手', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141206010034004020/', desc: '\u8D85\u77ED\u91D1\u624B\u7684\u76F4\u64AD\u95F4', watcher: 743, url: 'http://itougu.jrj.com.cn/live/289'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201601/20/itougu/itougu_14532721031211.jpg', name: '沐阳', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/120217010043425631/', desc: '\u6C90\u9633\u7684\u76F4\u64AD\u95F4', watcher: 677, url: 'http://itougu.jrj.com.cn/live/117'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975896887241.jpg', name: '张贵杰', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141205010056369904/', desc: '\u5F20\u8D35\u6770\u7684\u76F4\u64AD\u95F4', watcher: 583, url: 'http://itougu.jrj.com.cn/live/23'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/14/itougu/itougu_14974067760291.jpg', name: 'T者为王', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150925010083059121/', desc: 'T\u8005\u4E3A\u738B\u7684\u76F4\u64AD\u95F4', watcher: 565, url: 'http://itougu.jrj.com.cn/live/470'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009470253111.jpg', name: '闪电黑马', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/110924010002855062/', desc: '\u95EA\u7535\u9ED1\u9A6C\u7684\u76F4\u64AD\u95F4', watcher: 450, url: 'http://itougu.jrj.com.cn/live/59'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/23/itougu/itougu_14982099834191.jpg', name: '猎人X', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150831010078177717/', desc: '\u730E\u4EBAX\u7684\u76F4\u64AD\u95F4', watcher: 410, url: 'http://itougu.jrj.com.cn/live/374'},
+	                        	            	            	{ avatar: 'http://i5.jrjimg.cn/201501/06/hp/hp_14205513995411_m.jpg', name: '崔总直播', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141221010086616010/', desc: '\u5D14\u603B\u76F4\u64AD\u7684\u76F4\u64AD\u95F4', watcher: 365, url: 'http://itougu.jrj.com.cn/live/129'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201705/26/itougu/itougu_14957606564241.jpg', name: '元芳看盘', org: '深圳 新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/121019010014863319/', desc: '\u5143\u82B3\u770B\u76D8\u7684\u76F4\u64AD\u95F4', watcher: 326, url: 'http://itougu.jrj.com.cn/live/43'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/24/itougu/itougu_15008847198761.jpg', name: '宁静的光', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/130624010011537551/', desc: '\u5B81\u9759\u7684\u5149\u7684\u76F4\u64AD\u95F4', watcher: 321, url: 'http://itougu.jrj.com.cn/live/68'},
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg', name: '蚂蚁搬家', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/150706010037869395/', desc: '\u8682\u8681\u642C\u5BB6\u7684\u76F4\u64AD\u95F4', watcher: 319, url: 'http://itougu.jrj.com.cn/live/272'},
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/15/itougu/itougu_14975195354881.jpg', name: '上善若水', org: '深圳新兰德', curl: 'http://itougu.jrj.com.cn/account/adviser/141218010033191581/', desc: '\u4E0A\u5584\u82E5\u6C34\u7684\u76F4\u64AD\u95F4', watcher: 292, url: 'http://itougu.jrj.com.cn/live/1238'}
 	                                ];
         </script>
@@ -199,68 +199,68 @@
                 <ul class="clearfix" data-counter="0" data-type="liveListConsult" data-bind="foreach: {data: liveListConsult, afterRender: showItem}">
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none nobdl" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="noml">
-                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/090327010021588866/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201601/18/itougu/itougu_14531030364481.jpg" alt="淘气天尊" src="http://itg1.jrjimg.cn/201601/18/itougu/itougu_14531030364481.jpg" style="opacity: 1;"></a></p>
+                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141218010033191581/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201706/15/itougu/itougu_14975195354881.jpg" alt="上善若水" src="http://itg1.jrjimg.cn/201706/15/itougu/itougu_14975195354881.jpg" style="opacity: 1;"></a></p>
                             
                             <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/090327010021588866/">淘气天尊</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141218010033191581/">上善若水</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
 
                                 <!--  
                                 <p class="brief" data-bind="html: $parent.ellipsis(desc, 32)"></p>
                                 -->
-                                <p class="num"><span data-bind="html: watcher">1601</span>人 正在看直播</p>
+                                <p class="num"><span data-bind="html: watcher">292</span>人 正在看直播</p>
 
-                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/554">立即参与</a></p>
+                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/1238">立即参与</a></p>
                             </div>
                         </div>
                     </li>
                 
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="">
-                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150706010037869395/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg" alt="蚂蚁搬家" src="http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg" style="opacity: 1;"></a></p>
+                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141206010034004020/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009526503651.jpg" alt="超短金手" src="http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009526503651.jpg" style="opacity: 1;"></a></p>
                             
                             <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150706010037869395/">蚂蚁搬家</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141206010034004020/">超短金手</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
 
                                 <!--  
                                 <p class="brief" data-bind="html: $parent.ellipsis(desc, 32)"></p>
                                 -->
-                                <p class="num"><span data-bind="html: watcher">313</span>人 正在看直播</p>
+                                <p class="num"><span data-bind="html: watcher">743</span>人 正在看直播</p>
 
-                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/272">立即参与</a></p>
+                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/289">立即参与</a></p>
                             </div>
                         </div>
                     </li>
                 
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none nobdl" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="noml nomb">
-                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141205010056369904/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975896887241.jpg" alt="张贵杰"></a></p>
+                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130624010011537551/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201707/24/itougu/itougu_15008847198761.jpg" alt="宁静的光"></a></p>
                             
                             <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141205010056369904/">张贵杰</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130624010011537551/">宁静的光</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
 
                                 <!--  
                                 <p class="brief" data-bind="html: $parent.ellipsis(desc, 32)"></p>
                                 -->
-                                <p class="num"><span data-bind="html: watcher">571</span>人 正在看直播</p>
+                                <p class="num"><span data-bind="html: watcher">321</span>人 正在看直播</p>
 
-                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/23">立即参与</a></p>
+                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/68">立即参与</a></p>
                             </div>
                         </div>
                     </li>
                 
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="nomb">
-                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/131125010091356081/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://i5.jrjimg.cn/201311/25/hp/hp_13853654813961_m.jpg" alt="空空道人"></a></p>
+                            <p class="avatar80 fl"><a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130718010073409548/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201706/08/itougu/itougu_14968899547001.jpg" alt="涨停王者"></a></p>
                             
                             <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/131125010091356081/">空空道人</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130718010073409548/">涨停王者</a> <span class="org" data-bind="html: org">深圳新兰德</span></p>
 
                                 <!--  
                                 <p class="brief" data-bind="html: $parent.ellipsis(desc, 32)"></p>
                                 -->
-                                <p class="num"><span data-bind="html: watcher">1545</span>人 正在看直播</p>
+                                <p class="num"><span data-bind="html: watcher">1448</span>人 正在看直播</p>
 
-                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/1198">立即参与</a></p>
+                                <p class="button"><a data-bind="attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/26">立即参与</a></p>
                             </div>
                         </div>
                     </li>
@@ -276,15 +276,15 @@
 			<!-- 首页实时解盘:start -->
                     <script type="text/javascript">
         var liveListRecomm = [
-            	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967120257341.jpg', name: '不败女王', curl: 'http://itougu.jrj.com.cn/account/adviser/150424010084778643/', time: '09-15 16:20', content: '\u6069\u3002\u4F46\u8FD8\u6709\u4E00\u7EBF\u673A\u4F1A\u3002\u4ECA\u5929\u4E0D\u8BE5\u8FDB\u3002\u4E0D\u8FC7\u8981\u770B\u5468\u4E00\u8868\u73B0', url: 'http://itougu.jrj.com.cn/live/194',userId: '150424010084778643',org:'深圳新兰德' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg', name: '波段女神', curl: 'http://itougu.jrj.com.cn/account/adviser/170405010003083784/', time: '09-15 16:13', content: '002670\u8BE5\u80A1\u8DCC\u7834\u77ED\u671F5\u300110\u65E5\u5747\u7EBF\u4E86\uFF0C\u77ED\u671F\u8D70\u5F31\u8F83\u5F31\uFF0C\u76EE\u524D\u4E0B\u65B9\u652F\u6491\u4F4D20.41\u9644\u8FD1\uFF0C\u5728\u652F\u6491\u4F4D\u4E0A\u65B9\u53EF\u4EE5\u6301\u80A1\u89C2\u5BDF\uFF0C\u5982\u679C\u6709\u6548\u8DCC\u7834\u652F\u6491\u4F4D\u51FA\u5C40\u4E3A\u5B9C\u3002\u4EC5\u4F9B\u53C2\u8003', url: 'http://itougu.jrj.com.cn/live/2561',userId: '170405010003083784',org:'深圳新兰德' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg', name: '趋势巡航', curl: 'http://itougu.jrj.com.cn/account/adviser/110324010087988026/', time: '09-15 16:09', content: '\u3010\u8D3E\u8DC3\u4EAD\u73B0\u8EAB\u9999\u6E2F\u9910\u9986 \u4E50\u89C6\u79F0\u4E3A\u89E3\u51B3\u503A\u52A1\u95EE\u9898\u548C\u89C1\u6295\u8D44\u4EBA\u8C08\u878D\u8D44\u3011\u6709\u7F51\u53CB\u5728***\u4E0A\u8868\u793A\uFF0C\u5348\u9910\u65F6\u95F4\uFF0C\u6709\u670B\u53CB\u5728\u9999\u6E2F\u4E00\u5BB6\u8336\u9910\u5385\u78B0\u5230\u4E86\n\u4E50\u89C6\u7F51\u3001\u4E50\u89C6\u63A7\u80A1\u521B\u59CB\u4EBA\u8D3E\u8DC3\u4EAD\u3002\u5BF9\u6B64\uFF0C\u4E50\u89C6\u63A7\u80A1\u76F8\u5173\u8D1F\u8D23\u4EBA\u5BF9\u6F8E\u6E43\u65B0\u95FB\u8BB0\u8005\u8868\u793A\uFF1A\u201C\u4E50\u89C6\u63A7\u80A1\u521A\u521A\u83B7\u6089\u8D3E\u603B\u5230\u9999\u6E2F\u7684\u6D88\u606F\u3002\u636E\u4E86\u89E3\uFF0C\u6B64\u6B21\u8D3E\u603B\u5230\u9999\u6E2F\u4E3B\u8981\u6709\u4E24\u4EF6\u4E8B\u60C5\uFF0C\u4E00\u4E2A\u662F\u5168\u529B\u89E3\u51B3\u4E50\u89C6\u975E\u4E0A\u5E02\u4F53\u7CFB\u503A\u52A1\u95EE\u9898\uFF0C\u8FDB\u4E00\u6B65\u63A8\u8FDB\u843D\u5B9E\u65B9\u6848\uFF1B\u53E6\u4E00\u4E2A\u662F\u4E3A\u6C7D\u8F66\u4E1A\u52A1\u5C24\u5176\u662FFF\u7684\u878D\u8D44\u4F1A\u89C1\u6295\u8D44\u4EBA\uFF0C\u8FDB\u884C\u8C08\u5224\u3002\u201D', url: 'http://itougu.jrj.com.cn/live/62',userId: '110324010087988026',org:'深圳新兰德' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201412/22/itougu/itougu_14192483097071.jpg', name: '稳操胜券', curl: 'http://itougu.jrj.com.cn/account/adviser/121209010067633142/', time: '09-15 16:03', content: '\u3010\u671F\u5E02\u6536\u76D8\u591A\u6570\u98D8\u7EFF \u53CC\u7126\u5C3E\u76D8\u8DF3\u6C34\u3011\u8D22\u8054\u793E15\u65E5\u8BAF\uFF0C\u671F\u5E02\u6536\u76D8\uFF0C\u591A\u6570\u98D8\u7EFF\uFF0C\u53CC\u7126\u5C3E\u76D8\u8DF3\u6C34\uFF0C\u9ED1\u8272\u7CFB\u627F\u538B\u8D70\u4F4E\uFF0C\u7126\u7164\u632B\u903E7%\uFF0C\u7126\u70AD\u8DCC\u8FD15%\uFF0C\u94C1\u77FF\u77F3\u8DCC\u8FD13%\uFF1B\u5316\u5DE5\u54C1\u75B2\u8F6F\uFF0C\u6A61\u80F6\u8DCC\u903E5%\uFF0CPVC\u3001\u7532\u9187\u8DCC\u903E2%\uFF1B\u57FA\u672C\u91D1\u5C5E\u591A\u6570\u4E0B\u8DCC\uFF0C\u6CAA\u954D\u8DCC\u8FD13%\uFF0C\u6CAA\u94DD\u8DCC\u8FD12%\uFF0C\u552F\u6CAA\u94C5\u7FFB\u7EA2\uFF1B\u53CC\u7C95\u8D70\u9AD8\uFF0C\u5747\u6DA8\u903E1%\u3002', url: 'http://itougu.jrj.com.cn/live/67',userId: '121209010067633142',org:'' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg', name: '伦哥量化', curl: 'http://itougu.jrj.com.cn/account/adviser/091124010076736396/', time: '09-15 16:03', content: '\u8DCC\u78345\u65E5\u7EBF\u5C31\u8D70\uFF0C\u522B\u60F3\u8FD9\u4E48\u591A', url: 'http://itougu.jrj.com.cn/live/70',userId: '091124010076736396',org:'深圳新兰德' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009526503651.jpg', name: '超短金手', curl: 'http://itougu.jrj.com.cn/account/adviser/141206010034004020/', time: '09-15 16:01', content: '\u4E2D\u7EBF\u4E3B\u5347\u56DE\u6863\u4E70\u5165\u6CD5+\u5355\u80A1\u4F53\u9A8C \u4E0B\u5468\u5F00\u59CB\u64CD\u4F5C\uFF0C\u6D3B\u52A8\u4EF7188\u5143 \u6CA1\u8BA2\u9605\u7684\u670B\u53CB\u6293\u7D27\u8BA2\u9605\uFF1A\nhttp://itougu.jrj.com.cn/tips/10817.jspa', url: 'http://itougu.jrj.com.cn/live/289',userId: '141206010034004020',org:'深圳新兰德' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/24/itougu/itougu_15008847198761.jpg', name: '宁静的光', curl: 'http://itougu.jrj.com.cn/account/adviser/130624010011537551/', time: '09-15 15:59', content: '\u80A1\u5E02\u5C31\u662F\u4E00\u573A\u4FEE\u884C\u3002\u6CA1\u6709\u4E00\u9897\u6E05\u51C0\u7684\u5FC3\uFF0C\u601D\u60F3\u4E2D\u603B\u662F\u5145\u6EE1\u6050\u60E7\uFF0C\u6216\u8005\u8D2A\u5A6A\uFF0C\u90A3\u5C31\u7B97\u6211\u4EEC\u4E70\u5165\u4E86\u8D85\u7EA7\u725B\u80A1\uFF0C\u4E5F\u5F88\u96BE\u4FDD\u8BC1\u4E0D\u5728\u4E2D\u9014\u9707\u8361\u4E2D\u5356\u51FA\u3002\u6C38\u8FDC\u4E0D\u8981\u8BA4\u4E3A\u81EA\u5DF1\u53EF\u4EE5\u6218\u80DC\u5E02\u573A\uFF1B\u4F60\u80FD\u591F\u8D5A\u94B1\u662F\u56E0\u4E3A\u5E02\u573A\u7684\u5BBD\u5BB9\u548C\u4EC1\u6148\uFF0C\u6240\u4EE5\u6211\u4EEC\u611F\u8C22\u5E02\u573A\uFF1B\u6C38\u4E0D\u653E\u5F03\u3002', url: 'http://itougu.jrj.com.cn/live/68',userId: '130624010011537551',org:'深圳新兰德' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201708/08/itougu/itougu_15021786272621.jpg', name: '股海战龙', curl: 'http://itougu.jrj.com.cn/account/adviser/150903010092058968/', time: '09-15 15:54', content: '\n\u670B\u53CB\u4EEC\uFF0C\u5468\u672B\u6109\u5FEB\uFF01', url: 'http://itougu.jrj.com.cn/live/2981',userId: '150903010092058968',org:'' },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201708/07/itougu/itougu_15020838578091.jpg', name: '六式', curl: 'http://itougu.jrj.com.cn/account/adviser/160905010015338853/', time: '09-15 15:53', content: '\u5F53\u4E0B\u884C\u60C5\u6211\u4E00\u822C\u90FD\u662F\u77ED\u7EBF\u6BD4\u8F83\u591A\u7684\uFF01', url: 'http://itougu.jrj.com.cn/live/2979',userId: '160905010015338853',org:'中方信富' }
+            	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/13/itougu/itougu_14999170813331.jpg', name: '熊市盈利', curl: 'http://itougu.jrj.com.cn/account/adviser/160115010033314482/', time: '09-15 17:09', content: '\u5317\u4EAC\u5E02\u76D1\u7BA1\u673A\u6784\u4ECA\u65E5\u7EA6\u8C08\u8F96\u5185\u6BD4\u7279\u5E01\u4EA4\u6613\u5E73\u53F0\uFF0C\u8981\u6C42\u5404\u4EA4\u6613\u573A\u6240\u6700\u665A\u5E94\u4E8E2017\u5E749\u670815\u65E524\u70B9\u524D\u53D1\u5E03\u516C\u544A\uFF0C\u660E\u786E\u505C\u6B62\u6240\u6709\u865A\u62DF\u8D27\u5E01\u4EA4\u6613\u7684\u6700\u7EC8\u65F6\u95F4\uFF0C\u5E76\u5BA3\u5E03\u7ACB\u5373\u505C\u6B62\u65B0\u7528\u6237\u6CE8\u518C\u3002', url: 'http://itougu.jrj.com.cn/live/741',userId: '160115010033314482',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg', name: '蚂蚁搬家', curl: 'http://itougu.jrj.com.cn/account/adviser/150706010037869395/', time: '09-15 17:08', content: '\u3010\u8BC1\u76D1\u4F1A\u6838\u53D19\u5BB6IPO\u6279\u6587 \u7B79\u8D44\u4E0D\u8D85\u8FC744\u4EBF\u5143\u3011', url: 'http://itougu.jrj.com.cn/live/272',userId: '150706010037869395',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://i5.jrjimg.cn/201501/06/hp/hp_14205513995411_m.jpg', name: '崔总直播', curl: 'http://itougu.jrj.com.cn/account/adviser/141221010086616010/', time: '09-15 17:04', content: '\u6B21\u65B0\u77ED\u671F\u8C03\u6574\uFF0C\u4E0D\u783420\u5929\u7EBF\u8FD8\u6709\u673A\u4F1A', url: 'http://itougu.jrj.com.cn/live/129',userId: '141221010086616010',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg', name: '波段女神', curl: 'http://itougu.jrj.com.cn/account/adviser/170405010003083784/', time: '09-15 16:57', content: '6002742\u6628\u5929\u653E\u91CF\u6DA8\u505C\u677F\uFF0C\u4ECA\u5929\u653E\u5DE8\u91CF\u51B2\u9AD8\u56DE\u843D\uFF0C\u5982\u679C\u77ED\u671F\u91CD\u65B0\u56DE\u5230\u6628\u5929\u6536\u76D8\u4EF7\u4E0A\u65B9\uFF0C\u5411\u4E0B\u56DE\u8C03\u7684\u6982\u7387\u8F83\u5927\u3002\u4EC5\u4F9B\u53C2\u8003', url: 'http://itougu.jrj.com.cn/live/2561',userId: '170405010003083784',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg', name: '趋势巡航', curl: 'http://itougu.jrj.com.cn/account/adviser/110324010087988026/', time: '09-15 16:57', content: '\u3010\u6CB9\u4EF7\u8FCE\u5E74\u5185\u7B2C7\u6B21\u4E0A\u8C03\uFF01\u660E\u8D77\u6BCF\u5347\u6CB9\u6DA87\u5206\u3011\u6839\u636E\u201C\u5341\u4E2A\u5DE5\u4F5C\u65E5\u4E00\u8C03\u6574\u201D\u7684\u539F\u5219\uFF0C\u4ECA\u5E74\u7B2C\u5341\u516B\u4E2A\u6210\u54C1\u6CB9\u8C03\u4EF7\u7A97\u53E3\u5C06\u4E8E9\u670815\u65E524\u65F6\u5F00\u542F\u3002\u592E\u89C6\u8D22\u7ECF\u8BB0\u8005\u4ECE\u56FD\u5BB6\u53D1\u6539\u59D4\u83B7\u6089\uFF0C\u672C\u6B21\u6CB9\u4EF7\u8C03\u6574\u5177\u4F53\u60C5\u51B5\u5982\u4E0B\uFF1A90\u53F7\u6C7D\u6CB9\u6BCF\u5347\u4E0A\u8C030.07\u5143\uFF0C92\u53F7\u6C7D\u6CB9\u6BCF\u5347\u4E0A\u8C030.07\u5143\uFF0C95\u53F7\u6C7D\u6CB9\u6BCF\u5347\u4E0A\u8C030.08\u5143\uFF0C0\u53F7\u67F4\u6CB9\u6BCF\u5347\u4E0A\u8C030.08\u5143\u3002', url: 'http://itougu.jrj.com.cn/live/62',userId: '110324010087988026',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201612/14/itougu/itougu_14816868966251.jpg', name: '火星资本', curl: 'http://itougu.jrj.com.cn/account/adviser/110711010020029067/', time: '09-15 16:55', content: '\u51EF\u8FEA\u751F\u6001\u4E3B\u8425\u4E1A\u52A1\u662F\u751F\u7269\u8D28\u53D1\u7535\u3002\u4E1A\u7EE9\u5E73\u6DE1\u589E\u957F\u5F88\u5C0F\u3002\u57FA\u672C\u9762\u4E0A\u770B\u8D70\u4E0D\u8FDC\u300214\u65E5\u516C\u544A\u8BBE\u7ACB\u96C4\u5B89\u529E\u4E8B\u5904\uFF0C\u6709\u4E1A\u7EE9\u589E\u957F\u9884\u671F\uFF0C\u6240\u4EE5\u5927\u76D8\u4E00\u65E6\u8D70\u597D\uFF0C\u8FD8\u6709\u4E0A\u51B2\u52A8\u80FD\u3002', url: 'http://itougu.jrj.com.cn/live/1444',userId: '110711010020029067',org:'' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/24/itougu/itougu_15008847198761.jpg', name: '宁静的光', curl: 'http://itougu.jrj.com.cn/account/adviser/130624010011537551/', time: '09-15 16:44', content: '\u80A1\u5E02\u603B\u662F\u767E\u8F6C\u5343\u56DE\uFF0C\u5982\u679C\u4F60\u5728\u718A\u5E02\u6218\u80DC\u4E0D\u4E86\u5E02\u573A\uFF0C\u725B\u5E02\u53C8\u4E0D\u575A\u6301\u5224\u65AD\uFF0C\u90A3\u53EA\u6709\u9000\u51FA\u5E02\u573A\u4E86\u3002\u5468\u672B\u4E86\uFF0C\u6709\u7A7A\u770B\u770B\u5386\u53F2\u4E0A\u725B\u80A1\u7684\u4E0A\u6DA8\u8282\u594F\u3002\u6BD4\u598206-07\u5E74\u7684\n600685\u4E2D\u8239\u8239\u52A1\uFF0C\n600150\u4E2D\u56FD\u8239\u8236\u7B49\uFF1B14-15\u5E74\u7684\n600570\u6052\u751F\u7535\u5B50\uFF0C\n600446\u91D1\u8BC1\u80A1\u4EFD\u7B49\u3002\u591A\u770B\u5468\u7EBF\u548C\u6708\u7EBF\u5468\u671F\u3002\u5468\u672B\u5FEB\u4E50\uFF01', url: 'http://itougu.jrj.com.cn/live/68',userId: '130624010011537551',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967120257341.jpg', name: '不败女王', curl: 'http://itougu.jrj.com.cn/account/adviser/150424010084778643/', time: '09-15 16:20', content: '\u6069\u3002\u4F46\u8FD8\u6709\u4E00\u7EBF\u673A\u4F1A\u3002\u4ECA\u5929\u4E0D\u8BE5\u8FDB\u3002\u4E0D\u8FC7\u8981\u770B\u5468\u4E00\u8868\u73B0', url: 'http://itougu.jrj.com.cn/live/194',userId: '150424010084778643',org:'深圳新兰德' },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201412/22/itougu/itougu_14192483097071.jpg', name: '稳操胜券', curl: 'http://itougu.jrj.com.cn/account/adviser/121209010067633142/', time: '09-15 16:03', content: '\u3010\u671F\u5E02\u6536\u76D8\u591A\u6570\u98D8\u7EFF \u53CC\u7126\u5C3E\u76D8\u8DF3\u6C34\u3011\u8D22\u8054\u793E15\u65E5\u8BAF\uFF0C\u671F\u5E02\u6536\u76D8\uFF0C\u591A\u6570\u98D8\u7EFF\uFF0C\u53CC\u7126\u5C3E\u76D8\u8DF3\u6C34\uFF0C\u9ED1\u8272\u7CFB\u627F\u538B\u8D70\u4F4E\uFF0C\u7126\u7164\u632B\u903E7%\uFF0C\u7126\u70AD\u8DCC\u8FD15%\uFF0C\u94C1\u77FF\u77F3\u8DCC\u8FD13%\uFF1B\u5316\u5DE5\u54C1\u75B2\u8F6F\uFF0C\u6A61\u80F6\u8DCC\u903E5%\uFF0CPVC\u3001\u7532\u9187\u8DCC\u903E2%\uFF1B\u57FA\u672C\u91D1\u5C5E\u591A\u6570\u4E0B\u8DCC\uFF0C\u6CAA\u954D\u8DCC\u8FD13%\uFF0C\u6CAA\u94DD\u8DCC\u8FD12%\uFF0C\u552F\u6CAA\u94C5\u7FFB\u7EA2\uFF1B\u53CC\u7C95\u8D70\u9AD8\uFF0C\u5747\u6DA8\u903E1%\u3002', url: 'http://itougu.jrj.com.cn/live/67',userId: '121209010067633142',org:'' }
 	                                ];
         </script>
             <div class="aside">
@@ -298,49 +298,18 @@
                     <ul data-bind="foreach: liveListRecomm">
                         <li>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 16:03</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/091124010076736396/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg" alt="伦哥量化" aitgid="091124010076736396" src="http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg" style="opacity: 1;"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/091124010076736396/">伦哥量化</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                                <small class="fr" data-bind="html: time">09-15 17:08</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150706010037869395/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg" alt="蚂蚁搬家" aitgid="150706010037869395" src="http://itg1.jrjimg.cn/201512/12/itougu/itougu_14498888079621.jpg" style="opacity: 1;"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150706010037869395/">蚂蚁搬家</a><span class="org" data-bind="html: org">深圳新兰德</span>
                             </div>
 
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/70">跌破5日线就走，别想这么多</a></p>
-                        </li>
-                    
-                        <li>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 15:54</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150903010092058968/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201708/08/itougu/itougu_15021786272621.jpg" alt="股海战龙" aitgid="150903010092058968" src="http://itg1.jrjimg.cn/201708/08/itougu/itougu_15021786272621.jpg" style="opacity: 1;"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150903010092058968/">股海战龙</a><span class="org" data-bind="html: org"></span>
-                            </div>
-
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/2981">
-朋友们，周末愉快！</a></p>
-                        </li>
-                    
-                        <li>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 15:53</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160905010015338853/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201708/07/itougu/itougu_15020838578091.jpg" alt="六式" aitgid="160905010015338853"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160905010015338853/">六式</a><span class="org" data-bind="html: org">中方信富</span>
-                            </div>
-
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/2979">当下行情我一般都是短线比较多的！</a></p>
-                        </li>
-                    
-                        <li>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 16:13</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg" alt="波段女神" aitgid="170405010003083784"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/">波段女神</a><span class="org" data-bind="html: org">深圳新兰德</span>
-                            </div>
-
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/2561">002670该股跌破短期5、10日均线了，短期走弱较弱，目前下方支撑...</a></p>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/272">【证监会核发9家IPO批文 筹资不超过44亿元】</a></p>
                         </li>
                     
                         <li>
                             <div class="info">
                                 <small class="fr" data-bind="html: time">09-15 16:03</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/121209010067633142/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201412/22/itougu/itougu_14192483097071.jpg" alt="稳操胜券" aitgid="121209010067633142"></a>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/121209010067633142/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201412/22/itougu/itougu_14192483097071.jpg" alt="稳操胜券" aitgid="121209010067633142" src="http://itg1.jrjimg.cn/201412/22/itougu/itougu_14192483097071.jpg" style="opacity: 1;"></a>
                                 <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/121209010067633142/">稳操胜券</a><span class="org" data-bind="html: org"></span>
                             </div>
 
@@ -349,32 +318,52 @@
                     
                         <li>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 16:09</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110324010087988026/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg" alt="趋势巡航" aitgid="110324010087988026"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110324010087988026/">趋势巡航</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                                <small class="fr" data-bind="html: time">09-15 16:55</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110711010020029067/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201612/14/itougu/itougu_14816868966251.jpg" alt="火星资本" aitgid="110711010020029067"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110711010020029067/">火星资本</a><span class="org" data-bind="html: org"></span>
                             </div>
 
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/62">【贾跃亭现身香港餐馆 乐视称为解决债务问题和见投资人谈融资】...</a></p>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/1444">凯迪生态主营业务是生物质发电。业绩平淡增长很小。基本面上看走...</a></p>
                         </li>
                     
                         <li>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 16:01</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141206010034004020/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009526503651.jpg" alt="超短金手" aitgid="141206010034004020"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141206010034004020/">超短金手</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                                <small class="fr" data-bind="html: time">09-15 17:04</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141221010086616010/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://i5.jrjimg.cn/201501/06/hp/hp_14205513995411_m.jpg" alt="崔总直播" aitgid="141221010086616010"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141221010086616010/">崔总直播</a><span class="org" data-bind="html: org">深圳新兰德</span>
                             </div>
 
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/289">中线主升回档买入法+单股体验 下周开始操作，活动价188元 没订阅...</a></p>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/129">次新短期调整，不破20天线还有机会</a></p>
                         </li>
                     
                         <li>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 15:59</small>
+                                <small class="fr" data-bind="html: time">09-15 16:44</small>
                                 <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130624010011537551/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/24/itougu/itougu_15008847198761.jpg" alt="宁静的光" aitgid="130624010011537551"></a>
                                 <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130624010011537551/">宁静的光</a><span class="org" data-bind="html: org">深圳新兰德</span>
                             </div>
 
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/68">股市就是一场修行。没有一颗清净的心，思想中总是充满恐惧，或者...</a></p>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/68">股市总是百转千回，如果你在熊市战胜不了市场，牛市又不坚持判断...</a></p>
+                        </li>
+                    
+                        <li>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 16:57</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110324010087988026/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg" alt="趋势巡航" aitgid="110324010087988026"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110324010087988026/">趋势巡航</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                            </div>
+
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/62">【油价迎年内第7次上调！明起每升油涨7分】根据“十个工作日一调...</a></p>
+                        </li>
+                    
+                        <li>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 16:57</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg" alt="波段女神" aitgid="170405010003083784"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/">波段女神</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                            </div>
+
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/2561">6002742昨天放量涨停板，今天放巨量冲高回落，如果短期重新回到...</a></p>
                         </li>
                     
                         <li>
@@ -385,6 +374,16 @@
                             </div>
 
                             <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/194">恩。但还有一线机会。今天不该进。不过要看周一表现</a></p>
+                        </li>
+                    
+                        <li>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 17:09</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160115010033314482/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name,aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/13/itougu/itougu_14999170813331.jpg" alt="熊市盈利" aitgid="160115010033314482"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160115010033314482/">熊市盈利</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                            </div>
+
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/live/741">北京市监管机构今日约谈辖内比特币交易平台，要求各交易场所最晚...</a></p>
                         </li>
                     </ul>
                 </div>
@@ -398,7 +397,7 @@
                     <script type="text/javascript">
 
         var askListConsult = [
-            	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg', name: '伦哥量化', curl: 'http://itougu.jrj.com.cn/account/adviser/091124010076736396/', title: '\u91D1\u878D\u754C\u9996\u5E2D\u8BC4\u8BBA\u5458\uFF0C2015\u5E74\u6700\u4F73\u6295\u987E\u7968\u9009\u51A0\u519B\uFF0C\u91D1\u878D\u754C\u3001\u6B27\u6D32\u65F6\u62A5\u3001\u4E2D\u56FD\u65B0\u95FB\u7F51\u8D22\u7ECF\u9891\u9053\u7279\u7EA6\u8BC4\u8BBA\u5458\uFF0C\u5177\u5907\u8D85\u8FC78\u5E74\u91D1\u878D\u5E02\u573A\u4ECE\u4E1A\u7ECF\u9A8C\uFF0C\u7CBE\u901A\u91CF\u5316\u5206\u6790\u3001\u6CE2\u6D6A\u7406\u8BBA\u3001\u6295\u8D44\u5FC3\u7406\u7B49\u8BF8\u591A\u9886\u57DF\uFF0C\u8FFD\u6C42\u7A33\u5065\u6536\u76CA\u76EE\u6807\uFF0C\u5728\u4E0D\u6210\u719F\u7684A\u80A1\u5E02\u573A\u4E2D\uFF0C\u505A\u4E00\u4E2A\u6210\u719F\u7684\u4EA4\u6613\u8005\u3002', answerNum: 41, helpful: 0,org: '深圳新兰德',url: "Question.clickEvent(false,'伦哥量化','091124010076736396')" },
+            	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988121980041.jpg', name: '伦哥量化', curl: 'http://itougu.jrj.com.cn/account/adviser/091124010076736396/', title: '\u91D1\u878D\u754C\u9996\u5E2D\u8BC4\u8BBA\u5458\uFF0C2015\u5E74\u6700\u4F73\u6295\u987E\u7968\u9009\u51A0\u519B\uFF0C\u91D1\u878D\u754C\u3001\u6B27\u6D32\u65F6\u62A5\u3001\u4E2D\u56FD\u65B0\u95FB\u7F51\u8D22\u7ECF\u9891\u9053\u7279\u7EA6\u8BC4\u8BBA\u5458\uFF0C\u5177\u5907\u8D85\u8FC78\u5E74\u91D1\u878D\u5E02\u573A\u4ECE\u4E1A\u7ECF\u9A8C\uFF0C\u7CBE\u901A\u91CF\u5316\u5206\u6790\u3001\u6CE2\u6D6A\u7406\u8BBA\u3001\u6295\u8D44\u5FC3\u7406\u7B49\u8BF8\u591A\u9886\u57DF\uFF0C\u8FFD\u6C42\u7A33\u5065\u6536\u76CA\u76EE\u6807\uFF0C\u5728\u4E0D\u6210\u719F\u7684A\u80A1\u5E02\u573A\u4E2D\uFF0C\u505A\u4E00\u4E2A\u6210\u719F\u7684\u4EA4\u6613\u8005\u3002', answerNum: 40, helpful: 0,org: '深圳新兰德',url: "Question.clickEvent(false,'伦哥量化','091124010076736396')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201605/17/itougu/itougu_14634541342281.jpg', name: '龙头实战', curl: 'http://itougu.jrj.com.cn/account/adviser/100716010053650872/', title: '\u53EA\u505A\u9898\u6750\u9F99\u5934\uFF0C\u53EA\u770B\u5E02\u573A\u98CE\u53E3\u3002\u9648\u5B97\u8D24\uFF0C\u8D44\u6DF1\u6295\u987E\uFF0C\u66FE\u4EFB\u79C1\u52DF\u4F5C\u624B\uFF0C\u5341\u5E74\u4EE5\u4E0A\u6295\u8D44\u7ECF\u5386\u3002\u3010\u64CD\u4F5C\u5468\u671F\u3011\u5448\u73B0\u8D85\u77ED\u3001\u77ED\u7EBF\u98CE\u683C\u3002\u3010\u64CD\u4F5C\u98CE\u683C\u3011\uFF1A\u53EA\u505A\u9898\u6750\u9F99\u5934\uFF0C\u53EA\u770B\u5E02\u573A\u98CE\u53E3\uFF0C\u9F99\u5934\u6218\u6CD5\u6A21\u5F0F\uFF0C\u6E38\u8D44\u624B\u6CD5\u3002\u3010\u64CD\u4F5C\u601D\u8DEF\u3011\uFF1A\u7D27\u968F\u5E02\u573A\u3001\u8D44\u91D1\u8282\u594F\uFF0C\u53D1\u73B0\u9898\u6750\u70ED\u70B9\uFF0C\u5206\u6790\u9898\u6750\u683C\u5C40\uFF0C\u7092\u4F5C\u9898\u6750\u70ED\u70B9\u9F99\u5934\uFF0C\u63A5\u529B\u5F3A\u52BF\u9F99\u5934\u54C1\u79CD\u3002 \u3010\u64C5\u957F\u3011\u76D8\u9762\u683C\u5C40\u3001\u65F6\u673A\u5206\u6790\u3002\u9F99\u5934\u6218\u6CD5\u719F\u7528\u4E8E\u5FC3\uFF0C\u8FD0\u7528\u6B64\u6218\u6CD5\u80FD\u4F7F\u8D44\u4EA7\u5B9E\u73B0\u76F8\u5BF9\u6301\u7EED\u7A33\u5B9A\u590D\u5229\u589E\u957F\u3002', answerNum: 14, helpful: 0,org: '深圳新兰德',url: "Question.clickEvent(false,'龙头实战','100716010053650872')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg', name: '趋势巡航', curl: 'http://itougu.jrj.com.cn/account/adviser/110324010087988026/', title: '\u4FAF\u5229\u5E73\u5165\u5E0217\u5E74\uFF0C\u91D1\u878D\u754C\u5341\u5927\u540D\u535A\uFF0C\u4E2D\u56FD\u80A1\u5E02\u597D\u699C\u6837\u5B63\u519B\u3002', answerNum: 73, helpful: 0,org: '深圳新兰德',url: "Question.clickEvent(false,'趋势巡航','110324010087988026')" },
 	                        	            	            	{ avatar: 'http://i5.jrjimg.cn/201506/10/hp/hp_14339014157301_m.jpg', name: '五彩石68', curl: 'http://itougu.jrj.com.cn/account/adviser/130314010073433370/', title: '\u6839\u636E\u4EA4\u6613\u5B9A\u5F8B\u6CD5\u5219,\u5C3D\u91CF\u89C4\u907F\u4E0D\u786E\u5B9A\u6027\u5E26\u6765\u7684\u65E0\u8C13\u6B62\u635F,\u8010\u5FC3\u7684\u7B49\u5F85\u98CE\u9669\u5C0F\u5229\u6DA6\u5927\u7684\u673A\u4F1A,\u8FD9\u91CC\u4E0D\u7F3A\u5C11\u673A\u4F1A,\u7F3A\u7684\u53EA\u662F\u7B49\u5F85\u673A\u4F1A\u5E76\u8D62\u5F97\u673A\u4F1A\u3002\u5E02\u573A\u6C38\u8FDC\u662F\u5BF9\u7684,\u6CA1\u6709\u6BD4\u5E02\u573A\u66F4\u7CBE\u660E\u3002', answerNum: 44, helpful: 1,org: '',url: "Question.clickEvent(false,'五彩石68','130314010073433370')" },
@@ -406,16 +405,16 @@
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/19/itougu/itougu_14978512187421.jpg', name: '女王策略', curl: 'http://itougu.jrj.com.cn/account/adviser/140226010044194671/', title: '\u4EE5\u672A\u96E8\u7EF8\u7F2A\uFF0C\u4E3A\u80DC\u5148\u8651\u8D25\u3002\u628A\u63A7\u5236\u56DE\u64A4\u89C6\u4E3A\u7A33\u5B9A\u83B7\u5229\u7684\u9996\u9009\uFF01\uFF01\uFF01\u6700\u7EC8\u5F62\u6210\u81EA\u6210\u4E00\u6D3E\u7684\u4EA4\u6613\u7CFB\u7EDF\uFF0C\u72EC\u521B\u5B54\u96C0\u5F00\u5C4F\u6218\u6CD5\u548C\u9501\u5934\u4E0E\u94A5\u5319\u7684\u5173\u7CFB\u7406\u8BBA\u3002\u64C5\u957F\u76D8\u53E3\u8BED\u8A00\u5206\u6790\u5224\u65AD\u3001\u6355\u6349\u70ED\u70B9\u677F\u5757\u548C\u9F99\u5934\u80A1\u3002\u5E38\u5E38\u63D0\u524D\u6F5C\u4F0F\u6216\u76D8\u4E2D\u6355\u83B7\u6DA8\u505C\u3002', answerNum: 10, helpful: 0,org: '深圳新兰德',url: "Question.clickEvent(false,'女王策略','140226010044194671')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/30/itougu/itougu_14988023859901.jpg', name: '东歌解股', curl: 'http://itougu.jrj.com.cn/account/adviser/141101010069076304/', title: '\u5B9E\u6218\u6D3E\u9AD8\u624B\uFF0C\u5EA6\u5A18\u8C13\u4E4B\u201C\u64D2\u5996\u4E13\u5BB6\u201D\uFF0C\u91D1\u878D\u754C2015\u30012016\u5E74\u5EA6\u5341\u4F73\u6295\u987E\uFF0C\u6709\u4E30\u5BCC\u7684\u5927\u8D44\u91D1\u8FD0\u4F5C\u7ECF\u9A8C\uFF0C\u719F\u6089\u5404\u8DEF\u8D44\u91D1\u7684\u64CD\u4F5C\u624B\u6CD5\u53CA\u8FD0\u4F5C\u601D\u8DEF\uFF0C\u5021\u5BFC\u201C\u8D8B\u52BF\u6295\u8D44\uFF0C\u5F3A\u8005\u6052\u5F3A\u201D\u7684\u6295\u8D44\u7406\u5FF5\uFF1B\u62E5\u6709\u591A\u5E74\u7684\u8BC1\u5238\u64CD\u76D8\u7ECF\u5386\uFF0C\u5728\u5E02\u573A\u628A\u63A7\u548C\u653F\u7B56\u5206\u6790\u65B9\u9762\u89C6\u89D2\u72EC\u7279\uFF0C\u64C5\u957F\u51C6\u786E\u628A\u63E1\u5E02\u573A\u8FD0\u884C\u8282\u594F\uFF01', answerNum: 57, helpful: 1,org: '深圳新兰德',url: "Question.clickEvent(false,'东歌解股','141101010069076304')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975809097661.jpg', name: '考拉小良', curl: 'http://itougu.jrj.com.cn/account/adviser/150208010093147322/', title: '\u80A1\u7968\u638C\u8235\u624B\uFF0C\u7CBE\u901A\u5E02\u573A\u7684\u6280\u672F\u5206\u6790\u4E0E\u4EA4\u6613\u89C4\u5219\u3002\u53EF\u4E3A\u6295\u8D44\u8005\u63D0\u4F9B\u4EA4\u6613\u7684\u5DE5\u5177\u3001\u6218\u672F\u548C\u7B56\u7565\uFF0C\u5E76\u5411\u6295\u8D44\u8005\u5C55\u793A\u4EA4\u6613\u8005\u600E\u6837\u5728\u5FC3\u7406\u4E0A\u548C\u77E5\u8BC6\u4E0A\u6B66\u88C5\u81EA\u5DF1\uFF0C\u5E76\u7528\u81EA\u4FE1\u3001\u81EA\u5F8B\u548C\u8D62\u5BB6\u7684\u5FC3\u6001\u638C\u63A7\u5E02\u573A\u3002', answerNum: 33, helpful: 0,org: '深圳新兰德',url: "Question.clickEvent(false,'考拉小良','150208010093147322')" },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/26/itougu/itougu_14984272050901.jpg', name: '彪涨金客', curl: 'http://itougu.jrj.com.cn/account/adviser/150304010029935104/', title: '\u6DF1\u5733\u65B0\u5170\u5FB7\u9AD8\u7EA7\u6295\u987E\uFF0C\u591A\u5BB6\u8D22\u7ECF\u5E73\u53F0\u7279\u7EA6\u8BC4\u8BBA\uFF0C\u70B9\u775B\u79D1\u6280\u603B\u88C1\uFF0C2015\u5E74\u7231\u6295\u987E\u5341\u4F73\u6295\u987E\uFF0C\u7231\u6295\u987E\u6536\u76CA15\u5E74\u4E94\u6708\u51A0\u519B\uFF0C\u591A\u6B21\u5468\u51A0\u519B\u3002\u5F6A\u5BA2\u5E38\u4E0E\u725B\u80A1\u4E3A\u4F34\uFF0C\u613F\u4F60\u5E38\u4E0E\u5F6A\u5BA2\u4E3A\u53CB\uFF01\uFF01\u5F6A\u5BA2\u8BA4\u4E3A\u77ED\u7EBF\u662F\u91D1\uFF0C\u53EA\u6709\u77ED\u7EBF\u624D\u80FD\u66F4\u597D\u66F4\u5FEB\u7684\u76C8\u5229\uFF0C\u624D\u80FD\u66F4\u597D\u7684\u89C4\u907F\u7CFB\u7EDF\u98CE\u9669\u3002\u53EA\u5728\u725B\u5E02\u91CC\u505A\u80A1\u7968\u90A3\u4E0D\u53EB\u6280\u672F\u4E5F\u4E0D\u9700\u592A\u591A\u6280\u672F\uFF01\u5728\u718A\u5E02\u548C\u9707\u8361\u5E02\u4E2D\u8D5A\u94B1\u624D\u6709\u66F4\u5927\u7684\u751F\u5B58\u7A7A\u95F4\uFF01', answerNum: 89, helpful: 1,org: '深圳新兰德',url: "Question.clickEvent(false,'彪涨金客','150304010029935104')" },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/26/itougu/itougu_14984272050901.jpg', name: '彪涨金客', curl: 'http://itougu.jrj.com.cn/account/adviser/150304010029935104/', title: '\u6DF1\u5733\u65B0\u5170\u5FB7\u9AD8\u7EA7\u6295\u987E\uFF0C\u591A\u5BB6\u8D22\u7ECF\u5E73\u53F0\u7279\u7EA6\u8BC4\u8BBA\uFF0C\u70B9\u775B\u79D1\u6280\u603B\u88C1\uFF0C2015\u5E74\u7231\u6295\u987E\u5341\u4F73\u6295\u987E\uFF0C\u7231\u6295\u987E\u6536\u76CA15\u5E74\u4E94\u6708\u51A0\u519B\uFF0C\u591A\u6B21\u5468\u51A0\u519B\u3002\u5F6A\u5BA2\u5E38\u4E0E\u725B\u80A1\u4E3A\u4F34\uFF0C\u613F\u4F60\u5E38\u4E0E\u5F6A\u5BA2\u4E3A\u53CB\uFF01\uFF01\u5F6A\u5BA2\u8BA4\u4E3A\u77ED\u7EBF\u662F\u91D1\uFF0C\u53EA\u6709\u77ED\u7EBF\u624D\u80FD\u66F4\u597D\u66F4\u5FEB\u7684\u76C8\u5229\uFF0C\u624D\u80FD\u66F4\u597D\u7684\u89C4\u907F\u7CFB\u7EDF\u98CE\u9669\u3002\u53EA\u5728\u725B\u5E02\u91CC\u505A\u80A1\u7968\u90A3\u4E0D\u53EB\u6280\u672F\u4E5F\u4E0D\u9700\u592A\u591A\u6280\u672F\uFF01\u5728\u718A\u5E02\u548C\u9707\u8361\u5E02\u4E2D\u8D5A\u94B1\u624D\u6709\u66F4\u5927\u7684\u751F\u5B58\u7A7A\u95F4\uFF01', answerNum: 73, helpful: 1,org: '深圳新兰德',url: "Question.clickEvent(false,'彪涨金客','150304010029935104')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201704/05/itougu/itougu_14913542689761.jpg', name: '孙力', curl: 'http://itougu.jrj.com.cn/account/adviser/150824010040780740/', title: '\u8D44\u6DF1\u8BC1\u5238\u6295\u8D44\u5206\u6790\u5E08\uFF0C\u62E5\u6709\u4E30\u5BCC\u7684\u5B9E\u76D8\u5206\u6790\u7ECF\u9A8C\u548C\u5E02\u573A\u98CE\u5411\u5224\u65AD\u80FD\u529B\uFF0C\u5177\u6709\u624E\u5B9E\u7684\u6280\u672F\u5206\u6790\u548C\u57FA\u672C\u9762\u5206\u6790\u529F\u5E95\uFF0C\u64C5\u957F\u77ED\u7EBF\u70ED\u70B9\u9898\u6750\u7684\u8FFD\u8E2A\u548C\u5E02\u573A\u8282\u594F\u7684\u628A\u63E1\uFF0C\u6709\u8F83\u9AD8\u7684\u5E02\u573A\u654F\u9510\u5EA6\u3002\u5728\u5341\u5E74\u7684\u8BC1\u5238\u4ECE\u4E1A\u7ECF\u5386\u4E2D\uFF0C\u591A\u8F6E\u725B\u718A\u5E02\u573A\u7684\u6D17\u793C\uFF0C\u5F62\u6210\u4E86\u81EA\u5DF1\u6210\u719F\u7A33\u5B9A\u7684\u76C8\u5229\u6A21\u5F0F\u3002', answerNum: 152, helpful: 0,org: '',url: "Question.clickEvent(false,'孙力','150824010040780740')" },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/14/itougu/itougu_14974505693801.jpg', name: '狙击突破', curl: 'http://itougu.jrj.com.cn/account/adviser/151104010040489060/', title: '\u91D1\u878D\u7CFB\u7EDF\u51FA\u8EAB\uFF0C2016\u5E74\u7231\u6295\u987E\u65B0\u9510\u6295\u987E\u524D\u4E09\u7532\uFF0C\u7D2F\u8BA123\u6B21\u8363\u767B\u6218\u795E\u699C\uFF0C\u662F\u76EE\u524D\u4E0A\u699C\u6B21\u6570\u6700\u591A\u7684\u6295\u987E\u3002\u98CE\u683C\u4F4E\u5438\u4E0E\u7A81\u7834\u76F8\u7ED3\u5408\u3002\u524D\u671F\u7A81\u7834\u5C61\u6B21\u5237\u65B0\u7C89\u4E1D\u7684\u597D\u8BC4\u3002\u800C\u718A\u5E02\u98CE\u683C\u8F6C\u4E3A\u4F4E\u5438\uFF0C\u64C5\u957F\u6E38\u8D44\u601D\u7EF4\u4E3B\u653B\u77ED\u7EBF\u70ED\u70B9\uFF0C\u66F4\u52A0\u5F97\u5230\u4E86\u4E0A\u4E07\u7C89\u4E1D\u7684\u8BA4\u53EF\u3002\u518D\u914D\u4EE5\u4E25\u683C\u7684\u98CE\u63A7\u4F53\u7CFB\uFF0C\u6574\u4F53\u56DE\u64A4\u975E\u5E38\u5C0F\u3002\u7406\u5FF5\u662F\u8D85\u77ED\u7EBF\u7684\u590D\u5229\u79EF\u7D2F\uFF0C\u800C\u4E0D\u662F\u4E00\u53EA\u7968\u7684\u66B4\u5229\u3002\u80A1\u5E02\u6F2B\u6F2B\u7A33\u6B65\u524D\u884C\u3002', answerNum: 302, helpful: 1,org: '深圳新兰德',url: "Question.clickEvent(false,'狙击突破','151104010040489060')" },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/14/itougu/itougu_14974505693801.jpg', name: '狙击突破', curl: 'http://itougu.jrj.com.cn/account/adviser/151104010040489060/', title: '\u91D1\u878D\u7CFB\u7EDF\u51FA\u8EAB\uFF0C2016\u5E74\u7231\u6295\u987E\u65B0\u9510\u6295\u987E\u524D\u4E09\u7532\uFF0C\u7D2F\u8BA123\u6B21\u8363\u767B\u6218\u795E\u699C\uFF0C\u662F\u76EE\u524D\u4E0A\u699C\u6B21\u6570\u6700\u591A\u7684\u6295\u987E\u3002\u98CE\u683C\u4F4E\u5438\u4E0E\u7A81\u7834\u76F8\u7ED3\u5408\u3002\u524D\u671F\u7A81\u7834\u5C61\u6B21\u5237\u65B0\u7C89\u4E1D\u7684\u597D\u8BC4\u3002\u800C\u718A\u5E02\u98CE\u683C\u8F6C\u4E3A\u4F4E\u5438\uFF0C\u64C5\u957F\u6E38\u8D44\u601D\u7EF4\u4E3B\u653B\u77ED\u7EBF\u70ED\u70B9\uFF0C\u66F4\u52A0\u5F97\u5230\u4E86\u4E0A\u4E07\u7C89\u4E1D\u7684\u8BA4\u53EF\u3002\u518D\u914D\u4EE5\u4E25\u683C\u7684\u98CE\u63A7\u4F53\u7CFB\uFF0C\u6574\u4F53\u56DE\u64A4\u975E\u5E38\u5C0F\u3002\u7406\u5FF5\u662F\u8D85\u77ED\u7EBF\u7684\u590D\u5229\u79EF\u7D2F\uFF0C\u800C\u4E0D\u662F\u4E00\u53EA\u7968\u7684\u66B4\u5229\u3002\u80A1\u5E02\u6F2B\u6F2B\u7A33\u6B65\u524D\u884C\u3002', answerNum: 306, helpful: 1,org: '深圳新兰德',url: "Question.clickEvent(false,'狙击突破','151104010040489060')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967198622271.jpg', name: '风云化龙', curl: 'http://itougu.jrj.com.cn/account/adviser/160314010048299684/', title: '\u8363\u8A89\uFF1A\u64CD\u76D8\u56E2\u961F\u6700\u4F73\u65B0\u4EBA\u738B\u4ECE\u4E1A\u7ECF\u53863\u5E74\u3002\u6295\u8D44\u98CE\u683C\uFF1A\u957F\u77EDT\u7ED3\u5408\uFF0C\u603B\u4F53\u4ED3\u4F4D\u4E0A\u4F1A\u6839\u636E\u5927\u76D8\u6BCF\u65E5\u7684\u98CE\u9669\u7EA7\u522B\u6765\u786E\u5B9A\u4ED3\u4F4D\u914D\u6BD4\uFF0C\u6211\u662F\u5C06\u5927\u76D8\u98CE\u9669\u5206\u4E3A\u4E94\u6863\uFF0C\u4E0D\u540C\u7684\u7EA7\u6570\u786E\u5B9A\u4E0D\u540C\u7684\u4ED3\u4F4D\u6BD4\u4F8B\uFF0C\u5BF9\u5E94\u7684\u662F\u4E8C\u56DB\u516D\u516B\u5341\uFF0C\u5728\u6B64\u57FA\u7840\u4E0A\u5C06\u6295\u8D44\u4ED3\u4F4D\u5728\u8FDB\u884C721\u7684\u914D\u7F6E\u65B9\u6CD5\uFF0C7\u6210\u6CE2\u6BB52\u6210\u8D85\u77ED1\u6210\u76D8\u4E2D\u505AT\u3002\u6295\u8D44\u7A33\u5065\uFF0C\u83B7\u5229\u7A33\u5B9A\u3002\u80FD\u529B\u5982\u4E0B\uFF1A1\u3001\u5BF9\u56FD\u9645\u5730\u7F18\u653F\u6CBB\u5F88\u4E86\u89E3\uFF1B2\u3001\u5BF9\u56FD\u5185\u653F\u6CBB\u548C\u56FD\u5185\u7ECF\u6D4E\u5F88\u4E86\u89E3\uFF1B3\u3001\u5BF9\u76D8\u9762\u8D44\u91D1\u6D41\u548C\u70ED\u70B9\u975E\u5E38\u719F\u6089\uFF1B4\u3001\u5BF9\u5927\u76D8\u5F53\u65E5\u7684\u5206\u65F6\u9AD8\u70B9\u548C\u4F4E\u70B9\u628A\u63E1\u7684\u5F88\u597D\uFF1B5\u3001\u5BF9\u6743\u91CD\u3001\u9898\u6750\u3001\u9898\u6750\u4E4B\u95F4\u7684\u5207\u6362\u8109\u7EDC\u628A\u63E1\u5F88\u6E05\u695A\uFF1B6\u3001\u4EA4\u6613\u7CFB\u7EDF\u5F88\u5B8C\u5584\uFF0C\u6FC0\u8FDB\u4ED3\u4F4D\u548C\u98CE\u63A7\u90FD\u6709\u5B8C\u5584\u7684\u4F53\u7CFB\u30027\u3001\u5BF9\u5404\u79CD\u6280\u672F\u5206\u6790\u5F88\u719F\u6089\uFF1A\u5305\u62EC\uFF1A\u9053\u6C0F\u7406\u8BBA\u3001\u6C5F\u6069\u7406\u8BBA\u3001\u7F20\u8BBA\u3001\u6295\u673A\u539F\u7406\u3001\u53CD\u8EAB\u7406\u8BBA\u3001\u91CF\u67F1\u7406\u8BBA\u7B49\u90FD\u6709\u81EA\u5DF1\u72EC\u7279\u7684\u89C1\u89E3\u3002', answerNum: 31, helpful: 1,org: '',url: "Question.clickEvent(false,'风云化龙','160314010048299684')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201708/07/itougu/itougu_15020838578091.jpg', name: '六式', curl: 'http://itougu.jrj.com.cn/account/adviser/160905010015338853/', title: '2006\u5E74\u5165\u5E02\uFF0C\u7ECF\u5386\u4E24\u6B21\u5B8C\u6574\u7684\u725B\u718A\u8F6E\u56DE\uFF0C\u5177\u6709\u975E\u5E38\u4E30\u5BCC\u7684A\u80A1\u7ECF\u9A8C\uFF0C\u5B9E\u76D8\u64CD\u4F5C\u516B\u5E74\uFF0C\u8BC1\u5238\u6295\u8D44\u670D\u52A1\u7ECF\u9A8C5\u5E74\uFF0C2011\u5E74\u53C2\u4E0E\u6D59\u6C5F\u5170\u6EAA\u6E38\u8D44\u56E2\u961F\u7684\u64CD\u76D8\uFF0C2013\u5E74\u7CBE\u51C6\u628A\u63E1\u521B\u4E1A\u677F\u7684\u72EC\u7ACB\u884C\u60C5\uFF0C\u64CD\u4F5C2000W\u6E38\u8D44\u8D44\u91D1\u65A9\u83B755%\u7684\u76C8\u5229\uFF0C2014\u5E74\u79EF\u6781\u53C2\u4E0E\u8BC1\u5238\uFF0C\u57FA\u5EFA\u7684\u7B2C\u4E00\u6CE2\u884C\u60C5\uFF0C\u4ECB\u5165\u897F\u90E8\u8BC1\u5238\u4F7F\u5F97\u64CD\u4F5C\u8D44\u91D1\u83B7\u5229230%\uFF0C\u4E2A\u4EBA\u64C5\u957F\u77ED\u7EBF\u7684\u7CBE\u51C6\u64CD\u4F5C\uFF0C\u6709\u72EC\u7ACB\u7684\u64CD\u4F5C\u4F53\u7CFB---\u201C\u5FA1\u98CE\u884C\u64CD\u76D8\u4F53\u7CFB\u201D\u3002\u4E2A\u4EBA\u64CD\u4F5C\u683C\u8A00\uFF1A\u53EA\u6709\u9519\u7684\u7B56\u7565\uFF0C\u6CA1\u6709\u9519\u7684\u4E70\u5356', answerNum: 58, helpful: 3,org: '中方信富',url: "Question.clickEvent(false,'六式','160905010015338853')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201701/20/itougu/itougu_14849060106391.jpg', name: '普量宽客', curl: 'http://itougu.jrj.com.cn/account/adviser/170120010051900214/', title: '\u804C\u4E1A\u80A1\u6C11\u591A\u5E74\uFF0C\u4E3B\u6293\u77ED\u7EBF\u7206\u53D1\u529B\u5F3A\u725B\u80A1\uFF0C\u9488\u5BF9\u677F\u5757\u5F02\u52A8\u6709\u72EC\u7279\u89C6\u89D2\uFF0C\u5BF9\u6307\u6570\u6709\u81EA\u5DF1\u7684\u9884\u5224\u89C2\u70B9\uFF0C\u7ECF\u8FC7\u591A\u5E74\u7684\u6295\u8D44\u7ECF\u9A8C\uFF0C\u5F62\u6210\u81EA\u5DF1\u7684\u4E00\u5957\u64CD\u4F5C\u4F53\u7CFB\uFF0C\u5584\u4E8E\u6CE2\u6BB5\u64CD\u4F5C\uFF0C\u5C24\u5176\u5728\u5F3A\u52BF\u80A1\u4E2D\u80FD\u53CD\u590D\u591A\u6B21\u6CE2\u6BB5\u64CD\u4F5C\u3002\u7CBE\u901A\u91CF\u5316\u5206\u6790\u3001\u6CE2\u6D6A\u7406\u8BBA\u3001\u6295\u8D44\u5FC3\u7406\u7B49\u8BF8\u591A\u9886\u57DF\uFF0C\u8FFD\u6C42\u7A33\u5065\u6536\u76CA\u76EE\u6807\uFF0C\u5177\u5907\u4E86\u8F83\u4E3A\u4E13\u4E1A\u7684\u77E5\u8BC6\u4E0E\u6210\u719F\u7684\u6280\u5DE7\uFF0C\u5E76\u5F62\u6210\u4E86\u81EA\u5DF1\u72EC\u7279\u7684\u6295\u8D44\u98CE\u683C\u3002', answerNum: 240, helpful: 1,org: '',url: "Question.clickEvent(false,'普量宽客','170120010051900214')" },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg', name: '波段女神', curl: 'http://itougu.jrj.com.cn/account/adviser/170405010003083784/', title: '\u80A1\u5E02\u5B9E\u6218\u5341\u591A\u5E74\u7ECF\u9A8C\u4E30\u5BCC\uFF0C\u64C5\u957F\u77ED\u7EBF\u725B\u80A1\u6251\u6349\uFF0C\u81EA\u521B\u3010\u56DB\u5927\u795E\u67AA\u6218\u6CD5\u3011\u3001\u3010\u725B\u80A1\u66B4\u6DA8\u4E34\u754C\u70B9\u3011\u3001\u3010\u9F99\u5934\u5FAA\u73AF\u6218\u6CD5\u3011\u6DF1\u53D7\u6295\u8D44\u8005\u559C\u7231\u4E0E\u8FFD\u9010\u3002\u540C\u65F6\u81EA\u521B\u77ED\u7EBF\u4EA4\u6613\u6A21\u5F0F\uFF0C\u5177\u6709\u77ED\u9891\u5FEB\uFF0C\u83B7\u5229\u5FEB\u7684\u4F18\u52BF\uFF01', answerNum: 498, helpful: 7,org: '深圳新兰德',url: "Question.clickEvent(false,'波段女神','170405010003083784')" },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg', name: '波段女神', curl: 'http://itougu.jrj.com.cn/account/adviser/170405010003083784/', title: '\u80A1\u5E02\u5B9E\u6218\u5341\u591A\u5E74\u7ECF\u9A8C\u4E30\u5BCC\uFF0C\u64C5\u957F\u77ED\u7EBF\u725B\u80A1\u6251\u6349\uFF0C\u81EA\u521B\u3010\u56DB\u5927\u795E\u67AA\u6218\u6CD5\u3011\u3001\u3010\u725B\u80A1\u66B4\u6DA8\u4E34\u754C\u70B9\u3011\u3001\u3010\u9F99\u5934\u5FAA\u73AF\u6218\u6CD5\u3011\u6DF1\u53D7\u6295\u8D44\u8005\u559C\u7231\u4E0E\u8FFD\u9010\u3002\u540C\u65F6\u81EA\u521B\u77ED\u7EBF\u4EA4\u6613\u6A21\u5F0F\uFF0C\u5177\u6709\u77ED\u9891\u5FEB\uFF0C\u83B7\u5229\u5FEB\u7684\u4F18\u52BF\uFF01', answerNum: 508, helpful: 7,org: '深圳新兰德',url: "Question.clickEvent(false,'波段女神','170405010003083784')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201705/08/itougu/itougu_14942150725441.jpg', name: '天狼', curl: 'http://itougu.jrj.com.cn/account/adviser/170424010097030982/', title: '\u673A\u6784\u804C\u4E1A\u64CD\u76D8\u624B\u51FA\u8EAB\uFF0C\u4E13\u4E1A\u72D9\u51FB\u80A1\u7968\u4E34\u754C\u7206\u53D1\u70B9\uFF0C\u5B9E\u6218\u4E3A\u738B\uFF0C\u6BCF\u65E5\u53D1\u5E03\u64CD\u76D8\u8BA1\u5212\uFF0C\u64CD\u76D8\u8BA1\u5212\u6BCF\u6B21\u53EA\u64CD\u4F5C\u4E00\u53EA\u7968\uFF0C\u5168\u7A0B\u8DDF\u8E2A\u63D0\u793A\u8FDB\u51FA\u573A\uFF01', answerNum: 86, helpful: 0,org: '',url: "Question.clickEvent(false,'天狼','170424010097030982')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201706/15/itougu/itougu_14974976759851.jpg', name: '勇者无惧', curl: 'http://itougu.jrj.com.cn/account/adviser/170601010089640605/', title: '\u51EF\u6069\u65AF\u6295\u8D44CEO\uFF0C2002\u5E74\u8FDB\u5165\u8BC1\u5238\u884C\u4E1A\uFF0C\u5148\u540E\u670D\u52A1\u4E8E\u4E2D\u4FE1\u8BC1\u5238\u3001\u5E73\u5B89\u96C6\u56E2\u7B49\u5927\u578B\u91D1\u878D\u516C\u53F8\u3002CCTV\u20142\u300A\u4E2D\u56FD\u8BC1\u5238\u300B\u7279\u9080\u5609\u5BBE\uFF0C\u66FE\u8FDE\u7EED\u4E09\u6B21\u5728\u51E4\u51F0\u7F51\u7092\u80A1\u5927\u8D5B\u7B49\u4E0D\u540C\u7684\u5168\u56FD\u8BC1\u5238\u5B9E\u76D8\u6BD4\u8D5B\u4E2D\u83B7\u5F97\u7B2C\u4E00\u540D\u3002\u64C5\u957F\u901A\u8FC7\u653F\u7B56\u9762\u7A81\u53D8\u53D1\u73B0\u77ED\u7EBF\u66B4\u6DA8\u673A\u4F1A\uFF0C2013\u5E74\u5E26\u9886\u65D7\u4E0B\u8D44\u91D1\u64CD\u4F5C\u6770\u745E\u80A1\u4EFD\u5B9E\u73B090%\u6536\u76CA\uFF0C2016\u5E74\u64CD\u4F5C\u4E2D\u56FD\u5EFA\u7B51\u5B9E\u73B085%\u6536\u76CA\u3002\u73B0\u624B\u4E0B\u7BA1\u7406\u8D44\u91D1\u5341\u4EBF\u6709\u4F59\uFF01\u7ECF\u8FC7\u7ECF\u8FC715\u5E74\u5E02\u573A\u5B9E\u8DF5\uFF0C\u76EE\u524D\u4E2A\u4EBA\u8D44\u4EA7\u5DF2\u51B2\u78342\u4EBF\u4EBA\u6C11\u5E01\u3002\u8FD110\u5E74\u5E73\u5747\u5E74\u5316\u6536\u76CA45%\u3002', answerNum: 150, helpful: 1,org: '深圳 新兰德',url: "Question.clickEvent(false,'勇者无惧','170601010089640605')" },
-	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201708/31/itougu/itougu_15041424316451.jpg', name: '融易操盘', curl: 'http://itougu.jrj.com.cn/account/adviser/170811010036326393/', title: '\u672C\u4EBA\u5165\u5E02\u8FD120\u5E74\uFF0C\u5386\u7ECF\u725B\u718A\u6D17\u793C\uFF0C\u64C5\u957F\u6CE2\u6BB5\u4E0E\u77ED\u7EBF\u7ED3\u5408\u64CD\u4F5C\uFF012008\u5E7411\u6708\u521D\u5206\u6790\u5927\u76D8\u89C1\u5E95\uFF0C\u76F4\u52303000\u70B9\u65F6\u5019\u6210\u529F\u9003\u9876\uFF012014\u5E742000\u9644\u8FD1\u89C2\u70B9\uFF0C\u78342000\u904D\u5730\u9EC4\u91D1\uFF0C\u78341800\u7838\u9505\u5356\u94C1\uFF0C\u540E\u5927\u76D8\u6DA8\u81F35000\u70B9\uFF0C\u57285000\u70B9\u6210\u529F\u9003\u9876\u30022016.3\u6708\u4EFD\u6210\u529F\u4ECB\u5165\u76F4\u5230\u73B0\u5728\u6301\u6709\u8D8B\u52BF\u80A1\u7968\u3002\u56FD\u5185\u5404\u5927\u8D22\u7ECF\u7F51\u7AD9\u7279\u7EA6\u64B0\u7A3F\u4EBA\uFF0C\u64AD\u4E3B\u7CFB\u5404\u5927\u8D22\u7ECF\u7F51\u7AD9\u77E5\u540D\u535A\u4E3B\u4EE5\u53CA\u5404\u5927\u7F51\u7AD9APP\u6587\u5B57\u76F4\u64AD\u64AD\u4E3B\u4EE5\u53CA\u5404\u5927\u5E73\u53F0\u8457\u540D\u8BB2\u5E08\u548C\u8D22\u7ECF\u5206\u6790\u5E08\uFF0C\u4EE5\u53CA\u591A\u5BB6\u79C1\u52DF\u548C\u5238\u5546\u7279\u9080\u57F9\u8BAD\u5E08\uFF0C\u4E00\u76F4\u6D3B\u8DC3\u5728\u4EA4\u6613\u7B2C\u4E00\u7EBF\uFF01', answerNum: 1261, helpful: 19,org: '',url: "Question.clickEvent(false,'融易操盘','170811010036326393')" },
+	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201708/31/itougu/itougu_15041424316451.jpg', name: '融易操盘', curl: 'http://itougu.jrj.com.cn/account/adviser/170811010036326393/', title: '\u672C\u4EBA\u5165\u5E02\u8FD120\u5E74\uFF0C\u5386\u7ECF\u725B\u718A\u6D17\u793C\uFF0C\u64C5\u957F\u6CE2\u6BB5\u4E0E\u77ED\u7EBF\u7ED3\u5408\u64CD\u4F5C\uFF012008\u5E7411\u6708\u521D\u5206\u6790\u5927\u76D8\u89C1\u5E95\uFF0C\u76F4\u52303000\u70B9\u65F6\u5019\u6210\u529F\u9003\u9876\uFF012014\u5E742000\u9644\u8FD1\u89C2\u70B9\uFF0C\u78342000\u904D\u5730\u9EC4\u91D1\uFF0C\u78341800\u7838\u9505\u5356\u94C1\uFF0C\u540E\u5927\u76D8\u6DA8\u81F35000\u70B9\uFF0C\u57285000\u70B9\u6210\u529F\u9003\u9876\u30022016.3\u6708\u4EFD\u6210\u529F\u4ECB\u5165\u76F4\u5230\u73B0\u5728\u6301\u6709\u8D8B\u52BF\u80A1\u7968\u3002\u56FD\u5185\u5404\u5927\u8D22\u7ECF\u7F51\u7AD9\u7279\u7EA6\u64B0\u7A3F\u4EBA\uFF0C\u64AD\u4E3B\u7CFB\u5404\u5927\u8D22\u7ECF\u7F51\u7AD9\u77E5\u540D\u535A\u4E3B\u4EE5\u53CA\u5404\u5927\u7F51\u7AD9APP\u6587\u5B57\u76F4\u64AD\u64AD\u4E3B\u4EE5\u53CA\u5404\u5927\u5E73\u53F0\u8457\u540D\u8BB2\u5E08\u548C\u8D22\u7ECF\u5206\u6790\u5E08\uFF0C\u4EE5\u53CA\u591A\u5BB6\u79C1\u52DF\u548C\u5238\u5546\u7279\u9080\u57F9\u8BAD\u5E08\uFF0C\u4E00\u76F4\u6D3B\u8DC3\u5728\u4EA4\u6613\u7B2C\u4E00\u7EBF\uFF01', answerNum: 1262, helpful: 19,org: '',url: "Question.clickEvent(false,'融易操盘','170811010036326393')" },
 	                        	            	            	{ avatar: 'http://i5.jrjimg.cn//201708/14/hp/hp_15026960341841_m.jpeg', name: '满月古井', curl: 'http://itougu.jrj.com.cn/account/adviser/170814010041284318/', title: '\u62E5\u6709\u6210\u719F\u7684\u6295\u8D44\u7406\u5FF5\u3001\u7A33\u5B9A\u7684\u4EA4\u6613\u7B56\u7565\u3001\u5B89\u5168\u6709\u6548\u7684\u98CE\u63A7\u673A\u5236\u3002\u64C5\u957F\u5E02\u573A\u7814\u7A76\uFF0C\u5BF9\u8BC1\u5238\u5E02\u573A\u6709\u81EA\u5DF1\u72EC\u7279\u7684\u89C1\u89E3\u3002\u62E5\u6709\u5927\u8D44\u91D1\u7BA1\u7406\u7ECF\u9A8C\uFF0C\u66FE\u5728\u79C1\u52DF\u57FA\u91D1\u64CD\u76D8\u591A\u5E74\u3002\u5728\u9633\u5149\u79C1\u52DF\u57FA\u91D1\u884C\u4E1A\u6709\u5E7F\u6CDB\u7684\u4EBA\u8109\uFF0C\u62E5\u6709\u4E00\u652F\u7406\u8BBA\u5E95\u8574\u6DF1\u539A\u3001\u5B9E\u6218\u7ECF\u9A8C\u4E30\u5BCC\uFF0C\u6D3B\u8DC3\u5728\u91D1\u878D\u3001\u8BC1\u5238\u3001\u6295\u8D44\u7B49\u9886\u57DF\u7684\u8D44\u6DF1\u4E13\u4E1A\u4EBA\u58EB\u7EC4\u6210\u7684\u4F18\u79C0\u6295\u8D44\u56E2\u961F\u53CA\u670D\u52A1\u56E2\u961F\u3002', answerNum: 30, helpful: 0,org: '',url: "Question.clickEvent(false,'满月古井','170814010041284318')" },
 	                        	            	            	{ avatar: 'http://itg1.jrjimg.cn/201709/11/itougu/itougu_15051084932001.jpg', name: '短线刀客', curl: 'http://itougu.jrj.com.cn/account/adviser/170906010031145424/', title: '\u7B14\u540D\uFF1A\u77ED\u7EBF\u5200\u5BA2\uFF0C\u5728\u6295\u8D44\u987E\u95EE\u673A\u6784\u4EFB\u804C\uFF0C\u53D6\u5F97\u6295\u8D44\u987E\u95EE\u8D44\u683C\u30025\u5E74\u4ECE\u4E1A\u7ECF\u9A8C\u3002\u4E3B\u8981\u64C5\u957F\u77ED\u7EBF\u64CD\u4F5C\uFF0C\u6293\u542F\u52A8\u70B9\u4E0E\u62D0\u70B9\uFF0C\u5BA2\u6237\u6EE1\u610F\u5EA6\u5F88\u597D\uFF0C\u7C98\u6027\u4E5F\u4E0D\u9519\uFF08\u7528\u5FC3\u670D\u52A1\uFF0C\u771F\u5FC3\u6362\u771F\u5FC3\uFF09\u3002', answerNum: 22, helpful: 0,org: '四川大决策投资', url: "Question.clickEvent(false,'短线刀客','170906010031145424')" }	
 	                                ];
@@ -426,38 +425,6 @@
                 <ul class="clearfix" data-counter="0" data-type="askListConsult" data-bind="foreach: {data: askListConsult, afterRender: showItem}">
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none nobdl" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="noml">
-                            <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110324010087988026/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201510/18/itougu/itougu_14451412513671.jpg" alt="趋势巡航"></a></p>
-                            
-                            <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/110324010087988026/">趋势巡航</a><span class="org" data-bind="html :org">深圳新兰德</span></p>
-
-                                <p class="brief" data-bind="html: $parent.ellipsis(title, 36)">侯利平入市17年，金融界十大名博，中国...</p>
-
-                                <p class="num">7天回答&nbsp;<span data-bind="html: answerNum">73</span>有帮助&nbsp;<span data-bind="html: helpful">0</span></p>
-
-                                <p class="button"><a data-bind="attr: {onclick: url}" onclick="Question.clickEvent(false,'趋势巡航','110324010087988026')">问股</a></p>
-                            </div>
-                        </div>
-                    </li>
-                
-                    <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
-                        <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="">
-                            <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160314010048299684/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967198622271.jpg" alt="风云化龙"></a></p>
-                            
-                            <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160314010048299684/">风云化龙</a><span class="org" data-bind="html :org"></span></p>
-
-                                <p class="brief" data-bind="html: $parent.ellipsis(title, 36)">荣誉：操盘团队最佳新人王从业经历3年...</p>
-
-                                <p class="num">7天回答&nbsp;<span data-bind="html: answerNum">31</span>有帮助&nbsp;<span data-bind="html: helpful">1</span></p>
-
-                                <p class="button"><a data-bind="attr: {onclick: url}" onclick="Question.clickEvent(false,'风云化龙','160314010048299684')">问股</a></p>
-                            </div>
-                        </div>
-                    </li>
-                
-                    <li data-bind="css:{'nobdl': !($index()%2)}" class="none nobdl" style="display: list-item;">
-                        <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="noml nomb">
                             <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170120010051900214/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201701/20/itougu/itougu_14849060106391.jpg" alt="普量宽客"></a></p>
                             
                             <div class="userinfo">
@@ -473,17 +440,49 @@
                     </li>
                 
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
-                        <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="nomb">
-                            <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170424010097030982/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201705/08/itougu/itougu_14942150725441.jpg" alt="天狼"></a></p>
+                        <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="">
+                            <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160905010015338853/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201708/07/itougu/itougu_15020838578091.jpg" alt="六式"></a></p>
                             
                             <div class="userinfo">
-                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170424010097030982/">天狼</a><span class="org" data-bind="html :org"></span></p>
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160905010015338853/">六式</a><span class="org" data-bind="html :org">中方信富</span></p>
 
-                                <p class="brief" data-bind="html: $parent.ellipsis(title, 36)">机构职业操盘手出身，专业狙击股票临界...</p>
+                                <p class="brief" data-bind="html: $parent.ellipsis(title, 36)">2006年入市，经历两次完整的牛熊轮回，...</p>
 
-                                <p class="num">7天回答&nbsp;<span data-bind="html: answerNum">86</span>有帮助&nbsp;<span data-bind="html: helpful">0</span></p>
+                                <p class="num">7天回答&nbsp;<span data-bind="html: answerNum">58</span>有帮助&nbsp;<span data-bind="html: helpful">3</span></p>
 
-                                <p class="button"><a data-bind="attr: {onclick: url}" onclick="Question.clickEvent(false,'天狼','170424010097030982')">问股</a></p>
+                                <p class="button"><a data-bind="attr: {onclick: url}" onclick="Question.clickEvent(false,'六式','160905010015338853')">问股</a></p>
+                            </div>
+                        </div>
+                    </li>
+                
+                    <li data-bind="css:{'nobdl': !($index()%2)}" class="none nobdl" style="display: list-item;">
+                        <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="noml nomb">
+                            <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130718010073409548/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201706/08/itougu/itougu_14968899547001.jpg" alt="涨停王者"></a></p>
+                            
+                            <div class="userinfo">
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/130718010073409548/">涨停王者</a><span class="org" data-bind="html :org">深圳新兰德</span></p>
+
+                                <p class="brief" data-bind="html: $parent.ellipsis(title, 36)">涨停王者投顾团队，金融界唯一连续三届...</p>
+
+                                <p class="num">7天回答&nbsp;<span data-bind="html: answerNum">87</span>有帮助&nbsp;<span data-bind="html: helpful">1</span></p>
+
+                                <p class="button"><a data-bind="attr: {onclick: url}" onclick="Question.clickEvent(false,'涨停王者','130718010073409548')">问股</a></p>
+                            </div>
+                        </div>
+                    </li>
+                
+                    <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
+                        <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1}" class="nomb">
+                            <p class="avatar80 fl"><a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150208010093147322/"><img data-bind="attr: {'data-src': avatar, alt: name}" data-src="http://itg1.jrjimg.cn/201706/16/itougu/itougu_14975809097661.jpg" alt="考拉小良"></a></p>
+                            
+                            <div class="userinfo">
+                                <p><a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150208010093147322/">考拉小良</a><span class="org" data-bind="html :org">深圳新兰德</span></p>
+
+                                <p class="brief" data-bind="html: $parent.ellipsis(title, 36)">股票掌舵手，精通市场的技术分析与交易...</p>
+
+                                <p class="num">7天回答&nbsp;<span data-bind="html: answerNum">33</span>有帮助&nbsp;<span data-bind="html: helpful">0</span></p>
+
+                                <p class="button"><a data-bind="attr: {onclick: url}" onclick="Question.clickEvent(false,'考拉小良','150208010093147322')">问股</a></p>
                             </div>
                         </div>
                     </li>
@@ -520,46 +519,13 @@
                 <div class="list-wrapper">
                     <ul data-bind="foreach: askListRecomm">
                         <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774472.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">中泰化学(002092) 中泰化学是...</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资顾问</b><b data-bind="html: name" style="font-weight:normal">波段女神</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/774472.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774422.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">国盛金控(002670)成本价22.10...</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资达人</b><b data-bind="html: name" style="font-weight:normal">风云化龙</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/774422.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 16:11</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg" alt="波段女神" aitgid="170405010003083784"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/">波段女神</a><span class="org" data-bind="html: org">深圳新兰德</span>
-                            </div>
-                        </li>
-                    
-                        <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774328.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">600008后续走势？谢谢！</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">资深投顾</b><b data-bind="html: name" style="font-weight:normal">彪涨金客</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/774328.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 12:41</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150304010029935104/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/26/itougu/itougu_14984272050901.jpg" alt="彪涨金客" aitgid="150304010029935104"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150304010029935104/">彪涨金客</a><span class="org" data-bind="html: org">深圳新兰德</span>
-                            </div>
-                        </li>
-                    
-                        <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774461.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">老师好，帮忙分析下601228走势...</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">资深投顾</b><b data-bind="html: name" style="font-weight:normal">狙击突破</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/774461.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 15:53</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151104010040489060/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/14/itougu/itougu_14974505693801.jpg" alt="狙击突破" aitgid="151104010040489060"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151104010040489060/">狙击突破</a><span class="org" data-bind="html: org">深圳新兰德</span>
-                            </div>
-                        </li>
-                    
-                        <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774203.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">香江控股(600162) 现在可以买...</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资达人</b><b data-bind="html: name" style="font-weight:normal">融易操盘</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/774203.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 09:13</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170811010036326393/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201708/31/itougu/itougu_15041424316451.jpg" alt="融易操盘" aitgid="170811010036326393"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170811010036326393/">融易操盘</a><span class="org" data-bind="html: org"></span>
+                                <small class="fr" data-bind="html: time">09-15 14:55</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160314010048299684/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967198622271.jpg" alt="风云化龙" aitgid="160314010048299684"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160314010048299684/">风云化龙</a><span class="org" data-bind="html: org"></span>
                             </div>
                         </li>
                     
@@ -575,13 +541,35 @@
                         </li>
                     
                         <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774218.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">中国卫星(600118) 昨天没买进...</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资顾问</b><b data-bind="html: name" style="font-weight:normal">勇者无惧</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/774218.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/773729.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">老师，朝鲜战争如起，哪类股受...</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资顾问</b><b data-bind="html: name" style="font-weight:normal">长江一号</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/773729.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 10:02</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170601010089640605/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/15/itougu/itougu_14974976759851.jpg" alt="勇者无惧" aitgid="170601010089640605"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170601010089640605/">勇者无惧</a><span class="org" data-bind="html: org">深圳 新兰德</span>
+                                <small class="fr" data-bind="html: time">09-15 13:19</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/120613010025681856/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009516740691.jpg" alt="长江一号" aitgid="120613010025681856"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/120613010025681856/">长江一号</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774203.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">香江控股(600162) 现在可以买...</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资达人</b><b data-bind="html: name" style="font-weight:normal">融易操盘</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/774203.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 09:13</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170811010036326393/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201708/31/itougu/itougu_15041424316451.jpg" alt="融易操盘" aitgid="170811010036326393"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170811010036326393/">融易操盘</a><span class="org" data-bind="html: org"></span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774328.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">600008后续走势？谢谢！</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">资深投顾</b><b data-bind="html: name" style="font-weight:normal">彪涨金客</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/774328.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 12:41</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150304010029935104/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/26/itougu/itougu_14984272050901.jpg" alt="彪涨金客" aitgid="150304010029935104"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150304010029935104/">彪涨金客</a><span class="org" data-bind="html: org">深圳新兰德</span>
                             </div>
                         </li>
                     
@@ -597,13 +585,35 @@
                         </li>
                     
                         <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774422.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">国盛金控(002670)成本价22.10...</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资达人</b><b data-bind="html: name" style="font-weight:normal">风云化龙</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/774422.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774461.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">老师好，帮忙分析下601228走势...</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">资深投顾</b><b data-bind="html: name" style="font-weight:normal">狙击突破</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/774461.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
                             <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 14:55</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160314010048299684/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/06/itougu/itougu_14967198622271.jpg" alt="风云化龙" aitgid="160314010048299684"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/160314010048299684/">风云化龙</a><span class="org" data-bind="html: org"></span>
+                                <small class="fr" data-bind="html: time">09-15 15:53</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151104010040489060/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/14/itougu/itougu_14974505693801.jpg" alt="狙击突破" aitgid="151104010040489060"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151104010040489060/">狙击突破</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774472.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">中泰化学(002092) 中泰化学是...</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资顾问</b><b data-bind="html: name" style="font-weight:normal">波段女神</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/774472.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 16:11</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/21/itougu/itougu_15006385418971.jpg" alt="波段女神" aitgid="170405010003083784"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170405010003083784/">波段女神</a><span class="org" data-bind="html: org">深圳新兰德</span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/774218.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">中国卫星(600118) 昨天没买进...</a></p>
+                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资顾问</b><b data-bind="html: name" style="font-weight:normal">勇者无惧</b>已回答该问题<br>
+														<a href="http://itougu.jrj.com.cn/ques/774218.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
+                            <div class="info">
+                                <small class="fr" data-bind="html: time">09-15 10:02</small>
+                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170601010089640605/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201706/15/itougu/itougu_14974976759851.jpg" alt="勇者无惧" aitgid="170601010089640605"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170601010089640605/">勇者无惧</a><span class="org" data-bind="html: org">深圳 新兰德</span>
                             </div>
                         </li>
                     
@@ -617,17 +627,6 @@
                                 <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170814010041284318/">满月古井</a><span class="org" data-bind="html: org"></span>
                             </div>
                         </li>
-                    
-                        <li>
-                            <p class="question"><i></i><a href="http://itougu.jrj.com.cn/ques/773729.jspa" data-bind="html: $parent.ellipsis(question, 28), attr: {href: url}" target="_blank">老师，朝鲜战争如起，哪类股受...</a></p>
-                            <p class="answer"><i></i><span><b data-bind="html: typedesc" style="font-weight:normal">投资顾问</b><b data-bind="html: name" style="font-weight:normal">长江一号</b>已回答该问题<br>
-														<a href="http://itougu.jrj.com.cn/ques/773729.jspa" data-bind="attr: {href: url}" target="_blank" style="color:#3c9af2; display:block; margin-top:5px;" class="goflow">点击查看&gt;&gt;</a></span></p>
-                            <div class="info">
-                                <small class="fr" data-bind="html: time">09-15 13:19</small>
-                                <a data-bind="attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/120613010025681856/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201707/25/itougu/itougu_15009516740691.jpg" alt="长江一号" aitgid="120613010025681856"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/120613010025681856/">长江一号</a><span class="org" data-bind="html: org">深圳新兰德</span>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -638,7 +637,7 @@
 <!-- 炒股大赛 -->
 		<!-- 炒股大赛:start -->
             <div class="section main ask">
-    <h1><a href="http://itougu.jrj.com.cn/match/" target="_blank">炒股大赛</a><span>59717人正参加模拟大赛，领取每日红包</span></h1>
+    <h1><a href="http://itougu.jrj.com.cn/match/" target="_blank">炒股大赛</a><span>59721人正参加模拟大赛，领取每日红包</span></h1>
     <div class="stockCompetition clearfix">
         <div class="stockCompetition_left fl">
 			<a href="http://itougu.jrj.com.cn/match/" target="_blank" class="stockCompetition_top">参赛领红包</a>
@@ -659,8 +658,8 @@
 									<img src="http://i5.jrjimg.cn/sys/default_m.jpg"><span>财友w935bk12</span>
 								</a>
                 			</div>
-							                			<div class="color_rise">114.12%</div>
-                										                			<div class="color_fall">-4.72%</div>
+							                			<div class="color_rise">110.75%</div>
+                										                			<div class="color_fall">-6.22%</div>
                 			                            <div class="lookPosition">
                 				<a href="http://itougu.jrj.com.cn/match/v7/vudetail/160907010028210826.jspa" target="_blank">看持仓</a>
                 			</div>
@@ -672,8 +671,8 @@
 									<img src="http://i5.jrjimg.cn/201708/30/hp/hp_15040473824651_m.jpg"><span>财友720vy5o8</span>
 								</a>
                 			</div>
-							                			<div class="color_rise">109.72%</div>
-                										                			<div class="color_rise">1.54%</div>
+							                			<div class="color_rise">109.75%</div>
+                										                			<div class="color_rise">1.55%</div>
                 			                            <div class="lookPosition">
                 				<a href="http://itougu.jrj.com.cn/match/v7/vudetail/160906010093196522.jspa" target="_blank">看持仓</a>
                 			</div>
@@ -685,8 +684,8 @@
 									<img src="http://i5.jrjimg.cn/201708/29/hp/hp_15040141907481_m.jpg"><span>财友107ddz61</span>
 								</a>
                 			</div>
-							                			<div class="color_rise">97.23%</div>
-                										                			<div class="color_rise">2.23%</div>
+							                			<div class="color_rise">99.92%</div>
+                										                			<div class="color_rise">3.63%</div>
                 			                            <div class="lookPosition">
                 				<a href="http://itougu.jrj.com.cn/match/v7/vudetail/170421010091392869.jspa" target="_blank">看持仓</a>
                 			</div>
@@ -698,8 +697,8 @@
 									<img src="http://i5.jrjimg.cn/201708/31/hp/hp_15041365650981_m.jpg"><span>财友x8q9q774</span>
 								</a>
                 			</div>
-							                			<div class="color_rise">88.11%</div>
-                										                			<div class="color_fall">-1.91%</div>
+							                			<div class="color_rise">91.65%</div>
+                										                			<div class="color_fall">-0.07%</div>
                 			                            <div class="lookPosition">
                 				<a href="http://itougu.jrj.com.cn/match/v7/vudetail/160906010081524889.jspa" target="_blank">看持仓</a>
                 			</div>
@@ -711,8 +710,8 @@
 									<img src="http://i5.jrjimg.cn/sys/default_m.jpg"><span>财友oy3x3314</span>
 								</a>
                 			</div>
-							                			<div class="color_rise">86.57%</div>
-                										                			<div class="color_rise">3.07%</div>
+							                			<div class="color_rise">89.23%</div>
+                										                			<div class="color_rise">4.54%</div>
                 			                            <div class="lookPosition">
                 				<a href="http://itougu.jrj.com.cn/match/v7/vudetail/170421010008678483.jspa" target="_blank">看持仓</a>
                 			</div>
@@ -723,10 +722,10 @@
         <div class="stockCompetition_right">
             <div class="stockCompetition_right_top">
                 <p><i></i><span>已发放红包 (元)</span></p>
-                <div><b>5</b><b>5</b><b>6</b><b>5</b><b>3</b></div>
+                <div><b>5</b><b>5</b><b>6</b><b>5</b><b>4</b></div>
             </div>
             <div class="stockCompetition_right_mid" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; height: 195px;">
-                <ul style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; height: 780px; top: -253.3401px;"><li style="overflow: hidden; float: none; width: 280px; height: 39px;">狮**兔 获得了<span>1.36</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">财**0 获得了<span>0.63</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">白**4 获得了<span>0.75</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">仰**2 获得了<span>2.00</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">m**熊 获得了<span>0.52</span>元的现金红包！</li>
+                <ul style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; height: 780px; top: -258.583104px;"><li style="overflow: hidden; float: none; width: 280px; height: 39px;">狮**兔 获得了<span>1.36</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">财**0 获得了<span>0.63</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">白**4 获得了<span>0.75</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">仰**2 获得了<span>2.00</span>元的现金红包！</li><li style="overflow: hidden; float: none; width: 280px; height: 39px;">m**熊 获得了<span>0.52</span>元的现金红包！</li>
 											<li style="overflow: hidden; float: none; width: 280px; height: 39px;">财**9 获得了<span>0.60</span>元的现金红包！</li>
                     						<li style="overflow: hidden; float: none; width: 280px; height: 39px;">锋**下 获得了<span>0.69</span>元的现金红包！</li>
                     						<li style="overflow: hidden; float: none; width: 280px; height: 39px;">k**1 获得了<span>0.57</span>元的现金红包！</li>
@@ -809,19 +808,19 @@
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1 , 'pd_left': $index()%2}" class="pd_left">
                             <div class="percent">
-                                <em data-bind="html: (percent&gt;0?('+'+percent):percent)+'%',css:{'red': percent&gt;0, 'green': percent&lt;0}" class="red">+15%</em>
-                                <p data-bind="html: percentText">30日目标涨幅 </p>
+                                <em data-bind="html: (percent&gt;0?('+'+percent):percent)+'%',css:{'red': percent&gt;0, 'green': percent&lt;0}" class="red">+10%</em>
+                                <p data-bind="html: percentText">60日目标涨幅 </p>
                             </div>
                             <div class="info">
 
-                                <p class="stock"><a target="_blank" data-bind="html: stockname,attr: {href: url}" href="http://itougu.jrj.com.cn/rstock/1784.jspa">中成股份(000151)</a><i data-bind="css: isUp?'up':'down',html:isUp?'看涨':'看跌 '" class="up">看涨</i></p>
+                                <p class="stock"><a target="_blank" data-bind="html: stockname,attr: {href: url}" href="http://itougu.jrj.com.cn/rstock/1752.jspa">格尔软件(603232)</a><i data-bind="css: isUp?'up':'down',html:isUp?'看涨':'看跌 '" class="up">看涨</i></p>
 
                                 <!-- <p class="reason" data-bind="html: $parent.ellipsis(reason, 48)"></p> -->
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/" style="overflow: hidden;"><img data-bind="attr: {src: avatar, alt: name, aitgid: userId}" class="headImageClass1" src="http://itg1.jrjimg.cn/201502/02/itougu/itougu_14228827166411.jpg" alt="于帮杰" aitgid="141217010136270700" style=""></a>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170125010059809054/" style="overflow: hidden;"><img data-bind="attr: {src: avatar, alt: name, aitgid: userId}" class="headImageClass1" src="http://itg1.jrjimg.cn/201702/04/itougu/itougu_14861891029141.jpg" alt="定盘星" aitgid="170125010059809054" style=""></a>
 
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/">于帮杰</a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170125010059809054/">定盘星</a>
                                 <span class="org" data-bind="html: org"></span>
-                                <small data-bind="html: time">05-17 14:56</small>
+                                <small data-bind="html: time">05-09 10:10</small>
                             </div>
                         </div>
                     </li>
@@ -830,18 +829,18 @@
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1 , 'pd_left': $index()%2}" class="noml nomb">
                             <div class="percent">
                                 <em data-bind="html: (percent&gt;0?('+'+percent):percent)+'%',css:{'red': percent&gt;0, 'green': percent&lt;0}" class="red">+5%</em>
-                                <p data-bind="html: percentText">30日目标涨幅 </p>
+                                <p data-bind="html: percentText">7日目标涨幅 </p>
                             </div>
                             <div class="info">
 
-                                <p class="stock"><a target="_blank" data-bind="html: stockname,attr: {href: url}" href="http://itougu.jrj.com.cn/rstock/1728.jspa">*ST煤气(000968)</a><i data-bind="css: isUp?'up':'down',html:isUp?'看涨':'看跌 '" class="up">看涨</i></p>
+                                <p class="stock"><a target="_blank" data-bind="html: stockname,attr: {href: url}" href="http://itougu.jrj.com.cn/rstock/1751.jspa">东方中科(002819)</a><i data-bind="css: isUp?'up':'down',html:isUp?'看涨':'看跌 '" class="up">看涨</i></p>
 
                                 <!-- <p class="reason" data-bind="html: $parent.ellipsis(reason, 48)"></p> -->
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150822010092241354/" style="overflow: hidden;"><img data-bind="attr: {src: avatar, alt: name, aitgid: userId}" class="headImageClass1" src="http://itg1.jrjimg.cn/201509/02/itougu/itougu_14411620001981.jpg" alt="高杨" aitgid="150822010092241354" style=""></a>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150707010007071680/" style="overflow: hidden;"><img data-bind="attr: {src: avatar, alt: name, aitgid: userId}" class="headImageClass1" src="http://itg1.jrjimg.cn/201607/17/itougu/itougu_14687367094231.jpg" alt="凌霄" aitgid="150707010007071680" style=""></a>
 
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150822010092241354/">高杨</a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150707010007071680/">凌霄</a>
                                 <span class="org" data-bind="html: org"></span>
-                                <small data-bind="html: time">05-03 10:45</small>
+                                <small data-bind="html: time">05-08 14:10</small>
                             </div>
                         </div>
                     </li>
@@ -849,19 +848,19 @@
                     <li data-bind="css:{'nobdl': !($index()%2)}" class="none" style="display: list-item;">
                         <div data-bind="css:{'noml': !($index()%2), 'nomb': $index()&gt;1 , 'pd_left': $index()%2}" class="nomb pd_left">
                             <div class="percent">
-                                <em data-bind="html: (percent&gt;0?('+'+percent):percent)+'%',css:{'red': percent&gt;0, 'green': percent&lt;0}" class="red">+15%</em>
-                                <p data-bind="html: percentText">30日目标涨幅 </p>
+                                <em data-bind="html: (percent&gt;0?('+'+percent):percent)+'%',css:{'red': percent&gt;0, 'green': percent&lt;0}" class="red">+10%</em>
+                                <p data-bind="html: percentText">60日目标涨幅 </p>
                             </div>
                             <div class="info">
 
-                                <p class="stock"><a target="_blank" data-bind="html: stockname,attr: {href: url}" href="http://itougu.jrj.com.cn/rstock/1744.jspa">华伍股份(300095)</a><i data-bind="css: isUp?'up':'down',html:isUp?'看涨':'看跌 '" class="up">看涨</i></p>
+                                <p class="stock"><a target="_blank" data-bind="html: stockname,attr: {href: url}" href="http://itougu.jrj.com.cn/rstock/1781.jspa">昆仑万维(300418)</a><i data-bind="css: isUp?'up':'down',html:isUp?'看涨':'看跌 '" class="up">看涨</i></p>
 
                                 <!-- <p class="reason" data-bind="html: $parent.ellipsis(reason, 48)"></p> -->
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/" style="overflow: hidden;"><img data-bind="attr: {src: avatar, alt: name, aitgid: userId}" class="headImageClass1" src="http://itg1.jrjimg.cn/201502/02/itougu/itougu_14228827166411.jpg" alt="于帮杰" aitgid="141217010136270700" style=""></a>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170426010034882615/" style="overflow: hidden;"><img data-bind="attr: {src: avatar, alt: name, aitgid: userId}" class="headImageClass1" src="http://itg1.jrjimg.cn/201704/26/itougu/itougu_14931713382741.jpg" alt="老王看盘" aitgid="170426010034882615" style=""></a>
 
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/">于帮杰</a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/170426010034882615/">老王看盘</a>
                                 <span class="org" data-bind="html: org"></span>
-                                <small data-bind="html: time">05-05 19:09</small>
+                                <small data-bind="html: time">05-17 09:23</small>
                             </div>
                         </div>
                     </li>
@@ -894,12 +893,42 @@
                 <div class="list-wrapper">
                     <ul data-bind="foreach: appraiseListRecomm">
                         <li>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1693.jspa">鉴股： 伟明环保(603568)  该股股性活跃，业绩优良；下有60日线...</a></p>
+
+                            <div class="info">
+                                <small class="fr" data-bind="text: time">04-20 16:53</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201502/02/itougu/itougu_14228827166411.jpg" alt="于帮杰" aitgid="141217010136270700" src="http://itg1.jrjimg.cn/201502/02/itougu/itougu_14228827166411.jpg" style="opacity: 1;"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/">于帮杰</a><span class="org" data-bind="html: org"></span>
+                            </div>
+                        </li>
+                    
+                        <li>
                             <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1690.jspa">鉴股：国祯环保(300388)一季报业绩预告大增80-110％， 订单充足...</a></p>
 
                             <div class="info">
                                 <small class="fr" data-bind="text: time">04-19 20:36</small>
                                 <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141215010036395247/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201412/15/itougu/itougu_14186337874671.jpg" alt="徐建平" aitgid="141215010036395247" src="http://itg1.jrjimg.cn/201412/15/itougu/itougu_14186337874671.jpg" style="opacity: 1;"></a>
                                 <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141215010036395247/">徐建平</a><span class="org" data-bind="html: org"></span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1697.jspa">鉴股： 中炬高新(600872)  基本面：中炬高新拟通过下属全资孙公...</a></p>
+
+                            <div class="info">
+                                <small class="fr" data-bind="text: time">04-21 20:01</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150311010082891096/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201601/25/itougu/itougu_14537016620131.jpg" alt="赢海剑侠" aitgid="150311010082891096" src="http://itg1.jrjimg.cn/201601/25/itougu/itougu_14537016620131.jpg" style="opacity: 1;"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150311010082891096/">赢海剑侠</a><span class="org" data-bind="html: org"></span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1692.jspa">鉴股： 航天电子(600879) 该股基本面来看，该股在行业内属于中上...</a></p>
+
+                            <div class="info">
+                                <small class="fr" data-bind="text: time">04-20 14:49</small>
+                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151205010090468736/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201605/30/itougu/itougu_14645803039601.jpg" alt="散户队长" aitgid="151205010090468736" src="http://itg1.jrjimg.cn/201605/30/itougu/itougu_14645803039601.jpg" style="opacity: 1;"></a>
+                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151205010090468736/">散户队长</a><span class="org" data-bind="html: org"></span>
                             </div>
                         </li>
                     
@@ -920,36 +949,6 @@
                                 <small class="fr" data-bind="text: time">04-20 16:53</small>
                                 <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201502/02/itougu/itougu_14228827166411.jpg" alt="于帮杰" aitgid="141217010136270700" src="http://itg1.jrjimg.cn/201502/02/itougu/itougu_14228827166411.jpg" style="opacity: 1;"></a>
                                 <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141217010136270700/">于帮杰</a><span class="org" data-bind="html: org"></span>
-                            </div>
-                        </li>
-                    
-                        <li>
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1692.jspa">鉴股： 航天电子(600879) 该股基本面来看，该股在行业内属于中上...</a></p>
-
-                            <div class="info">
-                                <small class="fr" data-bind="text: time">04-20 14:49</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151205010090468736/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201605/30/itougu/itougu_14645803039601.jpg" alt="散户队长" aitgid="151205010090468736" src="http://itg1.jrjimg.cn/201605/30/itougu/itougu_14645803039601.jpg" style="opacity: 1;"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/151205010090468736/">散户队长</a><span class="org" data-bind="html: org"></span>
-                            </div>
-                        </li>
-                    
-                        <li>
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1697.jspa">鉴股： 中炬高新(600872)  基本面：中炬高新拟通过下属全资孙公...</a></p>
-
-                            <div class="info">
-                                <small class="fr" data-bind="text: time">04-21 20:01</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150311010082891096/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201601/25/itougu/itougu_14537016620131.jpg" alt="赢海剑侠" aitgid="150311010082891096" src="http://itg1.jrjimg.cn/201601/25/itougu/itougu_14537016620131.jpg" style="opacity: 1;"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/150311010082891096/">赢海剑侠</a><span class="org" data-bind="html: org"></span>
-                            </div>
-                        </li>
-                    
-                        <li>
-                            <p class="brief"><a data-bind="html: $parent.ellipsis(content, 60), attr: {href: url}" target="_blank" href="http://itougu.jrj.com.cn/rstock/1690.jspa">鉴股：国祯环保(300388)一季报业绩预告大增80-110％， 订单充足...</a></p>
-
-                            <div class="info">
-                                <small class="fr" data-bind="text: time">04-19 20:36</small>
-                                <a data-bind=" attr: {href: curl}" class="avatar" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141215010036395247/" style="overflow: hidden;"><img data-bind="attr: {'data-src': avatar, alt: name, aitgid: userId}" class="headImageClass1" data-src="http://itg1.jrjimg.cn/201412/15/itougu/itougu_14186337874671.jpg" alt="徐建平" aitgid="141215010036395247" src="http://itg1.jrjimg.cn/201412/15/itougu/itougu_14186337874671.jpg" style="opacity: 1;"></a>
-                                <a class="name" data-bind="html: name, attr: {href: curl}" target="_blank" href="http://itougu.jrj.com.cn/account/adviser/141215010036395247/">徐建平</a><span class="org" data-bind="html: org"></span>
                             </div>
                         </li>
                     </ul>
@@ -2319,11 +2318,11 @@
  //--> 
  </script> <script type="text/javascript" src="http://c.wrating.com/a1.js"></script>
 <noscript>&lt;img src="http://c.wrating.com/a.gif?a=&amp;c=860010-2948010100" width="1" height="1"/&gt;</noscript>
-<script src="http://js.passport.qihucdn.com/11.0.1.js?05022d9afecc9e9b3a5372d5305b59f3" id="sozz"></script><script charset="utf-8" src="http://s7.qhres.com/static/ab77b6ea7f3fbf79.js"></script>
+<script src="http://js.passport.qihucdn.com/11.0.1.js?05022d9afecc9e9b3a5372d5305b59f3" id="sozz"></script><div class="zuoxiajiao" style="margin-left: 260px;">    <div class="zuoxiaup" style="height: 290px;">    	<div class="zuoxiah zuoclose">爱投顾推荐<i></i></div>    	<div class="zuoxiac">    		<a href="http://itougu.jrj.com.cn/activity/web/sept-new-activity.jspa" class="zuoxiaimg zuodadian" target="_blank" dadianname="zuoxiajiao_web_banner"><img src="http://itg1.jrjimg.cn/201709/08/editor_upload/editor_upload_15048476461761.jpg"></a>    	</div>    	<div class="zuoxiad">    		<ul><li><i></i><a href="http://itougu.jrj.com.cn/live/68" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link1">盘口变化、市场情绪演变GO</a></li><li><i></i><a href="http://itougu.jrj.com.cn/tips/10833.jspa" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link2">龙头实战直男式炒股你值得拥有</a></li><li><i></i><a href="http://itougu.jrj.com.cn/tips/10832.jspa" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link3">王者战队特惠内参促销热卖中</a></li><li><i></i><a href="http://itougu.jrj.com.cn/live/2561" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link4">个股专业咨询，就选波段女神</a></li><li><i></i><a href="http://itougu.jrj.com.cn/tips/10831.jspa" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link5">加量不加价特供热爱短线的你</a></li></ul>    		<a class="zuoxiacanvas" target="_blank" href="http://appcms.jrj.com.cn/download.jspa?channel=Y3493MDZS&amp;tgqdcode=4MQC9TLU">    			<div class="zuoxiaqrcode"><img src="http://i0.jrjimg.cn/zqt-red-1000/focus/focus20170304loadding/web/img/zuoxiacode.png"><b></b></div>    			<span href="">下载金融界app</span>    		</a>    	</div>    </div>    <div class="zuoxiadown zuoopen" style="height: 0px;">    	<div class="zuoxiah ">爱投顾推荐<i></i></div>    </div></div><script charset="utf-8" src="http://s8.qhres.com/static/ab77b6ea7f3fbf79.js"></script>
 
 
 
 
 
 
-<iframe src="http://itougu.jrj.com.cn/statistics/RegStatus.gif" style="width: 0px; height: 0px; border: none; position: absolute; left: 0px; top: 0px; display: none;"></iframe><div class="popup-userinfo live-top live-top-2" style="width: 470px;"><i class="arrow"></i><div class="row-1"><div class="col-1"><div><a class="row-pic"><img src="" alt="头像" width="75" height="75"><span class="online" style="display:none;">在线</span></a></div><a class="btn btn-84-22-blue mt5" style="transition:none;">签约</a><a class="btn btn-64-22-orange mt5" style="transition:none;">关注</a></div><div class="col-2"><p class="name"><span></span><i class="icon icon-v ml10"></i><span class="ml10 f14"></span><i class="icon-xunz" style="display:none"></i></p><p class="xhh" style="margin:5px 0;"><span class="xh_1" style="margin-left:0;"><em class="bg_1">所属机构：</em></span><span class="xh_2 bg_2"><em class="">所在地：</em></span></p><p class="xhh" style="margin:5px 0;"><span class="bg_3" style="margin-left:0;"><em>证券执业资格号：</em><em class="highlight"></em></span></p><p class="xh_jt" style="height:50px; lineHeight:25px; overflow:hidden;"><em style="margin-top: 2px;">擅长领域</em><span class="mr10"></span></p></div></div><div class="row-2 clearfix"><div class="block-item block-item-1"><p>回答问题</p><p class="num"><b>0</b></p></div><div class="block-item block-item-2"><p>满意度</p><p class="num"><b>0</b><span>%</span></p></div><div class="block-item block-item-3"><p>观点获赞</p><p class="num"><b>0</b><span>万</span></p></div><div class="block-item block-item-4"><p class="tc"><a class="btn btn-113-30 btn-gray" href="#" title="此投顾暂无直播间" target="_blank">看TA直播</a></p></div></div></div><div class="zuoxiajiao" style="margin-left: 260px;">    <div class="zuoxiaup" style="height: 290px;">    	<div class="zuoxiah zuoclose">爱投顾推荐<i></i></div>    	<div class="zuoxiac">    		<a href="http://itougu.jrj.com.cn/activity/web/sept-new-activity.jspa" class="zuoxiaimg zuodadian" target="_blank" dadianname="zuoxiajiao_web_banner"><img src="http://itg1.jrjimg.cn/201709/08/editor_upload/editor_upload_15048476461761.jpg"></a>    	</div>    	<div class="zuoxiad">    		<ul><li><i></i><a href="http://itougu.jrj.com.cn/live/68" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link1">盘口变化、市场情绪演变GO</a></li><li><i></i><a href="http://itougu.jrj.com.cn/tips/10833.jspa" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link2">龙头实战直男式炒股你值得拥有</a></li><li><i></i><a href="http://itougu.jrj.com.cn/tips/10832.jspa" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link3">王者战队特惠内参促销热卖中</a></li><li><i></i><a href="http://itougu.jrj.com.cn/live/2561" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link4">个股专业咨询，就选波段女神</a></li><li><i></i><a href="http://itougu.jrj.com.cn/tips/10831.jspa" target="_blank" class="zuodadian" dadianname="zuoxiajiao_web_link5">加量不加价特供热爱短线的你</a></li></ul>    		<a class="zuoxiacanvas" target="_blank" href="http://appcms.jrj.com.cn/download.jspa?channel=Y3493MDZS&amp;tgqdcode=4MQC9TLU">    			<div class="zuoxiaqrcode"><img src="http://i0.jrjimg.cn/zqt-red-1000/focus/focus20170304loadding/web/img/zuoxiacode.png"><b></b></div>    			<span href="">下载金融界app</span>    		</a>    	</div>    </div>    <div class="zuoxiadown zuoopen" style="height: 0px;">    	<div class="zuoxiah ">爱投顾推荐<i></i></div>    </div></div></body></html>
+<iframe src="http://itougu.jrj.com.cn/statistics/RegStatus.gif" style="width: 0px; height: 0px; border: none; position: absolute; left: 0px; top: 0px; display: none;"></iframe><div class="popup-userinfo live-top live-top-2" style="width: 470px;"><i class="arrow"></i><div class="row-1"><div class="col-1"><div><a class="row-pic"><img src="" alt="头像" width="75" height="75"><span class="online" style="display:none;">在线</span></a></div><a class="btn btn-84-22-blue mt5" style="transition:none;">签约</a><a class="btn btn-64-22-orange mt5" style="transition:none;">关注</a></div><div class="col-2"><p class="name"><span></span><i class="icon icon-v ml10"></i><span class="ml10 f14"></span><i class="icon-xunz" style="display:none"></i></p><p class="xhh" style="margin:5px 0;"><span class="xh_1" style="margin-left:0;"><em class="bg_1">所属机构：</em></span><span class="xh_2 bg_2"><em class="">所在地：</em></span></p><p class="xhh" style="margin:5px 0;"><span class="bg_3" style="margin-left:0;"><em>证券执业资格号：</em><em class="highlight"></em></span></p><p class="xh_jt" style="height:50px; lineHeight:25px; overflow:hidden;"><em style="margin-top: 2px;">擅长领域</em><span class="mr10"></span></p></div></div><div class="row-2 clearfix"><div class="block-item block-item-1"><p>回答问题</p><p class="num"><b>0</b></p></div><div class="block-item block-item-2"><p>满意度</p><p class="num"><b>0</b><span>%</span></p></div><div class="block-item block-item-3"><p>观点获赞</p><p class="num"><b>0</b><span>万</span></p></div><div class="block-item block-item-4"><p class="tc"><a class="btn btn-113-30 btn-gray" href="#" title="此投顾暂无直播间" target="_blank">看TA直播</a></p></div></div></div></body></html>

@@ -9,10 +9,9 @@ from scrapy.http import Request, FormRequest, HtmlResponse
 
 class BaiduSpider(scrapy.Spider):
     name = "baidu"
-    allowed_domains = ["jrj.com.cn/"]
+    #allowed_domains = ["baidu.com"]
     start_urls = [
-        "http://www.duorongcf.com/dl",
-        "http://www.duorongcf.com/main/jt/DRGK"
+        "http://itougu.jrj.com.cn/",
     ]
 
     def start_requests(self):

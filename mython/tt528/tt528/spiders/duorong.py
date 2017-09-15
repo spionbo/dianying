@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 import scrapy
+from scrapy_splash import SplashRequest
 from scrapy.http import Request, FormRequest, HtmlResponse
 
 class Duorong(scrapy.Spider):
@@ -29,6 +30,7 @@ class Duorong(scrapy.Spider):
         "Content-Type": "application/json;charset=UTF-8",
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
         "Referer": login_url,
+        "Cookie":"__jsluid=a27331bb8bbd60117587e1faed5f51fe; Hm_lvt_3d3e8edb7bcc47a5be2981b6a877ca99=1504510032; JSESSIONID=C0841CFAF81B9628B1115A4C1BD7A711; Hm_lvt_f7c570071c5e4a0cf001fac7a2152cae=1503913009,1504235231,1505291942; Hm_lpvt_f7c570071c5e4a0cf001fac7a2152cae=1505465240"
     }
     request_headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
@@ -40,6 +42,12 @@ class Duorong(scrapy.Spider):
             callback=self.post_login,
             meta={'cookiejar': 1}
         )]
+
+    def parse(self,response):
+        print("111111111111111111")
+        filename = response.url.split("/")[-2]
+        with open(filename, 'wb') as f:
+            f.write(response.body)
 
     def post_login(self,response):
         return[FormRequest(
@@ -55,11 +63,12 @@ class Duorong(scrapy.Spider):
             callback=self.after_login
         )]
     def after_login(self,response):
+        requests = []
         for url in self.start_urls:
-            #yield Request(url, meta={'cookiejar': response.meta['cookiejar']})
-            yield Request(url, dont_filter=True,
-                callback=self.parse_page
-            )
+            url = url.strip()
+            request = SplashRequest(url, callback=self.parse, args={'wait':3})
+            requests.append(request)
+        return requests
     def parse_page(self,response):
         filename = response.url.split("/")[-2]
         with open(filename, 'wb') as f:
