@@ -11,14 +11,14 @@ class BaiduSpider(scrapy.Spider):
     name = "baidu"
     #allowed_domains = ["baidu.com"]
     start_urls = [
-        "http://itougu.jrj.com.cn/",
+        "http://news.163.com/shehui/",
     ]
 
     def start_requests(self):
         requests = []
         for url in self.start_urls:
             url = url.strip()
-            request = SplashRequest(url, callback=self.parse, args={'wait':3})
+            request = SplashRequest(url, callback=self.parse, args={'wait':0.5})
             requests.append(request)
         return requests
 
