@@ -1,0 +1,613 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>禅商道-仁有空无的分享 - 微盘</title>
+<meta name="title" content="新浪微盘 | 免费网盘" />
+<meta name="description" content="微盘是一款简单易用的网盘，提供超大免费云存储空间，支持电脑、手机等任意终端的文件存储、同步和分享，是您工作、学习、生活 的必备工具！" />
+<meta name="Keywords" content="微盘|网盘|我的网盘|免费网络硬盘|热门分享|微盘登陆|新浪微盘登陆|新浪微盘下载|威盘|我的微盘|微盘下载" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+<script type="text/javascript">
+     try{document.execCommand("BackgroundImageCache", false, true);}catch(e){}
+</script>
+<link rel="icon" href="http://vdisk.weibo.com/favicon.ico" type="image/x-icon" />
+<link href="http://img.t.sinajs.cn/t5/style/css/module/global/WB_outframe.css?version=e93f08d7593eddf7" type="text/css" rel="stylesheet" />
+<link href="http://lib.cdn.weipan.cn/web/1002/css/vdisk_v2.css?v=1505898808278" type="text/css" rel="stylesheet" />
+<link href="http://lib.cdn.weipan.cn/web/1002/css/vdisk_new_v2.css?v=1505898808278" type="text/css" rel="stylesheet" />
+
+<style type="text/css">
+.WB_global_nav{z-index:9998 !important;}
+</style>
+
+<script type="text/javascript">
+    //v2
+    var UID = 0,
+        UNAME = '',
+        CURRENT_URL = 'vdisk.weibo.com/u/2201599764',
+        APP_URL = 'http://vdisk.weibo.com/',
+        STATIC_URL = 'http://lib.cdn.weipan.cn/web/1002/',
+        STATIC_VERSION = '1505898808278',
+        ENV = 'prod';
+
+    //全局数据
+    var uid=0;
+    var uname='';
+    var siteurl='http://vdisk.weibo.com/';
+    var staticUrl='http://lib.cdn.weipan.cn/web/1002/';
+    var vdisk = {};    
+    // v6
+    var $CONFIG = {
+            name: "",
+            onick: "",
+            uid: uid,
+            islogin: uid?'1':false,
+            icon: 'http://tp3.sinaimg.cn/'+uid+'/50/0/1',
+            lang: "zh-cn",
+            rbackurl: window.location.href,
+            //entry: 'weipan',
+            _wv:"6"
+    };
+    var SEND_ACTIVITY = "";
+    var SIGN = '75466eb19b8fe60a76f16675212d4fbd.1506333310';
+</script>
+
+<script src="http://lib.cdn.weipan.cn/web/1002/js/2/lib/jquery-1.7.2.min.js?v=1505898808278" type="text/javascript"></script>
+<script src="http://lib.cdn.weipan.cn/web/1002/js/2/lib/seajs/sea.js" data-config="http://lib.cdn.weipan.cn/web/1002/js/2/config.js?v=1505898808278" type="text/javascript" ></script>
+
+<script type="text/javascript" src="http://js.t.sinajs.cn/t6/home/js/pl/top/topInit.js?v=f2fdf6c2f04f99c8"></script>
+<script>
+$(document).ready(function(){
+
+		typeof WBtopGlobal !== 'undefined' && WBtopGlobal && WBtopGlobal.init($CONFIG);
+});
+if (self != top) { 
+top.location = self.location; 
+} 
+</script>
+</head>
+<body class="vd_profile">
+<!-- v6头部 -->
+<div id="weibo_top_public" class="global_header"></div>
+<!-- v6头部 -->
+<!--<div class="vd_wrap clearfix">-->
+<!--vd_main-->
+<div class="vd_main">
+     <!--vd toplogo-->
+     <div class="vdisk_header_main clearfit" >
+          <div class="vdisk_logo"><a href="http://vdisk.weibo.com/" title="微盘"></a></div>
+          <ul class="vdisk_nav_main clearfit">
+       			              <li ><a href="http://vdisk.weibo.com/file/list?log_target=navigation_vdisk" class="vd_pic_v2 vdisk_nav_my private_link" title="我的微盘"></a></li>
+             <li id="menuHotShare" ><a href="http://vdisk.weibo.com/share/hot?log_target=navigation_hot_file" class="vd_pic_v2 vdisk_nav_share" title="找资源"></a></li>
+             <li id="menuClient" ><a href="http://vdisk.weibo.com/client?log_target=navigation_client" class="vd_pic_v2 vdisk_nav_clien" title="客户端"></a></li>
+             <li class="vd_bt_v2 vdisk_nav_search">
+				<form action="http://vdisk.weibo.com/search/" method="get" id="search_form" onsubmit="if((document.getElementById('search_keyword').value == '') && (typeof vdisk.topSearch == 'undefined')) return false;">
+				<input type="hidden" name="type" id="search_type" value="public" />
+					<input type="text" maxlength="30" autocomplete="off" name="keyword" id="search_keyword"  defaultchars="搜索大家共享的文件" value="" class="vdisk_nav_search_input" />
+					<!--  -->
+					<input type="submit" class="bn vd_pic_v2 vdisk_nav_search_btn" value="">
+				</form>
+             </li>
+             <li class="vd_pic_v2  " style=""></li>
+          </ul>
+		  <div id="pageLoading" style="display:none"><span>加载中...</span></div>
+     </div>
+     <!--vd toplogo end-->
+	 <!--vd part--><link href="http://lib.cdn.weipan.cn/web/1002/css/vip.css" type="text/css" rel="stylesheet" />
+ <!--vd part-->
+     <div class="vdmain_part">
+	 	<div class="pr_user_info_wrap clearfix">
+			 <div class="pr_user_info">
+				<div class="pr_user_face"><img src="http://tva3.sinaimg.cn/crop.0.0.1242.1242.180/8339bf14jw8f03ciu9bphj20yi0yimzk.jpg" width="170" height="170" alt=""></div>
+				<div class="pr_info">
+					<p class="pr_userName">禅商道-仁有空无															</p>
+					<ul class="pr_user_atten clearfix">
+						<li class="first"><strong>56</strong><span>分享</span></li>
+						<li><strong>9</strong><span>人气</span></li>
+						<li class="noborder"><strong>121</strong><span>粉丝</span></li>
+					</ul>
+					<div class="pr_focus_btn" id="friendship_container"><a href="http://weibo.com/u/2201599764" target="_blank" class="his_wb">进入他的微博»</a></div>				</div>
+			 </div>
+		 </div>
+		  <div class="vdmain_part_top"></div>
+         <div class="vdmain_part_center clearfit">
+         <div class="vdmain_part_main clearfix">
+              <div class="vd_left_part">
+			                   <div class="my_vdisk_main clearfit">
+						<a href="/u/2201599764?log_target=my_sharing" class="pr_btn pr_share_btn_on">他的分享</a><a href="/u/2201599764/feed?log_target=my_weibo_news" class="pr_btn pr_dynamic_btn">他的动态</a>
+												                   </div>
+                    <div class="v_sort_main">
+                        <table class="v_sort v_sort_head" style="border-bottom:0px;">
+							<thead>
+								<tr class="cp">
+									<th class="sort_name_t"><strong>文件名</strong><span class="vd_pic_v2 vd_order2"></span></th>
+									<th class="sort_btn_t"></th>
+                                    <th class="sort_set_t"><strong>大小</strong></th>
+									<th class="sort_size_t"><strong>浏览量</strong></th>
+									<!-- <th class="sort_downnum_t"><strong>分享时间</strong></th> -->
+								</tr>
+							</thead>
+                        </table>
+                        <table class="v_sort v_sort_body" id="share_table">
+							<tbody>
+								                                   <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pe5" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pe5" title="PMP项目管理-12个子计划内容.pdf">PMP项目管理-12个子计划内容.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pe5","filename":"PMP\u9879\u76ee\u7ba1\u7406-12\u4e2a\u5b50\u8ba1\u5212\u5185\u5bb9.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pe5","is_dir":false,"bytes":"1390586"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pe5","filename":"PMP\u9879\u76ee\u7ba1\u7406-12\u4e2a\u5b50\u8ba1\u5212\u5185\u5bb9.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pe5","is_dir":false,"bytes":"1390586"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">1.3 M</td>
+                                      <td class="sort_size_m">337</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4peb" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4peb" title="Pmp项目管理知识关系树.pdf">Pmp项目管理知识关系树.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4peb","filename":"Pmp\u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u5173\u7cfb\u6811.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peb","is_dir":false,"bytes":"206210"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4peb","filename":"Pmp\u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u5173\u7cfb\u6811.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peb","is_dir":false,"bytes":"206210"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">201.4 K</td>
+                                      <td class="sort_size_m">243</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pd_" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pd_" title="建筑工程项目管理的一些看法(hjf1976)2012-2-8.pdf">建筑工程项目管理的一些看法(hjf1976)2012-...</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pd_","filename":"\u5efa\u7b51\u5de5\u7a0b\u9879\u76ee\u7ba1\u7406\u7684\u4e00\u4e9b\u770b\u6cd5(hjf1976)2012-2-8.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pd_","is_dir":false,"bytes":"137594"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pd_","filename":"\u5efa\u7b51\u5de5\u7a0b\u9879\u76ee\u7ba1\u7406\u7684\u4e00\u4e9b\u770b\u6cd5(hjf1976)2012-2-8.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pd_","is_dir":false,"bytes":"137594"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">134.4 K</td>
+                                      <td class="sort_size_m">220</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pem" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pem" title="论-工程现场签证和设计变更管理.pdf">论-工程现场签证和设计变更管理.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pem","filename":"\u8bba-\u5de5\u7a0b\u73b0\u573a\u7b7e\u8bc1\u548c\u8bbe\u8ba1\u53d8\u66f4\u7ba1\u7406.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pem","is_dir":false,"bytes":"122803"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pem","filename":"\u8bba-\u5de5\u7a0b\u73b0\u573a\u7b7e\u8bc1\u548c\u8bbe\u8ba1\u53d8\u66f4\u7ba1\u7406.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pem","is_dir":false,"bytes":"122803"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">119.9 K</td>
+                                      <td class="sort_size_m">185</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pwq" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pwq" title="最神奇冠军切尔西---完美演绎了人世间诡异的真理！.pdf">最神奇冠军切尔西---完美演绎了人世间诡异的真...</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pwq","filename":"\u6700\u795e\u5947\u51a0\u519b\u5207\u5c14\u897f---\u5b8c\u7f8e\u6f14\u7ece\u4e86\u4eba\u4e16\u95f4\u8be1\u5f02\u7684\u771f\u7406\uff01.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pwq","is_dir":false,"bytes":"628238"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pwq","filename":"\u6700\u795e\u5947\u51a0\u519b\u5207\u5c14\u897f---\u5b8c\u7f8e\u6f14\u7ece\u4e86\u4eba\u4e16\u95f4\u8be1\u5f02\u7684\u771f\u7406\uff01.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pwq","is_dir":false,"bytes":"628238"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">613.5 K</td>
+                                      <td class="sort_size_m">158</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pwr" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pwr" title="论数学理论在建筑工程投标报价决策的应用8--xxx.pdf">论数学理论在建筑工程投标报价决策的应用8--xx...</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pwr","filename":"\u8bba\u6570\u5b66\u7406\u8bba\u5728\u5efa\u7b51\u5de5\u7a0b\u6295\u6807\u62a5\u4ef7\u51b3\u7b56\u7684\u5e94\u75288--xxx.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pwr","is_dir":false,"bytes":"122340"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pwr","filename":"\u8bba\u6570\u5b66\u7406\u8bba\u5728\u5efa\u7b51\u5de5\u7a0b\u6295\u6807\u62a5\u4ef7\u51b3\u7b56\u7684\u5e94\u75288--xxx.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pwr","is_dir":false,"bytes":"122340"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">119.5 K</td>
+                                      <td class="sort_size_m">174</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pwA" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pwA" title="对行政人事部工作日志的点评.pdf">对行政人事部工作日志的点评.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pwA","filename":"\u5bf9\u884c\u653f\u4eba\u4e8b\u90e8\u5de5\u4f5c\u65e5\u5fd7\u7684\u70b9\u8bc4.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pwA","is_dir":false,"bytes":"83672"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pwA","filename":"\u5bf9\u884c\u653f\u4eba\u4e8b\u90e8\u5de5\u4f5c\u65e5\u5fd7\u7684\u70b9\u8bc4.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pwA","is_dir":false,"bytes":"83672"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">81.7 K</td>
+                                      <td class="sort_size_m">222</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4peK" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4peK" title="父亲的背影（heller）.pdf">父亲的背影（heller）.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4peK","filename":"\u7236\u4eb2\u7684\u80cc\u5f71\uff08heller\uff09.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peK","is_dir":false,"bytes":"83047"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4peK","filename":"\u7236\u4eb2\u7684\u80cc\u5f71\uff08heller\uff09.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peK","is_dir":false,"bytes":"83047"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">81.1 K</td>
+                                      <td class="sort_size_m">166</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4peI" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4peI" title="麻将牌，扑克必胜绝技.pdf">麻将牌，扑克必胜绝技.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4peI","filename":"\u9ebb\u5c06\u724c\uff0c\u6251\u514b\u5fc5\u80dc\u7edd\u6280.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peI","is_dir":false,"bytes":"251909"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4peI","filename":"\u9ebb\u5c06\u724c\uff0c\u6251\u514b\u5fc5\u80dc\u7edd\u6280.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peI","is_dir":false,"bytes":"251909"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">246 K</td>
+                                      <td class="sort_size_m">217</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4peZ" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4peZ" title="科学发展观的核心.pdf">科学发展观的核心.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4peZ","filename":"\u79d1\u5b66\u53d1\u5c55\u89c2\u7684\u6838\u5fc3.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peZ","is_dir":false,"bytes":"110639"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4peZ","filename":"\u79d1\u5b66\u53d1\u5c55\u89c2\u7684\u6838\u5fc3.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4peZ","is_dir":false,"bytes":"110639"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">108 K</td>
+                                      <td class="sort_size_m">177</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pfp" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pfp" title="科学发展观的精粹.pdf">科学发展观的精粹.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pfp","filename":"\u79d1\u5b66\u53d1\u5c55\u89c2\u7684\u7cbe\u7cb9.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pfp","is_dir":false,"bytes":"200863"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pfp","filename":"\u79d1\u5b66\u53d1\u5c55\u89c2\u7684\u7cbe\u7cb9.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pfp","is_dir":false,"bytes":"200863"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">196.2 K</td>
+                                      <td class="sort_size_m">153</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pbD" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pbD" title="科学发展观的实质及意义.pdf">科学发展观的实质及意义.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pbD","filename":"\u79d1\u5b66\u53d1\u5c55\u89c2\u7684\u5b9e\u8d28\u53ca\u610f\u4e49.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pbD","is_dir":false,"bytes":"168046"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pbD","filename":"\u79d1\u5b66\u53d1\u5c55\u89c2\u7684\u5b9e\u8d28\u53ca\u610f\u4e49.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pbD","is_dir":false,"bytes":"168046"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">164.1 K</td>
+                                      <td class="sort_size_m">135</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pb2" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pb2" title="第18届中共中央组织机构图.pdf">第18届中共中央组织机构图.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pb2","filename":"\u7b2c18\u5c4a\u4e2d\u5171\u4e2d\u592e\u7ec4\u7ec7\u673a\u6784\u56fe.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pb2","is_dir":false,"bytes":"140989"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pb2","filename":"\u7b2c18\u5c4a\u4e2d\u5171\u4e2d\u592e\u7ec4\u7ec7\u673a\u6784\u56fe.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pb2","is_dir":false,"bytes":"140989"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">137.7 K</td>
+                                      <td class="sort_size_m">223</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pbg" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pbg" title="论项目管理知识体系在建筑工程招投标中的应用--heller2012-11-16.pdf">论项目管理知识体系在建筑工程招投标中的应用--...</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pbg","filename":"\u8bba\u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u4f53\u7cfb\u5728\u5efa\u7b51\u5de5\u7a0b\u62db\u6295\u6807\u4e2d\u7684\u5e94\u7528--heller2012-11-16.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pbg","is_dir":false,"bytes":"118374"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pbg","filename":"\u8bba\u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u4f53\u7cfb\u5728\u5efa\u7b51\u5de5\u7a0b\u62db\u6295\u6807\u4e2d\u7684\u5e94\u7528--heller2012-11-16.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pbg","is_dir":false,"bytes":"118374"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">115.6 K</td>
+                                      <td class="sort_size_m">127</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4puU" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4puU" title="建筑行业的实用要领（珍藏）.pdf">建筑行业的实用要领（珍藏）.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4puU","filename":"\u5efa\u7b51\u884c\u4e1a\u7684\u5b9e\u7528\u8981\u9886\uff08\u73cd\u85cf\uff09.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4puU","is_dir":false,"bytes":"1778108"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4puU","filename":"\u5efa\u7b51\u884c\u4e1a\u7684\u5b9e\u7528\u8981\u9886\uff08\u73cd\u85cf\uff09.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4puU","is_dir":false,"bytes":"1778108"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">1.7 M</td>
+                                      <td class="sort_size_m">204</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pu5" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pu5" title="推荐：2012年度最强五款智能手机.pdf">推荐：2012年度最强五款智能手机.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pu5","filename":"\u63a8\u8350\uff1a2012\u5e74\u5ea6\u6700\u5f3a\u4e94\u6b3e\u667a\u80fd\u624b\u673a.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pu5","is_dir":false,"bytes":"183109"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pu5","filename":"\u63a8\u8350\uff1a2012\u5e74\u5ea6\u6700\u5f3a\u4e94\u6b3e\u667a\u80fd\u624b\u673a.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pu5","is_dir":false,"bytes":"183109"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">178.8 K</td>
+                                      <td class="sort_size_m">104</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pur" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pur" title="2012-13年欧冠16强对阵表.pdf">2012-13年欧冠16强对阵表.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pur","filename":"2012-13\u5e74\u6b27\u51a016\u5f3a\u5bf9\u9635\u8868.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pur","is_dir":false,"bytes":"208966"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pur","filename":"2012-13\u5e74\u6b27\u51a016\u5f3a\u5bf9\u9635\u8868.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pur","is_dir":false,"bytes":"208966"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">204.1 K</td>
+                                      <td class="sort_size_m">157</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                                     <tr>
+                                      <td class="sort_name_m">
+                                          <div class="sort_name_detaila clearfit">
+                                              <div class="sort_name_pic">
+                                              	                                                 	   <a href="http://vdisk.weibo.com/s/ufMpaF53F4pb-" class="vd_icon32_v2 vd_pdf" target="_blank"></a>
+                                              	                                                 </div>
+                                              <div class="sort_name_intro">
+                                                   <div class="sort_name_detail"><a target="_blank" href="http://vdisk.weibo.com/s/ufMpaF53F4pb-" title="香港十大真实黑道传记电影.pdf">香港十大真实黑道传记电影.pdf</a></div>
+                                              </div>
+                                          </div>
+                                      </td>
+									  <td class="sort_btn_m">
+										  <span class="share_table_action" style="display:none;">
+											  <a href="javascript:void(0);" title="下载" class="vd_pic_v2 vd_dload" data-info='{"copy_ref":"ufMpaF53F4pb-","filename":"\u9999\u6e2f\u5341\u5927\u771f\u5b9e\u9ed1\u9053\u4f20\u8bb0\u7535\u5f71.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pb-","is_dir":false,"bytes":"641580"}'></a>
+											  											  <a href="javascript:void(0);" title="保存到微盘" class="vd_pic_v2 vd_add" data-info='{"copy_ref":"ufMpaF53F4pb-","filename":"\u9999\u6e2f\u5341\u5927\u771f\u5b9e\u9ed1\u9053\u4f20\u8bb0\u7535\u5f71.pdf","uid":2201599764,"username":"\u7985\u5546\u9053-\u4ec1\u6709\u7a7a\u65e0","url":"http:\/\/vdisk.weibo.com\/s\/ufMpaF53F4pb-","is_dir":false,"bytes":"641580"}'></a>
+											  											</span>
+									  </td>
+                                      <td class="sort_set_m">626.5 K</td>
+                                      <td class="sort_size_m">68</td>
+                                      <!-- <td class="sort_downnum_m">2014-12-13</td> -->
+                                   </tr>
+                                                            </tbody>
+                      </table>
+						                   </div>
+				   <div class="vd_page_main">
+						<div class="vd_page" style="padding-top:30px;"><span>1</span><a href="?page=2">2</a><a href="?page=3">3</a><a href="?page=4">4</a><a class="vd_bt_v2 vd_page_btn" href="?page=2"><span>下一页</span></a></div>                   </div>
+<script>
+// 'vdisk/hotfile', 'vdisk/fileManageShareLayer'
+seajs.use(['2/page/homepage'], function(homepage){
+	homepage.initList(2201599764);
+});
+</script>			</div>
+			<div class="vd_right_part">
+				<div class="W_rightModule right_recommend_file">
+	<div class="title">盘主文件热榜</div>
+		<ul class="share_hot_list file_relative clearfix" id="right_recommend_file">
+				<li><em class="red">1</em><div class="left"><i class="vd_icon16_v2 vd_16rar"><a title="品茗施工安全设施计算软件CSC2013版最新补丁.rar" href="http://vdisk.weibo.com/s/ufMpaF548SXf3" target="_blank">品茗施工安全设施计算...</a></i><p><span class="margin14">12604次浏览</span></p></div></li>
+				<li><em >2</em><div class="left"><i class="vd_icon16_v2 vd_16pdf"><a title="中国最美的40个旅游景点（图片较多，请在wifi环境中打开）.pdf" href="http://vdisk.weibo.com/s/ufMpaF548SHCq" target="_blank">中国最美的40个旅游...</a></i><p><span class="margin14">4628次浏览</span></p></div></li>
+				<li><em >3</em><div class="left"><i class="vd_icon16_v2 vd_16rar"><a title="550种_很漂亮很难找的字体.rar" href="http://vdisk.weibo.com/s/ufMpaF548SI3M" target="_blank">550种_很漂亮很难找...</a></i><p><span class="margin14">3053次浏览</span></p></div></li>
+				<li><em >4</em><div class="left"><i class="vd_icon16_v2 vd_16pdf"><a title="PMI中国官方杂志《项目管理世界》：论PMI项目管理知识体系在建筑工程投标中的应用2.pdf" href="http://vdisk.weibo.com/s/ufMpaF5497Q4t" target="_blank">PMI中国官方杂志《...</a></i><p><span class="margin14">514次浏览</span></p></div></li>
+				<li><em >5</em><div class="left"><i class="vd_icon16_v2 vd_16pdf"><a title="中医药方大全.pdf" href="http://vdisk.weibo.com/s/ufMpaF548SHCp" target="_blank">中医药方大全.pdf</a></i><p><span class="margin14">423次浏览</span></p></div></li>
+			</ul>
+	</div>			</div>
+		</div>
+	 </div>
+	 <!-- /vdmain -->
+	 <div class="vdmain_part_bottom"></div>
+</div>
+	 <div class="vd_footer">
+		  <div class="clearfit">
+			  <div class="vd_footer_link">
+				<!-- <a href="#">帮助</a><a href="#">意见反馈</a><a href="#">微博认证及合作</a><a href="#">新浪网导航</a><a href="#">不良信息举报</a> -->
+					<a target="_blank" href="/useHelpTip?log_target=navigation_vdisk">使用协议</a>&nbsp|&nbsp
+					<a target="_blank" href="http://weibo.com/wepan">@微盘官方微博</a>&nbsp|&nbsp
+					<a target="_blank" href="http://vdisk.weibo.com/uplog">更新日志</a>&nbsp|&nbsp
+					<a target="_blank" href="http://help.weibo.com/topic/vdisk">帮助</a>&nbsp|&nbsp
+					<a target="_blank" href="http://vdisk.weibo.com/feedback">意见反馈</a>&nbsp|&nbsp
+					<a target="_blank" href="/switchmobile/on">wap版</a>&nbsp|&nbsp
+					<a target="_blank" href="/cooperation">对外合作</a>&nbsp|&nbsp
+					<a target="_blank" href="http://vdisk.weibo.com/developers/">开放平台</a>&nbsp|&nbsp
+					<!--<a target="_blank" href="http://weibo.com/pub/i/zt/wbpy">不良信息举报</a>　-->
+					<!--<a target="_blank" id="button_manage_hr" href="http://vdisk.weibo.com/hr" class="hash">招聘</a>&nbsp|&nbsp-->
+					<a target="_blank" id="button_manage_hr" href="http://vdisk.weibo.com/useHelpNotice" class="hash">产品调整公告</a>&nbsp|&nbsp
+					<a target="_blank" href="http://vdisk.weibo.com/archive?page=1">Archive</a>
+			  </div>
+			  <div class="vd_footer_copy">&copy; 2017 微盘 版权所有</div>
+		  </div>
+		  <p>
+		  <span style="float:left;">
+		    用户应遵守著作权法，尊重著作权人合法权益，不违法上传、存储并分享他人作品。举报邮箱：vdisk@sina.cn
+		  </span>
+		  京网文[2011]0398-130号 京ICP证100780号</p>
+	 </div>
+	<!--/vd part end-->
+</div>
+<!--/vd_main-->
+</div>
+
+<a href="javascript:void(0)" class="vd_scrolltop goTop" style="visibility:hidden"><span class="vd_pic_v2"></span>返回顶部</a>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	seajs.use(['2/vdisk'],function(vdisk){
+		vdisk.init();
+		vdisk.delayLoad();
+		
+		if(vdisk.getQueryValue("log_target")){
+			var statparamuid = '';
+			if(uid!='') statparamuid = '&statuid=' + uid;
+			var logUrl = 'http://vdisk.weibo.com/images/log/ulog.gif?' + vdisk.getQueryValue("log_target") + statparamuid;
+			vdisk.log(logUrl);
+		}
+	});
+	
+	if($('#search_keyword').length){
+    	seajs.use(['vdisk/searchList'],function(searchList){
+    		//初始化搜索界面
+    		$('#search_keyword').searchField({
+    			requestURL:'http://vdisk.weibo.com/searchlist/'
+    		});
+    	});
+    }
+});
+</script>
+<div style="display:none;">
+<script src="http://s19.cnzz.com/stat.php?id=3212592&web_id=3212592" language="JavaScript"></script>
+</div>
+<!-- SUDA_CODE_START -->
+<noScript>
+<div style='position:absolute;top:0;left:0;width:0;height:0;visibility:hidden'><img width="0" height="0" src="http://beacon.sina.com.cn/a.gif?noScript" border="0" /></div> 
+</noScript>
+<!-- SUDA_CODE_END -->
+<script type="text/javascript">
+  // var _gaq = _gaq || [];
+  // _gaq.push(['_setAccount', 'UA-28230033-1']);
+  // _gaq.push(['_trackPageview']);
+  // (function() {
+  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  // })();
+</script>
+</body>
+</html>
