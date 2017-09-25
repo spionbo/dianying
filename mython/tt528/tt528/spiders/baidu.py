@@ -11,7 +11,7 @@ class BaiduSpider(scrapy.Spider):
     name = "baidu"
     #allowed_domains = ["baidu.com"]
     start_urls = [
-        "http://news.163.com/shehui/",
+        "https://passport.baidu.com/v2/",
     ]
 
     def start_requests(self):
