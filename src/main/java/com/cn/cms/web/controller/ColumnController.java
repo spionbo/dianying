@@ -1,4 +1,4 @@
-package com.cn.cms.web;
+package com.cn.cms.web.controller;
 
 import com.cn.cms.po.Column;
 import com.cn.cms.po.SecondColumn;
@@ -42,9 +42,15 @@ public class ColumnController {
     }
 
     /*获取左则栏目列表*/
-    @RequestMapping(value = "currentMenu",method = RequestMethod.GET)
+    /*@RequestMapping(value = "currentMenu",method = RequestMethod.GET)
     public String currentMenu(Integer id){
-        
+
+    }*/
+
+    /*所有栏目列表*/
+    @RequestMapping(value = "/currentMenuPermission",method = RequestMethod.GET)
+    public String currentMenuPermission(){
+        return ApiResponse.returnSuccess();
     }
 
 }

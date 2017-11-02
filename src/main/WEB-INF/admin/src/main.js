@@ -21,9 +21,10 @@ new Vue({
 	},
 	template: `
 	    <div id="app">
+	    	<div class='main-controller'>
 	    	<headbar></headbar>
 	    	<article id="Content">
-	    		<menubar ></menubar>
+	    		<menubar></menubar>
 	        	<router-view class="view"></router-view>
 			</article>
 	    </div>
