@@ -44,7 +44,7 @@ public class ColumnController {
     /*获取左则栏目列表*/
     @RequestMapping(value = "currentMenu",method = RequestMethod.GET)
     public String currentMenu(Integer id){
-
+        
     }
 
 }
