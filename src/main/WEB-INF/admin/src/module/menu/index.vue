@@ -8,10 +8,12 @@
         </div>
         <div class="selectMenu">
             <select>
-                <option>栏目名称</option>
-                <option>栏目名称</option>
-                <option>栏目名称</option>
-                <option>栏目名 称</option>
+                <option>后台管理</option>
+                <option>栏目管理</option>
+                <option>会员管理</option>
+            </select>
+            <select>
+                <option v-for="item in column" :value="item.id">{{item.name}}</option>
             </select>
         </div>
         <ul class="page-menu">
@@ -64,11 +66,37 @@
 		data() {
 			return {
 				show : true, //是否展示栏目
+                backstage : [], //后台管理
+                column : [],
                 menu : [],
             }
 		},
 		mounted() {
-            this.menu = [
+            const self = this;
+            T.ajax({
+                url : '/web/column/menu',
+                type : 'get'
+            }).then(data=>{
+                self.column = data.data;
+                return T.ajax({
+                    url  : '/web/column/second_column',
+                    data : {
+                        id : self.column[0].id
+                    }
+                })
+            }).then(data=>{
+                data.data.map(obj=>{
+                    self.menu.push({
+                        name:obj.name,
+                        id:obj.id
+                   })
+                });
+               this.$nextTick(this.setTab);
+            });
+            
+
+
+            /*this.menu = [
                 {
                 	name : '栏目名称1',
 	                subMenu : [
@@ -126,8 +154,8 @@
 			            }
 		            ]
 	            }
-            ];
-            this.$nextTick(this.setTab);
+            ];*/
+            
 		},
 		methods : {
 			setMenu(){

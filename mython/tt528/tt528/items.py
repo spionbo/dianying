@@ -17,7 +17,7 @@ class List(scrapy.Item):
     title = scrapy.Field()    #文件名称
     doc = scrapy.Field()      #格示 .doc .mp3 .mp4 .pdf 等
     type = scrapy.Field()     #类型(视频，音乐等)
-    href = scrapy.Field()      #地址
+    href = scrapy.Field()     #地址
     picUrl = scrapy.Field()   #图片地址
     size = scrapy.Field()     #大小
     columnId = scrapy.Field() #栏目分类[1,2]则为 视频和音乐

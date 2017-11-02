@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'tt528.spiders'
 #USER_AGENT = 'tt528 (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 #HTTPERROR_ALLOWED_CODES = [400,404]
 #使用splash解析，要在配置文件中设置：1 : docker pull scrapinghub/splash 2 :docker run -p 8050:8050 scrapinghub/splash
 SPLASH_URL = 'http://192.168.99.100:8050/'
