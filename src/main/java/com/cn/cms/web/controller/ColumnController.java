@@ -18,7 +18,7 @@ import java.util.List;
  * Created by Administrator on 2017/10/18 0018.
  */
 @RestController
-@RequestMapping(value = "/web/column/",produces = "application/json; charset=UTF-8")
+@RequestMapping(value = "/webapi/column/",produces = "application/json; charset=UTF-8")
 @ResponseBody
 public class ColumnController {
 

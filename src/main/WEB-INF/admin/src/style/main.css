@@ -150,3 +150,16 @@ i{ display:inline-block; }
 		}
     }
 }
+
+.msg-error{
+    color: #E94F37;
+    height:0;
+    line-height: 44px;
+    font-size: 12px;
+    transition-duration: .3s;
+    overflow:hidden;
+    text-align: center;
+    &.cur{
+         height:44px;
+     }
+}

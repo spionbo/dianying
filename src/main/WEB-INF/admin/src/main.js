@@ -13,20 +13,24 @@ new Vue({
 	},
 	data(){
 		return {
-
+			isLogin : false
 		}
+	},
+	mounted(){
 	},
 	methods : {
 
 	},
 	template: `
 	    <div id="app">
-	    	<div class='main-controller'>
-	    	<headbar></headbar>
-	    	<article id="Content">
-	    		<menubar></menubar>
-	        	<router-view class="view"></router-view>
-			</article>
+	    	<div v-if="isLogin" class='main-controller'>
+		    	<headbar></headbar>
+		    	<article id="Content">
+		    		<menubar></menubar>
+		        	<router-view class="view"></router-view>
+				</article>
+			</div>
+			<router-view v-else class="view" name="login"></router-view>
 	    </div>
 	  `
 }).$mount('#app');

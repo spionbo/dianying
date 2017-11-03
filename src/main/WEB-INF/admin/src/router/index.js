@@ -4,9 +4,15 @@ window.router = new VueRouter({
 	base: __dirname,
 	linkActiveClass: "active",
 	routes: [
-		{ path: '/', redirect:'/login'},
-		{ path : '/login', component:()=>import('../module/login') },
-		{ path : '/main', component:()=>import('../module') },
+		{ path: '/', redirect:'/main'},
+		{ 
+			path : '/login',
+			components: { login : ()=>import('../module/login')},
+		},
+		{
+			path : '/main', 
+			components: { default : ()=>import('../module')}
+		},
 		// catch all redirect
 		{ path: '*', redirect: '/' }
 	]

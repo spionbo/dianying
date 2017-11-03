@@ -33,6 +33,7 @@ module.exports = {
         proxy: {
             '\*': {
                 target: 'http://192.168.0.108:8080',
+                //target: 'http://120.55.164.222:80',
                 secure: false
             }
         } 
