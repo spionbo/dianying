@@ -1,6 +1,6 @@
 body{
 	background:#000;
-    background-image:url('../../images/jingyu.png'), radial-gradient(ellipse at top, rgb(33, 86, 206) 4%,rgb(0, 0, 0));
+    background-image:radial-gradient(ellipse at top, rgb(33, 86, 206) 4%,rgb(0, 0, 0));
     background-repeat:no-repeat;
     background-position:center 80%;
 }
@@ -13,6 +13,7 @@ body{
     align-items:center;
 }
 .login{
+    width:200px;
     padding:30px;
     background:rgba(0,0,0,.6);
     text-align: center;
@@ -24,22 +25,37 @@ body{
 }
 .form{
     .item{
+        display:flex;
+        flex-direction:row;
         padding:5px 0;
         overflow:hidden;
     }
     .input{
-        float:left;
+        flex:1;
     }
     .text{
-        height:18px;
+        display:block;
+        width:100%;
         line-height: 18px;
         padding:5px 5px;
         border:none;
-        border-radius:3px;
+        box-sizing:border-box;
         transition-duration:.3s;
-        background:rgba(255,255,255,.7);
+        background:rgba(255,255,255,.3);
+
+        &::-webkit-input-placeholder{
+            color:rgba(255,255,255,.2)
+        }
         &:hover{
-            background:#fff;
+            background:rgba(255,255,255,.5);
+            &::-webkit-input-placeholder{
+                color:rgba(255,255,255,.5);
+            }
+        }
+    }
+    .code{
+        img{
+            height:28px;
         }
     }
     .submit{

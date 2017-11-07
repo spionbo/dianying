@@ -125,28 +125,54 @@ let T = {
 	},
 	ajax : function( obj ){
 		obj.type = obj.type || 'GET';
-		return new Promise((resolve, reject) =>{
-			$.ajax({
-				url : obj.url ,
-				type : obj.type,
-                dataType : 'json',
-                contentType:'application/json;charset=UTF-8',
-                //processData : false,
-                data : obj.data,
-				success : function(data){
-					if(data.code==0){ //更新登录信息
-						resolve(data);
-					}else{
-						if(obj.callback){
-							return resolve(data);
+		if(obj.type.toLowerCase()=="get"){
+			return new Promise((resolve, reject) =>{
+				$.ajax({
+					url : obj.url ,
+					type : obj.type,
+	                dataType : 'json',
+	                contentType:'application/json;charset=UTF-8',
+	                //processData : false,
+	                data : obj.data,
+					success : function(data){
+						if(data.code==0){ //更新登录信息
+							resolve(data);
+						}else{
+							if(obj.callback){
+								return resolve(data);
+							}
 						}
+					},
+					error : function(){
+						if(obj.error) return obj.error();
 					}
-				},
-				error : function(){
-					if(obj.error) return obj.error();
-				}
-			});
-		})
+				});
+			})
+		}else{
+			return new Promise((resolve, reject) =>{
+				$.ajax({
+					url : obj.url ,
+					type : obj.type,
+	                dataType : 'json',
+	                //contentType:'application/json;charset=UTF-8',
+	                //processData : false,
+	                data : obj.data,
+					success : function(data){
+						if(data.code==0){ //更新登录信息
+							resolve(data);
+						}else{
+							if(obj.callback){
+								return resolve(data);
+							}
+						}
+					},
+					error : function(){
+						if(obj.error) return obj.error();
+					}
+				});
+			})
+		}
+		
 	}
 }
 module.exports = T;

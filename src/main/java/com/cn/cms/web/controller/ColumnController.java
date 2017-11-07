@@ -48,9 +48,9 @@ public class ColumnController {
     }*/
 
     /*所有栏目列表*/
-    @RequestMapping(value = "/currentMenuPermission",method = RequestMethod.GET)
+    /*@RequestMapping(value = "/currentMenuPermission",method = RequestMethod.GET)
     public String currentMenuPermission(){
         return ApiResponse.returnSuccess();
-    }
+    }*/
 
 }

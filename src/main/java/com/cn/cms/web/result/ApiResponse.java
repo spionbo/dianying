@@ -35,4 +35,9 @@ public class ApiResponse {
         ApiResponse apiResponse = new ApiResponse(ErrorCodeEnum.SUCCESS_CODE_DETAIL.getType(),ErrorCodeEnum.SUCCESS_CODE_DETAIL.getMessage(),data);
         return JSONObject.toJSONString(apiResponse);
     }
+
+    public static String returnFail(String message){
+        ApiResponse apiResponse = new ApiResponse(ErrorCodeEnum.ERROR_CODE_DEFAULT.getType(), message, null);
+        return JSONObject.toJSONString(apiResponse, SerializerFeature.WriteMapNullValue);
+    }
 }

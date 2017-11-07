@@ -1,17 +1,13 @@
 package com.cn.cms.logfactory;
-
-import sun.rmi.runtime.Log;
-
+import org.apache.commons.logging.Log;
 /**
  * Created by Administrator on 2017/11/3 0003.
  */
 public class CommonLog {
+
     private Log log;
 
-    private org.apache.commons.logging.Log log;
-
-
-    public CommonLog(org.apache.commons.logging.Log log){
+    public CommonLog(Log log){
         this.log = log;
     }
     /**

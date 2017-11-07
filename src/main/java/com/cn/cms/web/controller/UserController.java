@@ -1,11 +1,10 @@
 package com.cn.cms.web.controller;
 
-import com.cn.cms.service.UserService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.cn.cms.biz.UserBiz;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
@@ -17,6 +16,20 @@ import javax.annotation.Resource;
 public class UserController {
 
     @Resource
-    private UserService userService;
+    private UserBiz userBiz;
+
+    /**
+     * 登录
+     * @param response
+     * @param userName
+     * @param pwd
+     * @return
+     */
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String login(HttpServletResponse response,
+                        @RequestParam(value = "userName")String userName,
+                        @RequestParam(value = "pwd")String pwd){
+        return userBiz.checkUserAndSetCookie(response,userName,pwd);
+    }
 
 }
