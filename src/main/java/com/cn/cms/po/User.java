@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class User {
+public class User extends Base {
     /**
      * 用户名
      */

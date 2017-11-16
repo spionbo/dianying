@@ -37,7 +37,10 @@
 <script>
     export default {
         data() {
-            return {}
+            return {
+                errorMsg : '',
+                error : false
+            }
         },
         mounted() {
 
