@@ -39,20 +39,20 @@ public class StaticContants {
 
     public static final String LOGO_NAME = "/logo.png";
 
-    public static final String COOKIE_USER_ID = "CMS_QUANJING_USER_ID";
+    public static final String COOKIE_USER_ID = "CMS_TT528_USER_ID";
 
-    public static final String COOKIE_USER_TOKEN = "CMS_QUANJING_USER_TOKEN";
+    public static final String COOKIE_USER_TOKEN = "CMS_TT528_USER_TOKEN";
 
-    public static final String COOKIE_TIME = "CMS_QUANJING_TIME";
+    public static final String COOKIE_TIME = "CMS_TT528_TIME";
 
-    public static final String COOKIE_USER_KEY = "CMS_QUANJING_USER_KEY";
+    public static final String COOKIE_USER_KEY = "CMS_TT528_USER_KEY";
 
-    public static final String COOKIE_REAL_NAME = "CMS_QUANJING_NAME";
+    public static final String COOKIE_REAL_NAME = "CMS_TT528_NAME";
 
     /**
      * 资源文件名前缀
      */
-    public static final String QUANJING_RESOURCE_FILENAME = "QJ_";
+    public static final String TT528_RESOURCE_FILENAME = "QJ_";
 
     public static final String FILE_PATH_SP = "/";
 
@@ -167,5 +167,16 @@ public class StaticContants {
     }
 
     //----自定义错误码
+
+    //----自定义成功码
+    public static final String SUCCESS_LOGIN = "登录成功! ";
+    //----自定义成功码
+
+    public static final int DEFAULT_SECONDS = 24*60*60;
+
+    public static final int BAIDU_DATA_SECONDS = 20*60;
+
+    public static final String WATERMARK_TEXT_EN = "© 天天我爱拔";
+    public static final String WATERMARK_TEXT_URL = "www.tt528.com";
 
 }

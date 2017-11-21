@@ -42,6 +42,12 @@ public class Permission extends Base {
     private Long parentId;
 
     /**
+     * 展示标签
+     */
+    private Integer showFlag;
+
+
+    /**
      * 权限Code
      */
     private String permission;

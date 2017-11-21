@@ -9,8 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Column extends Base{
-    /*栏目ID*/
-    private Integer id;
+
     /*栏目名称*/
     private String name;
 }

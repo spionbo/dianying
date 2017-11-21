@@ -9,10 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SecondColumn extends Base {
-
-    /*二级栏目ID*/
-    private Integer id;
-
     /*栏目名称*/
     private String name;
 }

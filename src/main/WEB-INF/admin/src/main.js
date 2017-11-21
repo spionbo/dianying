@@ -17,14 +17,7 @@ new Vue({
 		}
 	},
 	mounted(){
-		T.ajax({
-            url : '/webapi/user/login' ,
-            type : 'post',
-            data : {
-                userName : 'admin',
-                pwd : '123456'
-            }
-        });
+		
 	},
 	methods : {
 

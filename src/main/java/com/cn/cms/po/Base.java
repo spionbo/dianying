@@ -2,6 +2,8 @@ package com.cn.cms.po;
 
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.DelTagEnum;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -11,6 +13,8 @@ import java.util.Date;
  * 基础Base类。所有的PO都要继承这个类。
  * Created by bo.peng 2017/11/1 0001
  */
+@Getter
+@Setter
 public class Base implements Serializable {
 
     /*主键ID*/

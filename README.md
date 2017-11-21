@@ -1,2 +1,0 @@
-# dianying
-dianying_webapp
