@@ -12,23 +12,23 @@ import lombok.Setter;
 public class Permission extends Base {
 
     /**
-     * 名称
+     * 栏目id
+     */
+    private Integer permissionId;
+
+    /**
+     * 栏目名称
      */
     private String name;
 
     /**
-     * 说明
+     * 父类id
      */
-    private String description;
+    private Integer parentId;
 
     /**
-     * 类型
-     */
-    private Integer type;
-
-    /**
-     * 地址
-     */
+     * 后台地址
+    * */
     private String url;
 
     /**
@@ -37,32 +37,7 @@ public class Permission extends Base {
     private Integer sort;
 
     /**
-     * 父ID
+     * 说明
      */
-    private Long parentId;
-
-    /**
-     * 展示标签
-     */
-    private Integer showFlag;
-
-
-    /**
-     * 权限Code
-     */
-    private String permission;
-
-    /**
-     * 平台字段
-     */
-    private Integer platform = PlatformEnum.CMS.getType();
-
-    /**
-     * 平台名称
-     */
-    private String platformStr;
-
-    public String getPlatformStr(){
-        return PlatformEnum.get(platform).getName();
-    }
+    private String description;
 }

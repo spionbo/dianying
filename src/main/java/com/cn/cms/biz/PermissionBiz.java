@@ -46,9 +46,46 @@ public class PermissionBiz extends BaseBiz {
         jedisClient.del(RedisKeyContants.getAppMenuPermission(userId));
     }
 
+    public PermissionBean setColumn(List<PermissionBean> resultList , Map<Integer,List<Permission>> childMap){
+        PermissionBean permissionBean = new PermissionBean();
+        for(int i=0;i<resultList.size();i++){
+            permissionBean = resultList.get(i);
+            permissionBean.setPermissions(childMap.get(permissionBean.getPermission().getPermissionId()));
+        }
+        return permissionBean;
+    }
+
     public void setPermissionRedis(String userId, PlatformEnum platformEnum){
-        List<Permission> permissions = userService.findPermissionForPositionIds(userId, platformEnum.getType());
-        if(StringUtils.isNotEmpty(permissions)) {
+        List<Permission> permissions = userService.findPermissionColumn(userId,platformEnum.getType());
+        if(StringUtils.isNotEmpty(permissions)){
+            List<PermissionBean> permissionBeenList = new ArrayList<>();
+            Map<Integer,List<Permission>> childMap = new HashMap<>();
+
+            for(int i=0;i<permissions.size();i++){
+                Permission permission = permissions.get(i);
+                if(permission.getParentId()==null){
+                    PermissionBean permissionBean = new PermissionBean();
+                    permissionBean.setPermission(permission);
+                    permissionBeenList.add(permissionBean);
+                }else{
+                    List<Permission> tmp = new ArrayList<>();
+                    tmp.add(permission);
+                    childMap.put(permission.getParentId() ,tmp);
+                }
+            }
+            for(int i=0;i<permissionBeenList.size();i++){
+                PermissionBean permissionBean = permissionBeenList.get(i);
+                permissionBean.setPermissions(childMap.get(permissionBean.getPermission().getId()));
+            }
+
+            setColumn(permissionBeenList,childMap);
+            if(platformEnum.getType() == PlatformEnum.CMS.getType()) {
+
+            }
+        }
+
+        /*List<Permission> permissions = userService.findPermissionForPositionIds(userId, platformEnum.getType());*/
+        /*if(StringUtils.isNotEmpty(permissions)) {
             Map<String, Double> map = new HashMap<>();
             //List<Permission> permissionList = new ArrayList<>();
             List<PermissionBean> permissionBeenList = new ArrayList<>();
@@ -76,12 +113,6 @@ public class PermissionBiz extends BaseBiz {
                 PermissionBean permissionBean = permissionBeenList.get(i);
                 permissionBean.setPermissions(childMap.get(permissionBean.getPermission().getId()));
             }
-//            Iterator<Map.Entry<Long,List<Permission>>> it = childMap.entrySet().iterator();
-//            Map<String,String> redisMap = new HashMap<>();
-//            while(it.hasNext()){
-//                Map.Entry<Long,List<Permission>> entry = it.next();
-//                redisMap.put(RedisKeyContants.getButtonParentPermission(userId ,entry.getKey()), JSONArray.toJSONString(entry.getValue()));
-//            }
             if(platformEnum.getType() == PlatformEnum.CMS.getType()) {
                 delPermissionRedis(userId);
                 //验证用户权限
@@ -97,6 +128,6 @@ public class PermissionBiz extends BaseBiz {
                 jedisClient.set(RedisKeyContants.getAppMenuPermission(userId), JSONArray.toJSONString(permissionBeenList), StaticContants.DEFAULT_SECONDS);
                 //jedisClient.set(redisMap,StaticContants.DEFAULT_SECONDS); //根据父权限获取子权限的列表
             }
-        }
+        }*/
     }
 }

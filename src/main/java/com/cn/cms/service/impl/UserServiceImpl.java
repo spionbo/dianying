@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Resource
-    private PermissionDao permissionDao;
+    PermissionDao permissionDao;
 
     public User findUserName(String userName){
         return userDao.findUserName(userName);
     }
 
-    public List<Permission> findPermissionForPositionIds(String user,Integer platform){
-        return permissionDao.findPermissionForPositionIds(user,platform);
+    public List<Permission> findPermissionColumn(String user,Integer platform){
+        return permissionDao.findPermissionColumn(user,platform);
     }
 }

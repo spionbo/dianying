@@ -20,7 +20,8 @@ public interface UserService {
     /**
      * 根据positionId列表获取权限
      * @param userId
+     * @paream platform
      * @return
      */
-    List<Permission> findPermissionForPositionIds(String userId, Integer platform);
+    List<Permission> findPermissionColumn(String userId, Integer platform);
 }

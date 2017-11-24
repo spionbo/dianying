@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.cms.dao.PermissionDao">
+    <resultMap id="base" type="com.cn.cms.po.Base">
+        <id column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_tag" property="delTag" />
+        <result column="last_modify_user_id" property="lastModifyUserId" />
+        <result column="create_user_id" property="createUserId" />
+        <result column="last_modify_user_name" property="lastModifyUserName" />
+    </resultMap>
+    <resultMap type="com.cn.cms.po.Permission" id="permission" extends="base" >
+        <result column="name" property="name" />
+        <result column="permission_id" property="permissionId" />
+        <result column="parent_id" property="parentId" />
+        <result column="url" property="url" />
+        <result column="sort" property="sort" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <sql id="all_permission">
+        id,create_time,
+        update_time,last_modify_user_id,create_user_id,last_modify_user_name,create_time_str,update_time_str,del_tag
+    </sql>
+    <sql id="all_permission_find">
+        name,permission_id,parent_id,url,description,sort
+    </sql>
+    <sql id="delTag"> where del_tag = 1 </sql>
+
+    <select id="findPermissionColumn" resultMap="permission">
+        select <include refid="all_permission_find"/> <include refid="all_permission" /> from permission <include refid="delTag"/>
+        and permission_id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
+    </select>
+
+</mapper>

@@ -18,7 +18,7 @@ import java.util.Date;
 public class Base implements Serializable {
 
     /*主键ID*/
-    protected Long id;
+    protected Integer id;
 
     /**
      * 创建时间 系统会自动默认当前时间为创建时间
