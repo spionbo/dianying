@@ -31,7 +31,7 @@
     <sql id="delTag"> where del_tag = 1 </sql>
 
     <select id="findPermissionColumn" resultMap="permission">
-        select <include refid="all_permission_find"/> <include refid="all_permission" /> from permission <include refid="delTag"/>
+        select <include refid="all_permission_find"/> , <include refid="all_permission" /> from permission <include refid="delTag"/>
         and permission_id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
     </select>
 

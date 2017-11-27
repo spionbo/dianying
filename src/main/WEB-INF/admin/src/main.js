@@ -16,6 +16,14 @@ new Vue({
 			isLogin : false
 		}
 	},
+	created(){
+
+		T.ajax({
+			url:'/webapi/user/isLogin'
+		}).then(data=>{
+			console.log(data);
+		});
+	},
 	mounted(){
 		
 	},

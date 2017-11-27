@@ -9,10 +9,12 @@ import com.cn.cms.po.User;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.CookieUtil;
 import com.cn.cms.utils.EncryptUtil;
+import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.result.ApiResponse;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
@@ -82,5 +84,44 @@ public class UserBiz extends BaseBiz{
      */
     public void refreshUserCache(User user){
         this.jedisClient.set(RedisKeyContants.getUserKey(user.getUserId()), JSONObject.toJSONString(user));
+    }
+
+    /**
+     * 清理Cookie信息
+     * @param request
+     * @param response
+     */
+    public void clearCookie(HttpServletRequest request, HttpServletResponse response){
+        String userId = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_ID);
+        CookieUtil.delCookieVal(request,response,StaticContants.COOKIE_USER_ID);
+        CookieUtil.delCookieVal(request,response,StaticContants.COOKIE_USER_TOKEN);
+        CookieUtil.delCookieVal(request,response,StaticContants.COOKIE_USER_KEY);
+        CookieUtil.delCookieVal(request,response,StaticContants.COOKIE_TIME);
+        CookieUtil.delCookieVal(request,response,StaticContants.COOKIE_REAL_NAME);
+        jedisClient.del(RedisKeyContants.getToken(userId));
+        permissionBiz.delPermissionRedis(userId);
+
+    }
+
+    /**
+     * 检测用户登录状态
+     * @param request
+     * @return
+     */
+    public boolean checkUserToken(HttpServletRequest request,HttpServletResponse response){
+        String userId = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_ID);
+        String userKey = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_KEY);
+        String time = CookieUtil.getCookieVal(request,StaticContants.COOKIE_TIME);
+        String token = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_TOKEN);
+        if(StringUtils.isNotBlank(token) && StringUtils.isNotBlank(time) && StringUtils.isNotBlank(userId) && StringUtils.isNotBlank(userKey)){
+            String currentToken = EncryptUtil.token(userId, userKey, time);
+            String redisToken= jedisClient.get(RedisKeyContants.getToken(userId));
+            if(StringUtils.isNotBlank(currentToken) && StringUtils.isNotBlank(redisToken) &&
+                    currentToken.equals(redisToken) && currentToken.equals(token)){
+                return true;
+            }
+        }
+        clearCookie(request,response);
+        return false;
     }
 }

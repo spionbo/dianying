@@ -60,6 +60,12 @@
                             userName : md5(self.userName),
                             pwd : md5(md5(self.pwd))
                         }
+                    }).then(data=>{
+                        if(data.code==0){
+                            
+                        }else{
+                            
+                        }
                     });
                 });
                 
