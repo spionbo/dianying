@@ -29,7 +29,7 @@ module.exports = {
         contentBase: path.join(__dirname, "src"),
         compress: true,
         progress: true,
-        port: 7000,
+        port: 7001,
         proxy: {
             '\*': {
                 target: 'http://192.168.0.108:8080',

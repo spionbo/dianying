@@ -46,10 +46,10 @@ body{
         &::-webkit-input-placeholder{
             color:rgba(255,255,255,.2)
         }
-        &:hover{
-            background:rgba(255,255,255,.5);
+        &:focus{
+            background:rgba(255,255,255,1);
             &::-webkit-input-placeholder{
-                color:rgba(255,255,255,.5);
+                color:rgba(0,0,0,.5);
             }
         }
     }

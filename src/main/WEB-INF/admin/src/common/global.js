@@ -89,6 +89,9 @@ let T = {
 		}
 		return text;
 	},
+	formatTime( str ){
+		return str.substr(0,10);
+	},
 	toNumber : function( num ){ //把所有非数字的删除
 		let val = String(num).match(/[\d]*\.{0,1}\d{0,2}/);
 		if(!val){
@@ -128,7 +131,7 @@ let T = {
 		if(obj.type.toLowerCase()=="get"){
 			return new Promise((resolve, reject) =>{
 				$.ajax({
-					url : obj.url ,
+					url : '/webapi'+obj.url ,
 					type : obj.type,
 	                dataType : 'json',
 	                contentType:'application/json;charset=UTF-8',
@@ -137,6 +140,8 @@ let T = {
 					success : function(data){
 						if(data.code==0){ //更新登录信息
 							resolve(data);
+						}else if(data.code==-110){
+							Main.setLoginStatus(false);
 						}else{
 							if(obj.callback){
 								return resolve(data);

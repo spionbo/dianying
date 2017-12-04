@@ -40,4 +40,9 @@ public class ApiResponse {
         ApiResponse apiResponse = new ApiResponse(ErrorCodeEnum.ERROR_CODE_DEFAULT.getType(), message, null);
         return JSONObject.toJSONString(apiResponse, SerializerFeature.WriteMapNullValue);
     }
+
+    public static String returnFail(Integer code, String message){
+        ApiResponse apiResponse = new ApiResponse(code, message, null);
+        return JSONObject.toJSONString(apiResponse, SerializerFeature.WriteMapNullValue);
+    }
 }

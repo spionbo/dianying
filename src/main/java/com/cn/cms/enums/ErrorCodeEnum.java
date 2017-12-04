@@ -24,4 +24,15 @@ public enum ErrorCodeEnum {
         this.name = name;
         this.message = message;
     }
+
+    public static ErrorCodeEnum get(int type){
+        ErrorCodeEnum[] a = ErrorCodeEnum.values();
+        for(int i=0; i<a.length; i++){
+            ErrorCodeEnum b = a[i];
+            if(b.getType() == type){
+                return b;
+            }
+        }
+        return ErrorCodeEnum.ERROR_CODE_DEFAULT;
+    }
 }

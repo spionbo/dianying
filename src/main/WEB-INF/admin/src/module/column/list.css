@@ -1,0 +1,15 @@
+.column-list{
+	table{
+		width:100%;
+		th{
+		}
+		td,th{
+			line-height:18px;
+			padding:4px;
+			border-bottom:1px solid #ddd;
+		}
+		tr:hover{
+			td{background:#f8f8f8;}
+		}
+	}
+}

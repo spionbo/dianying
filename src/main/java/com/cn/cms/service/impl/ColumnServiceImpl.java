@@ -1,9 +1,12 @@
 package com.cn.cms.service.impl;
 
 import com.cn.cms.dao.ColumnDao;
+import com.cn.cms.dao.PermissionDao;
 import com.cn.cms.po.Column;
+import com.cn.cms.po.Permission;
 import com.cn.cms.po.SecondColumn;
 import com.cn.cms.service.ColumnService;
+import com.cn.cms.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -49,6 +52,9 @@ public class ColumnServiceImpl implements ColumnService {
     @Autowired
     private ColumnDao columnDao;
 
+    @Autowired
+    private PermissionDao permissionDao;
+
     @Transactional(readOnly=true)
     public List<Column> getColumn (){
         return columnDao.selectColumn();
@@ -58,4 +64,12 @@ public class ColumnServiceImpl implements ColumnService {
     public List<SecondColumn> getSecondColumn(Integer id){
         return columnDao.selectSecondColumnById(id);
     }
+
+    public Integer queryColumnCount(String userId, Integer publish, Integer delTag){
+        return permissionDao.queryColumnCount(userId,publish,delTag);
+    }
+
+    public List<Permission> queryColumnList(String userId, Integer publish, Integer delTag, Page page){
+        return permissionDao.queryColumnList(userId,publish,delTag,page);
+    };
 }

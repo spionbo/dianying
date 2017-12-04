@@ -66,20 +66,20 @@ public class Base implements Serializable {
      */
     protected String updateTimeStr;
 
-    public String getCreateTimeStr(){
-        if(createTime!=null){
+    private String getTimeStr(Date str,String str1){
+        if(str!=null){
             SimpleDateFormat sdf = new SimpleDateFormat(StaticContants.YYYY_MM_DD_HH_MM_SS);
-            return sdf.format(createTime);
+            return sdf.format(str);
         }
-        return createTimeStr;
+        return str1;
+    }
+
+    public String getCreateTimeStr(){
+        return getTimeStr(createTime,createTimeStr);
     }
 
     public String getUpdateTimeStr(){
-        if(updateTime!=null){
-            SimpleDateFormat sdf = new SimpleDateFormat(StaticContants.YYYY_MM_DD_HH_MM_SS);
-            return sdf.format(updateTime);
-        }
-        return updateTimeStr;
+        return getTimeStr(updateTime,updateTimeStr);
     }
 
 }

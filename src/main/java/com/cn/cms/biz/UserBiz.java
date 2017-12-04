@@ -1,6 +1,7 @@
 package com.cn.cms.biz;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.PlatformEnum;
@@ -123,5 +124,45 @@ public class UserBiz extends BaseBiz{
         }
         clearCookie(request,response);
         return false;
+    }
+
+    /**
+     * 检测用户登录状态
+     * @param request
+     * @return
+     */
+    public boolean checkUserToken(HttpServletRequest request){
+        String userId = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_ID);
+        String userKey = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_KEY);
+        String time = CookieUtil.getCookieVal(request,StaticContants.COOKIE_TIME);
+        String token = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_TOKEN);
+        if(StringUtils.isNotBlank(token) && StringUtils.isNotBlank(time) && StringUtils.isNotBlank(userId) && StringUtils.isNotBlank(userKey)){
+            String currentToken = EncryptUtil.token(userId, userKey, time);
+            String redisToken= jedisClient.get(RedisKeyContants.getToken(userId));
+            if(StringUtils.isNotBlank(currentToken) && StringUtils.isNotBlank(redisToken) &&
+                    currentToken.equals(redisToken) && currentToken.equals(token)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 根据UserId获取用户基础信息
+     * @param userId
+     * @return
+     */
+    public UserBean getUserBean(String userId){
+        User user = this.getUserCache(userId);
+        UserBean userBean = new UserBean(user);
+        return userBean;
+    }
+
+    public User getUserCache(String userId){
+        String str = jedisClient.get(RedisKeyContants.getUserKey(userId));
+        if(StringUtils.isNotBlank(str)){
+            return JSONObject.parseObject(str, User.class);
+        }
+        return null;
     }
 }

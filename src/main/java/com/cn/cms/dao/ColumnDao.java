@@ -20,4 +20,6 @@ public interface ColumnDao {
     @Select("select id,name from second_column where column_id=#{id}")
     List<SecondColumn> selectSecondColumnById(@Param("id") Integer id);
 
+
+
 }

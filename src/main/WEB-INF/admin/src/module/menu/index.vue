@@ -7,18 +7,15 @@
             <i class="icon" @click="setMenu"></i>
         </div>
         <div class="selectMenu">
-            <select>
-                <option>后台管理</option>
-                <option>栏目管理</option>
-                <option>会员管理</option>
-            </select>
-            <select>
-                <option v-for="item in column" :value="item.id">{{item.name}}</option>
+            <select v-model="selected">
+                <option v-for="item in permission" :key="item.id"
+                    v-bind:value="item.id"
+                >{{item.name}}</option>
             </select>
         </div>
         <ul class="page-menu">
             <li class="home">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" >
                     <i class="fa fa-home"></i>
                     <span class="title">首页</span>
                     <span class="jian">
@@ -26,24 +23,24 @@
                     </span>
                 </a>
             </li>
-            <li v-for="item in menu">
-                <a href="javascript:void(0)" @click="goURL(item)">
+            <li v-for="item in permissions">
+                <a href="javascript:void(0)" @click="goURL(item)" :data-url="item.url">
                     <i class="fa fa-file-text"></i>
                     <span class="title">{{item.name}}</span>
                     <span class="arrow">
                         <i class="fa fa-angle-right"></i>
                     </span>
                 </a>
-                <ul v-if="item.subMenu" class="sub-menu" >
-                    <li v-for="obj in item.subMenu">
+                <ul v-if="item.PermissionBean" class="sub-menu" >
+                    <li v-for="obj in item.PermissionBean">
                         <a href="javascript:void(0)" @click="goURL(obj)">
                             <span class="title">{{obj.name}}</span>
                             <span class="arrow">
                                 <i class="fa fa-angle-right"></i>
                             </span>
                         </a>
-                        <ul v-if="obj.subMenu" class="sub-menu" >
-                            <li v-for="item in obj.subMenu">
+                        <ul v-if="obj.PermissionBean" class="sub-menu" >
+                            <li v-for="item in obj.PermissionBean">
                                 <a href="javascript:void(0)" @click="goURL(item)">
                                     <span class="title">{{item.name}}</span>
                                     <span class="arrow">
@@ -66,35 +63,47 @@
 		data() {
 			return {
 				show : true, //是否展示栏目
-                backstage : [], //后台管理
-                column : [],
-                menu : [],
+				data : null,
+                permission : [], //后台管理
+                permissions : [], //后台管理
+				menu : [],//栏目管理
+				selected : null
             }
 		},
+        watch : {
+            selected(val){
+            	const self = this;
+	            this.updateMenu();
+            	self.permission.map(obj=>{
+            		if(obj.id == val){
+            			if(obj.url){
+				            router.push(obj.url+'/list');
+				            self.setMenuCurrent(obj.url+'/list');
+			            }
+		            }
+	            });
+                this.data.map(obj=>{
+					if(obj.permission.id === val){
+						self.permissions = obj.permissions;
+					}
+                });
+
+            }
+        },
 		mounted() {
             const self = this;
             T.ajax({
-                url : '/web/column/menu',
+                url : '/permission/currentMenuPermission',
                 type : 'get'
             }).then(data=>{
-                self.column = data.data;
-                return T.ajax({
-                    url  : '/web/column/second_column',
-                    data : {
-                        id : self.column[0].id
-                    }
-                })
-            }).then(data=>{
+            	self.data = data.data;
                 data.data.map(obj=>{
-                    self.menu.push({
-                        name:obj.name,
-                        id:obj.id
-                   })
+                    self.permission.push(obj.permission);
                 });
-               this.$nextTick(this.setTab);
+                self.selected = data.data[0].permission.id;
+                self.permissions = data.data[0].permissions;
+                this.updateMenu();
             });
-            
-
 
             /*this.menu = [
                 {
@@ -158,9 +167,23 @@
             
 		},
 		methods : {
+			updateMenu(){
+				this.$nextTick(this.setTab);
+			},
+			setMenuCurrent( name ){
+				this.$nextTick(function(){
+					let taga = $(".page-menu>li>a");
+					taga.each(function(i,ele){
+						let url = $(this).attr("data-url");
+						if(name == url){
+							$(this).click();
+						}
+					});
+				});
+
+			},
 			setMenu(){
                 this.show = !this.show;
-
                 //让收缩的菜单变成浮动
                 let li = $('.page-menu > li');
                 if(!this.show){
@@ -174,8 +197,8 @@
                 }
 
             },
-			goURL(obj){
-
+			goURL( item ){
+				router.push(item.url);
             },
             setMenuHeight(menu){
 	            const self = this;
@@ -208,7 +231,7 @@
 	                $(this).click(function(){
                         if($(this).attr('class')=='home') return;
 	                    if(self.show) return;
-                        li.removeClass('hover')
+                        li.removeClass('hover');
                         $(this).addClass('hover');
                     });
                 	//以下为获取高度

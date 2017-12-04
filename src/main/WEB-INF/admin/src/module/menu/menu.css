@@ -82,7 +82,10 @@
 		}
 	}
 	.page-menu>li.open > a{
-		background: #303030;
+		background:#2181e6;
+		i{
+			color:#fff;
+		}
 	}
     /*当菜单宽度缩小时*/
 	&.cur{

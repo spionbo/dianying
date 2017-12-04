@@ -5,7 +5,7 @@ import './router';
 
 import headbar from './module/head';
 import menubar from './module/menu';
-new Vue({
+window.Main = new Vue({
 	router,
 	components : {
 		headbar,
@@ -13,22 +13,28 @@ new Vue({
 	},
 	data(){
 		return {
-			isLogin : false
+			isLogin : true
 		}
 	},
 	created(){
 
-		T.ajax({
-			url:'/webapi/user/isLogin'
-		}).then(data=>{
-			console.log(data);
-		});
+	},
+	watch : {
+		isLogin( val ){
+			if(val){
+				router.push('main');
+			}else{
+				router.push('login');
+			}
+		}
 	},
 	mounted(){
 		
 	},
 	methods : {
-
+		setLoginStatus(boolean){
+			this.isLogin = boolean;
+		}
 	},
 	template: `
 	    <div id="app">
@@ -36,7 +42,11 @@ new Vue({
 		    	<headbar></headbar>
 		    	<article id="Content">
 		    		<menubar></menubar>
-		        	<router-view class="view"></router-view>
+		    		<div class="view">
+			            <transition name="bounce">
+			                <router-view></router-view>
+			            </transition>
+		        	</div>
 				</article>
 			</div>
 			<router-view v-else class="view" name="login"></router-view>
