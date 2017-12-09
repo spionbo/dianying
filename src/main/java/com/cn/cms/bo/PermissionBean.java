@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class PermissionBean {
 
-    private List<Permission> permissions;
-
     private Permission permission;
+
+    private List<PermissionBean> permissionBeans;
 }

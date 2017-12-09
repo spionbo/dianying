@@ -2,6 +2,7 @@ package com.cn.cms.dao;
 
 import com.cn.cms.po.Column;
 import com.cn.cms.po.SecondColumn;
+import com.cn.cms.utils.Page;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,14 +13,11 @@ import java.util.List;
  */
 public interface ColumnDao {
 
-    /*一级栏目*/
-    @Select("SELECT id,name FROM `column`")
-    List<Column> selectColumn();
+    Integer queryColumnCount(@Param(value = "userId") String userId, @Param(value = "publish") Integer publish, @Param(value = "delTag") Integer delTag);
 
-    /*二级栏目*/
-    @Select("select id,name from second_column where column_id=#{id}")
-    List<SecondColumn> selectSecondColumnById(@Param("id") Integer id);
-
+    List<Column> queryColumnList(@Param(value="userId") String userId,
+                                 @Param(value="publish") Integer publish,
+                                 @Param(value = "delTag") Integer delTag);
 
 
 }

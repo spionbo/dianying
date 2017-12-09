@@ -1,15 +1,65 @@
 .column-list{
-	table{
-		width:100%;
-		th{
+	.flex{flex:1}
+	.table{
+		.tr{
+			display:flex;
+			flex-direction:row;
+			line-height:22px;
+			&:not(:last-child){
+				border-bottom:1px solid #ddd;
+			}
+			background:#fffeea;
+			&.no-border{
+				border-bottom:none;
+			}
 		}
-		td,th{
-			line-height:18px;
+		.th{
+			height:25px;
+			line-height:25px;
+			background:#f8f8f8;
+		}
+		.td,.th{
 			padding:4px;
-			border-bottom:1px solid #ddd;
 		}
-		tr:hover{
-			td{background:#f8f8f8;}
+		.td{
+			line-height:30px;
+		}
+		.off{
+			display:inline-block;
+			width:12px;
+			height:18px;
+			line-height:18px;
+			padding:0 5px;
+			border-radius:5px;
+			background:#73b9f3;
+			color:#fff;
+			text-align:center;
+			cursor:pointer;
+		}
+	}
+	.list{
+		border:1px solid #ddd;
+		margin-top:10px;
+	}
+	.child{
+		background:#fff;
+		display:none;
+		margin:10px;
+		box-sizing:border-box;
+		transition-duration:.3s;
+		border-top:1px solid #ddd;
+		&.hover{
+			display:block;
+		}
+
+		.tr{
+			display:flex;
+			flex-direction:row;
+			border:1px solid #ddd;
+			border-top:none;
+			&:not(:last-child){
+				border-bottom:1px solid #ddd;
+			}
 		}
 	}
 }

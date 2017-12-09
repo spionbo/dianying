@@ -22,11 +22,18 @@ public class UserServiceImpl implements UserService {
     @Resource
     PermissionDao permissionDao;
 
+    @Override
     public User findUserName(String userName){
         return userDao.findUserName(userName);
     }
 
+    @Override
     public List<Permission> findPermissionColumn(String user,Integer platform){
         return permissionDao.findPermissionColumn(user,platform);
+    }
+
+    @Override
+    public void savePermissionColumn(Permission permission){
+        permissionDao.savePermissionColumn(permission);
     }
 }

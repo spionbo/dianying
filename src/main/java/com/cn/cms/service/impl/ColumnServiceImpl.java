@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -49,27 +50,22 @@ import java.util.List;
 @Service("columnService")
 public class ColumnServiceImpl implements ColumnService {
 
-    @Autowired
+    @Resource
     private ColumnDao columnDao;
 
-    @Autowired
-    private PermissionDao permissionDao;
-
-    @Transactional(readOnly=true)
-    public List<Column> getColumn (){
-        return columnDao.selectColumn();
-    }
-
-    @Transactional(readOnly = true)
-    public List<SecondColumn> getSecondColumn(Integer id){
-        return columnDao.selectSecondColumnById(id);
-    }
-
     public Integer queryColumnCount(String userId, Integer publish, Integer delTag){
-        return permissionDao.queryColumnCount(userId,publish,delTag);
+        return columnDao.queryColumnCount(userId,publish,delTag);
     }
 
-    public List<Permission> queryColumnList(String userId, Integer publish, Integer delTag, Page page){
-        return permissionDao.queryColumnList(userId,publish,delTag,page);
+    public List<Column> queryColumnList(String userId, Integer publish, Integer delTag){
+        return columnDao.queryColumnList(userId,publish,delTag);
     };
+
+    /*public Integer queryColumnCount(String userId, Integer publish, Integer delTag){
+        return permissionDao.queryColumnCount(userId,publish,delTag);
+    }*/
+
+    /*public List<Permission> queryColumnList(String userId, Integer publish, Integer delTag, Page page){
+        return permissionDao.queryColumnList(userId,publish,delTag,page);
+    };*/
 }

@@ -7,78 +7,84 @@
 			<div class="content">
 				<ul>
 					<li>
-						<div class="label">栏目名称</div>
-						<div class="txt">
-							<div class="edit"><input type="text" placeholder="栏目名称"></div>
-							<div class="cnt">
-								不超过5个中文。
-							</div>
-						</div>
+						<div class="label">栏目名称<em>*</em></div>
+						<form-input
+								type="text"
+								dataType="chinese"
+								:check="true"
+								maxlength="5"
+								placeholder="请输入栏目名称">
+						</form-input>
 					</li>
 					<li>
-						<div class="label">请选择栏目分类</div>
-						<div class="txt">
-							<div class="select">
-								<select>
-									<option>请选择分类</option>
-									<option>视频</option>
-									<option>小说</option>
-								</select>
-							</div>
-							<div class="cnt">
-								不选择的话，则该栏目为一级栏目
-							</div>
-						</div>
+						<div class="label">请选择栏目<em>*</em></div>
+						<m-select
+								type="text"
+								:data="list"
+								columnName="name"
+								columnObjName="permission"
+								dataType="path"
+								:check="true"
+								placeholder="请选择分类">
+						</m-select>
 					</li>
 					<li>
-						<div class="label">路经</div>
-						<div class="txt">
-							<div class="edit"><input type="text" placeholder="路经名称"></div>
-							<div class="cnt">
-								例："/name"
-							</div>
-						</div>
+						<div class="label">路经<em>*</em></div>
+						<form-input
+								type="text"
+								dataType="path"
+								:check="true"
+								maxlength="11"
+								placeholder="请输入路经名称">
+						</form-input>
 					</li>
 					<li>
 						<div class="label">描述</div>
 						<div class="txt">
-							<div class="edit"><textarea class="textarea" style="width:500px;"></textarea></div>
-							<div class="cnt">
-								其他内容
+							<div class="edit">
+								<textarea class="textarea" style="width:500px;" maxlength="200"></textarea>
 							</div>
-						</div>
-					</li>
-
-					<li>
-						<div class="label">标题</div>
-						<div class="txt">
-							<div class="edit"><input type="radio"></div>
-							<div class="cnt">
-								其他内容
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="label">标题</div>
-						<div class="txt">
-							<div class="edit"><input type="checkbox"></div>
 							<div class="cnt">
 								其他内容
 							</div>
 						</div>
 					</li>
 				</ul>
+				<div class="submit">
+					<div class="btn" @click="submit">确定</div>
+					<div class="btn red">清空</div>
+				</div>
 			</div>
 		</div>
 	</article>
 </template>
 <script>
+	import formInput from "../components/formInput";
+	import mSelect from "../components/select";
 	export default {
+		components: {
+			formInput,
+			mSelect
+		},
 		data() {
-			return {}
+			return {
+				list : null,
+			}
 		},
 		mounted() {
-
+			const self = this;
+			T.ajax({
+				url:'/permission/currentMenuPermission',
+			}).then(data=>{
+				self.list = data.data;
+			});
+		},
+		methods:{
+			submit(){
+				this.$children.map(obj=>{
+					obj.verification && obj.verification();
+				});
+			}
 		}
 	}
 </script>

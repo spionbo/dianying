@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     @import 'base.css';
 </style>
 <template>
@@ -37,7 +37,6 @@
     </article>
 </template>
 <script>
-    import ver from "../../common/verifcation.js";
     export default {
         data() {
             return {
@@ -59,9 +58,29 @@
             clearError(){
                 this.error = false;
             },
+	        vuserName(val){//用户名/，5到16位（字母，数字，下划线，减号）
+		        let reg = /^[a-zA-Z0-9_-]{5,16}$/;
+		        if (val == '') {
+			        return "用户名不能为空";
+		        } else if (reg.test(val) == false) { //手机号校验提示
+			        return "5-16位(字母,数字,下划线,减号)";
+		        }
+		        return true;
+	        },
+	        vpwd(val){
+		        let reg = /^(\w){6,20}$/;
+		        if(val==''){
+			        return '请输入密码';
+		        }else if(val.length<6){
+			        return '注册密码不能少于6位';
+		        }else if(reg.test(val)==false){
+			        return '注册密码为6-20位数字、字母或两者组合';
+		        }
+		        return true;
+	        },
             verification(){
-                let user = ver.userName(this.userName),
-                    pwd = ver.pwd(this.pwd);
+                let user = this.vuserName(this.userName),
+                    pwd = this.vpwd(this.pwd);
 
                 if(user!==true){
                     return this.errorMsgVal(user);

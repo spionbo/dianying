@@ -32,7 +32,7 @@ public class User extends Base {
     /**
      * 用户ID 18位串
      */
-    private String userId;
+   private String userId;
 
     /**
      * IDFA。如果IDFA为空，则使用MAC地址。

@@ -24,4 +24,9 @@ public interface UserService {
      * @return
      */
     List<Permission> findPermissionColumn(String userId, Integer platform);
+
+    /**
+     * 创建后台栏目
+     */
+    void savePermissionColumn(Permission permission);
 }

@@ -10,12 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Permission extends Base {
-
-    /**
-     * 栏目id
-     */
-    private Integer permissionId;
-
     /**
      * 栏目名称
      */

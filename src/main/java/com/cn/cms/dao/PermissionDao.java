@@ -18,4 +18,6 @@ public interface PermissionDao {
                                      @Param(value="publish") Integer publish,
                                      @Param(value = "delTag") Integer delTag,
                                      @Param(value = "page")Page page);
+
+    void savePermissionColumn(@Param(value = "p1") Permission permission);
 }

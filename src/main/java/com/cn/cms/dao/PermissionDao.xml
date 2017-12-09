@@ -14,7 +14,6 @@
     </resultMap>
     <resultMap type="com.cn.cms.po.Permission" id="permission" extends="base" >
         <result column="name" property="name" />
-        <result column="permission_id" property="permissionId" />
         <result column="parent_id" property="parentId" />
         <result column="url" property="url" />
         <result column="sort" property="sort" />
@@ -26,13 +25,19 @@
         update_time,last_modify_user_id,create_user_id,last_modify_user_name,create_time_str,update_time_str,del_tag
     </sql>
     <sql id="all_permission_find">
-        name,permission_id,parent_id,url,description,sort
+        name,parent_id,url,description,sort
     </sql>
     <sql id="delTag"> where del_tag = 1 </sql>
 
+    <sql id="sql_column">
+        id,create_time,update_time,last_modify_user_id,create_user_id,
+        last_modify_user_name,create_time_str,update_time_str,del_tag,
+        name,parent_id,url,description,sort
+    </sql>
+
     <select id="findPermissionColumn" resultMap="permission">
         select <include refid="all_permission_find"/> , <include refid="all_permission" /> from permission <include refid="delTag"/>
-        and permission_id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
+        and id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
     </select>
 
     <select id="queryColumnCount" resultType="java.lang.Integer">
@@ -59,8 +64,12 @@
             </otherwise>
         </choose>
         <if test="userId!=null">
-            and permission_id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
+            and id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
         </if>
     </select>
+
+    <insert id="saveNewsColumn" useGeneratedKeys="true" keyProperty="p1.id">
+        /*insert into permission*/
+    </insert>
 
 </mapper>

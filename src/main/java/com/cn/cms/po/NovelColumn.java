@@ -7,19 +7,18 @@ import lombok.Setter;
 /**
  * Created by Administrator on 2017/12/8 0008.
  */
-@Setter
 @Getter
-public class Column extends Base {
-
+@Setter
+public class NovelColumn extends Base {
     /**
      * 栏目名称
      */
     private String columnName;
 
     /**
-     * 栏目ID
+     * 频道ID
      */
-    private Integer columnId;
+    private Long channelId;
 
     /**
      * 父类id
@@ -31,6 +30,14 @@ public class Column extends Base {
      */
     private String path;
 
+    /**
+     * 描述
+     */
+    private String description;
 
+    /**
+     * 额外赋值
+     */
+    private ColumnPublishInfo columnPublishInfo;
 
 }

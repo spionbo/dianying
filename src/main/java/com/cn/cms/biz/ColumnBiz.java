@@ -1,7 +1,9 @@
 package com.cn.cms.biz;
 
+import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.bo.UserBean;
+import com.cn.cms.po.Column;
 import com.cn.cms.po.Permission;
 import com.cn.cms.service.ColumnService;
 import com.cn.cms.utils.Page;
@@ -9,9 +11,8 @@ import com.cn.cms.utils.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.security.Permissions;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/12/4 0004.
@@ -22,18 +23,60 @@ public class ColumnBiz extends BaseBiz {
     @Resource
     ColumnService columnService;
 
-    @Resource
-    PermissionBiz permissionBiz;
-
-    public List<PermissionBean> listColumn(Page page){
-        Integer count = columnService.queryColumnCount(null,null,null);
-        page.setCount(count);
-        if(page.isQuery()) {
-            List<Permission> permissions = columnService.queryColumnList(null, null, null, page);
-            return permissionBiz.getPermission(permissions);
+    public List<ColumnBean> listColumn(){
+        List<Column> columns = columnService.queryColumnList(null, null, null);
+        if(StringUtils.isNotEmpty(columns)){
+            return getColumn(columns);
         }
         return null;
     }
+
+    private List<ColumnBean> getColumn(List<Column> columns){
+
+        List<ColumnBean> columnBeans = new ArrayList<>();
+        List<Column> catchList = new ArrayList<>();
+
+        for(int i = 0; i < columns.size(); i++) {
+            Column column = columns.get(i);
+            if (column.getParentId() == null) {
+                ColumnBean columnBean = new ColumnBean();
+                columnBean.setColumn(column);
+                columnBeans.add(columnBean);
+            } else {
+                catchList.add(column);
+            }
+        }
+
+        List<ColumnBean> result = setColumn(columnBeans, catchList);
+
+        return result;
+    }
+
+    private List<ColumnBean> setColumn(List<ColumnBean> columnBeans,List<Column> catchList){
+
+        for(int i=0;i<columnBeans.size();i++){
+            ColumnBean parent = columnBeans.get(i);
+            Column parentColumn = parent.getColumn();
+
+            List<Column> childList = new ArrayList<>();
+            List<ColumnBean> list = new ArrayList<>();
+
+            for(int j=0;j<catchList.size();j++){
+                Column child = catchList.get(j);
+                if(child.getParentId() == parentColumn.getId()){
+                    childList.add(child);
+                }
+            }
+            for(int k=0;k<childList.size();k++){
+                ColumnBean columnBean = new ColumnBean();
+                columnBean.setColumn(childList.get(k));
+                list.add(columnBean);
+            }
+            parent.setColumnBeans(list);
+        }
+        return columnBeans;
+    }
+
 
     public void dataInit( List<PermissionBean> list ){
         if(StringUtils.isNotEmpty(list)) {

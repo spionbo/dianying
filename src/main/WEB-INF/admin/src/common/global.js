@@ -1,5 +1,3 @@
-import './cookie.js';
-/*import requirePop from '../pop/requirePop.js';*/
 Date.prototype.Format = function (fmt) { //author: meizz
 	let o = {
 		"M+": this.getMonth() + 1, //月份
@@ -125,6 +123,11 @@ let T = {
 	,update : function(){
 		T.width = T.body.width();
 		T.height = T.body.height();
+	},
+	getQueryString : function( name ){
+		var reg = new RegExp("(^|&|/?)" + name + "=([^&]*)(&|$)", "i");
+		var r = encodeURI(window.location.search||window.location.href||window.location.hash).substr(1).match(reg);
+		if (r != null) return unescape(r[2]); return null;
 	},
 	ajax : function( obj ){
 		obj.type = obj.type || 'GET';

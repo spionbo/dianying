@@ -45,13 +45,13 @@ module.exports = {
         ]*/
     },
     externals: {
-        '$': 'window.$',
+	    '$': 'window.jquery',
     },
     output: {
         path: path.join(__dirname, build ? output+'/build' : "/web"),
         //publicPath: build ? http : local,
         filename: "[name].js?name=[hash]",
-        chunkFilename: '[chunkhash:8]_chunk.js?name=[hash]',
+        chunkFilename: '[chunkhash:8]_chunk.js?name=[hash]'
     },
     module: {
         rules: [
@@ -110,7 +110,7 @@ module.exports = {
             path.join(__dirname, "/"), "node_modules"
         ],
         alias: {
-            Zepto : 'src/plug/zepto.min',
+	        jquery : 'src/plug/jquery-1.10.2.min',
             global: 'src/common/global',
             Vue: 'src/plug/vue.min',
             VueRouter: 'src/plug/vue-router.min',
@@ -135,7 +135,8 @@ module.exports = {
             Vue: 'Vue',
             VueRouter: 'VueRouter',
             Vuex: 'Vuex',
-            Zepto: 'Zepto'
+	        $:"jquery",
+	        jQuery:"jquery",
         }),
         new ExtractTextPlugin({
             filename: './[name].css?[hash]',//[id]

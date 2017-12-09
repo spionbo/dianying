@@ -12,12 +12,8 @@ import java.util.List;
  */
 public interface ColumnService {
 
-    List<Column> getColumn();
-
-    List<SecondColumn> getSecondColumn(Integer id);
-
     Integer queryColumnCount(String userId, Integer publish, Integer delTag);
 
-    List<Permission> queryColumnList(String userId, Integer publish, Integer delTag, Page page);
+    List<Column> queryColumnList(String userId, Integer publish, Integer delTag);
 
 }

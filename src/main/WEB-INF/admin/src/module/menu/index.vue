@@ -8,9 +8,9 @@
         </div>
         <div class="selectMenu">
             <select v-model="selected">
-                <option v-for="item in permission" :key="item.id"
-                    v-bind:value="item.id"
-                >{{item.name}}</option>
+                <option v-for="item in menu" :key="item.permission.id"
+                    v-bind:value="item.permission.id" :data-url="item.permission.url"
+                >{{item.permission.name}}</option>
             </select>
         </div>
         <ul class="page-menu">
@@ -23,26 +23,26 @@
                     </span>
                 </a>
             </li>
-            <li v-for="item in permissions">
-                <a href="javascript:void(0)" @click="goURL(item)" :data-url="item.url">
+            <li v-for="item in permissionBeans">
+                <a href="javascript:void(0)" @click="goURL(item)" :data-url="item.permission.url">
                     <i class="fa fa-file-text"></i>
-                    <span class="title">{{item.name}}</span>
+                    <span class="title">{{item.permission.name}}</span>
                     <span class="arrow">
                         <i class="fa fa-angle-right"></i>
                     </span>
                 </a>
-                <ul v-if="item.PermissionBean" class="sub-menu" >
-                    <li v-for="obj in item.PermissionBean">
+                <ul v-if="item.permissionBeans" class="sub-menu" >
+                    <li v-for="obj in item.permissionBeans">
                         <a href="javascript:void(0)" @click="goURL(obj)">
-                            <span class="title">{{obj.name}}</span>
+                            <span class="title">{{obj.permission.name}}</span>
                             <span class="arrow">
                                 <i class="fa fa-angle-right"></i>
                             </span>
                         </a>
-                        <ul v-if="obj.PermissionBean" class="sub-menu" >
-                            <li v-for="item in obj.PermissionBean">
-                                <a href="javascript:void(0)" @click="goURL(item)">
-                                    <span class="title">{{item.name}}</span>
+                        <ul v-if="obj.permissionBeans" class="sub-menu" >
+                            <li v-for="item in obj.permissionBeans">
+                                <a href="javascript:void(0)" @click="goURL(obj)">
+                                    <span class="title">{{item.permission.name}}</span>
                                     <span class="arrow">
                                         <i class="fa fa-angle-right"></i>
                                     </span>
@@ -64,27 +64,34 @@
 			return {
 				show : true, //是否展示栏目
 				data : null,
-                permission : [], //后台管理
-                permissions : [], //后台管理
 				menu : [],//栏目管理
+				permissionBeans : [], //后台管理
+				currentUrl : null,//当前URL
 				selected : null
             }
 		},
         watch : {
             selected(val){
             	const self = this;
+            	let isSelect = true;
 	            this.updateMenu();
-            	self.permission.map(obj=>{
-            		if(obj.id == val){
-            			if(obj.url){
-				            router.push(obj.url+'/list');
-				            self.setMenuCurrent(obj.url+'/list');
+            	self.menu.map(obj=>{
+            		if(obj.permission.id == val && !self.currentUrl){
+            			if(obj.permission.url){
+				            self.currentUrl = obj.permission.url+'/list';
+				            router.push(self.currentUrl);
+				            self.setMenuCurrent(self.currentUrl);
+				            isSelect = false;
 			            }
 		            }
 	            });
-                this.data.map(obj=>{
-					if(obj.permission.id === val){
-						self.permissions = obj.permissions;
+            	if(isSelect && self.currentUrl){
+		            router.push(self.currentUrl);
+		            self.setMenuCurrent(self.currentUrl);
+	            }
+                this.menu.map(obj=>{
+					if(obj.permission.id == val){
+						self.permissionBeans = obj.permissionBeans;
 					}
                 });
 
@@ -97,78 +104,35 @@
                 type : 'get'
             }).then(data=>{
             	self.data = data.data;
-                data.data.map(obj=>{
-                    self.permission.push(obj.permission);
-                });
+            	self.menu = data.data;
+
                 self.selected = data.data[0].permission.id;
-                self.permissions = data.data[0].permissions;
+                self.permissionBeans = data.data[0].permissionBeans;
                 this.updateMenu();
             });
-
-            /*this.menu = [
-                {
-                	name : '栏目名称1',
-	                subMenu : [
-		                {
-			                name : '栏目名称2',
-			                link : 'http://www.baidu.com'
-		                },
-		                {
-			                name : '栏目名称2',
-			                link : 'http://www.baidu.com'
-		                }
-	                ]
-                },
-	            {
-		            name : '栏目名称1',
-                    subMenu : [
-	                    {
-		                    name : '栏目名称2',
-		                    subMenu : [
-			                    {
-				                    name : '栏目名称3',
-				                    link : 'http://www.baidu.com'
-			                    },
-			                    {
-				                    name : '栏目名称3',
-				                    link : 'http://www.baidu.com'
-			                    },
-			                    {
-				                    name : '栏目名称3',
-				                    link : 'http://www.baidu.com'
-			                    }
-		                    ]
-	                    },
-	                    {
-		                    name : '栏目名称2',
-		                    link : 'http://www.baidu.com'
-	                    },
-	                    {
-		                    name : '栏目名称2',
-		                    link : 'http://www.baidu.com'
-	                    }
-                    ]
-	            },
-	            {
-		            name : '栏目名称1',
-		            link : 'http://www.baidu.com',
-		            subMenu : [
-			            {
-				            name : '栏目名称2',
-				            link : 'http://www.baidu.com'
-			            },
-			            {
-				            name : '栏目名称2',
-				            link : 'http://www.baidu.com'
-			            }
-		            ]
-	            }
-            ];*/
-            
 		},
 		methods : {
 			updateMenu(){
-				this.$nextTick(this.setTab);
+				const self = this;
+				this.$nextTick(function(){
+					self.setTab();
+					let url = window.location.href.match(/[^#][\w|\d|\/]+$/);
+					try{
+						let name = url[0].match(/\/{1}[\w|\d]+/)[0];
+						let select = $(".selectMenu select");
+						select.find("option").each(function(){
+							if($(this).attr("data-url") == name){
+								$(this).attr("selected","true");
+								self.selected = $(this).val();
+								self.currentUrl = url[0];
+							}else{
+								self.currentUrl = null;
+							}
+						});
+					}catch(e){
+						self.currentUrl = null;
+					}
+				});
 			},
 			setMenuCurrent( name ){
 				this.$nextTick(function(){
@@ -198,7 +162,7 @@
 
             },
 			goURL( item ){
-				router.push(item.url);
+				router.push(item.permission.url);
             },
             setMenuHeight(menu){
 	            const self = this;
