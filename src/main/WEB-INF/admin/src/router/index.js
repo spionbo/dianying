@@ -10,7 +10,7 @@ window.router = new VueRouter({
 			components: {login:()=>import('../module/login')},
 		},
 		{
-			path : '/main', 
+			path : '/main',
 			component: ()=>import('../module')
 		},
 		{
@@ -18,7 +18,8 @@ window.router = new VueRouter({
 			component : ()=>import(/* webpackChunkName: "column-add" */ '../module/column/add.vue')
 		},
 		{
-			path : "/column",component: { template:'<router-view></router-view>'},
+			path : "/column",
+			component: {template:'<router-view></router-view>'},
 			children:[
 				{ path: '', redirect: '/column/list' },
 				{

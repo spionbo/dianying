@@ -147,7 +147,6 @@
             return {}
         },
         mounted() {
-
         }
     }
 </script>

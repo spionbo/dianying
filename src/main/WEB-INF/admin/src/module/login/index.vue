@@ -94,7 +94,7 @@
                 if(self.verification()!==true) return;
                 require(['../../plug/md5.min.js'], function(md5) {
                     T.ajax({
-                        url : '/webapi/user/login' ,
+                        url : '/user/login' ,
                         type : 'post',
 	                    callback : true,
                         data : {

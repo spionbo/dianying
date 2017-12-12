@@ -3,6 +3,7 @@ package com.cn.cms.web.controller;
 import com.cn.cms.biz.PermissionBiz;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
+import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.po.Permission;
 import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.ann.CheckAuth;
@@ -11,13 +12,11 @@ import com.cn.cms.web.result.ApiResponse;
 import com.mchange.lang.IntegerUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -47,37 +46,34 @@ public class PermissionController extends BaseController{
 
     /**
      * 新增后台栏目
+     * @param request
+     * @param name
+     * @param parentId
+     * @param url
+     * @param sort
+     * @param description
+     * @return
      */
     @CheckToken
-    @CheckAuth(name = "positionpermission:write")
+    @CheckAuth(name = "positionPermission:write")
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String addPermissionColumn(HttpServletRequest request ,
+                                      HttpServletResponse response,
                                       @RequestParam(value = "name") String name,
                                       @RequestParam(value = "parentId") Integer parentId,
                                       @RequestParam(value = "url") String url,
-                                      @RequestParam(value = "sort") Integer sort,
-                                      @RequestParam(value = "description") String description){
-        String userId = getCurrentUserId(request);
-        Permission permission = new Permission();
-        permission.setName(name);
-        permission.setUrl(url);
-        permission.setLastModifyUserId(getCurrentUserId(request));
-        permission.setCreateUserId(getCurrentUserId(request));
-        if(StringUtils.isNotBlank(url)){
-            permission.setUrl(url);
+                                      @RequestParam(value = "sort" , required = false) Integer sort,
+                                      @RequestParam(value = "description" , required = false) String description){
+
+        Integer a = permissionBiz.queryPermissionName(parentId , name);
+        if(a>0){
+            return ApiResponse.returnFail(ErrorCodeEnum.ERROR_COLUMN_ER.getType(),ErrorCodeEnum.ERROR_COLUMN_ER.getMessage());
         }
-        if(StringUtils.isNotBlank(description)){
-            permission.setDescription(description);
-        }
-        if(parentId!=null){
-            permission.setParentId(parentId);
-        }
-        if(sort!=null){
-            permission.setSort(sort);
-        }
-        permissionBiz.savePermissionColumn(permission);
+        String userID = getCurrentUserId(request);
+        permissionBiz.savePermissionColumn(userID,name,parentId,url,sort,description);
 
         return ApiResponse.returnSuccess();
     }
+
 
 }

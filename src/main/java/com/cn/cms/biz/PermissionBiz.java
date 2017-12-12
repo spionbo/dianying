@@ -5,6 +5,7 @@ import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.contants.StaticContants;
+import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.enums.PermissionTypeEnum;
 import com.cn.cms.enums.PlatformEnum;
 import com.cn.cms.enums.ShowFlagEnum;
@@ -15,6 +16,7 @@ import com.cn.cms.service.ColumnService;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
+import com.cn.cms.web.result.ApiResponse;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -63,6 +65,21 @@ public class PermissionBiz extends BaseBiz {
         jedisClient.del(RedisKeyContants.getAppMenuPermission(userId));
     }
 
+    /**
+     * 获取栏目名称是否存在
+     * @param parentId
+     * @param name
+     * @return
+     */
+    public Integer queryPermissionName(Integer parentId , String name){
+        return userService.queryPermissionName(parentId,name);
+    }
+
+    /**
+     * 栏目列表
+     * @param permissions
+     * @return
+     */
     public List<PermissionBean> getColumn(List<Permission> permissions){
 
         List<PermissionBean> columnBeans = new ArrayList<>();
@@ -127,7 +144,25 @@ public class PermissionBiz extends BaseBiz {
         }
     }
 
-    public void savePermissionColumn(Permission permission){
+    public void savePermissionColumn(String userID,String name,Integer parentId,String url,Integer sort,String description){
+        Permission permission = new Permission();
+
+        permission.setName(name);
+        permission.setUrl(url);
+        permission.setLastModifyUserId(userID);
+        permission.setCreateUserId(userID);
+        if(StringUtils.isNotBlank(url)){
+            permission.setUrl(url);
+        }
+        if(StringUtils.isNotBlank(description)){
+            permission.setDescription(description);
+        }
+        if(parentId!=null){
+            permission.setParentId(parentId);
+        }
+        if(sort!=null){
+            permission.setSort(sort);
+        }
         userService.savePermissionColumn(permission);
     }
 

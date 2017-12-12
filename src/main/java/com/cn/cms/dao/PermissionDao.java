@@ -20,4 +20,7 @@ public interface PermissionDao {
                                      @Param(value = "page")Page page);
 
     void savePermissionColumn(@Param(value = "p1") Permission permission);
+
+    Integer queryPermissionName(@Param(value = "parentId") Integer parentId ,
+                                @Param(value = "permissionName") String name);
 }

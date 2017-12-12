@@ -1,12 +1,18 @@
 import './style/main.css';
 import './style/font-awesome.css';
+import store from './store';
+
 Vue.use(VueRouter);
 import './router';
+import Pop from './common/pop/js/Pop';
+import './common/components';
+Vue.use(Pop);
 
 import headbar from './module/head';
 import menubar from './module/menu';
 window.Main = new Vue({
 	router,
+	store,
 	components : {
 		headbar,
 		menubar
@@ -15,9 +21,6 @@ window.Main = new Vue({
 		return {
 			isLogin : true
 		}
-	},
-	created(){
-
 	},
 	watch : {
 		isLogin( val ){
@@ -29,7 +32,7 @@ window.Main = new Vue({
 		}
 	},
 	mounted(){
-		
+		T.init();
 	},
 	methods : {
 		setLoginStatus(boolean){

@@ -30,9 +30,8 @@
     <sql id="delTag"> where del_tag = 1 </sql>
 
     <sql id="sql_column">
-        id,create_time,update_time,last_modify_user_id,create_user_id,
-        last_modify_user_name,create_time_str,update_time_str,del_tag,
-        name,parent_id,url,description,sort
+        id,name,parent_id,url,description,sort,
+        last_modify_user_id,create_user_id
     </sql>
 
     <select id="findPermissionColumn" resultMap="permission">
@@ -68,8 +67,15 @@
         </if>
     </select>
 
-    <insert id="saveNewsColumn" useGeneratedKeys="true" keyProperty="p1.id">
-        /*insert into permission*/
+    <select id="queryPermissionName" resultType="java.lang.Integer">
+        SELECT count(1) from permission WHERE parent_id = ${parentId} and name="${permissionName}"
+    </select>
+
+    <insert id="savePermissionColumn" useGeneratedKeys="true" keyProperty="p1.id">
+        insert into permission (<include refid="sql_column"/>) VALUE (null,
+          #{p1.name},#{p1.parentId},#{p1.url},#{p1.description},#{p1.sort},
+          #{p1.lastModifyUserId},#{p1.createUserId}
+        )
     </insert>
 
 </mapper>

@@ -42,6 +42,7 @@
 			columnName : String, //数组名称转换
 			columnObjName : String, //数组对像名称转换
 			columnListName : String,//数组列表名称转换
+			name : Array,
 
 			placeholder : String,
 			check : Boolean,
@@ -64,21 +65,28 @@
 		watch:{
 			selected1(val){
 				const self = this;
-				if(!this.columnListName) return;
-				self.section2 = [];
-				this.list.map(obj=>{
-					if(obj.item.id == val){
-						if(obj.list.length){
-							self.section2 = obj.list;
-							self.setFirstOption("select2");
-						}
-					}
+				this.$store.commit("setCatch",{
+					[this.name[0]] : val
 				});
+				self.section2 = [];
+				if(this.columnListName){
+					this.list.map(obj=>{
+						if(obj.item.id == val){
+							if(obj.list.length){
+								self.section2 = obj.list;
+								self.setFirstOption("select2");
+							}
+						}
+					});
+				};
 				this.verification();
 			},
 			selected2(val){
 				const self = this;
 				self.section3 = [];
+				this.$store.commit("setCatch",{
+					[this.name[1]] : val
+				});
 				this.section2.map(obj=>{
 					if(obj.item.id == val){
 						if(obj.list.length){
@@ -88,10 +96,14 @@
 					}
 				});
 				this.verification();
+
 			},
 			selected3(val){
 				const self = this;
 				self.section4 = [];
+				this.$store.commit("setCatch",{
+					[this.name[2]] : val
+				});
 				this.section3.map(obj=>{
 					if(obj.item.id == val){
 						if(obj.list.length){

@@ -24,7 +24,6 @@ let T = {
 	,info : {} //用户信息
 	,init : function( obj ){
 		$.extend( T , obj );
-		T.setImgSize();
 		T.mobile();
 		window.onresize = T.setImgSize;
 	}
@@ -131,56 +130,31 @@ let T = {
 	},
 	ajax : function( obj ){
 		obj.type = obj.type || 'GET';
-		if(obj.type.toLowerCase()=="get"){
-			return new Promise((resolve, reject) =>{
-				$.ajax({
-					url : '/webapi'+obj.url ,
-					type : obj.type,
-	                dataType : 'json',
-	                contentType:'application/json;charset=UTF-8',
-	                //processData : false,
-	                data : obj.data,
-					success : function(data){
-						if(data.code==0){ //更新登录信息
-							resolve(data);
-						}else if(data.code==-110){
-							Main.setLoginStatus(false);
-						}else{
-							if(obj.callback){
-								return resolve(data);
-							}
+		obj.url = '/webapi'+obj.url;
+		return new Promise((resolve, reject) =>{
+			$.ajax({
+				url : obj.url ,
+				type : obj.type,
+                dataType : 'json',
+                //contentType:'application/json;charset=UTF-8',
+                //processData : false,
+                data : obj.data,
+				success : function(data){
+					if(data.code==0){ //更新登录信息
+						resolve(data);
+					}else if(data.code==-110){
+						Main.setLoginStatus(false);
+					}else{
+						if(obj.callback){
+							return resolve(data);
 						}
-					},
-					error : function(){
-						if(obj.error) return obj.error();
 					}
-				});
-			})
-		}else{
-			return new Promise((resolve, reject) =>{
-				$.ajax({
-					url : obj.url ,
-					type : obj.type,
-	                dataType : 'json',
-	                //contentType:'application/json;charset=UTF-8',
-	                //processData : false,
-	                data : obj.data,
-					success : function(data){
-						if(data.code==0){ //更新登录信息
-							resolve(data);
-						}else{
-							if(obj.callback){
-								return resolve(data);
-							}
-						}
-					},
-					error : function(){
-						if(obj.error) return obj.error();
-					}
-				});
-			})
-		}
-		
+				},
+				error : function(){
+					if(obj.error) return obj.error();
+				}
+			});
+		});
 	}
 }
 module.exports = T;

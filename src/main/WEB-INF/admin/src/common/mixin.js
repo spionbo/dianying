@@ -6,7 +6,7 @@ export default {
 			return false;
 		},
 		_path(val){
-			let reg = /^\/\w+/,
+			let reg = /^(\/\w)+/,
 				result = val.match(reg);
 			if(reg.test(val)) return true;
 			return false;

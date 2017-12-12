@@ -42,6 +42,7 @@
 				type:String,
 				required : true
 			},
+			name : String,
 			check : Boolean
 		},
 		data() {
@@ -55,7 +56,10 @@
 		},
 		watch : {
 			value:function( val ){
-				this.verification();
+				if(!this.verification()) return;
+				this.$store.commit("setCatch",{
+					[this.name] : val
+				})
 			}
 		},
 		mounted() {

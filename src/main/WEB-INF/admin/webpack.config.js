@@ -81,8 +81,11 @@ module.exports = {
                 return isNpmModule;
             },
             options: {
-                compact: false
+                compact: false,
+	            presets: ['es2015','stage-1'],
+	            plugins: ['transform-decorators-legacy','transform-decorators']
             }
+
         }, {
             test: /\.vue$/,
             loader: 'vue-loader',

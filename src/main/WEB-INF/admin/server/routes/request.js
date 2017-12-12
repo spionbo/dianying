@@ -4,10 +4,12 @@ module.exports = function(request,response){
         URL=require('url'),
         /*host = 'localhost' ,
         port = '3000';*/
-        host = '192.168.0.108' ,
-        port = '8080';
+        /*host = '192.168.0.108' ,
+        port = '8080';*/
         /*host = '106.15.181.92' ,
         port = '80';*/
+        host = '192.168.0.108' ,
+        port = '8080';
 
     let pathname = URL.parse(request.url).pathname;
 
@@ -37,6 +39,7 @@ module.exports = function(request,response){
             }else{
                 query = superagent.get(url)
                 query.send(_data)
+                     .set(headers)
                     .end(function(err, response){
                         if (err || !response.ok) {
                             res.send('error');

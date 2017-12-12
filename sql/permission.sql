@@ -8,7 +8,7 @@ create table `permission`(
 
 	`create_time` timestamp not null default CURRENT_TIMESTAMP,
 	update_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	del_tag int(2) not null,
+	del_tag int(2) not null default '1',
 	last_modify_user_id int(11),
 	create_user_id int(11),
 	last_modify_user_name varchar(18),
