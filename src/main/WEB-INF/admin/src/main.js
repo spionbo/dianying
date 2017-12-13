@@ -8,6 +8,9 @@ import Pop from './common/pop/js/Pop';
 import './common/components';
 Vue.use(Pop);
 
+let name = "asfd";
+console.log(`23423434${name}`)
+
 import headbar from './module/head';
 import menubar from './module/menu';
 window.Main = new Vue({

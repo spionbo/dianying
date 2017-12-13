@@ -104,11 +104,8 @@
 		},
 		methods:{
 			submit(){
-				this.$pop({
-					title :
-				});
+				this.$pops.loadding();
 
-				return;
 				let ischeck = true ,
 					column = this.column,
 					obj = {
@@ -130,7 +127,11 @@
 						type : "POST",
 						data : obj
 					}).then(data=>{
-
+						this.$pop({
+							title : "成功",
+							close : true,
+							content : "添加成功！"
+						});
 					})
 				}
 			}

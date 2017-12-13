@@ -2,7 +2,7 @@ Vue.component("pop",{
 	template : `
 				<transition name="down">
 					<div class='pop transition' v-show='showModal' @click="close">
-						<div class="content-wrapper" @click='closePropagtion($event)'>
+						<div class="content-wrapper" :class="obj.wrapper" @click='closePropagtion($event)'>
 							<a v-if="obj.close" @click="close" href="javascript:void(0)" class='close'>关闭</a>
 							<div v-if="obj.title" class='title'>
 								<slot name='title'></slot>

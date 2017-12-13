@@ -15,10 +15,6 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 let T = {
 	body : $('body')
-	,androidUrl : 'http://a.app.qq.com/o/simple.jsp?pkgname=com.times.financial'
-	,iosUrl : 'https://itunes.apple.com/cn/app/贸金所/id1188622429?mt=8'
-	,downApp : 'http://a.app.qq.com/o/simple.jsp?pkgname=com.times.financial'
-	,imgsrc : 'http://www.51mjs.com'
 	//,duorongHttp : 'http://192.168.1.248'
 	//,imgsrc : 'http://192.168.0.245:8888'
 	,info : {} //用户信息

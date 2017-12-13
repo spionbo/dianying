@@ -1,15 +1,7 @@
-function readonly(target, name, descriptor){
-	descriptor.writable = false;
-	return descriptor;
-}
 export default class Base{
-	@readonly
-	name(){ return "bo.peng" }
-	constructor(Vue, options){
-		this.Vue = Vue;
-		this.options = options;
+	constructor(){
 		this.config = {
-			winPop : false
+			winPop : {}
 		};
 	}
 	init( config ){
@@ -31,16 +23,20 @@ export default class Base{
 		return this._parent;
 	}
 	createEle(){
-		let childName = "child"+new Date().getTime();
+		let win = this.config.winPop,
+			childName = "child"+new Date().getTime();
 		$(`
 			<div class="`+childName+`">
 				<pop ref="pop" :obj="win">
-				    <div slot="content" style="padding: 10px 20px;">
-				       <img src="/images/escrow-account/upgrade-mark.jpg">
+					<div v-if="win.title" slot='title'>
+						{{win.title}}
+					</div>
+				    <div slot="content" style="padding: 10px 20px; text-align:center;" v-html="win.content">
+				       
 				    </div>
-				    <div slot='footer'>
-				        <a class="btn" href="/activitys/huaruiBank" target="_blank" style="margin-right:10px;border: 1px solid #fd9927;color: #fd9927;background:#fff;">了解银行存管</a>
-				        <div @click="activate" class="btn" >激活存管账户</div>
+				    <div slot='footer' v-if="win.footer">
+				        <div class="btn" @click="okCallback">{{win.footer.ok}}</div>
+				        <div class="btn cancel" @click="cancelCallback">{{win.footer.cancel}}</div>
 					</div>
 				</pop>
 			</div>
@@ -49,22 +45,20 @@ export default class Base{
 			el: '.'+childName,
 			data(){
 				return {
-					win : {
-						footer: true,
-					}
+					win : win
 				}
 			},
 			mounted(){
 				this.$refs.pop.show();
 			},
 			methods:{
-				activate(){
-					location.href="/main/createEscrowAccount"
+				okCallback(){
+					this.win.footer.okCallback();
+				},
+				cancelCallback(){
+					this.win.footer.cancelCallback();
 				}
 			}
 		});
-	}
-	remove(){
-
 	}
 }
