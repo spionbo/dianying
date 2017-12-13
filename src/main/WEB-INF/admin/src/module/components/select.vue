@@ -133,23 +133,23 @@
 					document.getElementById(demo).selectedIndex=0;
 				});
 			},
-			verification(){
+			verification(callback){
 				if(this.check){
 					if(this.selected1==-1){
 						this.showError();
-						return false;
+						return callback(false);
 					}
 					if(this.selected2==-1 && this.section2.length){
 						this.showError();
-						return false;
+						return callback(false);
 					}
 					if(this.selected3==-1 && this.section3.length){
 						this.showError();
-						return false;
+						return callback(false);
 					}
 				}
 				this.clearError();
-				return true;
+				return callback(true);
 			},
 			setList(arr){
 				if(!arr || !arr.length) return arr;
