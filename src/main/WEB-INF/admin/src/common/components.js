@@ -1,7 +1,7 @@
 Vue.component("pop",{
 	template : `
 				<transition name="down">
-					<div class='pop transition' v-show='showModal' @click="close">
+					<div class='pop transition' v-show='showModal' @click="closePop">
 						<div class="content-wrapper" :class="obj.wrapper" @click='closePropagtion($event)'>
 							<a v-if="obj.close" @click="close" href="javascript:void(0)" class='close'>关闭</a>
 							<div v-if="obj.title" class='title'>
@@ -52,6 +52,10 @@ Vue.component("pop",{
 					callback();
 				}
 			},310);
+		},
+		closePop(){
+			if(this.obj.removeClose) return;
+			this.close();
 		},
 		close : function(){
 			this.showModal = false;

@@ -104,11 +104,6 @@
 		},
 		methods:{
 			submit(){
-				this.$pops.loadding();
-				setTimeout(()=>{
-					this.$pops.removeLoadding(true);
-				},500);
-
 				let ischeck = true ,
 					column = this.column,
 					obj = {
@@ -125,11 +120,13 @@
 					});
 				});
 				if(ischeck){
+					this.$pops.loadding();
 					T.ajax({
 						url : '/permission/add',
 						type : "POST",
 						data : obj
 					}).then(data=>{
+						self.this.$pops.removeLoadding();
 						this.$pop({
 							title : "成功",
 							close : true,
