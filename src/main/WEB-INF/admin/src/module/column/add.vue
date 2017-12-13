@@ -105,6 +105,9 @@
 		methods:{
 			submit(){
 				this.$pops.loadding();
+				setTimeout(()=>{
+					this.$pops.removeLoadding(true);
+				},500);
 
 				let ischeck = true ,
 					column = this.column,

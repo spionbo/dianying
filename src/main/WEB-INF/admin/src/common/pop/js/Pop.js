@@ -15,11 +15,13 @@ class Pop extends Base{
 	update(){
 
 	}
-	*loadding(){
-		let load = new Base();
-		yield load.init({
-			wrapper : 'loadding',
-			content : `
+	*load(){
+		let load;
+		while (true){
+			load = new Base();
+			load.init({
+				wrapper : 'loadding',
+				content : `
 				<div class="sk-spinner sk-spinner-wave">
 					<div class="sk-rect1"></div>
 					<div class="sk-rect2"></div>
@@ -28,8 +30,11 @@ class Pop extends Base{
 					<div class="sk-rect5"></div>
 				</div>
 			`
-		});
-		yield 
+			});
+			yield;
+			load.$pop.close();
+			yield;
+		}
 	}
 }
 
@@ -46,7 +51,11 @@ MyPlugin.install = function (Vue, options) {
 		},
 		$pops : {
 			loadding(){
-				pop.loadding();
+				pop.load().next();
+				return pop;
+			},
+			removeLoadding(){
+				pop.load().next();
 				return pop;
 			}
 		}

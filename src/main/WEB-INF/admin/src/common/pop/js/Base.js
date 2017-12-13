@@ -23,7 +23,8 @@ export default class Base{
 		return this._parent;
 	}
 	createEle(){
-		let win = this.config.winPop,
+		let self = this,
+			win = this.config.winPop,
 			childName = "child"+new Date().getTime();
 		$(`
 			<div class="`+childName+`">
@@ -49,6 +50,7 @@ export default class Base{
 				}
 			},
 			mounted(){
+				self.$pop = this.$refs.pop;
 				this.$refs.pop.show();
 			},
 			methods:{
