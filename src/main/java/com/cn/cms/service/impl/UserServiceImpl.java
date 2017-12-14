@@ -3,6 +3,7 @@ package com.cn.cms.service.impl;
 import com.cn.cms.dao.PermissionDao;
 import com.cn.cms.dao.UserDao;
 import com.cn.cms.po.Permission;
+import com.cn.cms.po.PermissionUser;
 import com.cn.cms.po.User;
 import com.cn.cms.service.UserService;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void savePermissionColumn(Permission permission){
         permissionDao.savePermissionColumn(permission);
+    }
+
+    @Override
+    public void savePermissionColumnUser(PermissionUser permissionUser){
+        permissionDao.savePermissionColumnUser(permissionUser);
     }
 
     @Override

@@ -61,6 +61,7 @@ public class PermissionController extends BaseController{
                                       HttpServletResponse response,
                                       @RequestParam(value = "name") String name,
                                       @RequestParam(value = "parentId") Integer parentId,
+                                      @RequestParam(value = "parentUrl") String parentUrl,
                                       @RequestParam(value = "url") String url,
                                       @RequestParam(value = "sort" , required = false) Integer sort,
                                       @RequestParam(value = "description" , required = false) String description){
@@ -70,7 +71,7 @@ public class PermissionController extends BaseController{
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_COLUMN_ER.getType(),ErrorCodeEnum.ERROR_COLUMN_ER.getMessage());
         }
         String userID = getCurrentUserId(request);
-        permissionBiz.savePermissionColumn(userID,name,parentId,url,sort,description);
+        permissionBiz.savePermissionColumn(userID,name,parentId,parentUrl,url,sort,description);
 
         return ApiResponse.returnSuccess();
     }

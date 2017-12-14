@@ -1,6 +1,7 @@
 package com.cn.cms.dao;
 
 import com.cn.cms.po.Permission;
+import com.cn.cms.po.PermissionUser;
 import com.cn.cms.utils.Page;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -20,6 +21,8 @@ public interface PermissionDao {
                                      @Param(value = "page")Page page);
 
     void savePermissionColumn(@Param(value = "p1") Permission permission);
+
+    void savePermissionColumnUser(@Param(value = "p1") PermissionUser permissionUser );
 
     Integer queryPermissionName(@Param(value = "parentId") Integer parentId ,
                                 @Param(value = "permissionName") String name);

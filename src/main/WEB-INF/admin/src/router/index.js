@@ -32,6 +32,21 @@ window.router = new VueRouter({
 				}
 			]
 		},
+		{
+			path : "/novel",
+			component: {template:'<router-view></router-view>'},
+			children:[
+				{ path: '', redirect: '/novel/list' },
+				{
+					path : "add",
+					component : ()=>import(/* webpackChunkName: "column-add" */ '../module/column/add.vue')
+				},
+				{
+					path : "list",
+					component : ()=>import(/* webpackChunkName: "column-list" */ '../module/column/list.vue')
+				}
+			]
+		},
 		// catch all redirect
 		{ path: '*', redirect: '/' }
 	]

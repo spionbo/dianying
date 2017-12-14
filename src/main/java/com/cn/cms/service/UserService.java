@@ -1,6 +1,7 @@
 package com.cn.cms.service;
 
 import com.cn.cms.po.Permission;
+import com.cn.cms.po.PermissionUser;
 import com.cn.cms.po.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,6 +31,11 @@ public interface UserService {
      * 创建后台栏目
      */
     void savePermissionColumn(Permission permission);
+
+    /**
+     * 创建后台栏目权限
+     */
+    void savePermissionColumnUser(PermissionUser permissionUser);
 
     Integer queryPermissionName(Integer parentId,String name);
 }

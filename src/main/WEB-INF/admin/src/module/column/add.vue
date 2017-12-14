@@ -22,7 +22,7 @@
 						<m-select
 								type="text"
 								:data="list"
-								:name = "['columnId']"
+								:name = "['column']"
 								columnName="name"
 								columnObjName="permission"
 								dataType="path"
@@ -104,15 +104,7 @@
 		},
 		methods:{
 			submit(){
-				let ischeck = true ,
-					column = this.column,
-					obj = {
-						name : column.name,
-						parentId : column.columnId,
-						url : column.path,
-						sort : this.sort,
-						description : this.description
-					};
+				let ischeck = true;
 
 				this.$children.map(obj=>{
 					obj.verification(function( b ){
@@ -120,6 +112,15 @@
 					});
 				});
 				if(ischeck){
+					let column = this.column.column,
+						obj = {
+							name : column.name,
+							parentId : column.id,
+							parentUrl : column.url,
+							url : column.path,
+							sort : this.sort,
+							description : this.description
+						};
 					this.$pops.loadding();
 					T.ajax({
 						url : '/permission/add',

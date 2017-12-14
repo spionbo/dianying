@@ -75,15 +75,18 @@
 				this.text = this.info.default;
 			},
 			verification(callback){
+				callback = callback || function(){};
 				let val = $.trim(this.value);
 				if(this.check){
 					if(!this['_'+this.dataType](val)){
 						callback(false)
-						return this.showError();
+						this.showError();
+						return false;
 					};
 				}
 				this.clearError();
-				return callback(true);
+				callback(true);
+				return true;
 			},
 			setMsg(){
 				try{

@@ -65,8 +65,12 @@
 		watch:{
 			selected1(val){
 				const self = this;
-				this.$store.commit("setCatch",{
-					[this.name[0]] : val
+				self.list.map(obj=>{
+					if(obj.item.id == val){
+						self.$store.commit("setCatch",{
+							[this.name[0]] : obj.item
+						});
+					}
 				});
 				self.section2 = [];
 				if(this.columnListName){
@@ -134,6 +138,7 @@
 				});
 			},
 			verification(callback){
+				callback = callback || function(){};
 				if(this.check){
 					if(this.selected1==-1){
 						this.showError();

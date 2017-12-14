@@ -9,7 +9,7 @@
         <div class="selectMenu">
             <select v-model="selected">
                 <option v-for="item in menu" :key="item.permission.id"
-                    v-bind:value="item.permission.id" :data-url="item.permission.url"
+                    v-bind:value="item" :data-url="item.permission.url"
                 >{{item.permission.name}}</option>
             </select>
         </div>
@@ -66,35 +66,20 @@
 				data : null,
 				menu : [],//栏目管理
 				permissionBeans : [], //后台管理
-				currentUrl : null,//当前URL
-				selected : null
+				selected : null,
+				selectObj : {}, //当前选择的栏目
             }
 		},
         watch : {
-            selected(val){
-            	const self = this;
-            	let isSelect = true;
-	            this.updateMenu();
-            	self.menu.map(obj=>{
-            		if(obj.permission.id == val && !self.currentUrl){
-            			if(obj.permission.url){
-				            self.currentUrl = obj.permission.url+'/list';
-				            router.push(self.currentUrl);
-				            self.setMenuCurrent(self.currentUrl);
-				            isSelect = false;
-			            }
-		            }
-	            });
-            	if(isSelect && self.currentUrl){
-		            router.push(self.currentUrl);
-		            self.setMenuCurrent(self.currentUrl);
-	            }
-                this.menu.map(obj=>{
-					if(obj.permission.id == val){
-						self.permissionBeans = obj.permissionBeans;
-					}
-                });
+            selected(obj){
+            	if(obj==void 0) return;
+	            this.permissionBeans = obj.permissionBeans;
 
+	            //当点击时
+				if(!obj.refresh){ //非刷新页面
+					router.push(obj.permission.url);
+					this.setMenuCurrent(obj.permission.url+'/list');
+				}
             }
         },
 		mounted() {
@@ -105,37 +90,58 @@
             }).then(data=>{
             	self.data = data.data;
             	self.menu = data.data;
-
-                self.selected = data.data[0].permission.id;
-                self.permissionBeans = data.data[0].permissionBeans;
-                this.updateMenu();
+	            self.refresh();
             });
 		},
 		methods : {
-			updateMenu(){
-				const self = this;
+			refresh(){
+				let [self,href] = [this,window.location.href.match(/[^#]+$/)[0]];
+				function setCurrent( data ){ //获取当前地址栏 对应的 对象
+					let _obj;
+					for(let i=0;i<data.length;i++){
+						if(href.includes(data[i].permission.url)){
+							_obj = data[i].permission;
+							if(data[i].permissionBeans){
+								return setCurrent(data[i].permissionBeans);
+							}
+						}
+					};
+					return _obj;
+				}
+				let obj = setCurrent(this.data);
+				function getParent(data,parentId){ //获取当前对象的父对像
+					let _obj;
+					for(let i=0;i<data.length;i++){
+						if(data[i].permission.id == parentId){
+							_obj = data[i];
+							break;
+						}
+					}
+					if(!_obj){
+						data.map(oj=>{
+							getParent(obj.permissionBeans,parentId);
+						})
+					}
+					return _obj;
+				}
+				if(obj){//如果获取到了，说明对应栏目是对的
+					let selectObj;
+					if(obj.parentId!=void 0){
+						selectObj = getParent(this.data,obj.parentId);
+					}else{
+						selectObj = obj.id;
+					}
+					selectObj.refresh = true;
+					self.selected = selectObj;
+					self.setMenuCurrent(href);
+				}else{
+					self.selected = self.data[0];
+				}
+			},
+			setMenuCurrent( name ){ //更新栏目样式
+				let self = this;
 				this.$nextTick(function(){
 					self.setTab();
-					let url = window.location.href.match(/[^#][\w|\d|\/]+$/);
-					try{
-						let name = url[0].match(/\/{1}[\w|\d]+/)[0];
-						let select = $(".selectMenu select");
-						select.find("option").each(function(){
-							if($(this).attr("data-url") == name){
-								$(this).attr("selected","true");
-								self.selected = $(this).val();
-								self.currentUrl = url[0];
-							}else{
-								self.currentUrl = null;
-							}
-						});
-					}catch(e){
-						self.currentUrl = null;
-					}
-				});
-			},
-			setMenuCurrent( name ){
-				this.$nextTick(function(){
 					let taga = $(".page-menu>li>a");
 					taga.each(function(i,ele){
 						let url = $(this).attr("data-url");
@@ -162,6 +168,7 @@
 
             },
 			goURL( item ){
+				console.log(item.permission.url);
 				router.push(item.permission.url);
             },
             setMenuHeight(menu){

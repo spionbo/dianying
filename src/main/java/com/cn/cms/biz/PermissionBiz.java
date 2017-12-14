@@ -12,6 +12,7 @@ import com.cn.cms.enums.ShowFlagEnum;
 
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.po.Permission;
+import com.cn.cms.po.PermissionUser;
 import com.cn.cms.service.ColumnService;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.Page;
@@ -144,15 +145,16 @@ public class PermissionBiz extends BaseBiz {
         }
     }
 
-    public void savePermissionColumn(String userID,String name,Integer parentId,String url,Integer sort,String description){
+    public void savePermissionColumn(String userID,String name,Integer parentId,String parentUrl , String url,Integer sort,String description){
         Permission permission = new Permission();
+        PermissionUser permissionUser = new PermissionUser();
 
         permission.setName(name);
         permission.setUrl(url);
         permission.setLastModifyUserId(userID);
         permission.setCreateUserId(userID);
         if(StringUtils.isNotBlank(url)){
-            permission.setUrl(url);
+            permission.setUrl(parentUrl+url);
         }
         if(StringUtils.isNotBlank(description)){
             permission.setDescription(description);
@@ -163,7 +165,12 @@ public class PermissionBiz extends BaseBiz {
         if(sort!=null){
             permission.setSort(sort);
         }
+
+
         userService.savePermissionColumn(permission);
+        permissionUser.setUserId(userID);
+        permissionUser.setPositionId(permission.getId());
+        userService.savePermissionColumnUser(permissionUser);
     }
 
 
