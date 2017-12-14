@@ -1,6 +1,9 @@
 package com.cn.cms.biz;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.parser.Feature;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.contants.RedisKeyContants;
@@ -74,6 +77,14 @@ public class PermissionBiz extends BaseBiz {
      */
     public Integer queryPermissionName(Integer parentId , String name){
         return userService.queryPermissionName(parentId,name);
+    }
+
+    public boolean checkPermission(String userId, String permission){
+        Long result = jedisClient.zrank(RedisKeyContants.getPermission(userId), permission);
+        if(result!=null && result > 0){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -154,7 +165,11 @@ public class PermissionBiz extends BaseBiz {
         permission.setLastModifyUserId(userID);
         permission.setCreateUserId(userID);
         if(StringUtils.isNotBlank(url)){
-            permission.setUrl(parentUrl+url);
+            if(StringUtils.isNotBlank(parentUrl)){
+                permission.setUrl(parentUrl+url);
+            }else{
+                permission.setUrl(url);
+            }
         }
         if(StringUtils.isNotBlank(description)){
             permission.setDescription(description);
@@ -165,13 +180,47 @@ public class PermissionBiz extends BaseBiz {
         if(sort!=null){
             permission.setSort(sort);
         }
-
-
         userService.savePermissionColumn(permission);
         permissionUser.setUserId(userID);
         permissionUser.setPositionId(permission.getId());
         userService.savePermissionColumnUser(permissionUser);
+
+        //新增的栏目添加到redis中  转化较复杂
+        /*String result = jedisClient.get(RedisKeyContants.getMenuPermission(userID));
+        List<PermissionBean> permissionBean = JSON.parseObject(result,List.class);
+        if(parentId!=null){
+            this.addRedis(userID,permission,parentId,permissionBean);
+        }else{
+            PermissionBean permissionBean1 = new PermissionBean();
+            permissionBean1.setPermission(permission);
+            permissionBean.add(permissionBean1);
+            delPermissionRedis(userID);
+            //获取MENU列表
+            jedisClient.set(RedisKeyContants.getMenuPermission(userID), JSONArray.toJSONString(permissionBean), StaticContants.DEFAULT_SECONDS);
+        }*/
     }
+    /*private void addRedis(String userID,Permission permission , Integer parentId , List<PermissionBean> permissionBeanList){
+        Boolean findParent = false;
+        for(int i=0;i<permissionBeanList.size();i++){
+            PermissionBean permission1 = permissionBeanList.get(i);
+            if(permission1.getPermission().getId() == parentId){
+                List<PermissionBean> permissionbeans2 = permission1.getPermissionBeans();
+                PermissionBean permissionBeans = new PermissionBean();
+                permissionBeans.setPermission(permission);
+                permissionbeans2.add(permissionBeans);
+                findParent = true;
+                //获取MENU列表
+                jedisClient.set(RedisKeyContants.getMenuPermission(userID), JSONArray.toJSONString(permissionbeans2), StaticContants.DEFAULT_SECONDS);
+                break;
+            }
+        }
+        if(findParent==false){
+            for(int i=0;i<permissionBeanList.size();i++){
+                PermissionBean permission1 = permissionBeanList.get(i);
+                addRedis(userID,permission,parentId,permission1.getPermissionBeans());
+            }
+        }
+    }*/
 
 
 }

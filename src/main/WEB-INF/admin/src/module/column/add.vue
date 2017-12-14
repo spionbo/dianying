@@ -104,19 +104,19 @@
 		},
 		methods:{
 			submit(){
-				let ischeck = true;
-
+				let [self,ischeck] = [this,true];
 				this.$children.map(obj=>{
 					obj.verification(function( b ){
 						ischeck = b;
 					});
 				});
 				if(ischeck){
-					let column = this.column.column,
+					let column = this.column,
+						select = this.column.column,
 						obj = {
 							name : column.name,
-							parentId : column.id,
-							parentUrl : column.url,
+							parentId : select.id,
+							parentUrl : select.url,
 							url : column.path,
 							sort : this.sort,
 							description : this.description
@@ -127,7 +127,7 @@
 						type : "POST",
 						data : obj
 					}).then(data=>{
-						self.this.$pops.removeLoadding();
+						self.$pops.removeLoadding();
 						this.$pop({
 							title : "成功",
 							close : true,

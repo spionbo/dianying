@@ -24,6 +24,7 @@ window.Main = new Vue({
 	},
 	watch : {
 		isLogin( val ){
+			debugger;
 			if(val){
 				router.push('main');
 			}else{

@@ -60,8 +60,8 @@ public class PermissionController extends BaseController{
     public String addPermissionColumn(HttpServletRequest request ,
                                       HttpServletResponse response,
                                       @RequestParam(value = "name") String name,
-                                      @RequestParam(value = "parentId") Integer parentId,
-                                      @RequestParam(value = "parentUrl") String parentUrl,
+                                      @RequestParam(value = "parentId",required = false) Integer parentId,
+                                      @RequestParam(value = "parentUrl",required = false) String parentUrl,
                                       @RequestParam(value = "url") String url,
                                       @RequestParam(value = "sort" , required = false) Integer sort,
                                       @RequestParam(value = "description" , required = false) String description){
