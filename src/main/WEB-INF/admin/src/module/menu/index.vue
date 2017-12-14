@@ -79,7 +79,9 @@
 				if(!obj.refresh){ //非刷新页面
 					router.push(obj.permission.url);
 					this.setMenuCurrent(obj.permission.url+'/list');
-				}
+				}else{
+					delete obj.refresh;
+	            }
             }
         },
 		mounted() {
