@@ -47,4 +47,9 @@ public class UserServiceImpl implements UserService {
     public Integer queryPermissionName(Integer parentId,String name){
         return permissionDao.queryPermissionName(parentId,name);
     };
+
+    @Override
+    public Permission queryPermissionColumn(Integer id){
+        return permissionDao.queryPermissionColumn(id);
+    }
 }

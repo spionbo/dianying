@@ -82,8 +82,11 @@ module.exports = {
             },
             options: {
                 compact: false,
-	            presets: ['es2015','stage-1'],
-	            plugins: ['transform-decorators-legacy','transform-decorators']
+	            presets: ['es2015','stage-1',"env"],
+	            plugins: ['transform-decorators-legacy',
+		            'transform-decorators',
+		            "transform-vue-jsx"
+	            ]
             }
 
         }, {

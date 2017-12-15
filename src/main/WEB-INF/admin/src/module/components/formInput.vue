@@ -31,6 +31,7 @@
 	export default {
 		mixins: [myMixin],
 		props: {
+			data : String,
 			type : {
 				type:String,
 				required : true
@@ -63,6 +64,7 @@
 			}
 		},
 		mounted() {
+			if(this.data){ this.value = this.data }
 			this.setMsg();
 		},
 		methods:{

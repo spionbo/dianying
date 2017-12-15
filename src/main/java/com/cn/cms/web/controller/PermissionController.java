@@ -23,7 +23,7 @@ import java.util.List;
  * Created by Administrator on 2017/11/30 0030.
  */
 @Controller
-@RequestMapping(value = "/webapi/permission/",produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "/webapi/permission/", produces = "application/json;charset=UTF-8")
 @ResponseBody
 public class PermissionController extends BaseController{
 
@@ -74,6 +74,15 @@ public class PermissionController extends BaseController{
         permissionBiz.savePermissionColumn(userID,name,parentId,parentUrl,url,sort,description);
 
         return ApiResponse.returnSuccess();
+    }
+
+    @CheckToken
+    @CheckAuth(name = "positionPermissionColumn:read")
+    @RequestMapping(value = "/permissionColumn", method = RequestMethod.GET)
+    public String permissionColumn(HttpServletRequest request,
+                                   @RequestParam(value = "columnId") Integer columnId){
+        Permission permission = permissionBiz.getPermissionColumn(columnId);
+        return ApiResponse.returnSuccess(permission);
     }
 
 

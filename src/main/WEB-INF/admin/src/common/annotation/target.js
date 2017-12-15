@@ -20,5 +20,32 @@ export default {
 			return oldValue.apply(null, arguments);
 		};
 		return descriptor;
+	},
+	deprecate(topic){
+		/*console.log(topic);
+		console.log(`
+			{
+				props:{
+					obj : {
+						
+					}
+				},
+				slot:"content"
+			},
+			{
+				props:{
+					obj : {
+						title : "标题",
+						close : true,
+					}
+				}
+			}
+		`);*/
+		return function(target, name, descriptor) {
+			const fn = descriptor.value;
+			descriptor.value = function() {
+				return fn.apply(this, arguments);
+			};
+		};
 	}
 }

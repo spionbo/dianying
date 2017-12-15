@@ -6,43 +6,43 @@
 			<div class="th" style="width:120px;text-align:center;">更新时间</div>
 			<div class="th" style="width:120px;text-align:center;">操作</div>
 		</div>
-		<div class="list" v-for="item in data" :key="item.column.id">
-			<div class="tr no-border" v-if="item.column">
+		<div class="list" v-for="item in data" :key="item.permission.id">
+			<div class="tr no-border" v-if="item.permission">
 				<div class="td flex">
-					<div class="off" v-if="item.columnBeans.length">+</div>
-					{{item.column.columnName}}
+					<div class="off" v-if="item.permissionBeans.length">+</div>
+					{{item.permission.name}}
 				</div>
 				<div class="td" style="width:120px;text-align:center;">
-					{{item.column.createTimeStr | formatTime}}
+					{{item.permission.createTimeStr | formatTime}}
 				</div>
 				<div class="td" style="width:120px;text-align:center;">
-					{{item.column.updateTimeStr | formatTime}}
+					{{item.permission.updateTimeStr | formatTime}}
 				</div>
 				<div class="td" style="width:120px;text-align:center;">
-					<div class="btn">编辑</div>
-					<div class="btn red">修改</div>
+					<div class="btn" @click="edit(item)">编辑</div>
+					<div class="btn red" v-if="!item.permissionBeans" @click="del(item)">删除</div>
 				</div>
 			</div>
-			<div v-if="item.columnBeans.length" class="child">
+			<div v-if="item.permissionBeans.length" class="child">
 				<div class="tr">
 					<div class="th flex">名称</div>
 					<div class="th" style="width:120px;text-align:center;">创建时间</div>
 					<div class="th" style="width:120px;text-align:center;">更新时间</div>
 					<div class="th" style="width:120px;text-align:center;">操作</div>
 				</div>
-				<div v-for="obj in item.columnBeans" :key="obj.column.id" class="tr">
+				<div v-for="obj in item.permissionBeans" :key="obj.permission.id" class="tr">
 					<div class="td flex">
-						{{obj.column.columnName}}
+						{{obj.permission.name}}
 					</div>
 					<div class="td" style="width:120px;text-align:center;">
-						{{obj.column.createTimeStr|formatTime}}
+						{{obj.permission.createTimeStr|formatTime}}
 					</div>
 					<div class="td" style="width:120px;text-align:center;">
-						{{obj.column.updateTimeStr|formatTime}}
+						{{obj.permission.updateTimeStr|formatTime}}
 					</div>
 					<div class="td" style="width:120px;text-align:center;">
-						<div class="btn">编辑</div>
-						<div class="btn red">删除</div>
+						<div class="btn" @click="edit(obj)">编辑</div>
+						<div class="btn red" v-if="!obj.permissionBeans" @click="del(obj)">删除</div>
 					</div>
 				</div>
 			</div>
@@ -50,6 +50,7 @@
 	</div>
 </template>
 <script>
+	import dd from "./add";
 	export default {
 		props:{
 			data:Array
@@ -83,6 +84,38 @@
 		filters:{
 			formatTime(str){
 				return T.formatTime(str);
+			}
+		},
+		methods:{
+			edit(item){
+
+				T.ajax({
+					url:"/permission/permissionColumn",
+					type : "get",
+					data : {
+						columnId : item.permission.id
+					}
+				}).then(data=>{
+					require.ensure([],(require)=> {
+						this.$requirePop(require('./edit'), {
+							props : {
+								data : data.data
+							}
+						},
+						{
+							props: {
+								obj: {
+									title: "标题",
+									close: true,
+								}
+							}
+						});
+					});
+				});
+
+			},
+			del(item){
+
 			}
 		}
 	}

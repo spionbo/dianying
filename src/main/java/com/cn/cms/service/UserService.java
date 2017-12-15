@@ -36,6 +36,9 @@ public interface UserService {
      * 创建后台栏目权限
      */
     void savePermissionColumnUser(PermissionUser permissionUser);
-
+    /* 查询索引*/
     Integer queryPermissionName(Integer parentId,String name);
+
+    /* 查询指定栏目名称 */
+    Permission queryPermissionColumn(Integer id);
 }

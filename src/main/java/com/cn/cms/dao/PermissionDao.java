@@ -26,4 +26,6 @@ public interface PermissionDao {
 
     Integer queryPermissionName(@Param(value = "parentId") Integer parentId ,
                                 @Param(value = "permissionName") String name);
+
+    Permission queryPermissionColumn(@Param(value = "id") Integer id);
 }

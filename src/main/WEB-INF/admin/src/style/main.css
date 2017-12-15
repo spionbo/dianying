@@ -187,12 +187,19 @@ i{ display:inline-block; }
 	    }
     }
 	.submit{
-		margin:0 -20px;
+		margin: 0 -20px;
 		padding:10px 0;
 		padding-left:130px;
 		border-top:1px solid #ddd;
 		.btn{
 			margin-right:10px;
+		}
+	}
+	&.edit{
+		padding-right:20px;
+		.submit{
+			margin:0;
+			padding-left:110px;
 		}
 	}
 }

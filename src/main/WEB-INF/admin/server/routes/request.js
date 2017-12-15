@@ -24,7 +24,7 @@ module.exports = function(request,response){
             let data = _data.toString() ,
                 query;
             if(request.method==='POST') {
-                query = superagent.post(url)
+                query = superagent.post(url);
                 query.send(data)
                     .set(headers)
                     .redirects(0)
@@ -37,23 +37,24 @@ module.exports = function(request,response){
                         }
                     });
             }else{
-                query = superagent.get(url)
+	            const url1 = "http://"+host+":"+port+request.url;
+                query = superagent.get(url1);
                 query.send(_data)
                      .set(headers)
+                    .redirects(0)
                     .end(function(err, response){
                         if (err || !response.ok) {
-                            res.send('error');
+                            res.send('nodejs转向error');
                         } else {
                             res.send(response.body);
                         }
                     });
             }
-                
         }
         request.on("data",function(data) {
             requireHTTP(data)
         });
         if(request.method!=='POST') {
-            requireHTTP({});
+            requireHTTP(request.query);
         }
 };

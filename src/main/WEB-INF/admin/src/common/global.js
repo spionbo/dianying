@@ -132,8 +132,6 @@ let T = {
 				url : obj.url ,
 				type : obj.type,
                 dataType : 'json',
-                //contentType:'application/json;charset=UTF-8',
-                //processData : false,
                 data : obj.data,
 				success : function(data){
 					if(data.code==0){ //更新登录信息

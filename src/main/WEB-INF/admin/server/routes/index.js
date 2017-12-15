@@ -24,7 +24,6 @@ module.exports = function (app) {
         res.send('commit range ' + from + '..' + to);*/
     });
 	app.use(function(request,response,next){
-        
 	    const req = require('./request');
 	    req(request,response)
     });

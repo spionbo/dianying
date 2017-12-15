@@ -85,4 +85,8 @@
         )
     </insert>
 
+    <select id="queryPermissionColumn" resultMap="permission">
+        select <include refid="all_permission_find"/>,<include refid="all_permission"/> from permission WHERE id="${id}"
+    </select>
+
 </mapper>

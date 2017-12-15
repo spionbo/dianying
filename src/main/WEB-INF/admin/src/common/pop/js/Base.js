@@ -1,4 +1,14 @@
+import D from '../../annotation/target.js';
+import store from '../../../store';
 export default class Base{
+	@D.nonenumerable
+	get author(){
+		return "bo.peng";
+	}
+	@D.nonenumerable
+	get email(){
+		return "spion@qq.com";
+	}
 	constructor(){
 		this.config = {
 			winPop : {}
@@ -13,6 +23,7 @@ export default class Base{
 		this.width = $(window).width();
 		this.height = $(window).height();
 	}
+	@D.readonly
 	resize(){
 		this.update();
 	}
@@ -21,6 +32,59 @@ export default class Base{
 	}
 	get parent(){
 		return this._parent;
+	}
+	@D.deprecate("use this.$requirePop:")
+	requireEle( sys , data , popData ){
+		let childName = "child"+new Date().getTime() ,
+			name = "elename"+new Date().getTime() ,
+			dataconfig = {
+				props:{
+					obj : {}
+				},
+				slot:"content"
+			},
+			popconfig = {
+				props:{
+					obj : {}
+				},
+				ref : "requirepop"
+			};
+		Object.assign(dataconfig,data);
+		if(popData.props&&!popData.props.superClass){
+			popData.props.superClass = "clearPadding";
+		}
+		Object.assign(popconfig,popData);
+		data =  dataconfig;
+		popData = popconfig;
+
+		$(`<div class="${name}${childName}">
+				<div class="${childName}"></div>
+			</div>
+		`).appendTo('body');
+		try{
+			sys = sys.default ? sys.default : sys;
+			Vue.component(
+				name,
+				sys
+			);
+		}catch (e){
+
+		}
+		new Vue({
+			store,
+			el : '.'+childName ,
+			mounted(){
+				this.$refs.requirepop.show();
+			},
+			render(h){
+				return h("pop",{...popData}, [
+					h("div",{
+						slot : "title",
+					},[popData.props.obj.title]),
+					h(name,{...data})
+				]);
+			}
+		});
 	}
 	createEle(){
 		let self = this,
@@ -42,7 +106,8 @@ export default class Base{
 				</pop>
 			</div>
 		`).appendTo('body');
-		new Vue({
+		this.component = new Vue({
+			store,
 			el: '.'+childName,
 			data(){
 				return {

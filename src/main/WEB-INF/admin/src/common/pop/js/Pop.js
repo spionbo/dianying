@@ -62,6 +62,9 @@ MyPlugin.install = function (Vue, options) {
 				loading.remove();
 				return pop;
 			}
+		},
+		$requirePop(sys,data,popData){
+			pop.requireEle(sys,data,popData);
 		}
 	})
 };

@@ -28,11 +28,7 @@
 		mounted() {
 			const self = this;
 			T.ajax({
-				url:'/column/list',
-				data:{
-					page : 1,
-					pageSize : 20,
-				}
+				url:'/permission/currentMenuPermission'
 			}).then(data=>{
 				self.list = data.data;
 			});

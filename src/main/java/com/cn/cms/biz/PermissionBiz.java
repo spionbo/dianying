@@ -88,6 +88,15 @@ public class PermissionBiz extends BaseBiz {
     }
 
     /**
+     * 获取栏目信息
+     * @param id
+     * @return
+     */
+    public Permission getPermissionColumn(Integer id){
+        return userService.queryPermissionColumn(id);
+    }
+
+    /**
      * 栏目列表
      * @param permissions
      * @return
