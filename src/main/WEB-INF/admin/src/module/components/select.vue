@@ -38,7 +38,8 @@
 	export default {
 		mixins : [myMixin],
 		props:{
-			data : Array ,
+			columnId : Number ,
+			arr : Array,
 			columnName : String, //数组名称转换
 			columnObjName : String, //数组对像名称转换
 			columnListName : String,//数组列表名称转换
@@ -118,8 +119,11 @@
 				});
 				this.verification();
 			},
-			data(val){
-				this.list = this.setList(this.data);
+			arr(val){
+				this.list = this.setList(this.arr);
+			},
+			columnId(val){
+				debugger;
 			}
 		},
 		mounted() {

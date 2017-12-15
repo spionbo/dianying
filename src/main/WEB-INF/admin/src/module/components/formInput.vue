@@ -61,10 +61,13 @@
 				this.$store.commit("setCatch",{
 					[this.name] : val
 				})
+			},
+			data( val ){
+				if(val){ this.value = val }
 			}
 		},
 		mounted() {
-			if(this.data){ this.value = this.data }
+
 			this.setMsg();
 		},
 		methods:{
