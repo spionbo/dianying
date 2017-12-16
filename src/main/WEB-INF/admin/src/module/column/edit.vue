@@ -3,7 +3,7 @@
 		<add-form ref="form" :data="data"></add-form>
 		<div class="submit">
 			<div class="btn" @click="submit">确定</div>
-			<div class="btn red" @click="clear">清空</div>
+			<div class="btn red" @click="clearall">清空</div>
 		</div>
 	</div>
 </template>
@@ -32,11 +32,12 @@
 		methods:{
 			submit(){
 				if(!this.$refs.form.verification()) return;
-
+				debugger;
+			},
+			clearall(){
+				this.$refs.form.clearall();
 			}
-		},
-		clear(){
-
 		}
+
 	}
 </script>

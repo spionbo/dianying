@@ -14,16 +14,17 @@
 		</li>
 		<li>
 			<div class="label">请选择栏目<em>*</em></div>
-			<m-select
+			<m-select ref="myselect"
 				type="text"
 				:arr="list"
-				:name = "['column']"
+				name = "column"
 				columnName="name"
 				:columnId = "obj.columnId"
 				columnObjName="permission"
+				columnListName="permissionBeans"
 				dataType="path"
-				:check="true"
-				placeholder="请选择分类">
+				:check="[true,false,false]"
+				placeholder="请选择栏目">
 			</m-select>
 		</li>
 		<li>
@@ -32,6 +33,7 @@
 					type="text"
 					dataType="path"
 					name = "path"
+					:data = "obj.path"
 					:check="true"
 					maxlength="11"
 					placeholder="请输入路经名称">
@@ -63,7 +65,7 @@
 </template>
 <script>
 	import formInput from "../components/formInput";
-	import mSelect from "../components/select";
+	import mSelect from "../components/selects";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {
@@ -100,10 +102,11 @@
 		},
 		methods:{
 			verification(){
+				debugger;
 				let [self,ischeck] = [this,true];
 				this.$children.map(obj=>{
 					obj.verification(function( b ){
-						ischeck = b;
+						if(!b){ischeck = b};
 					});
 				});
 				if(ischeck){
@@ -123,11 +126,28 @@
 					self.obj = {
 						name : data.name,
 						columnId : data.id,
-						path : data.url,
-						sort : data.sort,
-						description : data.description
-					}
+						path : data.url
+					};
+					self.sort = data.sort;
+					self.description = data.description;
+					self.$nextTick(function(){ //myselect 更新数据后，获取他的值
+						let arr = self.$refs.myselect.selects,
+							len = arr.length - 1 ,
+							path = data.url;
+						for(let i=0;i<len;i++){
+							path = path.replace(arr[i].url,"");
+						}
+						self.obj.path = path;
+					})
 				}
+			},
+			clearall(){
+				this.obj = {};
+				this.sort = 1;
+				this.description = "";
+				this.$children.forEach(obj=>{
+					obj.clear();
+				})
 			}
 		}
 	}

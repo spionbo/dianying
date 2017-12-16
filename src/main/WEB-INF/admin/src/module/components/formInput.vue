@@ -71,6 +71,9 @@
 			this.setMsg();
 		},
 		methods:{
+			clear(){
+				this.value = "";
+			},
 			showError(){
 				this.error = true;
 				this.text = this.info.error;
@@ -84,7 +87,7 @@
 				let val = $.trim(this.value);
 				if(this.check){
 					if(!this['_'+this.dataType](val)){
-						callback(false)
+						callback(false);
 						this.showError();
 						return false;
 					};

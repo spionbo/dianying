@@ -76,6 +76,26 @@ public class PermissionController extends BaseController{
         return ApiResponse.returnSuccess();
     }
 
+    /**
+     * 删除栏目，如果该栏目有子栏目，则删除失败。
+     * @param request
+     * @param id
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = "positionPermission:delete")
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public String deletePermissionColumn(HttpServletRequest request,
+                                         @RequestParam(value = "columnId") Integer id){
+        return ApiResponse.returnSuccess();
+    }
+
+    /**
+     * 获取后台栏目信息
+     * @param request
+     * @param columnId
+     * @return
+     */
     @CheckToken
     @CheckAuth(name = "positionPermissionColumn:read")
     @RequestMapping(value = "/permissionColumn", method = RequestMethod.GET)

@@ -88,7 +88,6 @@
 		},
 		methods:{
 			edit(item){
-
 				T.ajax({
 					url:"/permission/permissionColumn",
 					type : "get",

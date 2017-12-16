@@ -1,0 +1,194 @@
+<style>
+</style>
+<template>
+	<div class="txt">
+		<div class="select">
+			<choose ref="select1"
+			        index="1"
+					:placeholder="placeholder"
+					v-on:$change="change"
+			        :list = "list"
+			        :select="selected1"
+			></choose>
+			<choose v-if="list2.length" ref="select2"
+			        index="2"
+					:placeholder="placeholder"
+					v-on:$change="change"
+					:list = "list2"
+			></choose>
+			<choose v-if="list3.length" ref="select3"
+			        index="3"
+					:placeholder="placeholder"
+					v-on:$change="change"
+					:list = "list3"
+			></choose>
+		</div>
+		<div class="cnt" :class="{cur:error}">
+			请选择分类
+		</div>
+	</div>
+</template>
+<script>
+	import myMixin from "../../common/mixin";
+	import { mapGetters } from 'vuex';
+	import choose from "./select.vue";
+	export default {
+		components : {
+			choose
+		},
+		mixins : [myMixin],
+		props:{
+			columnId : Number ,
+			arr : Array,
+			columnName : String, //数组名称转换
+			columnObjName : String, //数组对像名称转换
+			columnListName : String,//数组列表名称转换
+			name : String,
+
+			placeholder : String,
+			check : Array,//目前最多3个
+		},
+		computed : {
+			...mapGetters({
+				column : 'addColumn'
+			})
+		},
+		data() {
+			return {
+				list : [],
+				list2 : [],
+				list3 : [],
+
+				selected1 : -1,
+				selected2 : -1,
+				selected3 : -1,
+				selects : [], //0为第1个选择匡，1为第二个，。。。
+
+				error : false
+			}
+		},
+		watch:{
+			arr(val){
+				this.list = this.setList(null,this.arr);
+			},
+			columnId(val){
+				if( void 0 == val) return;
+				let obj = this.setSelect(this.list,this.list,val) ,
+					arr = this.getIndex(obj);
+
+				this.selects = arr;
+				this.setSelected(0,arr);
+			}
+		},
+		mounted() {
+
+		},
+		methods : {
+			clear(){
+				this.$children.forEach(obj=>{
+					obj.clear();
+				})
+			},
+			showError(){
+				this.error = true;
+			},
+			clearError(){
+				this.error = false;
+			},
+			getIndex(obj){ //获取有多少个 select arr.lenth
+				if(!obj) return obj;
+				let arr = [obj];
+				if(obj.parent){
+					arr.unshift(obj.parent);
+				}
+				return arr;
+			},
+			setSelected(i,arr){ //设置select选择
+				if(!arr[i+1]) return;
+				this['selected'+(i+1)] = arr[i];
+				this.$nextTick(()=>{ //更新第一个select时，第二个才会出来，所以需要监听
+					this.setSelected((i+1),arr);
+				});
+			},
+			setSelect( parent , list , id ){ //查找当前选择的栏目
+				let obj;
+				for(let i=0;i<list.length;i++){
+					if(list[i].item.id == id){
+						obj = list[i];
+						break;
+					}
+				}
+				if(!obj){
+					for(let i=0;i<list.length;i++){
+						if(list[i].list){
+							return this.setSelect(list[i],list[i].list,id);
+							break;
+						}
+					}
+				}
+				return obj;
+			},
+			change( obj , index ){
+				index = parseInt(index);
+				const self = this ,
+					arr = this.column[this.name] || [];
+				arr[(index-1)] = obj; //index 从0 开始，所以要-1
+				self.$store.commit("setCatch",{
+					[this.name] : arr
+				});
+				self['list'+(index+1)] = []; //list2 才是第二个，选择第一个，要加1才到第二个
+				if(obj.list){
+					self['list'+(index+1)] = obj.list;
+				}
+				this.verification();
+			},
+			verification(callback){
+				callback = callback || function(){};
+				let selcts = this.column[this.name];
+				this.check.forEach((val,i)=>{
+					if(val && selcts[i] && selcts[i] == -1){
+						this.showError();
+						return callback(false);
+					}
+				});
+				this.clearError();
+				return callback(true);
+			},
+			setList(parent,arr){
+				if(!arr || !arr.length) return arr;
+
+				let self = this,
+					columnName = this.columnName,
+					columnObjName = this.columnObjName,
+					columnListName = this.columnListName,
+					_arr = [];
+				$.each(arr,function( i, obj ){
+					let _obj = obj[columnObjName],
+						_list = obj[columnListName] ,
+						_parent , newList;
+
+					_obj.name = _obj[columnName];
+					if(_list){
+						newList = [];
+						_list.forEach(obj=>{
+							newList.push(obj[columnObjName]);
+						});
+					}
+					_parent = {
+						item : _obj,
+						list : newList
+					};
+					if(_list && _list.length){
+						_list = self.setList(_parent,_list);
+					}
+					_arr.push({
+						item : _obj,
+						list : _list,
+						parent : parent
+					});
+				});
+				return _arr;
+			}
+		}
+	}
+</script>

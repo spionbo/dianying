@@ -5,7 +5,7 @@
 		<div class="form add">
 			<div class="title">新增栏目</div>
 			<div class="content">
-				<add-form></add-form>
+				<add-form ref="form"></add-form>
 				<div class="submit">
 					<div class="btn" @click="submit">确定</div>
 					<div class="btn red">清空</div>
@@ -45,11 +45,7 @@
 		methods:{
 			submit(){
 				let [self,ischeck] = [this,true];
-				this.$children.map(obj=>{
-					obj.verification(function( b ){
-						ischeck = b;
-					});
-				});
+				if(!this.$refs.form.verification()) return;
 				if(ischeck){
 					let column = this.column,
 						select = this.column.column,
