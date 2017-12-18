@@ -122,29 +122,40 @@ public class PermissionBiz extends BaseBiz {
         return result;
     }
 
-    private List<PermissionBean> setColumn(List<PermissionBean> permissionBeans,List<Permission> catchList){
+    /**
+     * 解析列表，分类相应栏目
+     * @param parentBeans  父list
+     * @param allList   所有 list
+     * @return
+     */
+    private List<PermissionBean> setColumn(List<PermissionBean> parentBeans,List<Permission> allList){
 
-        for(int i=0;i<permissionBeans.size();i++){
-            PermissionBean parent = permissionBeans.get(i);
+        for(int i=0;i<parentBeans.size();i++){
+            PermissionBean parent = parentBeans.get(i);
             Permission parentPermission = parent.getPermission();
 
-            List<Permission> childList = new ArrayList<>();
+            //获取子类
+            List<Permission> firstChild = new ArrayList<>();
             List<PermissionBean> list = new ArrayList<>();
 
-            for(int j=0;j<catchList.size();j++){
-                Permission child = catchList.get(j);
+            for(int j=0;j<allList.size();j++){
+                Permission child = allList.get(j);
                 if(child.getParentId() == parentPermission.getId()){
-                    childList.add(child);
+                    firstChild.add(child);
                 }
             }
-            for(int k=0;k<childList.size();k++){
+
+            for(int k=0;k<firstChild.size();k++){
                 PermissionBean permissionBean = new PermissionBean();
-                permissionBean.setPermission(childList.get(k));
+                permissionBean.setPermission(firstChild.get(k));
                 list.add(permissionBean);
             }
-            parent.setPermissionBeans(list);
+            if(list.size()>0){//(一级)子类获取(二级)子类
+                setColumn(list,allList);
+                parent.setPermissionBeans(list);
+            }
         }
-        return permissionBeans;
+        return parentBeans;
     }
 
 

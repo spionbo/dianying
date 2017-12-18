@@ -5,8 +5,10 @@ import store from './store';
 Vue.use(VueRouter);
 import './router';
 import Pop from './common/pop/js/Pop';
+import vuePlug from './common/vuePlugin';
 import './common/components';
 Vue.use(Pop);
+Vue.use(vuePlug);
 
 import headbar from './module/head';
 import menubar from './module/menu';
@@ -23,8 +25,10 @@ window.Main = new Vue({
 		}
 	},
 	watch : {
+		'$route' (to, from){
+			require('./router/route').call(this,to,from);
+		},
 		isLogin( val ){
-			debugger;
 			if(val){
 				router.push('main');
 			}else{
@@ -38,7 +42,7 @@ window.Main = new Vue({
 	methods : {
 		setLoginStatus(boolean){
 			this.isLogin = boolean;
-		}
+		},
 	},
 	template: `
 	    <div id="app">

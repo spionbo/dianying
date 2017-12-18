@@ -130,6 +130,7 @@
 			},
 			change( obj , index ){
 				index = parseInt(index);
+
 				const self = this ,
 					arr = this.column[this.name] || [];
 				arr[(index-1)] = obj; //index 从0 开始，所以要-1
@@ -144,13 +145,16 @@
 			},
 			verification(callback){
 				callback = callback || function(){};
-				let selcts = this.column[this.name];
+				let selcts = this.column[this.name] ,
+					bool = true;
 				this.check.forEach((val,i)=>{
-					if(val && selcts[i] && selcts[i] == -1){
+					if(val && ( !selcts || (selcts[i] && selcts[i] == -1))){
+						bool = false;
 						this.showError();
 						return callback(false);
 					}
 				});
+				if(!bool) return;
 				this.clearError();
 				return callback(true);
 			},

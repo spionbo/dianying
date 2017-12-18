@@ -36,7 +36,7 @@
 		},
 		mounted() {
 			const self = this;
-			T.ajax({
+			this.ajax({
 				url:'/permission/currentMenuPermission',
 			}).then(data=>{
 				self.list = data.data;
@@ -48,29 +48,32 @@
 				if(!this.$refs.form.verification()) return;
 				if(ischeck){
 					let column = this.column,
-						select = this.column.column,
+						select = this.column.selects,
 						obj = {
 							name : column.name,
-							parentId : select.id,
 							parentUrl : select.url,
 							url : column.path,
 							sort : this.sort,
 							description : this.description
 						};
-					this.$pops.loadding();
-					T.ajax({
+					if(select.length){
+						obj.parentId = select.pop().item.id;
+					}
+					this.ajax({
 						url : '/permission/add',
 						type : "POST",
-						data : obj
+						data : obj,
+						load : true,
 					}).then(data=>{
-						self.$pops.removeLoadding();
-						this.$pop({
-							title : "成功",
-							close : true,
-							content : "添加成功！"
+						this.$tips({
+							content:"添加成功!"
 						});
+						self.clearall();
 					})
 				}
+			},
+			clearall(){
+				this.$refs.form.clearall();
 			}
 		}
 	}

@@ -13,63 +13,63 @@
 			</form-input>
 		</li>
 		<li>
-			<div class="label">请选择栏目<em>*</em></div>
+			<div class="label">请选择栏目</div>
 			<m-select ref="myselect"
 				type="text"
 				:arr="list"
-				name = "column"
+				name = "selects"
 				columnName="name"
 				:columnId = "obj.columnId"
 				columnObjName="permission"
 				columnListName="permissionBeans"
 				dataType="path"
-				:check="[true,false,false]"
+				:check="[false,false,false]"
 				placeholder="请选择栏目">
 			</m-select>
 		</li>
 		<li>
 			<div class="label">路经<em>*</em></div>
 			<form-input
-					type="text"
-					dataType="path"
-					name = "path"
-					:data = "obj.path"
-					:check="true"
-					maxlength="11"
-					placeholder="请输入路经名称">
+				type="text"
+				dataType="path"
+				name = "path"
+				:data = "obj.path"
+				:check="true"
+				maxlength="11"
+				placeholder="请输入路经名称">
 			</form-input>
 		</li>
 		<li>
 			<div class="label">排序</div>
-			<div class="txt">
-				<div class="edit">
-					<input type="number" v-model="sort" value="1"/>
-				</div>
-				<div class="cnt">
-					请输入排序，排序为整数
-				</div>
-			</div>
+			<input-number
+				name = "sort"
+				:data = "obj.sort"
+				min="1"
+				max="99">
+			</input-number>
 		</li>
 		<li>
 			<div class="label">描述</div>
-			<div class="txt">
-				<div class="edit">
-					<textarea class="textarea" v-model="description" style="width:500px;" maxlength="200"></textarea>
-				</div>
-				<div class="cnt">
-					其他内容
-				</div>
-			</div>
+			<texta
+					name="description"
+					:data = "obj.description"
+					maxlength="100"
+					placeholder="描述内容不得超过100字"
+			></texta>
 		</li>
 	</ul>
 </template>
 <script>
 	import formInput from "../components/formInput";
+	import inputNumber from "../components/inputNumber.vue";
+	import texta from "../components/texta.vue";
 	import mSelect from "../components/selects";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {
 			formInput,
+			inputNumber,
+			texta,
 			mSelect
 		},
 		computed : {
@@ -83,16 +83,12 @@
 		data() {
 			return {
 				list : null,
-
-				sort : 1,
-				description : "" ,
-
 				obj : {}
 			}
 		},
 		mounted() {
 			const self = this;
-			T.ajax({
+			this.ajax({
 				url:'/permission/currentMenuPermission',
 			}).then(data=>{
 				self.list = data.data;
@@ -102,7 +98,6 @@
 		},
 		methods:{
 			verification(){
-				debugger;
 				let [self,ischeck] = [this,true];
 				this.$children.map(obj=>{
 					obj.verification(function( b ){
@@ -126,10 +121,10 @@
 					self.obj = {
 						name : data.name,
 						columnId : data.id,
+						sort : data.sort,
+						description : data.description,
 						path : data.url
 					};
-					self.sort = data.sort;
-					self.description = data.description;
 					self.$nextTick(function(){ //myselect 更新数据后，获取他的值
 						let arr = self.$refs.myselect.selects,
 							len = arr.length - 1 ,
@@ -143,8 +138,6 @@
 			},
 			clearall(){
 				this.obj = {};
-				this.sort = 1;
-				this.description = "";
 				this.$children.forEach(obj=>{
 					obj.clear();
 				})

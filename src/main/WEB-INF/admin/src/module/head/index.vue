@@ -76,7 +76,7 @@
 		},
 		mounted() {
             const self = this;
-            T.ajax({
+            this.ajax({
                 url:"/user/currentUser",
             }).then(data=>{
                 self.currentUser = data.data;
@@ -84,7 +84,7 @@
 		},
         methods :{
             exit(){
-                T.ajax({
+                this.ajax({
                     url:"/user/loginOut",
                 }).then(data=>{
                     Main.setLoginStatus(false);

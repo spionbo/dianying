@@ -1,6 +1,7 @@
 package com.cn.cms.web.controller;
 
 import com.cn.cms.biz.PermissionBiz;
+import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.enums.ErrorCodeEnum;
@@ -29,6 +30,7 @@ public class PermissionController extends BaseController{
 
     @Resource
     private PermissionBiz permissionBiz;
+
 
     /**
      * 获取用户拥有的菜单栏权限
@@ -72,7 +74,6 @@ public class PermissionController extends BaseController{
         }
         String userID = getCurrentUserId(request);
         permissionBiz.savePermissionColumn(userID,name,parentId,parentUrl,url,sort,description);
-
         return ApiResponse.returnSuccess();
     }
 

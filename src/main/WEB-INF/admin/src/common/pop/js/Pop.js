@@ -8,12 +8,16 @@ class Pop extends Base{
 		super.init(config);
 		this.resize();
 	}
-	resize(){
-		super.resize();
-		this.update();
-	}
-	update(){
-
+	tips( obj ){
+		let tips = new Base();
+		tips.init({
+			wrapper : 'tips',
+			removeClose : true,
+			content : obj.content
+		});
+		setTimeout(function(){
+			tips.$pop.close();
+		},obj.time || 800 );
 	}
 	load(){
 		let load;
@@ -35,7 +39,7 @@ class Pop extends Base{
 				});
 			},
 			remove(){
-				load.$pop.close();
+				if(load) load.$pop.close();
 			}
 		};
 	}
@@ -48,7 +52,7 @@ MyPlugin.install = function (Vue, options) {
 	let pop = new Pop(options) ,
 		loading = pop.load();
 	// 4. 添加实例方法
-	Object.setPrototypeOf(Vue.prototype,{
+	Object.assign(Vue.prototype,{
 		$pop(config){
 			pop.init(config);
 			return pop;
@@ -65,6 +69,9 @@ MyPlugin.install = function (Vue, options) {
 		},
 		$requirePop(sys,data,popData){
 			pop.requireEle(sys,data,popData);
+		},
+		$tips(conf){
+			pop.tips(conf);
 		}
 	})
 };

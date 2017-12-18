@@ -4,7 +4,7 @@ window.router = new VueRouter({
 	base: __dirname,
 	linkActiveClass: "active",
 	routes: [
-		{ path: '/', redirect:'/main'},
+		//{ path: '/', redirect:'/main'},
 		{ 
 			path : '/login',
 			components: {login:()=>import('../module/login')},
@@ -48,6 +48,6 @@ window.router = new VueRouter({
 			]
 		},
 		// catch all redirect
-		{ path: '*', redirect: '/' }
+		{ path: '*', redirect: '/main' }
 	]
 });

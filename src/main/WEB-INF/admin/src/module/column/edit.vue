@@ -32,6 +32,11 @@
 		methods:{
 			submit(){
 				if(!this.$refs.form.verification()) return;
+				let column = this.column ,
+					name = column.name ,
+					path = column.path,
+					sort = column.sort,
+					description = column.description;
 				debugger;
 			},
 			clearall(){

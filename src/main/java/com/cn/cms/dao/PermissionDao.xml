@@ -68,7 +68,10 @@
     </select>
 
     <select id="queryPermissionName" resultType="java.lang.Integer">
-        SELECT count(1) from permission WHERE parent_id = ${parentId} and name="${permissionName}"
+        SELECT count(1) from permission WHERE name="${permissionName}"
+        <if test="parentId != null">
+            and parent_id = ${parentId}
+        </if>
     </select>
 
     <insert id="savePermissionColumn" useGeneratedKeys="true" keyProperty="p1.id">

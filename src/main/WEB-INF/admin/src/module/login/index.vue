@@ -93,10 +93,11 @@
                 const self = this;
                 if(self.verification()!==true) return;
                 require(['../../plug/md5.min.js'], function(md5) {
-                    T.ajax({
+                    self.ajax({
                         url : '/user/login' ,
                         type : 'post',
 	                    callback : true,
+	                    load : true,
                         data : {
                             userName : md5(self.userName),
                             pwd : md5(md5(self.pwd))

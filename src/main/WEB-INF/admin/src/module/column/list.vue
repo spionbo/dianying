@@ -27,7 +27,7 @@
 		},
 		mounted() {
 			const self = this;
-			T.ajax({
+			this.ajax({
 				url:'/permission/currentMenuPermission'
 			}).then(data=>{
 				self.list = data.data;
