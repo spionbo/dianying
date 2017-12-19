@@ -1,6 +1,6 @@
 Vue.component("pop",{
 	template : `
-				<transition name="down">
+				<transition :name="transition">
 					<div class='pop transition' v-show='showModal' @click="closethisPop" :class="obj.superClass">
 						<div class="content-wrapper" :class="obj.wrapper" @click='closePropagtion($event)'>
 							<a v-if="obj.close" @click="close" href="javascript:void(0)" class='close'>关闭</a>
@@ -19,6 +19,10 @@ Vue.component("pop",{
 			`,
 	props : {
 		obj : Object,
+		transition : {
+			type:String,
+			default : 'down'
+		},
 		closeCallback : {
 			type: Function,
 			default: function () {

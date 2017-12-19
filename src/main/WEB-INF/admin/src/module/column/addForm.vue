@@ -123,9 +123,9 @@
 						columnId : data.id,
 						sort : data.sort,
 						description : data.description,
-						path : data.url
+						path : data.url.match(/\/\w+$/)[0]
 					};
-					self.$nextTick(function(){ //myselect 更新数据后，获取他的值
+					/*self.$nextTick(function(){ //myselect 更新数据后，获取他的值
 						let arr = self.$refs.myselect.selects,
 							len = arr.length - 1 ,
 							path = data.url;
@@ -133,7 +133,7 @@
 							path = path.replace(arr[i].url,"");
 						}
 						self.obj.path = path;
-					})
+					})*/
 				}
 			},
 			clearall(){

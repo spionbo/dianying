@@ -58,12 +58,11 @@ public class PermissionController extends BaseController{
      */
     @CheckToken
     @CheckAuth(name = "positionPermission:write")
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/addColumn",method = RequestMethod.POST)
     public String addPermissionColumn(HttpServletRequest request ,
                                       HttpServletResponse response,
                                       @RequestParam(value = "name") String name,
                                       @RequestParam(value = "parentId",required = false) Integer parentId,
-                                      @RequestParam(value = "parentUrl",required = false) String parentUrl,
                                       @RequestParam(value = "url") String url,
                                       @RequestParam(value = "sort" , required = false) Integer sort,
                                       @RequestParam(value = "description" , required = false) String description){
@@ -73,23 +72,45 @@ public class PermissionController extends BaseController{
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_COLUMN_ER.getType(),ErrorCodeEnum.ERROR_COLUMN_ER.getMessage());
         }
         String userID = getCurrentUserId(request);
-        permissionBiz.savePermissionColumn(userID,name,parentId,parentUrl,url,sort,description);
+        permissionBiz.savePermissionColumn(userID,name,parentId,url,sort,description);
         return ApiResponse.returnSuccess();
     }
 
     /**
      * 删除栏目，如果该栏目有子栏目，则删除失败。
      * @param request
-     * @param id
+     * @param columnId
      * @return
      */
     @CheckToken
     @CheckAuth(name = "positionPermission:delete")
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteColumn",method = RequestMethod.POST)
     public String deletePermissionColumn(HttpServletRequest request,
-                                         @RequestParam(value = "columnId") Integer id){
+                                         @RequestParam(value = "columnId") Integer columnId){
+        String userId = getCurrentUserId(request);
+        if(permissionBiz.hasPermission(columnId , userId)){
+            permissionBiz.deletePermissionColumn(columnId , userId);
+            return ApiResponse.returnSuccess();
+        }
+        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_DELETE_COLUMN.getMessage());
+    }
+
+    @CheckToken
+    @CheckAuth(name = "positionPermission:update")
+    @RequestMapping(value = "/updateColumn",method = RequestMethod.POST)
+    public String updatePermissionColumn(HttpServletRequest request ,
+                                         HttpServletResponse response,
+                                         @RequestParam(value = "id") Integer id,
+                                         @RequestParam(value = "name") String name,
+                                         @RequestParam(value = "parentId",required = false) Integer parentId,
+                                         @RequestParam(value = "url") String url,
+                                         @RequestParam(value = "sort" , required = false) Integer sort,
+                                         @RequestParam(value = "description" , required = false) String description){
+        String userID = getCurrentUserId(request);
+        permissionBiz.updatePermissionColumn(id,userID,name,parentId,url,sort,description);
         return ApiResponse.returnSuccess();
     }
+
 
     /**
      * 获取后台栏目信息

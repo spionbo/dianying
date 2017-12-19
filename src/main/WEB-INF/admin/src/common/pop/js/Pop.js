@@ -9,12 +9,13 @@ class Pop extends Base{
 		this.resize();
 	}
 	tips( obj ){
-		let tips = new Base();
-		tips.init({
-			wrapper : 'tips',
-			removeClose : true,
-			content : obj.content
-		});
+		let tips = new Base() ,
+			config = {
+				wrapper : 'tips',
+				removeClose : true
+			};
+		Object.assign(config,obj);
+		tips.init(config);
 		setTimeout(function(){
 			tips.$pop.close();
 		},obj.time || 800 );

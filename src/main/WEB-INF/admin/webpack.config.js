@@ -10,13 +10,14 @@ let webpack = require('webpack'),
 const postcss = {
     plugins: [
         require('postcss-partial-import'),
-        require('autoprefixer'),
+	    require('postcss-cssnext'),
         /*require('postcss-pxtorem')({
             replace: true,
             propList: ['font', 'font-size', 'line-height', 'box-shadow', 'letter-spacing', 'perspective', 'transform', '-webkit-perspective', '-webkit-transform', 'max-width', 'min-width', 'max-height', 'min-height', 'margin', 'margin-left', 'margin-right', 'margin-bottom', 'margin-top', 'padding', 'padding-left', 'padding-right', 'padding-bottom', 'padding-top', 'border', 'border-left', 'border-right', 'border-bottom', 'border-top', 'width', 'height', 'background-position', 
                 'top','left','bottom','right',
                 'border-radius'],
         }),*/
+	    //require('postcss-mixins'),
         require('postcss-extend'),
         require('precss'),
     ]
@@ -48,7 +49,7 @@ module.exports = {
 	    '$': 'window.jquery',
     },
     output: {
-        path: path.join(__dirname, build ? output+'/build' : "/web"),
+        path: path.join(__dirname, build ? '/build' : "/build"),
         //publicPath: build ? http : local,
         filename: "[name].js?name=[hash]",
         chunkFilename: '[chunkhash:8]_chunk.js?name=[hash]'

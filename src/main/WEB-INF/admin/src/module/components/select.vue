@@ -27,11 +27,16 @@
 			},
 			select( _obj ){
 				let self = this;
-				this.list.forEach(obj=>{
-					if(obj.item.id == _obj.item.id){
-						self.selectObj = obj;
-					}
-				});
+				if(_obj!=-1){
+					this.list.forEach(obj=>{
+						if(obj.item.id == _obj.item.id){
+							self.selectObj = obj;
+						}
+					});
+				}else{
+					self.selectObj = -1;
+				}
+
 			}
 		},
 		mounted() {

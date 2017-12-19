@@ -49,20 +49,24 @@
 				if(ischeck){
 					let column = this.column,
 						select = this.column.selects,
-						obj = {
-							name : column.name,
-							parentUrl : select.url,
-							url : column.path,
-							sort : this.sort,
-							description : this.description
-						};
+						parentId,
+						parentUrl = "";
 					if(select.length){
-						obj.parentId = select.pop().item.id;
+						parentId = select.pop().item.id;
+						column.selects.forEach(obj=>{
+							parentUrl += obj.item.url
+						});
 					}
 					this.ajax({
-						url : '/permission/add',
+						url : '/permission/addColumn',
 						type : "POST",
-						data : obj,
+						data : {
+							name : column.name,
+							parentId : parentId,
+							sort : this.sort,
+							url : parentUrl+obj.url,
+							description : this.description
+						},
 						load : true,
 					}).then(data=>{
 						this.$tips({

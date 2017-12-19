@@ -11,7 +11,8 @@ public enum ErrorCodeEnum {
     ERROR_LOGIN_FAIL("ERROR_LOGIN_FAIL",-110,"登录失败，请重新登录"),
     ERROR_NO_PERMISSION("ERROR_NO_PERMISSION",-111,"无权限"),
     ERROR_USERNAME_RE("ERROR_USERNAME_RE",-210,"用户名重复"),
-    ERROR_COLUMN_ER("ERROR_COLUMN_ER",-310,"栏目名重复");
+    ERROR_COLUMN_ER("ERROR_COLUMN_ER",-310,"栏目名重复"),
+    ERROR_DELETE_COLUMN("ERROR_DELETE_COLUMN",-410,"栏目下面有子栏目，不能删除");
 
     @Getter
     private int type;

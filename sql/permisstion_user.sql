@@ -12,6 +12,5 @@ create table `permission_user`(
 	create_time_str VARCHAR(255),
 	update_time_str varchar(255),
 	primary key(id),
-	foreign key(user_id) references `user`(user_id),
-	foreign key(position_id) references `permission`(id)
+	foreign key(position_id) references `permission`(id) ON DELETE CASCADE
 )

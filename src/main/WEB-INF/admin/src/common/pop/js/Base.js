@@ -33,7 +33,7 @@ export default class Base{
 	get parent(){
 		return this._parent;
 	}
-	@D.deprecate("use this.$requirePop:")
+	@D.deprecate("use import components")
 	requireEle( sys , data , popData ){
 		let childName = "child"+new Date().getTime() ,
 			name = "elename"+new Date().getTime() ,
@@ -92,7 +92,7 @@ export default class Base{
 			childName = "child"+new Date().getTime();
 		$(`
 			<div class="`+childName+`">
-				<pop ref="pop" :obj="win">
+				<pop ref="pop" :transition='win.transition' :obj="win">
 					<div v-if="win.title" slot='title'>
 						{{win.title}}
 					</div>
@@ -120,10 +120,22 @@ export default class Base{
 			},
 			methods:{
 				okCallback(){
-					this.win.footer.okCallback();
+					if(this.win.footer.okCallback){
+						this.win.footer.okCallback.call(this);
+					}else{
+						this.$refs.pop.close();
+					};
 				},
 				cancelCallback(){
-					this.win.footer.cancelCallback();
+					let self = this;
+					if(this.win.footer.cancelCallback){
+						this.win.footer.cancelCallback.call(this);
+					}else{
+						self.$refs.pop.close();
+					};
+				},
+				$closePop(){
+					this.$refs.pop.close();
 				}
 			}
 		});

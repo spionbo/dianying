@@ -28,4 +28,10 @@ public interface PermissionDao {
                                 @Param(value = "permissionName") String name);
 
     Permission queryPermissionColumn(@Param(value = "id") Integer id);
+
+    void deletePermissionColumnUser(@Param(value = "userId") String userId);
+
+    void deletePermissionColumn(@Param(value="columnId") Integer columnId);
+
+    void updatePermissionColumn(@Param(value = "p1") Permission permission);
 }

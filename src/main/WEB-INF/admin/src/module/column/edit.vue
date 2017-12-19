@@ -20,7 +20,8 @@
 			})
 		},
 		props : {
-			data : Object
+			data : Object,
+			columnInfo : Object
 		},
 		data() {
 			return {
@@ -32,12 +33,40 @@
 		methods:{
 			submit(){
 				if(!this.$refs.form.verification()) return;
-				let column = this.column ,
+				let self = this,
+					column = this.column ,
+					permission = this.columnInfo.permission,
+					id = permission.id,
+					parentId = permission.parentId,
 					name = column.name ,
 					path = column.path,
 					sort = column.sort,
+					parentUrl="",
 					description = column.description;
-				debugger;
+
+				column.selects.forEach(obj=>{
+					parentUrl += obj.item.url
+				});
+				this.ajax({
+					url : '/permission/updateColumn',
+					type : "POST",
+					data : {
+						id : id,
+						parentId : parentId,
+						name : name,
+						url : parentUrl+path,
+						sort : sort,
+						description : description
+					}
+				}).then(data=>{
+					this.$tips({
+						content : "成功！"
+					});
+					self.$closePop();
+				})
+			},
+			$closePop(){
+				this.$parent.close();
 			},
 			clearall(){
 				this.$refs.form.clearall();

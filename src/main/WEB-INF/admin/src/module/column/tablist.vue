@@ -20,7 +20,7 @@
 				</div>
 				<div class="td" style="width:120px;text-align:center;">
 					<div class="btn" @click="edit(item)">编辑</div>
-					<div class="btn red" v-if="!item.permissionBeans" @click="del(item)">删除</div>
+					<div class="btn red" @click="del(item,$event)">删除</div>
 				</div>
 			</div>
 			<div class="tr listTr">
@@ -44,7 +44,7 @@
 					</div>
 					<div class="td" style="width:120px;text-align:center;">
 						<div class="btn" @click="edit(item1)">编辑</div>
-						<div class="btn red" v-if="!item1.permissionBeans" @click="del(item1)">删除</div>
+						<div class="btn red" @click="del(item1,$event)">删除</div>
 					</div>
 				</div>
 				<div v-if="item1.permissionBeans" class="child">
@@ -67,7 +67,7 @@
 						</div>
 						<div class="td" style="width:120px;text-align:center;">
 							<div class="btn" @click="edit(obj)">编辑</div>
-							<div class="btn red" v-if="!obj.permissionBeans" @click="del(obj)">删除</div>
+							<div class="btn red" @click="del(obj,$event)">删除</div>
 						</div>
 					</div>
 				</div>
@@ -81,7 +81,25 @@
 			data:Array
 		},
 		mounted() {
-
+			this.$nextTick(function(){
+				let tr = $(".off").parent();
+				tr.each(function(){
+					if(void 0 == this.isCheck){
+						this.isCheck = false;
+					}
+					let parent = $(this).parent().parent(),
+						childList = parent.children(".child"),
+						list = parent.children(".list,.listTr").add(childList);
+					this.onclick = function(){
+						this.isCheck = !this.isCheck;
+						if(this.isCheck){
+							list.slideUp(200);
+						}else{
+							list.slideDown(200);
+						}
+					}
+				});
+			})
 		},
 		filters:{
 			formatTime(str){
@@ -93,6 +111,7 @@
 				this.ajax({
 					url:"/permission/permissionColumn",
 					type : "get",
+					load : true,
 					data : {
 						columnId : item.permission.id
 					}
@@ -100,7 +119,8 @@
 					require.ensure([],(require)=> {
 						this.$requirePop(require('./edit'), {
 							props : {
-								data : data.data
+								data : data.data,
+								columnInfo : item
 							}
 						},
 						{
@@ -115,7 +135,34 @@
 				});
 
 			},
-			del(item){
+			del(item,$event){
+				let self = this;
+				this.$pop({
+					title : "删除",
+					close : true,
+					content : "确定要删除“"+item.permission.name+"”吗？",
+					footer : {
+						ok : "确定",
+						cancel : "取消",
+						okCallback : function(){
+							let self = this;
+							self.ajax({
+								url : "/permission/deleteColumn",
+								type : "post",
+								load : true,
+								data : {
+									columnId : item.permission.id
+								}
+							}).then(data=>{
+								self.$closePop();
+								self.$tips({
+									content: "删除成功!"
+								});
+								$($event.currentTarget).parent().parent().parent().remove();
+							});
+						}
+					}
+				});
 
 			}
 		}

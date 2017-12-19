@@ -20,6 +20,8 @@ import com.cn.cms.service.ColumnService;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
+import com.cn.cms.web.ann.CheckAuth;
+import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
 import org.springframework.stereotype.Component;
 
@@ -95,6 +97,7 @@ public class PermissionBiz extends BaseBiz {
     public Permission getPermissionColumn(Integer id){
         return userService.queryPermissionColumn(id);
     }
+
 
     /**
      * 栏目列表
@@ -176,71 +179,112 @@ public class PermissionBiz extends BaseBiz {
         }
     }
 
-    public void savePermissionColumn(String userID,String name,Integer parentId,String parentUrl , String url,Integer sort,String description){
+    /**
+     * 新增栏目
+     * @param userID
+     * @param name
+     * @param parentId
+     * @param url
+     * @param sort
+     * @param description
+     */
+    public void savePermissionColumn(String userID,String name,Integer parentId, String url,Integer sort,String description) {
         Permission permission = new Permission();
         PermissionUser permissionUser = new PermissionUser();
 
         permission.setName(name);
-        permission.setUrl(url);
         permission.setLastModifyUserId(userID);
         permission.setCreateUserId(userID);
-        if(StringUtils.isNotBlank(url)){
-            if(StringUtils.isNotBlank(parentUrl)){
-                permission.setUrl(parentUrl+url);
-            }else{
-                permission.setUrl(url);
-            }
+        if (StringUtils.isNotBlank(url)) {
+            permission.setUrl(url);
         }
-        if(StringUtils.isNotBlank(description)){
+        if (StringUtils.isNotBlank(description)) {
             permission.setDescription(description);
         }
-        if(parentId!=null){
+        if (parentId != null) {
             permission.setParentId(parentId);
         }
-        if(sort!=null){
+        if (sort != null) {
             permission.setSort(sort);
         }
         userService.savePermissionColumn(permission);
         permissionUser.setUserId(userID);
         permissionUser.setPositionId(permission.getId());
         userService.savePermissionColumnUser(permissionUser);
-
-        //新增的栏目添加到redis中  转化较复杂
-        /*String result = jedisClient.get(RedisKeyContants.getMenuPermission(userID));
-        List<PermissionBean> permissionBean = JSON.parseObject(result,List.class);
-        if(parentId!=null){
-            this.addRedis(userID,permission,parentId,permissionBean);
-        }else{
-            PermissionBean permissionBean1 = new PermissionBean();
-            permissionBean1.setPermission(permission);
-            permissionBean.add(permissionBean1);
-            delPermissionRedis(userID);
-            //获取MENU列表
-            jedisClient.set(RedisKeyContants.getMenuPermission(userID), JSONArray.toJSONString(permissionBean), StaticContants.DEFAULT_SECONDS);
-        }*/
     }
-    /*private void addRedis(String userID,Permission permission , Integer parentId , List<PermissionBean> permissionBeanList){
-        Boolean findParent = false;
-        for(int i=0;i<permissionBeanList.size();i++){
-            PermissionBean permission1 = permissionBeanList.get(i);
-            if(permission1.getPermission().getId() == parentId){
-                List<PermissionBean> permissionbeans2 = permission1.getPermissionBeans();
-                PermissionBean permissionBeans = new PermissionBean();
-                permissionBeans.setPermission(permission);
-                permissionbeans2.add(permissionBeans);
-                findParent = true;
-                //获取MENU列表
-                jedisClient.set(RedisKeyContants.getMenuPermission(userID), JSONArray.toJSONString(permissionbeans2), StaticContants.DEFAULT_SECONDS);
+
+    /**
+     * 删除栏目
+     * @param columnId
+     * @param userId
+     * @return
+     */
+    public void deletePermissionColumn(Integer columnId , String userId){
+        userService.deletePermissionColumn(columnId);
+    }
+
+    /**
+     * 更新栏目信息
+     * @param userID
+     * @param name
+     * @param parentId
+     * @param url
+     * @param sort
+     * @param description
+     */
+    public void updatePermissionColumn(Integer id ,String userID,String name,Integer parentId , String url,Integer sort,String description){
+        Permission permission = new Permission();
+        PermissionUser permissionUser = new PermissionUser();
+
+        permission.setId(id);
+        permission.setName(name);
+        permission.setLastModifyUserId(userID);
+        permission.setCreateUserId(userID);
+        if (StringUtils.isNotBlank(url)) {
+            permission.setUrl(url);
+        }
+        if (StringUtils.isNotBlank(description)) {
+            permission.setDescription(description);
+        }
+        if (parentId != null) {
+            permission.setParentId(parentId);
+        }
+        if (sort != null) {
+            permission.setSort(sort);
+        }
+        userService.updatePermissionColumn(permission);
+    }
+
+
+    /**
+     * 判断该栏目是否有子栏目
+     * @param id
+     * @param userId
+     * @return
+     */
+    public Boolean hasPermission(Integer id , String userId){
+        String result = jedisClient.get(RedisKeyContants.getMenuPermission(userId));
+
+        if(StringUtils.isNotBlank(result)) {
+            List<PermissionBean> permissionBean = JSONArray.parseArray(result, PermissionBean.class);
+            return getPermissiionId(permissionBean,id);
+        }
+        return true;
+    }
+    private Boolean getPermissiionId(List<PermissionBean> list , Integer id){
+        Boolean bool = true;
+        for(int i=0;i<list.size();i++){
+            PermissionBean permissionBean1 = list.get(i);
+            Permission permission = permissionBean1.getPermission();
+            List<PermissionBean> permissionBeans = permissionBean1.getPermissionBeans();
+            if(permission.getParentId()!=null && permission.getParentId() == id){
+                bool = false;
                 break;
+            };
+            if(bool && permissionBeans!=null){
+                bool = getPermissiionId(permissionBeans,id);
             }
         }
-        if(findParent==false){
-            for(int i=0;i<permissionBeanList.size();i++){
-                PermissionBean permission1 = permissionBeanList.get(i);
-                addRedis(userID,permission,parentId,permission1.getPermissionBeans());
-            }
-        }
-    }*/
-
-
+        return bool;
+    }
 }

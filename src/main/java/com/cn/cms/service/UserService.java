@@ -41,4 +41,10 @@ public interface UserService {
 
     /* 查询指定栏目名称 */
     Permission queryPermissionColumn(Integer id);
+
+    /*删除后台栏目*/
+    void deletePermissionColumn(Integer columnId);
+
+    /*更新后台栏目*/
+    void updatePermissionColumn(Permission permission);
 }

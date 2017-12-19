@@ -30,7 +30,7 @@ module.exports = function(request,response){
                     .redirects(0)
                     .end(function(err, response){
                         if (err || !response.ok) {
-                            res.send('error');
+                            res.send('nodejs-error');
                         } else {
                             res.set(response.headers);
                             res.send(response.body);
@@ -44,7 +44,7 @@ module.exports = function(request,response){
                     .redirects(0)
                     .end(function(err, response){
                         if (err || !response.ok) {
-                            res.send('nodejs转向error');
+                            res.send('nodejs-error');
                         } else {
                             res.send(response.body);
                         }

@@ -52,4 +52,14 @@ public class UserServiceImpl implements UserService {
     public Permission queryPermissionColumn(Integer id){
         return permissionDao.queryPermissionColumn(id);
     }
+
+    @Override
+    public void deletePermissionColumn(Integer columnId){
+        permissionDao.deletePermissionColumn(columnId);
+    }
+
+    @Override
+    public void updatePermissionColumn(Permission permission){
+        permissionDao.updatePermissionColumn(permission);
+    }
 }
