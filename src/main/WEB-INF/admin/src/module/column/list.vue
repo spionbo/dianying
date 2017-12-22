@@ -16,22 +16,15 @@
 </template>
 <script>
 	import tablist from './tablist.vue';
+	import { mapGetters } from 'vuex';
 	export default {
 		components:{
 			tablist
 		},
-		data() {
-			return {
-				list : []
-			}
-		},
-		mounted() {
-			const self = this;
-			this.ajax({
-				url:'/permission/currentMenuPermission'
-			}).then(data=>{
-				self.list = data.data;
-			});
+		computed : {
+			...mapGetters({
+				list : 'currentMenuPermission'
+			})
 		}
 	}
 </script>

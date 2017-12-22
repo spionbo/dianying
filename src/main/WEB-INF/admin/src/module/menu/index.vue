@@ -8,7 +8,7 @@
         </div>
         <div class="selectMenu">
             <select v-model="selected">
-                <option v-for="item in menu" :key="item.permission.id"
+                <option v-for="item in data" :key="item.permission.id"
                     v-bind:value="item" :data-url="item.permission.url"
                 >{{item.permission.name}}</option>
             </select>
@@ -25,7 +25,7 @@
             </li>
             <li v-for="item in permissionBeans">
                 <a href="javascript:void(0)" @click="goURL(item)" :data-url="item.permission.url">
-                    <i class="fa fa-file-text"></i>
+                    <i class="fa" :class="item.permission.icon"></i>
                     <span class="title">{{item.permission.name}}</span>
                     <span class="arrow">
                         <i class="fa fa-angle-right"></i>
@@ -64,7 +64,6 @@
 			return {
 				show : true, //是否展示栏目
 				data : null,
-				menu : [],//栏目管理
 				permissionBeans : [], //后台管理
 				selected : null, //当前选择的页面
 				selectObj : {}, //当前选择的栏目
@@ -91,11 +90,32 @@
                 type : 'get'
             }).then(data=>{
             	self.data = data.data;
-            	self.menu = data.data;
+            	self.$store.commit('setCurrentMenuPermission',data.data);
+            	self.setIcon();
 	            self.refresh();
             });
 		},
 		methods : {
+			setIcon(){ //设置图标
+				let icons = {
+					"image" : "fa-image",
+					"column" : "fa-bars",
+					"admin" : "fa-user-circle-o",
+					"novel" : "fa-file-text-o",
+					"default" : "fa-file",
+				};
+				this.data.forEach(item=>{
+					item.permissionBeans.forEach(obj=>{
+						obj.permission.icon = icons.default;
+						for(let item in icons){
+							if(obj.permission.url.includes(item)){
+								obj.permission.icon = icons[item];
+							}
+						}
+					})
+
+				})
+			},
 			getParent(list,childList,parentId){ //获取父类
 				let _obj,self = this;
 				for(let i=0;i<childList.length;i++){
@@ -276,13 +296,13 @@
 		            //清除导航右边的箭头
 		            li.each(function(i , ele ){
 			            if($(ele).attr('class')=='home') return;
-			            $(ele).children('a').find('.fa').removeClass("fa-angle-down").addClass("fa-angle-right");
+			            $(ele).children('a').find('.arrow .fa').removeClass("fa-angle-down").addClass("fa-angle-right");
 		            });
 		            if(submenu.length){
                         if(this.isShow) {
-                            $(this).find('.fa').removeClass("fa-angle-right").addClass("fa-angle-down");
+                            $(this).find('.arrow .fa').removeClass("fa-angle-right").addClass("fa-angle-down");
                         }else{
-                            $(this).find('.fa').removeClass("fa-angle-down").addClass("fa-angle-right");
+                            $(this).find('.arrow .fa').removeClass("fa-angle-down").addClass("fa-angle-right");
                         }
 		            }
 	            };

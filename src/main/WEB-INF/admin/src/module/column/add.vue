@@ -23,24 +23,17 @@
 		},
 		computed : {
 			...mapGetters({
-				column : 'addColumn'
+				column : 'addColumn',
+				list : 'currentMenuPermission'
 			})
 		},
 		data() {
 			return {
-				list : null,
-
 				sort : 1,
 				description : ""
 			}
 		},
 		mounted() {
-			const self = this;
-			this.ajax({
-				url:'/permission/currentMenuPermission',
-			}).then(data=>{
-				self.list = data.data;
-			});
 		},
 		methods:{
 			submit(){

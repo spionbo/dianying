@@ -51,18 +51,24 @@ i{ display:inline-block; }
 }
 .btn{
 	display:inline-block;
-	height:26px;
-	line-height:26px;
-	padding:0 10px;
-	background:#35aa47;
-	color:#fff;
+	height:30px;
+	line-height:30px;
+	background-color: #50cd89;
+	border-radius: 15px;
+	box-shadow: 2px 3px 2px #cef2e3;
+	padding: 0 30px;
 	font-size:12px;
 	cursor:pointer;
+	color:#fff;
 	&.red{
-		background:#d84a38;
+		background-color:#ff7256;
+		box-shadow: 2px 3px 2px #ffe8e3;
 	}
     &:hover{-webkit-filter:brightness(1.2);}
-    &.gray{ opacity:.3; }/*filter: grayscale(100%);*/
+    &.gray{
+	    background-color:#d4d4d4;
+	    box-shadow: 2px 3px 2px #f1f1f1;
+    }/*filter: grayscale(100%);*/
 }
 .form{
 	.title{
@@ -149,8 +155,9 @@ i{ display:inline-block; }
 		    line-height:30px;
 		    margin-right:5px;
 		    padding:0 20px;
-		    border-radius:3px;
-		    background:#35aa47;
+		    border-radius:20px;
+		    background:#50cd89;
+		    box-shadow: 2px 3px 2px #cef2e3;
 		    cursor:pointer;
 		    color:#fff;
 	    }
@@ -181,7 +188,7 @@ i{ display:inline-block; }
 		}
 		li{
 			line-height: 30px;
-			padding:5px 0;
+			padding:7px 0;
 			overflow:hidden;
 		}
 		.label{
@@ -218,8 +225,10 @@ i{ display:inline-block; }
 	    }
     }
 	.submit{
-		margin: 0 -20px;
+		margin: 20px -20px 0;
 		padding:10px 0;
+		border-top: 1px solid #ddd;
+		box-shadow: 0 3px 5px rgba(228, 228, 228, 0.3) inset;
 		padding-left:130px;
 		border-top:1px solid #ddd;
 		.btn{
@@ -231,6 +240,14 @@ i{ display:inline-block; }
 		.submit{
 			margin:0;
 			padding-left:110px;
+		}
+	}
+	&.column-list{
+
+		.btn{
+			height:26px;
+			line-height:26px;
+			padding:0 20px;
 		}
 	}
 }

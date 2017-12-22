@@ -51,6 +51,33 @@ window.router = new VueRouter({
 							component : ()=>import(/* webpackChunkName: "admin-list" */ '../module/admin/list.vue')
 						}
 					]
+				},
+				{
+					path : "image",
+					component : {template:'<router-view></router-view>'},
+					children:[
+						{ path: '', redirect: 'list' },
+						{
+							path : "classifyAdd",
+							component : ()=>import('../module/image/classifyAdd.vue')
+						},
+						{
+							path : "classifyList",
+							component : ()=>import('../module/image/classifyList.vue')
+						},
+						{
+							path : "add",
+							component : ()=>import('../module/image/add.vue')
+						},
+						{
+							path : "list",
+							component : ()=>import('../module/image/list.vue')
+						},
+						{
+							path : "search",
+							component : ()=>import('../module/image/search.vue')
+						}
+					]
 				}
 			]
 		},

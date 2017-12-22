@@ -5,7 +5,7 @@
 				<div class="th flex">名称</div>
 				<div class="th" style="width:120px;text-align:center;">创建时间</div>
 				<div class="th" style="width:120px;text-align:center;">更新时间</div>
-				<div class="th" style="width:120px;text-align:center;">操作</div>
+				<div class="th" style="width:150px;text-align:center;">操作</div>
 			</div>
 			<div class="tr" v-if="item.permission">
 				<div class="td flex">
@@ -18,7 +18,7 @@
 				<div class="td" style="width:120px;text-align:center;">
 					{{item.permission.updateTimeStr | formatTime}}
 				</div>
-				<div class="td" style="width:120px;text-align:center;">
+				<div class="td" style="width:150px;text-align:center;">
 					<div class="btn" @click="edit(item)">编辑</div>
 					<div class="btn red" @click="del(item,$event)">删除</div>
 				</div>
@@ -27,7 +27,7 @@
 				<div class="th flex">名称</div>
 				<div class="th" style="width:120px;text-align:center;">创建时间</div>
 				<div class="th" style="width:120px;text-align:center;">更新时间</div>
-				<div class="th" style="width:120px;text-align:center;">操作</div>
+				<div class="th" style="width:150px;text-align:center;">操作</div>
 			</div>
 			<div class="list" v-if="item.permissionBeans" v-for="item1 in item.permissionBeans" :key="item1.permission.id">
 
@@ -42,7 +42,7 @@
 					<div class="td" style="width:120px;text-align:center;">
 						{{item1.permission.updateTimeStr | formatTime}}
 					</div>
-					<div class="td" style="width:120px;text-align:center;">
+					<div class="td" style="width:150px;text-align:center;">
 						<div class="btn" @click="edit(item1)">编辑</div>
 						<div class="btn red" @click="del(item1,$event)">删除</div>
 					</div>
@@ -52,7 +52,7 @@
 						<div class="th flex">名称</div>
 						<div class="th" style="width:120px;text-align:center;">创建时间</div>
 						<div class="th" style="width:120px;text-align:center;">更新时间</div>
-						<div class="th" style="width:120px;text-align:center;">操作</div>
+						<div class="th" style="width:150px;text-align:center;">操作</div>
 					</div>
 					<div v-for="obj in item1.permissionBeans" :key="obj.permission.id" class="tr">
 						<div class="td flex">
@@ -65,7 +65,7 @@
 						<div class="td" style="width:120px;text-align:center;">
 							{{obj.permission.updateTimeStr|formatTime}}
 						</div>
-						<div class="td" style="width:120px;text-align:center;">
+						<div class="td" style="width:150px;text-align:center;">
 							<div class="btn" @click="edit(obj)">编辑</div>
 							<div class="btn red" @click="del(obj,$event)">删除</div>
 						</div>

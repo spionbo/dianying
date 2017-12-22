@@ -84,26 +84,45 @@
 			},
 			verification(callback){
 				callback = callback || function(){};
-				let val = $.trim(this.value);
+				let self = this ,
+					val = $.trim(this.value) ,
+					bool = true;
 				if(this.check){
-					if(!this['_'+this.dataType](val)){
-						callback(false);
-						this.showError();
+					if(!this.prompt){
+						if(!this['_'+this.dataType](val)){
+							callback(false);
+							this.showError();
+							return false;
+						};
+					}else{
+						this.prompt.verification.call(this,val , function( b ){
+							if(!b){
+								callback(false);
+								self.showError();
+								bool = false;
+							}
+						})
+					}
+					if(!bool){
 						return false;
-					};
+					}
 				}
 				this.clearError();
 				callback(true);
 				return true;
 			},
 			setMsg(){
-				try{
-					this.info = ERROR[this.dataType];
-				}catch(e){
-					console.log("dataType类型出错");
+				if(!this.prompt){
+					try{
+						this.info = ERROR[this.dataType];
+					}catch(e){
+						console.log("dataType类型出错");
+					}
+					this.text = this.info.default;
+				}else{
+					this.info = this.prompt;
+					this.text = this.prompt.default;
 				}
-
-				this.text = this.prompt || this.info.default;
 			}
 		}
 	}

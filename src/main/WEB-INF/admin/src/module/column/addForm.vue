@@ -8,7 +8,7 @@
 				name = "name"
 				:data = "obj.name"
 				:check="true"
-				maxlength="5"
+				maxlength="6"
 				placeholder="请输入栏目名称">
 			</form-input>
 		</li>
@@ -35,7 +35,7 @@
 				name = "path"
 				:data = "obj.path"
 				:check="true"
-				maxlength="11"
+				maxlength="20"
 				placeholder="请输入路经名称">
 			</form-input>
 		</li>
@@ -74,7 +74,8 @@
 		},
 		computed : {
 			...mapGetters({
-				column : 'addColumn'
+				column : 'addColumn',
+				menu : 'currentMenuPermission'
 			})
 		},
 		props : {
@@ -87,14 +88,8 @@
 			}
 		},
 		mounted() {
-			const self = this;
-			this.ajax({
-				url:'/permission/currentMenuPermission',
-			}).then(data=>{
-				self.list = data.data;
-				self.setData();
-			});
-
+			this.setData();
+			this.list = this.menu;
 		},
 		methods:{
 			verification(){
