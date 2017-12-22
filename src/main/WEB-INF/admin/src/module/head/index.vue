@@ -47,7 +47,17 @@
             margin-top:-2px;
         }
     }
-   
+   .leftside{
+		.logo{
+			span{
+				line-height:20px;
+				display:inline-block;
+				padding:2px 5px;
+				margin-right:3px;
+				background:#2181e6;
+			}
+		}
+   }
 </style>
 <template>
     <article class="header">
@@ -65,6 +75,12 @@
                 </ul>
             </div>
         </div>
+	    <div class="leftside">
+			<div class="logo">
+				<span>TT528</span>
+				后台管理
+			</div>
+	    </div>
     </article>
 </template>
 <script>

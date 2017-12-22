@@ -4,8 +4,11 @@ import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.ErrorCodeEnum;
+import com.cn.cms.po.User;
 import com.cn.cms.utils.CookieUtil;
+import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
+import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
@@ -53,15 +59,6 @@ public class UserController extends BaseController{
     }
 
     /**
-     * 判断是否登录
-     * @return
-     */
-    @RequestMapping(value = "/isLogin",method = RequestMethod.GET)
-    public Boolean isLogin(HttpServletRequest request , HttpServletResponse response){
-        return userBiz.checkUserToken(request,response);
-    }
-
-    /**
      * 获取当前登录用户信息
      * @param request
      * @return
@@ -75,5 +72,20 @@ public class UserController extends BaseController{
         }
         UserBean userBean = userBiz.getUserBean(userID);
         return ApiResponse.returnSuccess(userBean);
+    }
+
+    @CheckToken
+    @CheckAuth( name = "user:red")
+    @RequestMapping(value = "/userlist",method = RequestMethod.GET)
+    public String list(HttpServletRequest request,
+                       @RequestParam(value = "page",required = false) Integer page ,
+                       @RequestParam(value = "pageSize",required = false) Integer pageSize){
+        Page pageObj = new Page(page,pageSize);
+        List<UserBean> users= userBiz.listUser(pageObj);
+        userBiz.dataInit(users);
+        Map<String, Object> result = new HashMap<>();
+        result.put("page",pageObj);
+        result.put("list",users);
+        return ApiResponse.returnSuccess(result);
     }
 }

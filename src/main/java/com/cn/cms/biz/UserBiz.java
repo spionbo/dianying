@@ -10,6 +10,7 @@ import com.cn.cms.po.User;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.CookieUtil;
 import com.cn.cms.utils.EncryptUtil;
+import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.result.ApiResponse;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
@@ -33,6 +34,49 @@ public class UserBiz extends BaseBiz{
 
     @Resource
     private PermissionBiz permissionBiz;
+
+
+    /**
+     * 返回Map
+     * @param userIds
+     * @return
+     */
+    public Map<String, UserBean> getUserBeanMap(List<String> userIds){
+        return toBeanMap(getUserCacheList(userIds));
+    }
+
+    public Map<String, UserBean> toBeanMap(List<User> users){
+        Map<String, UserBean> map = new HashMap<String, UserBean>();
+        if(users!=null && users.size()>0) {
+            for (int i = 0; i < users.size(); i++) {
+                UserBean userBean = new UserBean(users.get(i));
+                map.put(userBean.getUserId(),userBean);
+            }
+        }
+        return map;
+    }
+
+    /**
+     * 缓存中获取用户信息
+     * @param userIds
+     * @return
+     */
+    public List<User> getUserCacheList(List<String> userIds){
+        Map<String, String> map = new HashMap<>();
+        for(int i=0;i<userIds.size();i++){
+            if(StringUtils.isNotBlank(userIds.get(i))) {
+                map.put(userIds.get(i), RedisKeyContants.getUserKey(userIds.get(i)));
+            }
+        }
+        List<String> list = jedisClient.mget(map.values().toArray(new String[map.size()]));
+        List<User> result = new ArrayList<>();
+        for(int i=0; i <list.size();i++){
+            if(StringUtils.isNotBlank(list.get(i))) {
+                result.add(JSONObject.parseObject(list.get(i), User.class));
+            }
+        }
+        return result;
+    }
 
 
     /**
@@ -109,28 +153,6 @@ public class UserBiz extends BaseBiz{
      * @param request
      * @return
      */
-    public boolean checkUserToken(HttpServletRequest request,HttpServletResponse response){
-        String userId = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_ID);
-        String userKey = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_KEY);
-        String time = CookieUtil.getCookieVal(request,StaticContants.COOKIE_TIME);
-        String token = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_TOKEN);
-        if(StringUtils.isNotBlank(token) && StringUtils.isNotBlank(time) && StringUtils.isNotBlank(userId) && StringUtils.isNotBlank(userKey)){
-            String currentToken = EncryptUtil.token(userId, userKey, time);
-            String redisToken= jedisClient.get(RedisKeyContants.getToken(userId));
-            if(StringUtils.isNotBlank(currentToken) && StringUtils.isNotBlank(redisToken) &&
-                    currentToken.equals(redisToken) && currentToken.equals(token)){
-                return true;
-            }
-        }
-        clearCookie(request,response);
-        return false;
-    }
-
-    /**
-     * 检测用户登录状态
-     * @param request
-     * @return
-     */
     public boolean checkUserToken(HttpServletRequest request){
         String userId = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_ID);
         String userKey = CookieUtil.getCookieVal(request,StaticContants.COOKIE_USER_KEY);
@@ -164,5 +186,65 @@ public class UserBiz extends BaseBiz{
             return JSONObject.parseObject(str, User.class);
         }
         return null;
+    }
+
+    /**
+     * 分页获取用户列表
+     * @param page
+     * @return
+     */
+    public List<UserBean> listUser(Page page){
+        Integer count = userService.queryUserCount();
+        page.setCount(count);
+        List<User>  userList = null;
+        if(page.isQuery()){
+            userList = userService.queryUserList(page);
+        }
+        List<UserBean> userBeanList = toBean(userList);
+        return userBeanList;
+    }
+
+    /**
+     * PO 转 BO
+     * @param users
+     * @return
+     */
+    public List<UserBean> toBean(List<User> users){
+        List<UserBean> userBeanList = new ArrayList<UserBean>();
+        if(users!=null && users.size()>0) {
+            for (int i = 0; i < users.size(); i++) {
+                UserBean userBean = new UserBean(users.get(i));
+                userBeanList.add(userBean);
+            }
+        }
+        return userBeanList;
+    }
+
+    /**
+     * 加载创建人和修改人
+     * @param list
+     */
+    public void dataInit(List<UserBean> list){
+        if(StringUtils.isNotEmpty(list)) {
+            List<String> userIds = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                UserBean userBean = list.get(i);
+                if (StringUtils.isNotBlank(userBean.getCreateUserId())) {
+                    userIds.add(userBean.getCreateUserId());
+                }
+                if (StringUtils.isNotBlank(userBean.getLastModifyUserId())) {
+                    userIds.add(userBean.getLastModifyUserId());
+                }
+            }
+            if (userIds.size() > 0) {
+                Map<String, UserBean> map = getUserBeanMap(userIds);
+                for (int i = 0; i < list.size(); i++) {
+                    UserBean userBean = list.get(i);
+                    userBean.setCreateUserName(map.get(userBean.getCreateUserId()) != null ? map.get(userBean.getCreateUserId()).getRealName() : "");
+                    userBean.setLastModifyUserName(map.get(userBean.getLastModifyUserId()) != null ? map.get(userBean.getLastModifyUserId()).getRealName() : "");
+                }
+            }
+        }
+
     }
 }

@@ -15,13 +15,13 @@
         </div>
         <ul class="page-menu">
             <li class="home">
-                <a href="javascript:void(0)" >
-                    <i class="fa fa-home"></i>
-                    <span class="title">首页</span>
-                    <span class="jian">
+	            <router-link to="/main" tag="a">
+		            <i class="fa fa-home"></i>
+		            <span class="title">首页</span>
+		            <span class="jian">
                         <i class="fa fa-caret-left"></i>
                     </span>
-                </a>
+	            </router-link>
             </li>
             <li v-for="item in permissionBeans">
                 <a href="javascript:void(0)" @click="goURL(item)" :data-url="item.permission.url">
@@ -33,7 +33,7 @@
                 </a>
                 <ul v-if="item.permissionBeans" class="sub-menu" >
                     <li v-for="obj in item.permissionBeans">
-                        <a href="javascript:void(0)" @click="goURL(obj)">
+                        <a href="javascript:void(0)" @click="goURL(obj)" :data-url="obj.permission.url">
                             <span class="title">{{obj.permission.name}}</span>
                             <span class="arrow">
                                 <i class="fa fa-angle-right"></i>
@@ -41,7 +41,7 @@
                         </a>
                         <ul v-if="obj.permissionBeans" class="sub-menu" >
                             <li v-for="item in obj.permissionBeans">
-                                <a href="javascript:void(0)" @click="goURL(obj)">
+                                <a href="javascript:void(0)" @click="goURL(obj)" :data-url="item.permission.url">
                                     <span class="title">{{item.permission.name}}</span>
                                     <span class="arrow">
                                         <i class="fa fa-angle-right"></i>
@@ -66,7 +66,7 @@
 				data : null,
 				menu : [],//栏目管理
 				permissionBeans : [], //后台管理
-				selected : null,
+				selected : null, //当前选择的页面
 				selectObj : {}, //当前选择的栏目
             }
 		},
@@ -96,6 +96,30 @@
             });
 		},
 		methods : {
+			getParent(list,childList,parentId){ //获取父类
+				let _obj,self = this;
+				for(let i=0;i<childList.length;i++){
+					if(childList[i].permission.id == parentId){
+						_obj = childList[i];
+						break;
+					}
+				}
+				if(!_obj){
+					for(let j=0;j<list.length;j++){
+						if(list[j].permissionBeans){
+							_obj = self.getParent(list[j],list[j].permissionBeans,parentId);
+							if(_obj){
+								if(_obj.permission.parentId){
+									_obj = self.getParent(list,list,_obj.permission.parentId);
+									if(_obj) break;
+								}
+								break;
+							}
+						}
+					}
+				}
+				return _obj;
+			},
 			refresh(){
 				let [self,href] = [this,window.location.href.match(/[^#]+$/)[0]];
 				function setCurrent( data ){ //获取当前地址栏 对应的 对象
@@ -111,25 +135,10 @@
 					return _obj;
 				}
 				let obj = setCurrent(this.data);
-				function getParent(data,parentId){ //获取当前对象的父对像
-					let _obj;
-					for(let i=0;i<data.length;i++){
-						if(data[i].permission.id == parentId){
-							_obj = data[i];
-							break;
-						}
-					}
-					if(!_obj){
-						data.map(oj=>{
-							getParent(obj.permissionBeans,parentId);
-						})
-					}
-					return _obj;
-				}
 				if(obj){//如果获取到了，说明对应栏目是对的
 					let selectObj;
 					if(obj.parentId!=void 0){
-						selectObj = getParent(this.data,obj.parentId);
+						selectObj = self.getParent(this.data,this.data,obj.parentId);
 					}else{
 						selectObj = obj.id;
 					}
@@ -144,10 +153,10 @@
 				let self = this;
 				this.$nextTick(function(){
 					self.setTab();
-					let taga = $(".page-menu>li>a");
+					let taga = $(".page-menu>li a");
 					taga.each(function(i,ele){
 						let url = $(this).attr("data-url");
-						if(name == url){
+						if(name.includes(url)){
 							$(this).click();
 						}
 					});

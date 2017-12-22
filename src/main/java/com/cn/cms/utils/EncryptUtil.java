@@ -116,6 +116,7 @@ public class EncryptUtil {
         return DigestUtils.md5Hex(key);
     }
 
+
     /**
      * Token生成。采用MD5+Base64Encode
      * @param keys

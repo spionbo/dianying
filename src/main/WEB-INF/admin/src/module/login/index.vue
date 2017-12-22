@@ -99,7 +99,7 @@
 	                    callback : true,
 	                    load : true,
                         data : {
-                            userName : md5(self.userName),
+                            userName : self.userName,
                             pwd : md5(md5(self.pwd))
                         }
                     }).then(data=>{

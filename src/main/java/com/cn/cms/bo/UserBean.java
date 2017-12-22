@@ -2,6 +2,7 @@ package com.cn.cms.bo;
 
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.po.User;
+import com.cn.cms.utils.EncryptUtil;
 import lombok.Getter;
 import lombok.Setter;
 

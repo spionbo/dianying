@@ -39,7 +39,6 @@
 				info : null ,
 				text : "",
 				value : 1,
-
 				error : false
 			}
 		},
@@ -55,7 +54,6 @@
 			}
 		},
 		mounted() {
-
 			this.setMsg();
 		},
 		methods:{

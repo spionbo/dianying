@@ -5,6 +5,7 @@ package com.cn.cms.contants;
  */
 
 import com.alibaba.fastjson.serializer.SerializeConfig;
+import com.cn.cms.utils.PropertyManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,26 +94,11 @@ public class StaticContants {
     public static final SerializeConfig config = new SerializeConfig();
 
 
-    //----自定义错误码
-
-    public static final String ERROR_NO_POSITION = "找不到此用户组! ";
-
+    //----自定义成功码
+    public static final String SUCCESS_LOGIN = "登录成功! ";
     public static final String ERROR_PWD = "密码错误! ";
 
     public static final String ERROR_NO_USER = "找不到此用户! ";
-
-    public static final String ERROR_POSITION_RE = "用户组已经存在! ";
-
-    public static final String ERROR_PERMISSION_NOT_FOUND = "找不到此权限! ";
-
-    public static final String ERROR_FRAGMENT_NOT_FOUND = "找不到此碎片!";
-
-    public static final String ERROR_FRAGMENT_LENGTH = "模版编辑参数不对称!";
-
-    public static final String ERROR_FRAGMENT_MODEL = "碎片模版错误。";
-
-    public static final String ERROR_TIME_PARSE = "时间格式不对，格式为：";
-
     public static final String ERROR_TEMPLATE_UPLOAD_OPEN = "文件上传-打开文件流失败!" ;
 
     public static final String ERROR_TEMPLATE_UPLOAD_WRITE = "文件上传-写入失败!" ;
@@ -128,48 +114,6 @@ public class StaticContants {
     public static final String ERROR_VIDEO = "视频上传失败!";
 
     public static final String ERROR_VIDEO_SIZE_0 = "视频不可以为0";
-
-
-    public static final String ERROR_TEMPLATE_NOT_FOUND = "找不到频道、栏目对应的模版";
-
-    public static final String ERROR_CHANNEL_NOT_FOUND = "找不到新闻对应的频道";
-
-    public static final String ERROR_NEWS_NOT_FOUND = "找不到此篇新闻";
-
-    public static final String ERROR_NEWS_LIST_NOT_FOUND = "没有新闻被选择";
-
-    public static final String ERROR_NEWS_CAN_NOT_RESCIND = "当前新闻不在发布状态，无法撤销";
-
-    public static final String ERROR_NEWS_NOT_NEED_RECOVER = "此新闻已被恢复";
-
-    public static final String ERROR_TOPIC_NOT_FOUND = "找不到此模版";
-
-    public static final String ERROR_TEMPLATE_PATH_FILENAME_DUP = "模版文件已存在，模版文件位置：";
-
-    public static final String ERROR_CHANNEL_NAME_EXIST = "频道已经存在!";
-
-    public static final String ERROR_COLUMN_NAME_EXIST = "栏目已经存在!";
-
-    public static final String ERROR_NEWSCOLUMN_NOT_FOUND = "新闻栏目找不到!";
-
-    public static final String ERROR_CATEGORY_NAME_EXIST = "部门已经存在!";
-
-    public static final String ERROR_NOT_PUBLISH_NEWS = "用户没有发布权限!";
-
-    public static final String ERROR_BASE_CODE = "文件不可以为空";
-
-    public static final String ERROR_KEY_API = "无访问权限";
-
-    public static final String ERROR_URL_ERROR = "无访问的方法";
-
-    public static final String getTimeParseErrorYYYYMMDD(){
-        return ERROR_TIME_PARSE.concat(YYYY_MM_DD);
-    }
-
-    //----自定义错误码
-
-    //----自定义成功码
-    public static final String SUCCESS_LOGIN = "登录成功! ";
     //----自定义成功码
 
     public static final int DEFAULT_SECONDS = 24*60*60;
@@ -178,5 +122,10 @@ public class StaticContants {
 
     public static final String WATERMARK_TEXT_EN = "© 天天我爱拔";
     public static final String WATERMARK_TEXT_URL = "www.tt528.com";
+
+    /**
+     * image.test
+     */
+    public static final Integer IMAGESON = Integer.parseInt(PropertyManager.getRB("config", "image.test"));
 
 }

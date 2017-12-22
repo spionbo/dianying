@@ -49,12 +49,16 @@
 				if(ischeck){
 					let column = this.column,
 						select = this.column.selects,
+						len = select.length,
 						parentId,
 						parentUrl = "";
-					if(select.length){
-						parentId = select.pop().item.id;
-						column.selects.forEach(obj=>{
-							parentUrl += obj.item.url
+
+					if(len){
+						select.forEach((obj,i)=>{
+							if( i == (len-1)){
+								parentUrl = obj.item.url;
+								parentId = obj.item.id;
+							}
 						});
 					}
 					this.ajax({
@@ -64,7 +68,7 @@
 							name : column.name,
 							parentId : parentId,
 							sort : this.sort,
-							url : parentUrl+obj.url,
+							url : parentUrl+column.path,
 							description : this.description
 						},
 						load : true,

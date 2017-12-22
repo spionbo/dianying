@@ -6,6 +6,7 @@ import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
 import com.cn.cms.po.User;
 import com.cn.cms.service.UserService;
+import com.cn.cms.utils.Page;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -20,8 +21,10 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserDao userDao;
 
-    @Resource
-    PermissionDao permissionDao;
+    @Override
+    public Integer queryUserCount() {
+        return userDao.queryUserCount();
+    }
 
     @Override
     public User findUserName(String userName){
@@ -29,37 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Permission> findPermissionColumn(String user,Integer platform){
-        return permissionDao.findPermissionColumn(user,platform);
-    }
-
-    @Override
-    public void savePermissionColumn(Permission permission){
-        permissionDao.savePermissionColumn(permission);
-    }
-
-    @Override
-    public void savePermissionColumnUser(PermissionUser permissionUser){
-        permissionDao.savePermissionColumnUser(permissionUser);
-    }
-
-    @Override
-    public Integer queryPermissionName(Integer parentId,String name){
-        return permissionDao.queryPermissionName(parentId,name);
-    };
-
-    @Override
-    public Permission queryPermissionColumn(Integer id){
-        return permissionDao.queryPermissionColumn(id);
-    }
-
-    @Override
-    public void deletePermissionColumn(Integer columnId){
-        permissionDao.deletePermissionColumn(columnId);
-    }
-
-    @Override
-    public void updatePermissionColumn(Permission permission){
-        permissionDao.updatePermissionColumn(permission);
+    public List<User>queryUserList(Page page){
+        return userDao.queryUserList(page);
     }
 }

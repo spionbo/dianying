@@ -1,8 +1,7 @@
 package com.cn.cms.service;
 
-import com.cn.cms.po.Permission;
-import com.cn.cms.po.PermissionUser;
 import com.cn.cms.po.User;
+import com.cn.cms.utils.Page;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,6 +12,12 @@ import java.util.List;
 public interface UserService {
 
     /**
+     * 查询用户的总数
+     * @return
+     */
+    Integer queryUserCount();
+
+    /**
      *根据用户名查询用户
      * @param userName
      * @return
@@ -20,31 +25,9 @@ public interface UserService {
     User findUserName(String userName);
 
     /**
-     * 根据positionId列表获取权限
-     * @param userId
-     * @paream platform
+     * 查找列表
+     * @param page
      * @return
      */
-    List<Permission> findPermissionColumn(String userId, Integer platform);
-
-    /**
-     * 创建后台栏目
-     */
-    void savePermissionColumn(Permission permission);
-
-    /**
-     * 创建后台栏目权限
-     */
-    void savePermissionColumnUser(PermissionUser permissionUser);
-    /* 查询索引*/
-    Integer queryPermissionName(Integer parentId,String name);
-
-    /* 查询指定栏目名称 */
-    Permission queryPermissionColumn(Integer id);
-
-    /*删除后台栏目*/
-    void deletePermissionColumn(Integer columnId);
-
-    /*更新后台栏目*/
-    void updatePermissionColumn(Permission permission);
+    List<User> queryUserList(Page page);
 }

@@ -88,11 +88,11 @@ public class PermissionController extends BaseController{
     public String deletePermissionColumn(HttpServletRequest request,
                                          @RequestParam(value = "columnId") Integer columnId){
         String userId = getCurrentUserId(request);
-        if(permissionBiz.hasPermission(columnId , userId)){
+        if(!permissionBiz.hasPermission(columnId , userId)){
             permissionBiz.deletePermissionColumn(columnId , userId);
             return ApiResponse.returnSuccess();
         }
-        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_DELETE_COLUMN.getMessage());
+        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_DELETE_COLUMN.getType(),ErrorCodeEnum.ERROR_DELETE_COLUMN.getMessage());
     }
 
     @CheckToken
@@ -107,6 +107,11 @@ public class PermissionController extends BaseController{
                                          @RequestParam(value = "sort" , required = false) Integer sort,
                                          @RequestParam(value = "description" , required = false) String description){
         String userID = getCurrentUserId(request);
+        if(parentId!=null){
+            if(permissionBiz.hasAddToChild(id , parentId, userID)){
+                return ApiResponse.returnFail(ErrorCodeEnum.ERROR_UPDATE_COLUMN.getType(),ErrorCodeEnum.ERROR_UPDATE_COLUMN.getMessage());
+            }
+        }
         permissionBiz.updatePermissionColumn(id,userID,name,parentId,url,sort,description);
         return ApiResponse.returnSuccess();
     }
@@ -126,6 +131,4 @@ public class PermissionController extends BaseController{
         Permission permission = permissionBiz.getPermissionColumn(columnId);
         return ApiResponse.returnSuccess(permission);
     }
-
-
 }

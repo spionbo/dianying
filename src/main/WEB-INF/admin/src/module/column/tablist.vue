@@ -136,7 +136,7 @@
 
 			},
 			del(item,$event){
-				let self = this;
+				let [self,tag] = [this,$($event.currentTarget)];
 				this.$pop({
 					title : "删除",
 					close : true,
@@ -158,7 +158,14 @@
 								self.$tips({
 									content: "删除成功!"
 								});
-								$($event.currentTarget).parent().parent().parent().remove();
+								function getParent( tag ){
+									if(tag.attr("class").includes("list")){
+										tag.remove();
+									}else{
+										getParent(tag.parent());
+									}
+								}
+								getParent(tag);
 							});
 						}
 					}

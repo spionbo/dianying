@@ -17,9 +17,16 @@ MyPlugin.install = function (Vue, options) {
 					success : function(data){
 						if(data.code==0){ //更新登录信息
 							resolve(data);
+						}else if(data.code==-110){
+							self.$tips({
+								transition : "shake-vertical",
+								content : data.message,
+								time : 2000
+							});
+							Main.setLoginStatus(false);
 						}else{
 							if(obj.callback){
-								return resolve(data);
+								resolve(data);
 							}else{
 								self.$closePop();
 								self.$tips({
@@ -36,6 +43,9 @@ MyPlugin.install = function (Vue, options) {
 					}
 				});
 			});
+		},
+		formatTime( str ){
+			return str.substr(0,10);
 		}
 	});
 };

@@ -2,11 +2,10 @@
 </style>
 <template>
 	<div class="txt">
-		<div class="edit">
+		<div class="textarea">
 			<textarea
-				class="textarea"
+				class="text"
 				:placeholder="placeholder"
-				:cols="cols"
 				:rows="rows"
 				:maxlength="maxlength"
 				v-model="value"
@@ -34,10 +33,6 @@
 			maxlength : Number,
 			prompt : String,
 			name : String,
-			cols : {
-				type:String,
-				default:'80%'
-			},
 			rows : {
 				type:Number,
 				default:'5'
