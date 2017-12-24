@@ -28,7 +28,7 @@ MyPlugin.install = function (Vue, options) {
 							if(obj.callback){
 								resolve(data);
 							}else{
-								self.$closePop();
+                                self.$closePop && self.$closePop();
 								self.$tips({
 									transition : "shake-vertical",
 									content : data.message,

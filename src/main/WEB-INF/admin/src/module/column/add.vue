@@ -41,7 +41,7 @@
 				if(!this.$refs.form.verification()) return;
 				if(ischeck){
 					let column = this.column,
-						select = this.column.selects,
+						select = this.column.selects || [],
 						len = select.length,
 						parentId,
 						parentUrl = "";

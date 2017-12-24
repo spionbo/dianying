@@ -6,6 +6,7 @@ import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.PlatformEnum;
 import com.cn.cms.middleware.JedisClient;
+import com.cn.cms.po.Base;
 import com.cn.cms.po.User;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.CookieUtil;
@@ -186,6 +187,33 @@ public class UserBiz extends BaseBiz{
             return JSONObject.parseObject(str, User.class);
         }
         return null;
+    }
+
+    /**
+     * 加载创建人和修改人
+     * @param list
+     */
+    public void dataInitBase(List<? extends Base> list){
+        if(StringUtils.isNotEmpty(list)) {
+            List<String> userIds = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                Base base = list.get(i);
+                if (StringUtils.isNotBlank(base.getCreateUserId())) {
+                    userIds.add(base.getCreateUserId());
+                }
+                if (StringUtils.isNotBlank(base.getLastModifyUserId())) {
+                    userIds.add(base.getLastModifyUserId());
+                }
+            }
+            if (userIds.size() > 0) {
+                Map<String, UserBean> map = getUserBeanMap(userIds);
+                for (int i = 0; i < list.size(); i++) {
+                    Base base = list.get(i);
+                    base.setCreateUserName(map.get(base.getCreateUserId()) != null ? map.get(base.getCreateUserId()).getRealName() : "");
+                    base.setLastModifyUserName(map.get(base.getLastModifyUserId()) != null ? map.get(base.getLastModifyUserId()).getRealName() : "");
+                }
+            }
+        }
     }
 
     /**

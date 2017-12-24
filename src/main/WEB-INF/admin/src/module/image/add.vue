@@ -25,6 +25,11 @@
 		},
 		mounted() {
 
+		},
+		methods:{
+		    submit(){
+                if(!this.$refs.form.verification()) return;
+			}
 		}
 	}
 </script>

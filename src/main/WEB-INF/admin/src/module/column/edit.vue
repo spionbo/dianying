@@ -35,7 +35,7 @@
 				if(!this.$refs.form.verification()) return;
 				let self = this,
 					column = this.column ,
-					select = this.column.selects,
+					select = this.column.selects || [],
 					len = select.length,
 					permission = this.columnInfo.permission,
 					id = permission.id,

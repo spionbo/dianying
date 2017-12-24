@@ -5,6 +5,7 @@ import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.enums.ErrorCodeEnum;
+import com.cn.cms.enums.PlatformEnum;
 import com.cn.cms.po.Permission;
 import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.ann.CheckAuth;
@@ -72,7 +73,7 @@ public class PermissionController extends BaseController{
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_COLUMN_ER.getType(),ErrorCodeEnum.ERROR_COLUMN_ER.getMessage());
         }
         String userID = getCurrentUserId(request);
-        permissionBiz.savePermissionColumn(userID,name,parentId,url,sort,description);
+        permissionBiz.savePermissionColumn(userID,name,parentId,url,sort,description, PlatformEnum.CMS);
         return ApiResponse.returnSuccess();
     }
 

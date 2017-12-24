@@ -62,12 +62,14 @@
 	    border:none;
         padding-top:10px;
 	    background:none;
+        box-shadow: none;
         .btn{
             height:33px;
             line-height: 33px;
             border-radius:5px;
             background:#e62000;
             cursor:pointer;
+            box-shadow: none;
         }
     }
 }

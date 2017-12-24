@@ -4,7 +4,16 @@
 	<div class="txt">
 		<div class="edit">
 			<input
-					:type="type"
+					v-if="type=='text'"
+					type="text"
+					:placeholder="placeholder"
+					v-model="value"
+					:maxlength="maxlength"
+			>
+			</input>
+			<input
+					v-if="type=='password'"
+					type="password"
 					:placeholder="placeholder"
 					v-model="value"
 					:maxlength="maxlength"
@@ -50,7 +59,7 @@
 			return {
 				info : null ,
 				text : "",
-				value : null,
+				value : "",
 
 				error : false
 			}
