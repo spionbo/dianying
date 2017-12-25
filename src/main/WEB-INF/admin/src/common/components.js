@@ -89,3 +89,67 @@ Vue.component("pop",{
 		}
 	}
 });
+Vue.component("page",{
+	template : `
+	<ul class="pagination" v-if="page" >
+		<li :class="current != 1?'':'disabled'" @click="current != 1 && current-- && goto(current)" >
+			<a href="javascript:void(0)">上一页</a>
+		</li><li v-for="index in pages" @click="goto(index)" :class="{'active':current == index}" :key="index">
+			<a href="javascript:void(0)" >{{index}}</a>
+		</li><li :class="(allpage != current && allpage != 0)?'':'disabled' " @click="(allpage != current && allpage != 0) && current++ && goto(current++)">
+			<a href="javascript:void(0)" >下一页</a>
+		</li>
+		<li class="pageCount">
+			共有{{page.pageCount}}页
+		</li>
+	</ul>
+	`,
+	props:{
+		page : Object
+	},
+	data(){
+		return{
+			current:1,
+			showItem:5,
+			allpage:1
+		}
+	},
+	watch:{
+		page( obj ){
+			this.current = obj.page;
+			this.allpage = obj.pageCount;
+		}
+	},
+	mounted(){
+
+	},
+	computed:{
+		pages(){
+			let pag = [];
+			if( this.current < this.showItem ){ //如果当前的激活的项 小于要显示的条数
+				//总页数和要显示的条数那个大就显示多少条
+				let i = Math.min(this.showItem,this.allpage);
+				while(i){
+					pag.unshift(i--);
+				}
+			}else{ //当前页数大于显示页数了
+				let middle = this.current - Math.floor(this.showItem / 2 ),//从哪里开始
+					i = this.showItem;
+				if( middle >  (this.allpage - this.showItem)  ){
+					middle = (this.allpage - this.showItem) + 1
+				}
+				while(i--){
+					pag.push( middle++ );
+				}
+			}
+			return pag
+		}
+	},
+	methods:{
+		goto:function(index){
+			if(index == this.current) return;
+			this.current = index;
+			this.$emit('$change',index);
+		}
+	}
+});

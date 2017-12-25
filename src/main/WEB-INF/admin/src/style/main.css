@@ -49,6 +49,7 @@ i{ display:inline-block; }
 	box-sizing:border-box; 
 	transition-duration:.3s; 
 }
+
 .btn{
 	display:inline-block;
 	height:30px;
@@ -102,8 +103,9 @@ i{ display:inline-block; }
         td{
             padding: 8px;
             line-height: 20px;
-            vertical-align: top;
+            vertical-align: middle;
             border-top: 1px solid #ddd;
+	        transition-duration:.5s;
         }
         tr:hover{
             td{
@@ -111,6 +113,54 @@ i{ display:inline-block; }
             }
         }
     }
+	.content{
+		padding-bottom:10px;
+	}
+	.btn{
+		height:26px;
+		line-height:26px;
+		padding:0 20px;
+	}
+	.pagination{
+		text-align:center;
+		position: relative;
+
+		li{
+			display: inline-table;
+
+			a{
+				padding:10px 1rem;
+				display:inline-block;
+				border:1px solid #e2e2e2;
+				background:#fff;
+				margin: 0 -1px 0 0;
+				color:#666;
+				font-size:12px;
+				&:hover{
+					background:#fef1ea;
+				}
+			}
+			&.active a{
+				background:#ffa32c;
+				cursor: default;
+				color:#fff;
+			}
+			&.pageCount{
+				margin-left:5px;
+				color:#666;
+			}
+			&.disabled{
+				a{
+					color: #d2d2d2!important;
+					cursor: not-allowed!important;
+					&:hover{
+						background:#fff;
+					}
+				}
+
+			}
+		}
+	}
 }
 .form{
     &.add{
@@ -236,7 +286,7 @@ i{ display:inline-block; }
 		}
 	}
 	&.edit{
-		padding-right:20px;
+		ul{padding-right:20px;}
 		.submit{
 			margin:0;
 			padding-left:110px;

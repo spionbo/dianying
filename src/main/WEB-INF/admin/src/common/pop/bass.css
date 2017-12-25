@@ -70,6 +70,7 @@
 		.btn{
 			display: block;
 			height: 30px;
+			box-shadow:none;
 			line-height: 30px;
 			padding:0 20px;
 			border-radius: 5px;

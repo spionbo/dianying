@@ -1,12 +1,24 @@
 <template>
 	<ul>
 		<li>
-			<div class="label">图片分类<em>*</em></div>
+			<div class="label">基础URL<em>*</em></div>
 			<form-input
 					type="text"
-					:prompt="prompt"
-					name = "name"
-					:data = "obj.classifyName"
+					dataType="url"
+					name = "baseUrl"
+					:data = "obj.baseUrl"
+					:check="true"
+					maxlength="11"
+					placeholder="请输入路经名称">
+			</form-input>
+		</li>
+		<li>
+			<div class="label">基础路径<em>*</em></div>
+			<form-input
+					type="text"
+					dataType="path"
+					name = "basePath"
+					:data = "obj.basePath"
 					:check="true"
 					maxlength="11"
 					placeholder="请输入路经名称">
@@ -31,14 +43,7 @@
 		},
 		data() {
 			return {
-				obj : {},
-				prompt : {
-					default : "请输入分类名称",
-					error : "分类名称为中文",
-					verification( val , callback ){
-						callback(this._chinese(val));
-					}
-				}
+				obj : {}
 			}
 		},
 		mounted() {
@@ -66,9 +71,7 @@
 					this.data
 				];
 				if(data){
-					self.obj = {
-						classifyName : data.classifyName
-					};
+
 				}
 			},
 			clearall(){
