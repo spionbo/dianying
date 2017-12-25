@@ -29,7 +29,6 @@
 		},
 		data() {
 			return {
-				sort : 1,
 				description : ""
 			}
 		},
@@ -60,7 +59,7 @@
 						data : {
 							name : column.name,
 							parentId : parentId,
-							sort : this.sort,
+							sort : column.sort,
 							url : parentUrl+column.path,
 							description : this.description
 						},

@@ -32,7 +32,7 @@ public class FileUtil {
         byte[] bytes1 = null;
         try {
             bytes = base64Decoder.decodeBuffer(baseCode);
-            bytes1 = Base64.getDecoder().decode(baseCode);
+            //bytes1 = Base64.getDecoder().decode(baseCode);
         } catch (IOException e) {
             e.printStackTrace();
         }

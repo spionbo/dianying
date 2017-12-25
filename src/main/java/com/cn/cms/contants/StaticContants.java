@@ -123,6 +123,9 @@ public class StaticContants {
     public static final String WATERMARK_TEXT_EN = "© 天天我爱拔";
     public static final String WATERMARK_TEXT_URL = "www.tt528.com";
 
+
+    public static String REGEX_SPLIT = "[,，\\s]";
+
     /**
      * image.test
      */

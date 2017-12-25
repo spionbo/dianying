@@ -131,7 +131,7 @@ public class ImagesController extends BaseController{
                                @RequestParam("fid") String fid,
                                @RequestParam("size") Integer size,
                                @RequestParam(value = "keyword", required = false) String keyword,
-                               @RequestParam("imagesClassifyId") Long imagesClassifyId){
+                               @RequestParam("imagesClassifyId") Integer imagesClassifyId){
         if(StringUtils.isNotBlank(keyword)){
             keyword = keyword.replaceAll("[\\s，,]+", ",");
         }
@@ -188,7 +188,7 @@ public class ImagesController extends BaseController{
                                @RequestParam(value = "fid",required = false) String fid,
                                @RequestParam(value = "size",required = false) Integer size,
                                @RequestParam(value = "keyword", required = false) String keyword,
-                               @RequestParam(value = "imagesClassifyId", required = false) Long imagesClassifyId){
+                               @RequestParam(value = "imagesClassifyId", required = false) Integer imagesClassifyId){
         if(StringUtils.isNotBlank(keyword)){
             keyword = keyword.replaceAll("[\\s，,]+", ",");
         }
@@ -224,7 +224,7 @@ public class ImagesController extends BaseController{
     @CheckAuth( name = "images:delete" )
     @RequestMapping(value = "/delImages", method = RequestMethod.GET)
     public String delImages(HttpServletRequest request,
-                            @RequestParam("id") Long id,
+                            @RequestParam("id") Integer id,
                             @RequestParam(value = "force", required = false, defaultValue = "0") Integer force) throws Exception{
         Images images = resourceBiz.getImages(id);
         if(images != null) {
@@ -313,7 +313,7 @@ public class ImagesController extends BaseController{
     @CheckToken
     @CheckAuth( name = "imagesclassify:read" )
     @RequestMapping(value = "/imagesclassify")
-    public String imagesclassify(@RequestParam(value = "id") Long id){
+    public String imagesclassify(@RequestParam(value = "id") Integer id){
         ImagesClassify classify = resourceBiz.getImagesClassify(id);
         return ApiResponse.returnSuccess(classify);
     }
@@ -376,7 +376,7 @@ public class ImagesController extends BaseController{
     @CheckAuth( name = "imagesclassify:delete" )
     @RequestMapping(value = "/delImagesClassify")
     public String delImagesClassify(HttpServletRequest request,
-                                    @RequestParam(value = "id") Long id) throws BizException{
+                                    @RequestParam(value = "id") Integer id) throws BizException{
         resourceBiz.delImagesClassify(getCurrentUserId(request),id);
         return ApiResponse.returnSuccess();
     }

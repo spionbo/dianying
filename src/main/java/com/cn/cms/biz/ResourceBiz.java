@@ -1,11 +1,15 @@
 package com.cn.cms.biz;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.cn.cms.contants.RedisKeyContants;
+import com.cn.cms.enums.ESSearchTypeEnum;
+import com.cn.cms.enums.IndexOperEnum;
 import com.cn.cms.exception.BizException;
+import com.cn.cms.job.IndexThread;
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.middleware.MSSVideoClient;
-import com.cn.cms.po.Images;
-import com.cn.cms.po.ImagesBase;
-import com.cn.cms.po.ImagesClassify;
+import com.cn.cms.po.*;
 import com.cn.cms.service.ResourceService;
 import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
@@ -13,28 +17,22 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Created by Administrator on 2017/12/21 0021.
+ * Created by ADMIN on 16/11/30.
  */
 @Component
 public class ResourceBiz {
+
     @Resource
     private ResourceService resourceService;
 
     @Resource
     private JedisClient jedisClient;
 
-    @Resource
-    private MSSVideoClient mssVideoClient;
-
     @Resource(name = "threadTaskExecutor")
     private ThreadPoolTaskExecutor threadTaskExecutor;
-
 
     /**
      * 获取ImagesBase信息。
@@ -75,7 +73,7 @@ public class ResourceBiz {
      * @param lastModifyUserId
      * @param id
      */
-    public void delImages(String lastModifyUserId, Long id){
+    public void delImages(String lastModifyUserId, Integer id){
         resourceService.delImages(lastModifyUserId, id);
         delIndex(id, ESSearchTypeEnum.images);
     }
@@ -110,7 +108,7 @@ public class ResourceBiz {
         return resourceService.findAllImagesClassify();
     }
 
-    public ImagesClassify getImagesClassify(Long id){
+    public ImagesClassify getImagesClassify(Integer id){
         return resourceService.getImagesClassify(id);
     }
 
@@ -129,13 +127,13 @@ public class ResourceBiz {
     }
 
 
-    public void delImagesClassify(String lastModifyUserId, Long id){
+    public void delImagesClassify(String lastModifyUserId, Integer id){
         resourceService.delImagesClassify(lastModifyUserId, id);
     }
 
     public void dataInitImages(List<Images> list){
         if(StringUtils.isNotEmpty(list)) {
-            List<Long> imagesClassifyIds = new ArrayList<>();
+            List<Integer> imagesClassifyIds = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 Images images = list.get(i);
                 if(images.getImagesClassifyId()!=null){
@@ -152,19 +150,52 @@ public class ResourceBiz {
         }
     }
 
-    public Images getImages(Long id){
+    public Images getImages(Integer id){
         return resourceService.findImages(id);
     }
 
-    public Images getImagesManage(Long id){
+    public Images getImagesManage(Integer id){
         return resourceService.findImagesManage(id);
     }
 
-    public Images doGetImagesManage(Long id){
+    public Images doGetImagesManage(Integer id){
         return resourceService.doFindImagesManage(id);
     }
 
-    public Map<Integer, ImagesClassify> getImagesClassifyMap(List<Long> ids){
+    /**
+     * 获取附件列表
+     * @param page
+     * @return
+     */
+    public JSONArray findFileList(Page page){
+        Long count = jedisClient.len(RedisKeyContants.REDIS_FILE_LIST);
+        if( count > 0 ){
+            page.setCount(count.intValue());
+        }
+        Set<String> set = jedisClient.zrevrange(RedisKeyContants.REDIS_FILE_LIST, page.getStart(), page.getEnd());
+        if(set != null){
+            Iterator<String> it = set.iterator();
+            JSONArray jsonArray = new JSONArray();
+            while (it.hasNext()){
+                JSONObject jsonObject = JSONObject.parseObject(it.next());
+                jsonArray.add(jsonObject);
+            }
+            return jsonArray;
+        }
+        return null;
+    }
+
+    public void setFileInfoToRedis(String url, String originFileName, String fileName){
+        long time = System.currentTimeMillis()/1000;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("url", url);
+        jsonObject.put("mtime", time);
+        jsonObject.put("fileName", fileName);
+        jsonObject.put("originFileName", originFileName);
+        jedisClient.zadd(RedisKeyContants.REDIS_FILE_LIST, jsonObject.toJSONString(), time);
+    }
+
+    public Map<Integer, ImagesClassify> getImagesClassifyMap(List<Integer> ids){
         List<ImagesClassify> list = resourceService.getImagesClassifyList(ids);
         Map<Integer, ImagesClassify> map = new HashMap<>();
         if(list!=null && list.size()>0){
@@ -174,5 +205,22 @@ public class ResourceBiz {
             }
         }
         return map;
+    }
+
+    private void sendIndex(Base base, ESSearchTypeEnum esSearchTypeEnum){
+        IndexThread indexThread = new IndexThread();
+        indexThread.setId(base.getId());
+        indexThread.setIndexOperEnum(IndexOperEnum.update);
+        indexThread.setEsSearchTypeEnum(esSearchTypeEnum);
+        threadTaskExecutor.execute(indexThread);
+    }
+
+
+    private void delIndex(Integer id, ESSearchTypeEnum esSearchTypeEnum){
+        IndexThread indexThread = new IndexThread();
+        indexThread.setId(id);
+        indexThread.setIndexOperEnum(IndexOperEnum.delete);
+        indexThread.setEsSearchTypeEnum(esSearchTypeEnum);
+        threadTaskExecutor.execute(indexThread);
     }
 }

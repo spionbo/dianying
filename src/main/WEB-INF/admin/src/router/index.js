@@ -59,7 +59,7 @@ window.router = new VueRouter({
 						{ path: '', redirect: 'list' },
 						{
 							path : "classifyAdd",
-							component : ()=>import('../module/image/classifyAdd.vue')
+							component : ()=>import('../module/image/addClassify.vue')
 						},
 						{
 							path : "classifyList",
@@ -76,6 +76,10 @@ window.router = new VueRouter({
 						{
 							path : "search",
 							component : ()=>import('../module/image/search.vue')
+						},
+						{
+							path : "addImagesBase",
+							component : ()=>import('../module/image/addImagesBase.vue')
 						}
 					]
 				}

@@ -4,6 +4,7 @@ import com.cn.cms.contants.StaticContants;
 import com.cn.cms.logfactory.CommonLog;
 import com.cn.cms.logfactory.CommonLogFactory;
 import org.apache.commons.codec.digest.DigestUtils;
+import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 /*import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;*/
@@ -142,16 +143,13 @@ public class EncryptUtil {
     }
 
     public static String base64(byte[] bytes){
-        /*BASE64Encoder base64Encoder = new BASE64Encoder();
-        return base64Encoder.encodeBuffer(bytes).replaceAll("\\r|\\n", "");*/
-        return "3";
+        BASE64Encoder base64Encoder = new BASE64Encoder();
+        return base64Encoder.encodeBuffer(bytes).replaceAll("\\r|\\n", "");
     }
 
     public static byte[] decode64(String string) throws IOException {
-        /*BASE64Decoder base64Encoder = new BASE64Decoder();
-        return base64Encoder.decodeBuffer(string);*/
-        byte[] str = new byte[]{2,2,3};
-        return str;
+        BASE64Decoder base64Encoder = new BASE64Decoder();
+        return base64Encoder.decodeBuffer(string);
     }
 
 

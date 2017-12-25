@@ -92,7 +92,7 @@ public class Images extends Base{
     /**
      * 图片分类
      */
-    private Long imagesClassifyId;
+    private Integer imagesClassifyId;
 
     private String imagesClassifyName;
 

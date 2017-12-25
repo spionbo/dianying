@@ -20,11 +20,11 @@ public interface ImagesClassifyDao {
 
     Integer queryImagesClassifyCount();
 
-    ImagesClassify getImagesClassify(@Param(value = "id") Long id);
+    ImagesClassify getImagesClassify(@Param(value = "id") Integer id);
 
     List<ImagesClassify> findAllImagesClassify();
 
-    List<ImagesClassify> getImagesClassifyList(@Param(value = "list") List<Long> ids);
+    List<ImagesClassify> getImagesClassifyList(@Param(value = "list") List<Integer> ids);
 
-    void delImagesClassify(@Param(value = "lastModifyUserId") String lastModifyUserId, @Param(value = "id") Long id);
+    void delImagesClassify(@Param(value = "lastModifyUserId") String lastModifyUserId, @Param(value = "id") Integer id);
 }

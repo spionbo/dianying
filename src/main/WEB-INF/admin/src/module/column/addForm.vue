@@ -8,7 +8,7 @@
 				name = "name"
 				:data = "obj.name"
 				:check="true"
-				maxlength="6"
+				maxlength="10"
 				placeholder="请输入栏目名称">
 			</form-input>
 		</li>

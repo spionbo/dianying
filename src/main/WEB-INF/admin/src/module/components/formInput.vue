@@ -35,7 +35,11 @@
 		path : {
 			default : "例：\"/name\"",
 			error : "路经输入错误。"
-		}
+		},
+        http : {
+            default : "域名（http://www.xy.com）",
+            error : "请输入正确的域名（例：http://www.xy.com）。"
+        }
 	};
 	export default {
 		mixins: [myMixin],
