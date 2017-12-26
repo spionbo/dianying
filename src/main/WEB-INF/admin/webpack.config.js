@@ -137,7 +137,7 @@ module.exports = {
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.ProvidePlugin({
-            Promise: 'es6-promise',
+            Promise: 'es6-promise-promise',
             T: 'global',
             Vue: 'Vue',
             VueRouter: 'VueRouter',

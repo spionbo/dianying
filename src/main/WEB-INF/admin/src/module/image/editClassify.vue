@@ -1,28 +1,25 @@
-<style>
-</style>
 <template>
 	<div class="form add edit">
 		<add-form ref="form" :data="data"></add-form>
 		<div class="submit">
-			<div class="btn" @click="submit">确定修改</div>
+			<div class="btn" @click="submit">确定</div>
 		</div>
 	</div>
 </template>
 <script>
-	import addForm from "./addForm.vue";
+	import addForm from "./classfyForm.vue";
 	import { mapGetters } from 'vuex';
 	export default {
 		components : {
 			addForm
 		},
 		computed : {
-			...mapGetters([
-				'addColumn'
-			])
+			...mapGetters({
+				column : 'addColumn'
+			})
 		},
 		props : {
 			data : Object,
-			columnInfo : Object ,
 			update : Function
 		},
 		data() {
@@ -36,13 +33,16 @@
 			submit(){
 				if(!this.$refs.form.verification()) return;
 				let self = this,
-					addColumn = this.addColumn;
+					column = this.column,
+					id = this.data.id,
+					classifyName = column.classifyName;
+
 				this.ajax({
 					url : '/images/updateImagesClassify',
 					type : "POST",
 					data : {
-						id : self.data.id,
-						classifyName : addColumn.name,
+						id : id,
+						classifyName : classifyName,
 					}
 				}).then(data=>{
 					this.$tips({

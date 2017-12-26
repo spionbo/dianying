@@ -374,7 +374,7 @@ public class ImagesController extends BaseController{
      */
     @CheckToken
     @CheckAuth( name = "imagesclassify:delete" )
-    @RequestMapping(value = "/delImagesClassify")
+    @RequestMapping(value = "/delImagesClassify",method = RequestMethod.POST)
     public String delImagesClassify(HttpServletRequest request,
                                     @RequestParam(value = "id") Integer id) throws BizException{
         resourceBiz.delImagesClassify(getCurrentUserId(request),id);

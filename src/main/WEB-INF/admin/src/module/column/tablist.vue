@@ -76,7 +76,9 @@
 	</div>
 </template>
 <script>
+	import mixinList from '../../common/_mixinList';
 	export default {
+		mixins: [mixinList],
 		props:{
 			data:Array
 		},
@@ -136,41 +138,15 @@
 
 			},
 			del(item,$event){
-				let [self,tag] = [this,$($event.currentTarget)];
-				this.$pop({
-					title : "删除",
-					close : true,
-					content : "确定要删除“"+item.permission.name+"”吗？",
-					footer : {
-						ok : "确定",
-						cancel : "取消",
-						okCallback : function(){
-							let self = this;
-							self.ajax({
-								url : "/permission/deleteColumn",
-								type : "post",
-								load : true,
-								data : {
-									columnId : item.permission.id
-								}
-							}).then(data=>{
-								self.$closePop();
-								self.$tips({
-									content: "删除成功!"
-								});
-								function getParent( tag ){
-									if(tag.attr("class").includes("list")){
-										tag.remove();
-									}else{
-										getParent(tag.parent());
-									}
-								}
-								getParent(tag);
-							});
-						}
+				this._del({
+					item : item,
+					$event : $event,
+					url : "/permission/deleteColumn",
+					name : item.permission.name,
+					data : {
+						columnId : item.permission.id
 					}
 				});
-
 			}
 		}
 	}

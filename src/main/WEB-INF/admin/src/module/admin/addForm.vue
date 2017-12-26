@@ -61,7 +61,7 @@
 	import formInput from "../components/formInput";
 	import inputNumber from "../components/inputNumber.vue";
 	import texta from "../components/texta.vue";
-	import upload from "../components/upload";
+	import upload from "../components/uploadImage";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {

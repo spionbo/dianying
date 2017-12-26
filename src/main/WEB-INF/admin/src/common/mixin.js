@@ -6,13 +6,13 @@ export default {
 			return false;
 		},
 		_path(val){
-			let reg = /^(\/\w)+/,
+			let reg = /^([\/|\w|\-|\:])+/,
 				result = val.match(reg);
 			if(reg.test(val)) return true;
 			return false;
 		},
 		_http : function( value ){
-			var reg = /^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/;
+			var reg = /^(http|https):\/\/[\w|\:|\d|\/]+$/;
 			return value.search(reg)>=0
 		},
         _verificationForm(){

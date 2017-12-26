@@ -97,7 +97,16 @@
 				});
 			},
 			del(item,$event){
-			    this._del(item,$event,"/images/delImagesClassify",item.classifyName);
+			    this._del({
+				    item : item,
+				    $event : $event,
+				    url : "/images/delImagesClassify",
+				    name : item.classifyName,
+				    update : this.update,
+				    data : {
+					    id : item.id
+				    }
+			    });
 			}
 		}
 	}

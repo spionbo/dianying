@@ -61,13 +61,16 @@
 					self.ajax({
 						url: "/upload/uploadImage",
 						type: 'post',
+						load : true,
 						data: {
 							"baseCode": r.result,
-							"suffix": file.type, //"文件后缀png|jpg"
+							"suffix": file.name.match(/\w+$/)[0], //"文件后缀png|jpg"
 							"watermark": 0, //是否水印
 							"width": 50, //需要压缩的长度 可不传
 							"height": 50 //需要压缩的高度  可不传
 						}
+					}).then(data=>{
+						self.imgUrl = data.data.imageUrl;
 					});
 				}
 			},
