@@ -20,23 +20,6 @@ NEWSPIDER_MODULE = 'tt528.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-#HTTPERROR_ALLOWED_CODES = [400,404]
-#使用splash解析，要在配置文件中设置：1 : docker pull scrapinghub/splash 2 :docker run -p 8050:8050 scrapinghub/splash
-SPLASH_URL = 'http://192.168.99.100:8050/'
-#1.设置下载中间件：
-DOWNLOADER_MIDDLEWARES = {
-    'scrapy_splash.SplashCookiesMiddleware': 723,
-    'scrapy_splash.SplashMiddleware': 725,
-    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-}
-#设置爬虫中间件
-SPIDER_MIDDLEWARES = {
-    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
-}
-#配置消息队列所使用的过滤类
-DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
-#配置消息队列需要使用的类
-HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
