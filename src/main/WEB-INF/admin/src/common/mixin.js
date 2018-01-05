@@ -12,8 +12,8 @@ export default {
 			return false;
 		},
 		_http : function( value ){
-			var reg = /^(http|https):\/\/[\w|\:|\d|\/]+$/;
-			return value.search(reg)>=0
+			let reg = /^(http|https):\/\/[\w|\:|\d|\/]+$/;
+			return value.search(reg)>=0;
 		},
         _verificationForm(){
             let [self,ischeck] = [this,true];
