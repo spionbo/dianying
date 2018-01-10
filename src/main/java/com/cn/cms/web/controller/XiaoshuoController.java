@@ -65,9 +65,13 @@ public class XiaoshuoController extends BaseController{
     @RequestMapping(value = "/updateClassify",method = RequestMethod.POST)
     public String updateClassify(HttpServletRequest request,
                                  @RequestParam(value = "id") Integer id ,
-                                 @RequestParam(value = "name") String name){
-        String userId = this.getCurrentUserId(request);
-        xiaoshuoBiz.updateClassify(id,name);
+                                 @RequestParam(value = "classifyName") String classifyName){
+        String userID = getCurrentUserId(request);
+        XiaoshuoClassification classify = new XiaoshuoClassification();
+        classify.setLastModifyUserId(userID);
+        classify.setClassifyName(classifyName);
+        classify.setId(id);
+        xiaoshuoBiz.updateClassify(classify);
         return ApiResponse.returnSuccess();
     }
 }

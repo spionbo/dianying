@@ -36,7 +36,7 @@ public class XiaoshuoBiz extends BaseBiz {
         return null;
     }
 
-    public void updateClassify(Integer id , String name){
-
+    public void updateClassify(XiaoshuoClassification classify){
+        xiaoshuoDao.updateClassify(classify);
     }
 }

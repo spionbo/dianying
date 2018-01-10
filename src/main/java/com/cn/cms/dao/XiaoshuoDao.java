@@ -16,4 +16,6 @@ public interface XiaoshuoDao {
     void saveClassify(@Param("name") String name);
 
     List<XiaoshuoClassification> queryClassifyList(@Param(value="page") Page page);
+
+    void updateClassify(@Param("p1") XiaoshuoClassification p1);
 }

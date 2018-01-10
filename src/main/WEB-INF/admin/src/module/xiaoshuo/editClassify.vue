@@ -33,15 +33,13 @@
 				if(!this.$refs.form.verification()) return;
 				let self = this,
 					id = this.data.id,
-					name = this.column.classifyName;
-				debugger;
-				return;
+					classifyName = this.column.classifyName;
 				this.ajax({
-					url : '/permission/updateColumn',
+					url : '/xiaoshuo/updateClassify',
 					type : "POST",
 					data : {
 						id : id,
-						name : name
+						classifyName : classifyName
 					}
 				}).then(data=>{
 					this.$tips({

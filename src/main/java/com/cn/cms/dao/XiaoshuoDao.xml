@@ -33,4 +33,8 @@
         SELECT <include refid="all_column"/>,classify_name FROM xiaoshuo_classify order by id desc limit ${page.start},${page.pageSize};
     </select>
 
+    <update id="updateClassify">
+        update xiaoshuo_classify set classify_name=#{p1.classifyName} where id = ${p1.id};
+    </update>
+
 </mapper>
