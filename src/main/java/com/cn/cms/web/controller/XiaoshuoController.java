@@ -41,4 +41,8 @@ public class XiaoshuoController extends BaseController{
         return ApiResponse.returnSuccess();
     }
 
+    @CheckToken
+    @CheckAuth(name="xiaoshuo:read")
+    @RequestMapping(value = "/")
+
 }
