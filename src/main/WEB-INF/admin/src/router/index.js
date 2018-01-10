@@ -97,6 +97,14 @@ window.router = new VueRouter({
 				{
 					path : "list",
 					component : ()=>import(/* webpackChunkName: "column-list" */ '../module/column/list.vue')
+				},
+				{
+					path : "addClassify",
+					component : ()=>import('../module/xiaoshuo/addClassify.vue')
+				},
+				{
+					path : "classifyList",
+					component : ()=>import('../module/xiaoshuo/classifyList.vue')
 				}
 			]
 		},

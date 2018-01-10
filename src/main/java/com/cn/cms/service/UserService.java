@@ -2,7 +2,6 @@ package com.cn.cms.service;
 
 import com.cn.cms.po.User;
 import com.cn.cms.utils.Page;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
