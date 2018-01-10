@@ -11,9 +11,8 @@
         <result column="last_modify_user_id" property="lastModifyUserId" />
         <result column="create_user_id" property="createUserId" />
     </resultMap>
-    <resultMap type="com.cn.cms.po.XiaoshuoClassification" id="user" extends="base" >
+    <resultMap type="com.cn.cms.po.XiaoshuoClassification" id="classify" extends="base" >
         <result column="classify_name" property="classifyName" />
-        <result column="classify_type" property="classifyType" />
     </resultMap>
 
     <sql id="all_column">
@@ -22,10 +21,16 @@
     </sql>
     <sql id="delTag"> where del_tag = 1 </sql>
 
+    <select id="queryClassifyCount" resultType="java.lang.Integer">
+        select count(1) from xiaoshuo_classify <include refid="delTag" />
+    </select>
+
     <insert id="saveClassify">
-        INSERT INTO xiaoshuo_classify (classify_name,classify_type) VALUE (
-          null,${name}
-        )
+        INSERT INTO xiaoshuo_classify (classify_name) VALUE (#{name})
     </insert>
+
+    <select id="queryClassifyList" resultMap="classify">
+        SELECT <include refid="all_column"/>,classify_name FROM xiaoshuo_classify order by id desc limit ${page.start},${page.pageSize};
+    </select>
 
 </mapper>

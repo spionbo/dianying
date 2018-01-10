@@ -101,14 +101,20 @@
 					"image" : "fa-image",
 					"column" : "fa-bars",
 					"admin" : "fa-user-circle-o",
-					"novel" : "fa-file-text-o",
 					"default" : "fa-file",
 				};
 				this.data.forEach(item=>{
 					item.permissionBeans.forEach(obj=>{
 						obj.permission.icon = icons.default;
+						let url = obj.permission.url;
+						if(url.search(/[\/add|Add]/)>-1){
+							obj.permission.icon = "fa-pencil-square-o"
+						}
+						if(url.search(/[List|\/list]$/)>-1){
+							obj.permission.icon = "fa-navicon"
+						}
 						for(let item in icons){
-							if(obj.permission.url.includes(item)){
+							if(url.includes(item)){
 								obj.permission.icon = icons[item];
 							}
 						}
