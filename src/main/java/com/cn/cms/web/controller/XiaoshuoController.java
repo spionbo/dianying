@@ -74,4 +74,6 @@ public class XiaoshuoController extends BaseController{
         xiaoshuoBiz.updateClassify(classify);
         return ApiResponse.returnSuccess();
     }
+
+
 }

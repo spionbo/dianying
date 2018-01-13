@@ -33,8 +33,9 @@
 					<td align="center">{{item.lastModifyUserName||"-"}}</td>
 					<td align="center">{{item.updateTimeStr}}</td>
 					<td align="center">
-						<div class="btn" @click="edit(obj)">编辑</div>
-						<div class="btn red" @click="del(obj,$event)">删除</div>
+						<div class="btn blue" @click="pemission(item)">修改权限</div>
+						<div class="btn" @click="edit(item)">编辑</div>
+						<div class="btn red" @click="del(item,$event)">删除</div>
 					</td>
 				</tr>
 			</table>
@@ -42,7 +43,13 @@
 	</div>
 </template>
 <script>
+	import { mapGetters } from 'vuex';
 	export default {
+		computed : {
+			...mapGetters({
+				permissions : 'currentMenuPermission'
+			})
+		},
 		data() {
 			return {
 				list : [],
@@ -64,6 +71,26 @@
 			},
 			del(){
 
+			},
+			pemission( item ){
+				let self = this;
+				console.log(item);
+				require.ensure([],(require)=> {
+					this.$requirePop(require('./pemisstionList'), {
+							props : {
+								item : item,
+								list : self.permissions
+							}
+						},
+						{
+							props: {
+								obj: {
+									title: "更改\""+item.userName+"\"的权限",
+									close: true,
+								}
+							}
+						});
+				});
 			}
 		}
 	}

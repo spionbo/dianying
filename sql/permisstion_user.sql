@@ -2,6 +2,8 @@ create table `permission_user`(
 	id int(11) not null auto_increment,
 	user_id int(11),
 	position_id int(11),
+	permission_key varchar(25),
+	permission_val varchar(255),
 
 	`create_time` timestamp not null default CURRENT_TIMESTAMP,
 	update_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

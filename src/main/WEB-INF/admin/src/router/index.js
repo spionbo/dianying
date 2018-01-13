@@ -82,6 +82,22 @@ window.router = new VueRouter({
 							component : ()=>import('../module/image/addImagesBase.vue')
 						}
 					]
+				},
+				{
+					path: "permission",
+					component: {template: '<router-view></router-view>'},
+					children: [
+						{path: '', redirect: 'list'},
+						{
+							path: "add",
+							component: () => import('../module/permission/add.vue')
+						},
+						{
+							path: "list",
+							component: () => import('../module/permission/list.vue')
+						},
+						{path:"myPermission",redirect:"/backstage/column/list"}
+					]
 				}
 			]
 		},

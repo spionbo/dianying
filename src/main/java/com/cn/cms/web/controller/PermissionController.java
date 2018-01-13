@@ -4,6 +4,7 @@ import com.cn.cms.biz.PermissionBiz;
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
+import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.enums.PlatformEnum;
 import com.cn.cms.po.Permission;
@@ -125,7 +126,7 @@ public class PermissionController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name = "positionPermissionColumn:read")
+    @CheckAuth(name = PermissionNames.BACKSTAGE.READ)
     @RequestMapping(value = "/permissionColumn", method = RequestMethod.GET)
     public String permissionColumn(HttpServletRequest request,
                                    @RequestParam(value = "columnId") Integer columnId){

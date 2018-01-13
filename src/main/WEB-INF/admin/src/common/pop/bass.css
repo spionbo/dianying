@@ -32,17 +32,27 @@
 		position:absolute;
 		right:10px;
 		top:7px;
-		padding: 2px 15px;
+		width:20px;
+		height: 20px;
+		text-align:center;
+		border-radius: 100%;
 		background: #f30000;
 		color: #fff;
-		border-radius: 11px;
-		height: 18px;
-		line-height: 18px;
 		font-size:12px;
 		&:hover{
 			background:red;
 			color:#fff000;
 			text-decoration:none;
+		}
+		i{
+			vertical-align:middle;
+			transition-duration:.3s;
+			transform-origin:center center;
+		}
+		&:hover{
+			i{
+				transform:rotate(90deg);
+			}
 		}
 	}
 	.title{
@@ -52,6 +62,7 @@
 		padding-left:15px;
 		border-bottom: 1px solid #ddd;
 		background: #f8f8f8;
+		background: linear-gradient(0, #f3f3f3 0%, #fff 50%);
 
 	}
 	.content{

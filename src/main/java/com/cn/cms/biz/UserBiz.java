@@ -122,6 +122,7 @@ public class UserBiz extends BaseBiz{
         CookieUtil.addCookie(response,StaticContants.COOKIE_REAL_NAME,user.getRealName(),0);
         jedisClient.set(RedisKeyContants.getToken(user.getUserId()), token, StaticContants.DEFAULT_SECONDS);
         permissionBiz.setPermissionRedis(user.getUserId(), PlatformEnum.CMS);
+
     }
 
     /**

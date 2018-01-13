@@ -1,49 +1,70 @@
+<style scoped>
+	@import "../column/list.css";
+	.column-list{
+		padding:20px;
+		.table{
+			border:1px solid #ddd;
+		}
+
+		.w80{ width:80px;}
+		.w100{ width:100px;}
+		.w120{ width:120px;}
+		.w150{ width:150px;}
+		.w180{ width:180px;}
+		.w200{ width:200px;}
+		.w400{ width:400px;}
+
+
+	}
+</style>
 <template>
-	<div class="table" v-if="tablist">
-		<div class="tr">
-			<div class="th center" style="width:80px;">排序</div>
-			<div class="th center" style="width:150px;">ID</div>
-			<div class="th flex left">栏目名称</div>
-			<div class="th flex center">父类ID</div>
-			<div class="th flex center">权限名称</div>
-			<div class="th flex center">拥有权限</div>
-			<div class="th center" style="width:200px">操作</div>
-		</div>
-		<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
-			<div class="td center" style="width:80px;">{{item.sort||"-"}}</div>
-			<div class="td center" style="width:150px;">{{item.id}}</div>
-			<div class="td flex left" v-html="item.name"></div>
-			<div class="td flex center">{{item.parentId||"-"}}</div>
-			<div class="td flex center">{{item.permissionKey}}</div>
-			<div class="td flex center" v-html="item.permissionVal"></div>
-			<div class="td center" style="width:200px">
-				<div class="btn" @click="edit(item)">编辑</div>
-				<div class="btn red" @click="del(item,$event)">删除</div>
+	<article class="form horizontal column-list" v-if="list.length">
+		<div class="table" v-if="tablist">
+			<div class="tr">
+				<div class="th center w80">ID</div>
+				<div class="th left w400">栏目名称</div>
+				<div class="th center w80">父类ID</div>
+				<div class="th center w200">拥有权限</div>
+				<div class="th center w80">是否展示</div>
+				<div class="th center w200">操作</div>
+			</div>
+			<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
+				<div class="td center w80">{{item.id}}</div>
+				<div class="td left w400" v-html="item.name"></div>
+				<div class="td center w80">{{item.parentId||"-"}}</div>
+				<div class="td center w200" v-html="item.permissionVal"></div>
+				<div class="td center w80">
+					<checkbox :checked="item.delTag" :data="{right:'是',error:'否'}"></checkbox>
+				</div>
+				<div class="td center w200" style="width:200px">
+					<div class="btn" @click="edit(item)">编辑</div>
+					<div class="btn red" @click="del(item,$event)">删除</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</article>
 </template>
 <script>
-	import mixinList from '../../common/_mixinList';
+	import checkbox from '../components/checkbox.vue';
 	export default {
-		mixins: [mixinList],
-		props:{
-			data:Array
+		components:{
+			checkbox
 		},
-		data(){
+		props:{
+			list : Array,
+			item : Object
+		},
+		data() {
 			return {
 				tablist : null
 			}
 		},
-		watch:{
-			data(val){
-				this.setTabel(val);
-			}
-		},
 		mounted() {
-			let self = this;
-			this.setTabel(this.data);
-			this.$nextTick(()=>{
+			this.setTabel(this.list);
+		},
+		methods:{
+			setColumnEvent(){
+				let self = this;
 				let add = this.$el.querySelectorAll(".off");
 				add.forEach(obj=>{
 					obj.clicked = true;
@@ -67,24 +88,17 @@
 									off = elem.find(".off");
 								if(obj.clicked){
 									elem.removeClass("hide")
-										.find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
+									.find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
 								}else{
 									elem.addClass("hide")
-										.find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
+									.find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
 								}
 								if(off[0]) off[0].clicked = obj.clicked;
 							});
 						}
 					}
 				})
-			})
-		},
-		filters:{
-			formatTime(str){
-				return T.formatTime(str);
-			}
-		},
-		methods:{
+			},
 			getChilds(parent, parentNum){
 				let allNext = parent.nextAll() ,
 					childs = [];
@@ -96,6 +110,16 @@
 					childs.push(allNext[i]);
 				}
 				return childs;
+			},
+			permissionName(val){
+				if(!val) return "无权限";
+				let item = {read:"读",update:"更",write:"写","delete":"删"},
+					vals = val.split(",") ,
+					elem = "";
+				vals.forEach(obj=>{
+					elem += `<span class="${obj}"><input type="checkbox">${item[obj]}</span>`;
+				});
+				return elem;
 			},
 			setTabel(list){
 				const self = this;
@@ -118,6 +142,7 @@
 							parentId:obj.permission.parentId,
 							permissionKey:obj.permission.permissionKey,
 							permissionVal:obj.permission.permissionVal,
+							delTag:obj.permission.delTag,
 							isChild : isChild,
 							className : "open"+index
 						});
@@ -134,57 +159,10 @@
 					}
 				});
 				self.tablist = newArr;
-			},
-			permissionName(val){
-				if(!val) return "无权限";
-				let item = {read:"读",update:"更",write:"写","delete":"删"},
-					vals = val.split(",") ,
-					elem = "";
-				vals.forEach(obj=>{
-					elem += `<span class="${obj}">${item[obj]}</span>`;
+				self.$nextTick(()=>{
+					self.setColumnEvent();
 				});
-				return elem;
 			},
-			edit(item){
-				console.log(item)
-				this.ajax({
-					url:"/permission/permissionColumn",
-					type : "get",
-					load : true,
-					data : {
-						columnId : item.id
-					}
-				}).then(data=>{
-					require.ensure([],(require)=> {
-						this.$requirePop(require('./edit'), {
-							props : {
-								data : data.data,
-								columnInfo : item
-							}
-						},
-						{
-							props: {
-								obj: {
-									title: "标题",
-									close: true,
-								}
-							}
-						});
-					});
-				});
-
-			},
-			del(item,$event){
-				this._del({
-					item : item,
-					$event : $event,
-					url : "/permission/deleteColumn",
-					name : item.name.replace(/\　+\|\-/g,""),
-					data : {
-						columnId : item.id
-					}
-				});
-			}
 		}
 	}
 </script>

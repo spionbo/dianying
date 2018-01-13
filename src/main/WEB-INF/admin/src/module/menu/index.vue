@@ -101,6 +101,7 @@
 					"image" : "fa-image",
 					"column" : "fa-bars",
 					"admin" : "fa-user-circle-o",
+					"permission" : "fa-cog",
 					"default" : "fa-file",
 				};
 				this.data.forEach(item=>{

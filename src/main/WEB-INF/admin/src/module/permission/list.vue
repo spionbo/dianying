@@ -1,49 +1,55 @@
+<style>
+	@import './list.css';
+</style>
 <template>
-	<div class="table" v-if="tablist">
-		<div class="tr">
-			<div class="th center" style="width:80px;">排序</div>
-			<div class="th center" style="width:150px;">ID</div>
-			<div class="th flex left">栏目名称</div>
-			<div class="th flex center">父类ID</div>
-			<div class="th flex center">权限名称</div>
-			<div class="th flex center">拥有权限</div>
-			<div class="th center" style="width:200px">操作</div>
-		</div>
-		<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
-			<div class="td center" style="width:80px;">{{item.sort||"-"}}</div>
-			<div class="td center" style="width:150px;">{{item.id}}</div>
-			<div class="td flex left" v-html="item.name"></div>
-			<div class="td flex center">{{item.parentId||"-"}}</div>
-			<div class="td flex center">{{item.permissionKey}}</div>
-			<div class="td flex center" v-html="item.permissionVal"></div>
-			<div class="td center" style="width:200px">
-				<div class="btn" @click="edit(item)">编辑</div>
-				<div class="btn red" @click="del(item,$event)">删除</div>
+	<article class="form horizontal column-list permissionList">
+		<div class="title">权限列表</div>
+		<div class="content">
+			<div class="table" v-if="tablist">
+				<div class="tr">
+					<div class="th flex left">栏目名称</div>
+					<div class="th flex center">只读</div>
+					<div class="th flex center">写</div>
+					<div class="th flex center">更新</div>
+					<div class="th flex center">删除</div>
+					<div class="th center" style="width:200px">操作</div>
+				</div>
+				<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
+					<div class="td flex left" v-html="item.name"></div>
+					<div class="td flex center" v-html="item.permissionVal"></div>
+					<div class="td center" style="width:200px">
+						<div class="btn" @click="edit(item)">编辑</div>
+						<div class="btn red" @click="del(item,$event)">删除</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</article>
 </template>
 <script>
-	import mixinList from '../../common/_mixinList';
+	import { mapGetters } from 'vuex';
 	export default {
-		mixins: [mixinList],
-		props:{
-			data:Array
+		computed : {
+			...mapGetters({
+				list: 'currentMenuPermission'
+			})
 		},
-		data(){
+		data() {
 			return {
 				tablist : null
 			}
 		},
+		mounted() {
+			this.setTabel(this.list);
+		},
 		watch:{
-			data(val){
+			list(val){
 				this.setTabel(val);
 			}
 		},
-		mounted() {
-			let self = this;
-			this.setTabel(this.data);
-			this.$nextTick(()=>{
+		methods : {
+			setColumnEvent(){
+				let self = this;
 				let add = this.$el.querySelectorAll(".off");
 				add.forEach(obj=>{
 					obj.clicked = true;
@@ -67,24 +73,17 @@
 									off = elem.find(".off");
 								if(obj.clicked){
 									elem.removeClass("hide")
-										.find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
+									.find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
 								}else{
 									elem.addClass("hide")
-										.find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
+									.find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
 								}
 								if(off[0]) off[0].clicked = obj.clicked;
 							});
 						}
 					}
 				})
-			})
-		},
-		filters:{
-			formatTime(str){
-				return T.formatTime(str);
-			}
-		},
-		methods:{
+			},
 			getChilds(parent, parentNum){
 				let allNext = parent.nextAll() ,
 					childs = [];
@@ -134,6 +133,9 @@
 					}
 				});
 				self.tablist = newArr;
+				self.$nextTick(()=>{
+					self.setColumnEvent();
+				});
 			},
 			permissionName(val){
 				if(!val) return "无权限";
@@ -144,46 +146,6 @@
 					elem += `<span class="${obj}">${item[obj]}</span>`;
 				});
 				return elem;
-			},
-			edit(item){
-				console.log(item)
-				this.ajax({
-					url:"/permission/permissionColumn",
-					type : "get",
-					load : true,
-					data : {
-						columnId : item.id
-					}
-				}).then(data=>{
-					require.ensure([],(require)=> {
-						this.$requirePop(require('./edit'), {
-							props : {
-								data : data.data,
-								columnInfo : item
-							}
-						},
-						{
-							props: {
-								obj: {
-									title: "标题",
-									close: true,
-								}
-							}
-						});
-					});
-				});
-
-			},
-			del(item,$event){
-				this._del({
-					item : item,
-					$event : $event,
-					url : "/permission/deleteColumn",
-					name : item.name.replace(/\　+\|\-/g,""),
-					data : {
-						columnId : item.id
-					}
-				});
 			}
 		}
 	}

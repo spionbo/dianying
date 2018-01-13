@@ -18,6 +18,8 @@
         <result column="url" property="url" />
         <result column="sort" property="sort" />
         <result column="description" property="description" />
+        <result column="permission_key" property="permissionKey" />
+        <result column="permission_val" property="permissionVal" />
     </resultMap>
 
     <sql id="all_permission">
@@ -35,8 +37,10 @@
     </sql>
 
     <select id="findPermissionColumn" resultMap="permission">
-        select <include refid="all_permission_find"/> , <include refid="all_permission" /> from permission <include refid="delTag"/>
-        and id in(select position_id from permission_user <include refid="delTag"/>  and user_id=${userId})
+        select a.*,b.permission_key,b.permission_val
+        from permission a inner join permission_user b
+        on a.id = b.position_id and a.del_tag = 1 and b.del_tag = 1 and
+        b.user_id=${userId}
     </select>
 
     <select id="queryColumnCount" resultType="java.lang.Integer">

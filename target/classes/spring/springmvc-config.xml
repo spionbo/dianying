@@ -32,6 +32,7 @@
 
     <mvc:interceptors >
         <bean class="com.cn.cms.web.interceptor.CheckTokenInterceptor" />
+       <!-- <bean class="com.cn.cms.web.interceptor.CheckAuthInterceptor" />-->
     </mvc:interceptors>
 
     <bean id="threadTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">

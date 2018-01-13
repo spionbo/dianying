@@ -34,4 +34,14 @@ public class Permission extends Base {
      * 说明
      */
     private String description;
+
+    /**
+     * 权限key
+     */
+    private String permissionKey;
+
+    /**
+     * 权限value
+     */
+    private String permissionVal;
 }
