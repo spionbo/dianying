@@ -26,7 +26,7 @@
 				<div class="th left flex">栏目名称</div>
 				<div class="th center w80">父类ID</div>
 				<div class="th center w300">拥有权限</div>
-				<div class="th center w120">是否展示</div>
+				<div class="th center w100">是否展示</div>
 			</div>
 			<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
 				<div class="td center w80">{{item.id}}</div>
@@ -38,7 +38,9 @@
 					          :checked="obj.checked"
 					          :data="obj"></checkbox>
 				</div>
-
+				<div class="td center w100">
+					<checkbox :checked="item.delTag" :data="{right:'是',error:'否'}"></checkbox>
+				</div>
 			</div>
 		</div>
 	</article>
