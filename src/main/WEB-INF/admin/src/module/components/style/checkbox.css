@@ -1,0 +1,22 @@
+.checkbox{
+	padding:0 10px;
+	border-radius:100px;
+	background:#00cbfe;
+	color:#fff;
+	transition-duration:.3s;
+	cursor:pointer;
+	i{
+		transition-duration:.3s;
+	}
+	&:hover{
+		background:#00cbfe;
+		color:#fff;
+	}
+	&:not(:first-child){
+		margin-left:5px;
+	}
+	&.gray{
+		background:#eee;
+		color:#666;
+	}
+}

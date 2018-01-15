@@ -26,7 +26,6 @@
 	</div>
 </template>
 <script>
-	import myMixin from "../../common/mixin";
 	const ERROR = {
 		chinese : {
 			default : "请输入内容，不能大于5个中文字符",
@@ -42,7 +41,6 @@
         }
 	};
 	export default {
-		mixins: [myMixin],
 		props: {
 			data : String,
 			type : {

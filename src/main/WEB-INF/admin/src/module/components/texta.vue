@@ -18,7 +18,6 @@
 	</div>
 </template>
 <script>
-	import myMixin from "../../common/mixin";
 	const ERROR = {
 		default : {
 			default : "请输入内容",
@@ -26,7 +25,6 @@
 		}
 	};
 	export default {
-		mixins: [myMixin],
 		props: {
 			data : String,
 			placeholder : String,

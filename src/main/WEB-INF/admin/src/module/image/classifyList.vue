@@ -35,9 +35,7 @@
 	</div>
 </template>
 <script>
-    import mixinList from '../../common/_mixinList';
     export default {
-        mixins: [mixinList],
 		data() {
 			return {
 				list : [],

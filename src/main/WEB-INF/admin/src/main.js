@@ -7,6 +7,7 @@ import './router';
 import Pop from './common/pop/js/Pop';
 import vuePlug from './common/vuePlugin';
 import './common/components';
+import './common/mixin';
 Vue.use(Pop);
 Vue.use(vuePlug);
 

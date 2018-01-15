@@ -12,6 +12,7 @@
 		.w150{ width:150px;}
 		.w180{ width:180px;}
 		.w200{ width:200px;}
+		.w300{ width:300px;}
 		.w400{ width:400px;}
 
 
@@ -24,22 +25,20 @@
 				<div class="th center w80">ID</div>
 				<div class="th left w400">栏目名称</div>
 				<div class="th center w80">父类ID</div>
-				<div class="th center w200">拥有权限</div>
-				<div class="th center w80">是否展示</div>
-				<div class="th center w200">操作</div>
+				<div class="th center w300">拥有权限</div>
+				<div class="th center w120">是否展示</div>
 			</div>
 			<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
 				<div class="td center w80">{{item.id}}</div>
 				<div class="td left w400" v-html="item.name"></div>
 				<div class="td center w80">{{item.parentId||"-"}}</div>
-				<div class="td center w200" v-html="item.permissionVal"></div>
-				<div class="td center w80">
-					<checkbox :checked="item.delTag" :data="{right:'是',error:'否'}"></checkbox>
+				<div class="td center w300">
+					<checkbox v-for="obj in item.permissionVal"
+					          v-bind:key="obj.id"
+					          :checked="obj.checked"
+					          :data="obj"></checkbox>
 				</div>
-				<div class="td center w200" style="width:200px">
-					<div class="btn" @click="edit(item)">编辑</div>
-					<div class="btn red" @click="del(item,$event)">删除</div>
-				</div>
+
 			</div>
 		</div>
 	</article>
@@ -112,14 +111,28 @@
 				return childs;
 			},
 			permissionName(val){
-				if(!val) return "无权限";
 				let item = {read:"读",update:"更",write:"写","delete":"删"},
-					vals = val.split(",") ,
-					elem = "";
-				vals.forEach(obj=>{
-					elem += `<span class="${obj}"><input type="checkbox">${item[obj]}</span>`;
-				});
-				return elem;
+					vals ,
+					arr = [];
+
+				if((val && (vals=val.split(",")))){
+					vals.forEach(_val=>{
+						arr.push({
+							right:item[_val],
+							error:item[_val],
+							checked : true
+						})
+					});
+				}else{
+					for(let val in item){
+						arr.push({
+							right:item[val],
+							error:item[val],
+							checked : false
+						})
+					}
+				}
+				return arr;
 			},
 			setTabel(list){
 				const self = this;
@@ -154,15 +167,13 @@
 				}
 				setChildName(copyList,"|- ",1);
 				newArr.forEach(obj=>{
-					if(obj.permissionVal){
-						obj.permissionVal = self.permissionName(obj.permissionVal);
-					}
+					obj.permissionVal = self.permissionName(obj.permissionVal);
 				});
 				self.tablist = newArr;
 				self.$nextTick(()=>{
 					self.setColumnEvent();
 				});
-			},
+			}
 		}
 	}
 </script>

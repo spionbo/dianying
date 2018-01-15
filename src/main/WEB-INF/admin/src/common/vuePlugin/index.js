@@ -45,16 +45,5 @@ MyPlugin.install = function (Vue, options) {
 			});
 		},
 	});
-	Vue.mixin({
-		filters:{
-			formatTime( str ){
-				try{
-					return str.substr(0,10);
-				}catch(e){
-					return str||"-";
-				}
-			}
-		}
-	});
 };
 export default MyPlugin;

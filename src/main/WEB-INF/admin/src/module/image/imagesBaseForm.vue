@@ -34,10 +34,8 @@
 </template>
 <script>
 	import formInput from "../components/formInput";
-    import myMixin from '../../common/mixin';
     import { mapGetters } from 'vuex';
     export default {
-        mixins: [myMixin],
 		components: {
 			formInput
 		},

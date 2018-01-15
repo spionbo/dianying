@@ -31,14 +31,12 @@
 	</div>
 </template>
 <script>
-	import myMixin from "../../common/mixin";
 	import { mapGetters } from 'vuex';
 	import choose from "./select.vue";
 	export default {
 		components : {
 			choose
 		},
-		mixins : [myMixin],
 		props:{
 			columnId : Number ,
 			arr : Array,

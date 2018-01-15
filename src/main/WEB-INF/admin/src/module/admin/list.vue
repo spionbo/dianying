@@ -74,7 +74,6 @@
 			},
 			pemission( item ){
 				let self = this;
-				console.log(item);
 				require.ensure([],(require)=> {
 					this.$requirePop(require('./pemisstionList'), {
 							props : {
