@@ -1,6 +1,7 @@
 package com.cn.cms.web.controller;
 
 import com.cn.cms.biz.ResourceBiz;
+import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.CompressEnum;
 import com.cn.cms.middleware.WeedfsClient;
@@ -39,7 +40,7 @@ public class UploadController extends BaseController{
 
     @NotSaveBody
     @CheckToken
-    @CheckAuth(name = "images:upload")
+    @CheckAuth(name = PermissionNames.UPLOAD.IMG.WRITE)
     @RequestMapping(value = "/uploadImage",method = RequestMethod.POST)
     public String upload(HttpServletRequest request,
                          @RequestParam(value = "baseCode") String baseCode,

@@ -2,12 +2,10 @@
 	@import "style/checkbox.css";
 </style>
 <template>
-	<span class="checkbox" @click="select" :class="{gray:!checked}">
-		<!--<input type="checkbox" v-if="checked" checked />
-		<input type="checkbox" v-if="!checked" />-->
-		<i class="fa fa-check-circle" v-if="checked" checked></i>
-		<i class="fa fa-square-o" v-if="!checked"></i>
-		{{checked?data.right:data.error}}
+	<span class="checkbox" @click="select" :class="{gray:!selected}">
+		<i class="fa fa-check-circle" v-if="selected" checked></i>
+		<i class="fa fa-square-o" v-if="!selected"></i>
+		{{selected?data.right:data.error}}
 	</span>
 </template>
 <script>
@@ -18,15 +16,15 @@
 		},
 		data() {
 			return {
-
+				selected : false
 			}
 		},
 		mounted() {
-
+			this.selected = this.checked;
 		},
 		methods:{
 			select(){
-				this.checked = !this.checked;
+				this.selected = !this.selected;
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 package com.cn.cms.po;
 
 import com.cn.cms.enums.PlatformEnum;
+import com.cn.cms.utils.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,4 +45,18 @@ public class Permission extends Base {
      * 权限value
      */
     private String permissionVal;
+
+    public String getPermissionKey(){
+        if(StringUtils.isNotEmpty(permissionKey)){
+            return permissionKey;
+        }
+        return "";
+    }
+
+    public String getPermissionVal(){
+        if(StringUtils.isNotEmpty(permissionVal)){
+            return permissionVal;
+        }
+        return "";
+    }
 }

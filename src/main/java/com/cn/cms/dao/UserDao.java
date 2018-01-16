@@ -16,4 +16,6 @@ public interface UserDao {
     List<User> queryUserList(@Param(value = "page") Page page);
 
     Integer queryUserCount();
+
+    Integer queryAdmin(@Param(value = "userId") String userId);
 }

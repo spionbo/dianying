@@ -23,9 +23,12 @@ body{  background:#eee; -webkit-overflow-scrolling: touch; }
 input{outline: none;}
 a{-webkit-tap-highlight-color:rgba(255,0,0,0);}
 i{ display:inline-block; }
-
-
-
+.explort{
+	background:#feffee;
+	color:#f00000;
+	border:1px dashed #ccc;
+	padding:10px;
+}
 #app{
 	height:100%;
 	display:flex;

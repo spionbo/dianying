@@ -2,6 +2,7 @@ package com.cn.cms.dao;
 
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
+import com.cn.cms.po.User;
 import com.cn.cms.utils.Page;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -34,4 +35,5 @@ public interface PermissionDao {
     void deletePermissionColumn(@Param(value="columnId") Integer columnId);
 
     void updatePermissionColumn(@Param(value = "p1") Permission permission);
+
 }

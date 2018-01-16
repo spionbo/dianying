@@ -3,6 +3,7 @@ package com.cn.cms.web.controller;
 import com.cn.cms.biz.ResourceBiz;
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.UserBean;
+import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.exception.BizException;
 import com.cn.cms.middleware.WeedfsClient;
@@ -279,7 +280,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "imagesclassify:read" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.READ)
     @RequestMapping(value = "/imagesclassifylist")
     public String imagesclassifylist(HttpServletRequest request, @RequestParam(value = "page",required = false) Integer page,
                                      @RequestParam(value="pageSize",required = false)Integer pageSize){
@@ -297,7 +298,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "images:read" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.READ )
     @RequestMapping(value = "/imagesclassifyalllist")
     public String imagesclassifyalllist(){
         List<ImagesClassify> imagesClassifyList = resourceBiz.findAllImagesClassify();
@@ -311,7 +312,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "imagesclassify:read" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.READ )
     @RequestMapping(value = "/imagesclassify")
     public String imagesclassify(@RequestParam(value = "id") Integer id){
         ImagesClassify classify = resourceBiz.getImagesClassify(id);
@@ -327,7 +328,7 @@ public class ImagesController extends BaseController{
      * @throws BizException
      */
     @CheckToken
-    @CheckAuth( name = "imagesclassify:write" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.WRITE )
     @RequestMapping(value = "/createImagesClassify", method = RequestMethod.POST)
     public String createImagesClassify(HttpServletRequest request,
                                        @RequestParam(value = "classifyName") String classifyName) throws BizException {
@@ -350,7 +351,7 @@ public class ImagesController extends BaseController{
      * @throws BizException
      */
     @CheckToken
-    @CheckAuth( name = "imagesclassify:update" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.UPDATE )
     @RequestMapping(value = "/updateImagesClassify", method = RequestMethod.POST)
     public String updateImagesClassify(HttpServletRequest request,
                                        @RequestParam(value = "classifyName") String classifyName,
@@ -366,14 +367,14 @@ public class ImagesController extends BaseController{
     }
 
     /**
-     * 删除
+     * 删除图片分类
      * @param request
      * @param id
      * @return
      * @throws BizException
      */
     @CheckToken
-    @CheckAuth( name = "imagesclassify:delete" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.DELETE )
     @RequestMapping(value = "/delImagesClassify",method = RequestMethod.POST)
     public String delImagesClassify(HttpServletRequest request,
                                     @RequestParam(value = "id") Integer id) throws BizException{

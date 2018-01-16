@@ -34,7 +34,7 @@ export default class Base{
 		return this._parent;
 	}
 	@D.deprecate("use import components")
-	requireEle( sys , data , popData ){
+	requireEle( sys , data , popData ){ // popData 弹窗的props属性
 		let childName = "child"+new Date().getTime() ,
 			name = "elename"+new Date().getTime() ,
 			dataconfig = {
@@ -78,9 +78,15 @@ export default class Base{
 			},
 			render(h){
 				return h("pop",{...popData}, [
-					h("div",{
-						slot : "title",
-					},[popData.props.obj.title]),
+					h("div",
+						{
+							slot : "title",
+							domProps: {
+								innerHTML: popData.props.obj.title
+							}
+						},
+						//[popData.props.obj.title]
+					),
 					h(name,{...data})
 				]);
 			}
@@ -93,9 +99,7 @@ export default class Base{
 		$(`
 			<div class="`+childName+`">
 				<pop ref="pop" :transition='win.transition' :obj="win">
-					<div v-if="win.title" slot='title'>
-						{{win.title}}
-					</div>
+					<div v-if="win.title" slot='title' v-html="win.title"></div>
 				    <div slot="content" style="padding: 10px 20px; text-align:center;" v-html="win.content">
 				       
 				    </div>

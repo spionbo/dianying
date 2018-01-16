@@ -1,12 +1,5 @@
 <style scoped>
-	.userlist{
-		img{
-			width:25px;
-			height:25px;
-			border-radius:100%;
-			vertical-align:middle;
-		}
-	}
+	@import "./style/list.css";
 </style>
 <template>
 	<div class="form horizontal userlist">
@@ -78,14 +71,15 @@
 					this.$requirePop(require('./pemisstionList'), {
 							props : {
 								item : item,
-								list : self.permissions
+								list : self.permissions,
 							}
 						},
 						{
 							props: {
 								obj: {
-									title: "更改\""+item.userName+"\"的权限",
+									title: "<em class='right'>滑动鼠标可滚动</em>更改\""+item.userName+"\"的权限",
 									close: true,
+									wrapper : "permission-list-pop",
 								}
 							}
 						});

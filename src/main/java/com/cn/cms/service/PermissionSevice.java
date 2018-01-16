@@ -2,6 +2,7 @@ package com.cn.cms.service;
 
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
+import com.cn.cms.po.User;
 
 import java.util.List;
 
@@ -37,4 +38,5 @@ public interface PermissionSevice {
 
     /*更新后台栏目*/
     void updatePermissionColumn(Permission permission);
+
 }

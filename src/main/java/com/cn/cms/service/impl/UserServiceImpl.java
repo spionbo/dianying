@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
     public List<User>queryUserList(Page page){
         return userDao.queryUserList(page);
     }
+
+    @Override
+    public Integer queryAdmin(String id){
+        return userDao.queryAdmin(id);
+    }
 }

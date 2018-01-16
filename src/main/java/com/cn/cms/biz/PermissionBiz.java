@@ -67,10 +67,24 @@ public class PermissionBiz extends BaseBiz {
     public void delPermissionRedis(String userId){
         jedisClient.del(RedisKeyContants.getPermission(userId));
         jedisClient.del(RedisKeyContants.getMenuPermission(userId));
+        jedisClient.del(RedisKeyContants.getAdmin(userId));
     }
     public void delAppPermissionRedis(String userId){
         jedisClient.del(RedisKeyContants.getAppPermission(userId));
         jedisClient.del(RedisKeyContants.getAppMenuPermission(userId));
+    }
+
+    /**
+     * 获取超级管理员权限
+     * @param userId
+     * @return
+     */
+    private Boolean getAdnin(String userId){
+        Integer count = userService.queryAdmin(userId);
+        if(count!=null && count > 0){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -88,7 +102,8 @@ public class PermissionBiz extends BaseBiz {
         if(result!=null && result > 0){
             return true;
         }
-        return false;
+        Boolean admin = jedisClient.sismember(RedisKeyContants.getAdmin(userId),userId);
+        return admin;
     }
 
     /**
@@ -104,6 +119,10 @@ public class PermissionBiz extends BaseBiz {
 
     public void setPermissionRedis(String userId, PlatformEnum platformEnum){
         updateMenu(userId, platformEnum);
+        if(getAdnin(userId)){
+            //记录管理员
+            jedisClient.sadd(RedisKeyContants.getAdmin(userId),userId,StaticContants.BAIDU_DATA_SECONDS);
+        };
     }
 
     /**
@@ -112,13 +131,13 @@ public class PermissionBiz extends BaseBiz {
     private void updateMenu(String userId, PlatformEnum platformEnum){
         List<Permission> permissions = permissionSevice.findPermissionColumn(userId,platformEnum.getType());
         if(StringUtils.isNotEmpty(permissions)){
-            Map<String,Double> map = new HashMap<>();
+            Map<String,String> map = new HashMap<>();
             List<PermissionBean> columnBeans = new ArrayList<>();
             List<Permission> catchList = new ArrayList<>();
 
             for(int i = 0; i < permissions.size(); i++) {
                 Permission permission = permissions.get(i);
-                //map.put(permission.getPermission(), new Double((double)permission.getSort()));
+                map.put(permission.getPermissionKey(), permission.getPermissionVal());
                 if (permission.getParentId() == null) {
                     PermissionBean permissionBean = new PermissionBean();
                     permissionBean.setPermission(permission);
@@ -133,7 +152,7 @@ public class PermissionBiz extends BaseBiz {
                 if(platformEnum.getType() == PlatformEnum.CMS.getType()) { //cms 为PC
                     delPermissionRedis(userId);
                     //设置用户权限
-                    //jedisClient.zadd(RedisKeyContants.getPermission(userId),map,StaticContants.DEFAULT_SECONDS);
+                    jedisClient.hmset(RedisKeyContants.getPermission(userId), map);
                     //获取MENU列表
                     jedisClient.set(RedisKeyContants.getMenuPermission(userId), JSONArray.toJSONString(permissionBeans), StaticContants.DEFAULT_SECONDS);
 

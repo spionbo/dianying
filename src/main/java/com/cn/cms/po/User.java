@@ -38,4 +38,7 @@ public class User extends Base {
      * IDFA。如果IDFA为空，则使用MAC地址。
      */
     private String idfa;
+
+    /*超级管理员身份*/
+    private Boolean administrator = false;
 }

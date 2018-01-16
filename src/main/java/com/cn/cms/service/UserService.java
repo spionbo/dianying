@@ -29,4 +29,7 @@ public interface UserService {
      * @return
      */
     List<User> queryUserList(Page page);
+
+    /*超级管理员*/
+    Integer queryAdmin(String id);
 }

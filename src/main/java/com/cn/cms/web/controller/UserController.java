@@ -2,6 +2,7 @@ package com.cn.cms.web.controller;
 
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.UserBean;
+import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.po.User;
@@ -75,7 +76,7 @@ public class UserController extends BaseController{
     }
 
     @CheckToken
-    @CheckAuth( name = "user:red")
+    @CheckAuth( name = PermissionNames.BACKSTAGE.ADMIN.LIST.READ)
     @RequestMapping(value = "/userlist",method = RequestMethod.GET)
     public String list(HttpServletRequest request,
                        @RequestParam(value = "page",required = false) Integer page ,
@@ -88,4 +89,5 @@ public class UserController extends BaseController{
         result.put("list",users);
         return ApiResponse.returnSuccess(result);
     }
+
 }

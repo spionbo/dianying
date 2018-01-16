@@ -2,6 +2,7 @@ package com.cn.cms.web.controller;
 
 import com.cn.cms.biz.XiaoshuoBiz;
 import com.cn.cms.bo.PermissionBean;
+import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.po.XiaoshuoClassification;
 import com.cn.cms.utils.Page;
 import com.cn.cms.web.ann.CheckAuth;
@@ -38,7 +39,7 @@ public class XiaoshuoController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name = "xiaoshuo:write")
+    @CheckAuth(name = PermissionNames.XIAOSHUO.ADDCLASS)
     @RequestMapping(value = "/addClassify",method = RequestMethod.POST)
     public String addClassify(HttpServletRequest request,
                               @RequestParam(value = "name") String name){
@@ -46,8 +47,15 @@ public class XiaoshuoController extends BaseController{
         return ApiResponse.returnSuccess();
     }
 
+    /**
+     * 查看分类列表
+     * @param request
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @CheckToken
-    @CheckAuth(name="xiaoshuo:read")
+    @CheckAuth(name=PermissionNames.XIAOSHUO.CLASSLIST)
     @RequestMapping(value = "/classifyList",method = RequestMethod.GET)
     public String classifyList(HttpServletRequest request,
                                @RequestParam(value = "page",required = false) Integer page,
@@ -60,8 +68,15 @@ public class XiaoshuoController extends BaseController{
         return ApiResponse.returnSuccess(result);
     }
 
+    /**
+     * 更新分类
+     * @param request
+     * @param id
+     * @param classifyName
+     * @return
+     */
     @CheckToken
-    @CheckAuth(name="xiaoshuo:update")
+    @CheckAuth(name=PermissionNames.XIAOSHUO.UPDATECLASS)
     @RequestMapping(value = "/updateClassify",method = RequestMethod.POST)
     public String updateClassify(HttpServletRequest request,
                                  @RequestParam(value = "id") Integer id ,

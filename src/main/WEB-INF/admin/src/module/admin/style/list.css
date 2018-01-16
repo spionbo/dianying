@@ -1,0 +1,8 @@
+.userlist{
+	img{
+		width:25px;
+		height:25px;
+		border-radius:100%;
+		vertical-align:middle;
+	}
+}

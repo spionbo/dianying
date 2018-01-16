@@ -3,6 +3,7 @@ package com.cn.cms.web.controller;
 import com.cn.cms.biz.ColumnBiz;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
+import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.SecondColumn;
 import com.cn.cms.service.ColumnService;
@@ -40,7 +41,7 @@ public class ColumnController {
      * @return
      */
     @CheckToken
-    @CheckAuth(name="column:red")
+    @CheckAuth(name= PermissionNames.BACKSTAGE.COLUMN.READ)
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(){
         List<ColumnBean> list = columnBiz.listColumn() ;

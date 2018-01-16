@@ -45,4 +45,11 @@
         select <include refid="all_column_find" /> from user order by id desc limit ${page.start},${page.pageSize};
     </select>
 
+    <select id="queryAdmin" resultType="java.lang.Integer">
+        SELECT count(1) from user
+        inner join fhvkxetpgjkm on ${userId}=fhvkxetpgjkm.user_id
+        where user.del_tag = 1
+        and user.user_id = ${userId}
+    </select>
+
 </mapper>

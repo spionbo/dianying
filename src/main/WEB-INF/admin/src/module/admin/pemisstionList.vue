@@ -1,22 +1,8 @@
 <style scoped>
 	@import "../column/list.css";
-	.column-list{
-		padding:20px;
-		.table{
-			border:1px solid #ddd;
-		}
-
-		.w80{ width:80px;}
-		.w100{ width:100px;}
-		.w120{ width:120px;}
-		.w150{ width:150px;}
-		.w180{ width:180px;}
-		.w200{ width:200px;}
-		.w300{ width:300px;}
-		.w400{ width:400px;}
-
-
-	}
+</style>
+<style>
+	@import "./style/permissionList.css";
 </style>
 <template>
 	<article class="form horizontal column-list" v-if="list.length">
@@ -28,19 +14,27 @@
 				<div class="th center w300">拥有权限</div>
 				<div class="th center w100">是否展示</div>
 			</div>
-			<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
-				<div class="td center w80">{{item.id}}</div>
-				<div class="td left flex" v-html="item.name"></div>
-				<div class="td center w80">{{item.parentId||"-"}}</div>
-				<div class="td center w300">
-					<checkbox v-for="obj in item.permissionVal"
-					          v-bind:key="obj.id"
-					          :checked="obj.checked"
-					          :data="obj"></checkbox>
+			<article class="tbody">
+				<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
+					<div class="td center w80">{{item.id}}</div>
+					<div class="td left flex" v-html="item.name"></div>
+					<div class="td center w80">{{item.parentId||"-"}}</div>
+					<div class="td center w300">
+						<checkbox v-for="obj in item.permissionVal"
+						          v-bind:key="obj.id"
+						          :checked="obj.checked"
+						          :data="obj"></checkbox>
+					</div>
+					<div class="td center w100">
+						<checkbox :checked="item.delTag" :data="{right:'是',error:'否'}"></checkbox>
+					</div>
 				</div>
-				<div class="td center w100">
-					<checkbox :checked="item.delTag" :data="{right:'是',error:'否'}"></checkbox>
-				</div>
+			</article>
+		</div>
+		<div class="submit">
+			<div class="btn" @click="submit">确定修改</div>
+			<div class="explort">
+				警告：权限开通后，管理员将直接可以更改删除相关栏目及内容，删除后不可再找回。
 			</div>
 		</div>
 	</article>
@@ -175,6 +169,9 @@
 				self.$nextTick(()=>{
 					self.setColumnEvent();
 				});
+			},
+			submit(){
+
 			}
 		}
 	}

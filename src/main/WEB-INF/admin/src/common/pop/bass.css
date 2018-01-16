@@ -63,7 +63,22 @@
 		border-bottom: 1px solid #ddd;
 		background: #f8f8f8;
 		background: linear-gradient(0, #f3f3f3 0%, #fff 50%);
-
+		.right{
+			float:right;
+			padding-right:50px;
+		}
+		em{
+			color:red;
+			animation:tittips 1s infinite linear;
+			@at-root {
+				@keyframes tittips{
+					0% { color: red; }
+					40% { color: orange; }
+					60% { color: yellowgreen; }
+					80% { color:#0076FF; }
+				}
+			}
+		}
 	}
 	.content{
 		flex:1;

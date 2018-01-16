@@ -1,7 +1,6 @@
 import './style/main.css';
 import './style/font-awesome.css';
 import store from './store';
-
 Vue.use(VueRouter);
 import './router';
 import Pop from './common/pop/js/Pop';
@@ -26,7 +25,7 @@ window.Main = new Vue({
 		}
 	},
 	watch : {
-		'$route' (to, from){
+		'$route'(to, from){
 			require('./router/route').call(this,to,from);
 		},
 		isLogin( val ){

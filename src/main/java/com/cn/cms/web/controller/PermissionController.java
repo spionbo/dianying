@@ -41,6 +41,7 @@ public class PermissionController extends BaseController{
      */
 
     @CheckToken
+    @CheckAuth(name=PermissionNames.BACKSTAGE.READ)
     @RequestMapping(value = "/currentMenuPermission",method = RequestMethod.GET)
     public String currentMenuPermission(HttpServletRequest request){
         String userID = getCurrentUserId(request);
@@ -59,7 +60,7 @@ public class PermissionController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name = "positionPermission:write")
+    @CheckAuth(name = PermissionNames.BACKSTAGE.COLUMN.WRITE)
     @RequestMapping(value = "/addColumn",method = RequestMethod.POST)
     public String addPermissionColumn(HttpServletRequest request ,
                                       HttpServletResponse response,
@@ -85,7 +86,7 @@ public class PermissionController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name = "positionPermission:delete")
+    @CheckAuth(name = PermissionNames.BACKSTAGE.COLUMN.DELETE)
     @RequestMapping(value = "/deleteColumn",method = RequestMethod.POST)
     public String deletePermissionColumn(HttpServletRequest request,
                                          @RequestParam(value = "columnId") Integer columnId){
@@ -97,8 +98,20 @@ public class PermissionController extends BaseController{
         return ApiResponse.returnFail(ErrorCodeEnum.ERROR_DELETE_COLUMN.getType(),ErrorCodeEnum.ERROR_DELETE_COLUMN.getMessage());
     }
 
+    /**
+     * 更新栏目
+     * @param request
+     * @param response
+     * @param id
+     * @param name
+     * @param parentId
+     * @param url
+     * @param sort
+     * @param description
+     * @return
+     */
     @CheckToken
-    @CheckAuth(name = "positionPermission:update")
+    @CheckAuth(name = PermissionNames.BACKSTAGE.COLUMN.UPDATE)
     @RequestMapping(value = "/updateColumn",method = RequestMethod.POST)
     public String updatePermissionColumn(HttpServletRequest request ,
                                          HttpServletResponse response,
@@ -126,7 +139,7 @@ public class PermissionController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name = PermissionNames.BACKSTAGE.READ)
+    @CheckAuth(name = PermissionNames.BACKSTAGE.COLUMN.READ)
     @RequestMapping(value = "/permissionColumn", method = RequestMethod.GET)
     public String permissionColumn(HttpServletRequest request,
                                    @RequestParam(value = "columnId") Integer columnId){

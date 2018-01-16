@@ -53,4 +53,7 @@
 		cursor:pointer;
 		padding-right:5px;
 	}
+	.explort{
+		display:inline-block;
+	}
 }

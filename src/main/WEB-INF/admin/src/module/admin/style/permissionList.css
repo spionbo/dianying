@@ -1,0 +1,45 @@
+.permission-list-pop{
+	.column-list{
+		flex:1;
+		display:flex;
+		flex-direction:column;
+	}
+	.content{
+		padding:20px 20px 0;
+		display:flex;
+		box-sizing:border-box;
+		overflow:hidden;
+	}
+	.form{
+		.submit{
+			padding-left:20px;
+		}
+	}
+	.table{
+		flex:1;
+		display:flex;
+		flex-direction:column;
+		border:1px solid #ddd;
+		.tbody{
+			flex:1;
+			overflow-y:scroll;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			&::-moz-scrollbar {
+				display: none;
+			}
+		}
+	}
+
+	.w80{ width:80px;}
+	.w100{ width:100px;}
+	.w120{ width:120px;}
+	.w150{ width:150px;}
+	.w180{ width:180px;}
+	.w200{ width:200px;}
+	.w300{ width:300px;}
+	.w400{ width:400px;}
+
+
+}

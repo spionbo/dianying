@@ -3,6 +3,7 @@ package com.cn.cms.service.impl;
 import com.cn.cms.dao.PermissionDao;
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
+import com.cn.cms.po.User;
 import com.cn.cms.service.PermissionSevice;
 import org.springframework.stereotype.Repository;
 
@@ -52,4 +53,5 @@ public class PermissionSeviceImpl implements PermissionSevice {
     public void updatePermissionColumn(Permission permission){
         permissionDao.updatePermissionColumn(permission);
     }
+
 }

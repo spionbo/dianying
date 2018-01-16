@@ -176,6 +176,25 @@ public class JedisClient {
     }
 
     /**
+     * 添加哈希key(键)、map(key,value(值))
+     * @param key
+     * @param map
+     */
+    public void hmset(String key,Map<String,String> map){
+        Jedis client = null;
+        try{
+            client = jedisPool.getResource();
+            client.hmset(key,map);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            if(client!=null){
+                client.close();
+            }
+        }
+    }
+
+    /**
      * 添加key(键)、value(值)、scope（排序字段）。
      * @param key
      * @param value
@@ -428,4 +447,47 @@ public class JedisClient {
         return p;
     }
 
+
+    /**
+     * 添加set key value
+     * @param key
+     * @param member
+     * @param seconds
+     */
+    public void sadd(String key,String member,int seconds){
+        Jedis client = null;
+        try{
+            client = jedisPool.getResource();
+            client.sadd(key,member);
+            client.expire(key,seconds);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(client!=null){
+                client.close();
+            }
+        }
+    }
+
+    /**
+     * 获取 set
+     * @param key
+     * @param member
+     * @return
+     */
+    public Boolean sismember(String key,String member){
+        Boolean boll = false;
+        Jedis client = null;
+        try{
+            client = jedisPool.getResource();
+            boll = client.sismember(key,member);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(client!=null){
+                client.close();
+            }
+        }
+        return boll;
+    }
 }
