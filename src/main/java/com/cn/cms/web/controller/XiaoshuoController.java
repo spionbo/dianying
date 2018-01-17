@@ -39,7 +39,7 @@ public class XiaoshuoController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name = PermissionNames.XIAOSHUO.ADDCLASS)
+    @CheckAuth(name = PermissionNames.XIAOSHUO.ADD_CLASS.WRITE)
     @RequestMapping(value = "/addClassify",method = RequestMethod.POST)
     public String addClassify(HttpServletRequest request,
                               @RequestParam(value = "name") String name){
@@ -55,7 +55,7 @@ public class XiaoshuoController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth(name=PermissionNames.XIAOSHUO.CLASSLIST)
+    @CheckAuth(name=PermissionNames.XIAOSHUO.CLASS_LIST.READ)
     @RequestMapping(value = "/classifyList",method = RequestMethod.GET)
     public String classifyList(HttpServletRequest request,
                                @RequestParam(value = "page",required = false) Integer page,
@@ -69,14 +69,14 @@ public class XiaoshuoController extends BaseController{
     }
 
     /**
-     * 更新分类
+     * 更新分类 只有列表有该功能,则权限为列表
      * @param request
      * @param id
      * @param classifyName
      * @return
      */
     @CheckToken
-    @CheckAuth(name=PermissionNames.XIAOSHUO.UPDATECLASS)
+    @CheckAuth(name=PermissionNames.XIAOSHUO.CLASS_LIST.UPDATE)
     @RequestMapping(value = "/updateClassify",method = RequestMethod.POST)
     public String updateClassify(HttpServletRequest request,
                                  @RequestParam(value = "id") Integer id ,

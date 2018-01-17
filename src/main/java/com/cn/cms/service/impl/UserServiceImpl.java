@@ -40,4 +40,14 @@ public class UserServiceImpl implements UserService {
     public Integer queryAdmin(String id){
         return userDao.queryAdmin(id);
     }
+
+    @Override
+    public Integer queryUserName(String userName) {
+        return userDao.queryUserName(userName);
+    }
+
+    @Override
+    public void createUser( User user){
+        userDao.saveUser(user);
+    }
 }

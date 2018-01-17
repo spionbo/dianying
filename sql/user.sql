@@ -4,7 +4,7 @@ create table `user`(
 	head_image VARCHAR(255),
 	real_name VARCHAR(10) not null,
 	pwd varchar(255) not null,
-	user_id int(11) not null UNIQUE,
+	user_id varchar(255) not null UNIQUE,
 	idfa varchar(255),
 
 	`create_time` timestamp not null default CURRENT_TIMESTAMP,

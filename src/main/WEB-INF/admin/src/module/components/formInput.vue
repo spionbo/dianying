@@ -20,6 +20,9 @@
 			>
 			</input>
 		</div>
+		<div class="else">
+			<slot name='else'></slot>
+		</div>
 		<div class="cnt" :class="{cur:error}">
 			{{text}}
 		</div>
@@ -27,6 +30,14 @@
 </template>
 <script>
 	const ERROR = {
+		letter : {
+			default : "请输入字母",
+			error : "字母不能小于5位大于20位"
+		},
+		numAndLetter : {
+			default : "请输入内容，内容必需包含字母和数字",
+			error : "必需包含字母和数字相结合(6-20位)"
+		},
 		chinese : {
 			default : "请输入内容，不能大于5个中文字符",
 			error : "内容必需为中文，不能大于5个中文字符"
@@ -38,7 +49,11 @@
         http : {
             default : "域名（http://www.xy.com）",
             error : "请输入正确的域名（例：http://www.xy.com）。"
-        }
+        },
+		password : {
+			default : "请输入密码，密码为6位数以上必需包含英文和数字",
+			error : "密码为6位数以上必需包含英文和数字"
+		}
 	};
 	export default {
 		props: {

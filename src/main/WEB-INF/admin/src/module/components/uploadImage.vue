@@ -34,6 +34,7 @@
 			text : String,
 			dataType : String,
 			prompt : String,
+			name : String,
 			placeholder : String
 		},
 		data() {
@@ -45,6 +46,11 @@
 				text : "",
 				error : false
 			}
+		},
+		imgUrl:function( val ){
+			this.$store.commit("setCatch",{
+				[this.name] : val
+			})
 		},
 		mounted() {
 			this.setMsg();

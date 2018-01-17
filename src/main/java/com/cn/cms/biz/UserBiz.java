@@ -5,6 +5,7 @@ import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.PlatformEnum;
+import com.cn.cms.exception.BizException;
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.po.Base;
 import com.cn.cms.po.User;
@@ -79,6 +80,24 @@ public class UserBiz extends BaseBiz{
         return result;
     }
 
+    /**
+     * 用户名是否存在。
+     * @param userName
+     * @return
+     */
+    public Integer queryUserName(String userName){
+        return userService.queryUserName(userName);
+    }
+
+    /**
+     * 根据用户名和密码查询是否有此用户。
+     * @param userName
+     * @return
+     */
+    public User findUserForLogin(String userName){
+        User user = userService.findUserName(userName);
+        return user;
+    }
 
     /**
      * WEB
@@ -89,7 +108,7 @@ public class UserBiz extends BaseBiz{
      * @return
      */
     public String checkUserAndSetCookie(HttpServletResponse response, String userName, String pwd){
-        User user = userService.findUserName(userName);
+        User user = findUserForLogin(userName);
         pwd = EncryptUtil.encryptPwd(userName,pwd);
         if( user != null ){
             if(user.getPwd().equals(pwd)){
@@ -276,4 +295,29 @@ public class UserBiz extends BaseBiz{
         }
 
     }
+
+    /**
+     * 创建管理人
+     * @param userName
+     * @param password
+     * @param realName
+     * @param imageHead
+     * @param lastModifyUserId
+     * @throws BizException
+     */
+    public void createUser( String userName , String password , String realName , String imageHead , String lastModifyUserId) throws BizException{
+        User user = new User();
+        user.setUserId(EncryptUtil.buildUserId());
+        user.setUserName(userName);
+        user.setPwd(EncryptUtil.encryptPwd(user.getUserName(),password));
+        user.setRealName(realName);
+        user.setLastModifyUserId(lastModifyUserId);
+        user.setCreateUserId(lastModifyUserId);
+        if(StringUtils.isNotEmpty(imageHead)){
+            user.setHeadImage(imageHead);
+        }
+        userService.createUser(user);
+        refreshUserCache(user);
+    }
+
 }

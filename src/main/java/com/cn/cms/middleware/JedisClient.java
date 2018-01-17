@@ -452,14 +452,12 @@ public class JedisClient {
      * 添加set key value
      * @param key
      * @param member
-     * @param seconds
      */
-    public void sadd(String key,String member,int seconds){
+    public void sadd(String key,String member){
         Jedis client = null;
         try{
             client = jedisPool.getResource();
             client.sadd(key,member);
-            client.expire(key,seconds);
         }catch (Exception e){
             e.printStackTrace();
         }finally {

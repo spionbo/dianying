@@ -88,6 +88,15 @@ public class PermissionBiz extends BaseBiz {
     }
 
     /**
+     * 判读是否是超级管理员
+     * @param userId
+     * @return
+     */
+    private Boolean isAdmin(String userId){
+        return jedisClient.sismember(RedisKeyContants.getAdmin(userId),userId);
+    }
+
+    /**
      * 获取栏目名称是否存在
      * @param parentId
      * @param name
@@ -102,8 +111,7 @@ public class PermissionBiz extends BaseBiz {
         if(result!=null && result > 0){
             return true;
         }
-        Boolean admin = jedisClient.sismember(RedisKeyContants.getAdmin(userId),userId);
-        return admin;
+        return isAdmin(userId);
     }
 
     /**
@@ -120,8 +128,8 @@ public class PermissionBiz extends BaseBiz {
     public void setPermissionRedis(String userId, PlatformEnum platformEnum){
         updateMenu(userId, platformEnum);
         if(getAdnin(userId)){
-            //记录管理员
-            jedisClient.sadd(RedisKeyContants.getAdmin(userId),userId,StaticContants.BAIDU_DATA_SECONDS);
+            //记录超级管理员
+            jedisClient.sadd(RedisKeyContants.getAdmin(userId),userId);
         };
     }
 
@@ -151,8 +159,9 @@ public class PermissionBiz extends BaseBiz {
             if(StringUtils.isNotEmpty(permissionBeans)){
                 if(platformEnum.getType() == PlatformEnum.CMS.getType()) { //cms 为PC
                     delPermissionRedis(userId);
-                    //设置用户权限
-                    jedisClient.hmset(RedisKeyContants.getPermission(userId), map);
+                    if(!isAdmin(userId)){//设置用户权限
+                        jedisClient.hmset(RedisKeyContants.getPermission(userId), map);
+                    }
                     //获取MENU列表
                     jedisClient.set(RedisKeyContants.getMenuPermission(userId), JSONArray.toJSONString(permissionBeans), StaticContants.DEFAULT_SECONDS);
 

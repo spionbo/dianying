@@ -37,11 +37,10 @@ public class ColumnController {
     private ColumnBiz columnBiz;
 
     /**
-     * 栏目列表
+     * 频道列表 小说 新闻 视频等这种形式
      * @return
      */
     @CheckToken
-    @CheckAuth(name= PermissionNames.BACKSTAGE.COLUMN.READ)
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(){
         List<ColumnBean> list = columnBiz.listColumn() ;

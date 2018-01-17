@@ -9,6 +9,13 @@ Vue.mixin({
 		}
 	},
 	methods : {
+		_letter( val ){ //字母不能小于6位
+			return new RegExp("^[a-z|A-Z]{5,20}$").test(val);
+		},
+		_numAndLetter( val ){ //包含数字和字母且开头是字每
+			if(val.length<5||val.length>20) return false;
+			return (new RegExp("[a-z|A-Z]+").test(val) && new RegExp("\\d+").test(val));
+		},
 		_chinese( val ){
 			let reg = /^[\u4e00-\u9fa5]{1,9}$/;
 			if(reg.test(val)) return true;

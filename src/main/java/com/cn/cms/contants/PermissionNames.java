@@ -16,99 +16,126 @@ public class PermissionNames {
 
         //栏目管理
         public static class COLUMN{
-
             private static final String name = BACKSTAGE.name+"Column";
-            //查看栏目
             public static final String READ = name+":read";
-            //删除栏目
-            public static String DELETE = name+"Delete:delete";
-            //更新栏目
-            public static String UPDATE = name+"Update:update";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+
             //新增栏目
-            public static class ADD{//如果只有 read 则只能看，不能写
+            public static class ADD{
                 private static final String name = COLUMN.name+"Add";
-                //查看新增栏目
                 public static final String READ = name+":read";
-                //新增
+                public static final String UPDATE = name+":update";
                 public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
             }
-            //查看栏目列表
-            public static String LIST = name+"List:read";
+            //栏目列表
+            public static class LIST{
+                private static final String name = COLUMN.name+"List";
+                public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
+                public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
+            }
         }
         //管理员管理
         public static class ADMIN{
             private static final String name = BACKSTAGE.name+"Admin";
-            //查看管理员栏目
             public static final String READ = name+":read";
-            //删除管理员
-            public static String DELETE = name+"Delete:delete";
-            //更新管理员
-            public static String UPDATE = name+"Update:update";
-            //新增管理员
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+
+            //新增
             public static class ADD{
                 private static final String name = ADMIN.name+"Add";
-                //查看新增管理员
                 public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
                 public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
             }
-            //查看列表
-            public static String LIST = name+"List:read";
+            //列表
+            public static class LIST{
+                private static final String name = ADMIN.name+"List";
+                public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
+                public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
+            }
         }
         //图片管理
         public static class IMG{
             private static final String name = BACKSTAGE.name+"Img";
-            //查看图片管理栏目
             public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
 
-            //删除图片
-            public static String DELETE = name+"Delete:delete";
-            //更新图片
-            public static String UPDATE = name+"Update:update";
-            //删除图片分类
-            public static String DELETECLASS = name+"DeleteClass:delete";
-            //更新图片分类
-            public static String UPDATEClass = name+"UpdateClass:update";
-            //查看图片列表
-            public static String LIST = name+"List:read";
-            //查看图片分类列表
-            public static String CLASSLIST = name+"ClassList:read";
-
-            //新增栏目
-            public static class ADD{
-                private static final String name = IMG.name+"Add";
-                //查看
+            //列表
+            public static class LIST{
+                private static final String name = IMG.name+"List";
                 public static final String READ = name+":read";
-                //写
+                public static final String UPDATE = name+":update";
                 public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
             }
-            //图片基本信息
+            //新增分类
+            public static class ADD_CLASS{
+                private static final String name = IMG.name+"AddClass";
+                public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
+                public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
+            }
+            //分类列表
+            public static class CLASS_LIST{
+                private static final String name = IMG.name+"ClassList";
+                public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
+                public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
+            }
+            //基本信息
             public static class BASIC{
                 private static final String name = IMG.name+"Basic";
-                //查看
                 public static final String READ = name+":read";
-                //写
+                public static final String UPDATE = name+":update";
                 public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
             }
         }
-        //管理员管理
-        public static class PERMISSION{
+        //权限管理
+        public static class Permission{
             private static final String name = BACKSTAGE.name+"Permission";
-            //读
             public static final String READ = name+":read";
-            //读列表
-            public static final String LIST = name+"List:read";
-            //删
-            public static String DELETE = name+"Delete:delete";
-            //更
-            public static String UPDATE = name+"Update:update";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
 
-            //新增权限
+            //新增
             public static class ADD{
-                private static final String name = PERMISSION.name+"Add";
-                //读
+                private static final String name = Permission.name+"Add";
                 public static final String READ = name+":read";
-                //写
+                public static final String UPDATE = name+":update";
                 public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
+            }
+            //列表
+            public static class LIST{
+                private static final String name = Permission.name+"List";
+                public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
+                public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
+            }
+            //查看我的权限
+            public static class VIEW{
+                private static final String name = Permission.name+"view";
+                public static final String READ = name+":read";
+                public static final String UPDATE = name+":update";
+                public static final String WRITE = name+":write";
+                public static final String DELETE = name+":delete";
             }
         }
     };
@@ -118,33 +145,51 @@ public class PermissionNames {
 
         //图片上传
         public static class IMG{
+            public static final String name = UPLOAD.name+"Img";
             public static final String WRITE = name+":write";
+            public static final String UPDATE = name+":update";
         }
     }
-    //小说
+    //小说管理
     public static class XIAOSHUO{
         private static final String name = "xiaoshuo";
-        //查看小说
         public static final String READ = name+":read";
+        public static final String UPDATE = name+":update";
+        public static final String WRITE = name+":write";
+        public static final String DELETE = name+":delete";
 
-        //新增小说
-        public static final String ADD = name+"Add:write";
-        //修改小说
-        public static final String UPDATE = name+"Update:update";
-        //查看小说列表
-        public static final String LIST = name+"List:read";
-        //删除小说列表
-        public static final String DELETE = name+"delete:delete";
-
-
+        //新增
+        public static class ADD{
+            private static final String name = XIAOSHUO.name+"Add";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
+        //列表
+        public static class LIST{
+            private static final String name = XIAOSHUO.name+"List";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
         //新增分类
-        public static final String ADDCLASS = name+"AddClass:write";
-        //修改分类
-        public static final String UPDATECLASS = name+"UpdateClass:update";
-        //删除分类
-        public static final String DELETECLASS = name+"DeleteClass:delete";
-        //查看分类列表
-        public static final String CLASSLIST = name+"ClassList:read";
+        public static class ADD_CLASS{
+            private static final String name = XIAOSHUO.name+"AddClass";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
+        //分类列表
+        public static class CLASS_LIST{
+            private static final String name = XIAOSHUO.name+"ClassList";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
 
     }
 }

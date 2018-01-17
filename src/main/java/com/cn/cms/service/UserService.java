@@ -24,12 +24,25 @@ public interface UserService {
     User findUserName(String userName);
 
     /**
+     * 获取是否存在次用户名
+     * @param userName
+     * @return
+     */
+    Integer queryUserName(String userName);
+
+    /**
      * 查找列表
      * @param page
      * @return
      */
     List<User> queryUserList(Page page);
 
-    /*超级管理员*/
+    /*获取超级管理员*/
     Integer queryAdmin(String id);
+
+    /*
+    * 新增管理员
+    * @param user
+    * */
+    void createUser(User user);
 }

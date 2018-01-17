@@ -4,24 +4,25 @@
 			<div class="label">帐号<em>*</em></div>
 			<form-input
 					type="text"
-					dataType="path"
-					name = "path"
-					:data = "obj.path"
+					dataType="numAndLetter"
+					name = "userName"
+					:data = "obj.letter"
 					:check="true"
-					maxlength="11"
+					maxlength="20"
 					placeholder="请输入路经名称">
 			</form-input>
 		</li>
 		<li>
 			<div class="label">密码<em>*</em></div>
 			<form-input
-					type="password"
-					dataType="path"
-					name = "path"
-					:data = "obj.path"
+					type="text"
+					dataType="numAndLetter"
+					name = "password"
+					:data = "obj.password"
 					:check="true"
 					maxlength="11"
 					placeholder="请输入路经名称">
+				<div slot='else' class="btn square blue" @click="randPwd">随机生成</div>
 			</form-input>
 		</li>
 		<li>
@@ -39,21 +40,10 @@
 		<li>
 			<div class="label">会员头像<em>*</em></div>
 			<upload
-					text="上传头像"
+					name = "imageHead"
+					text="请上传头像"
 					placeholder="请选择头像"
 			></upload>
-		</li>
-		<li>
-			<div class="label">会员权限<em>*</em></div>
-			<form-input
-					type="text"
-					dataType="chinese"
-					name = "name"
-					:data = "obj.name"
-					:check="true"
-					maxlength="5"
-					placeholder="请输入栏目名称">
-			</form-input>
 		</li>
 	</ul>
 </template>
@@ -82,7 +72,9 @@
 		data() {
 			return {
 				list : null,
-				obj : {}
+				obj : {
+					password : ""
+				}
 			}
 		},
 		mounted() {
@@ -93,6 +85,7 @@
 			verification(){
 				let [self,ischeck] = [this,true];
 				this.$children.map(obj=>{
+					if(!obj.verification) return;
 					obj.verification(function( b ){
 						if(!b){ischeck = b};
 					});
@@ -101,6 +94,9 @@
 					return true;
 				}
 				return false;
+			},
+			randPwd(){
+				this.obj.password = Math.random().toString(36).substr(2);
 			},
 			setData(){
 				let [

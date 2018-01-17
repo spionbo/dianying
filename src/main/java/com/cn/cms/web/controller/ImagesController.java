@@ -49,7 +49,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "imagesbase:read" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.BASIC.READ )
     @RequestMapping(value = "/imagesBase")
     public String imagesBase(){
         ImagesBase imagesBase = resourceBiz.findImagesBase();
@@ -65,7 +65,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "imagesbase:update" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.BASIC.UPDATE)
     @RequestMapping(value = "/updateImagesBase", method = RequestMethod.POST)
     public String updateImagesBase(HttpServletRequest request,
                                    @RequestParam("id") Integer id,
@@ -88,7 +88,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "imagesbase:write" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.BASIC.WRITE )
     @RequestMapping(value = "/createImagesBase", method = RequestMethod.POST)
     public String createImagesBase(HttpServletRequest request,
                                    @RequestParam("baseUrl") String baseUrl,
@@ -117,7 +117,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "images:write" )
+    @CheckAuth( name = PermissionNames.UPLOAD.IMG.WRITE )
     @RequestMapping(value = "/createImages", method = RequestMethod.POST)
     public String createImages(HttpServletRequest request,
                                @RequestParam("imageUrl") String imageUrl,
@@ -173,7 +173,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "images:update" )
+    @CheckAuth( name = PermissionNames.UPLOAD.IMG.UPDATE )
     @RequestMapping(value = "/updateImages", method = RequestMethod.POST)
     public String updateImages(HttpServletRequest request,
                                @RequestParam("id") Integer id,
@@ -216,13 +216,13 @@ public class ImagesController extends BaseController{
     }
 
     /**
-     * 删除图片
+     * 删除图片 只有图片列表可以删除，则用图片列表中的权限
      * @param request
      * @param id
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "images:delete" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.LIST.DELETE )
     @RequestMapping(value = "/delImages", method = RequestMethod.GET)
     public String delImages(HttpServletRequest request,
                             @RequestParam("id") Integer id,
@@ -257,7 +257,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = "images:read" )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.LIST.READ )
     @RequestMapping(value = "/imageslist")
     public String imageslist(HttpServletRequest request, @RequestParam(value = "page",required = false) Integer page,
                              @RequestParam(value="pageSize",required = false)Integer pageSize){
@@ -280,7 +280,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.READ)
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASS_LIST.READ)
     @RequestMapping(value = "/imagesclassifylist")
     public String imagesclassifylist(HttpServletRequest request, @RequestParam(value = "page",required = false) Integer page,
                                      @RequestParam(value="pageSize",required = false)Integer pageSize){
@@ -294,11 +294,11 @@ public class ImagesController extends BaseController{
     }
 
     /**
-     * 获取图片分类。所有
+     * 获取图片分类列表。所有
      * @return
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.READ )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASS_LIST.READ )
     @RequestMapping(value = "/imagesclassifyalllist")
     public String imagesclassifyalllist(){
         List<ImagesClassify> imagesClassifyList = resourceBiz.findAllImagesClassify();
@@ -307,12 +307,12 @@ public class ImagesController extends BaseController{
 
 
     /**
-     * 图片分类详情
+     * 图片分类详情  只有在列表中可以查看，所以用 class_list 中的权限
      * @param id
      * @return
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.READ )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASS_LIST.READ )
     @RequestMapping(value = "/imagesclassify")
     public String imagesclassify(@RequestParam(value = "id") Integer id){
         ImagesClassify classify = resourceBiz.getImagesClassify(id);
@@ -328,7 +328,7 @@ public class ImagesController extends BaseController{
      * @throws BizException
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.WRITE )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.ADD_CLASS.WRITE )
     @RequestMapping(value = "/createImagesClassify", method = RequestMethod.POST)
     public String createImagesClassify(HttpServletRequest request,
                                        @RequestParam(value = "classifyName") String classifyName) throws BizException {
@@ -343,7 +343,7 @@ public class ImagesController extends BaseController{
     }
 
     /**
-     * 修改图片分类
+     * 修改图片分类  只有分类列表可以修改,则用列表的权限
      * @param request
      * @param classifyName
      * @param id
@@ -351,7 +351,7 @@ public class ImagesController extends BaseController{
      * @throws BizException
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.UPDATE )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASS_LIST.UPDATE )
     @RequestMapping(value = "/updateImagesClassify", method = RequestMethod.POST)
     public String updateImagesClassify(HttpServletRequest request,
                                        @RequestParam(value = "classifyName") String classifyName,
@@ -367,14 +367,14 @@ public class ImagesController extends BaseController{
     }
 
     /**
-     * 删除图片分类
+     * 删除图片分类 该功能在分类列表
      * @param request
      * @param id
      * @return
      * @throws BizException
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASSLIST.DELETE )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.IMG.CLASS_LIST.DELETE )
     @RequestMapping(value = "/delImagesClassify",method = RequestMethod.POST)
     public String delImagesClassify(HttpServletRequest request,
                                     @RequestParam(value = "id") Integer id) throws BizException{

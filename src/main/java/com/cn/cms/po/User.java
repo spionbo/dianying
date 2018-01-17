@@ -1,5 +1,6 @@
 package com.cn.cms.po;
 
+import com.cn.cms.utils.Hardware;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,4 +42,6 @@ public class User extends Base {
 
     /*超级管理员身份*/
     private Boolean administrator = false;
+
+
 }

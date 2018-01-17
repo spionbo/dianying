@@ -5,6 +5,7 @@ import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.ErrorCodeEnum;
+import com.cn.cms.exception.BizException;
 import com.cn.cms.po.User;
 import com.cn.cms.utils.CookieUtil;
 import com.cn.cms.utils.Page;
@@ -75,6 +76,13 @@ public class UserController extends BaseController{
         return ApiResponse.returnSuccess(userBean);
     }
 
+    /**
+     * 获取管理员列表
+     * @param request
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @CheckToken
     @CheckAuth( name = PermissionNames.BACKSTAGE.ADMIN.LIST.READ)
     @RequestMapping(value = "/userlist",method = RequestMethod.GET)
@@ -88,6 +96,32 @@ public class UserController extends BaseController{
         result.put("page",pageObj);
         result.put("list",users);
         return ApiResponse.returnSuccess(result);
+    }
+
+    /**
+     * 新增管理员
+     * @param request
+     * @param userName
+     * @param password
+     * @param realName
+     * @param imageHead
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.BACKSTAGE.ADMIN.ADD.WRITE)
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String add(HttpServletRequest request,
+                      @RequestParam(value = "userName") String userName,
+                      @RequestParam(value = "password")  String password,
+                      @RequestParam(value = "realName") String realName,
+                      @RequestParam(value = "imageHead",required = false) String imageHead) throws BizException{
+        String userID = getCurrentUserId(request);
+        Integer a = userBiz.queryUserName(userName);
+        if(a>0){
+            return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USERNAME_RE.getType(),ErrorCodeEnum.ERROR_USERNAME_RE.getMessage());
+        }
+        userBiz.createUser(userName,password,realName,imageHead,userID);
+        return ApiResponse.returnSuccess();
     }
 
 }

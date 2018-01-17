@@ -37,6 +37,10 @@
         select <include refid="all_column_find" /> from user <include refid="delTag" /> and user_name = #{userName};
     </select>
 
+    <select id="queryUserName" resultType="java.lang.Integer">
+        select count(1) from user <include refid="delTag" /> and user_name = #{userName};
+    </select>
+
     <select id="queryUserCount" resultType="java.lang.Integer">
           select count(1) from user <include refid="delTag" />;
     </select>
@@ -51,5 +55,11 @@
         where user.del_tag = 1
         and user.user_id = ${userId}
     </select>
+
+    <insert id="saveUser" useGeneratedKeys="true" keyProperty="user.id">
+        insert into user (<include refid="all_column" />) value (null,
+        #{user.lastModifyUserId},#{user.userName},#{user.headImage},#{user.realName}
+        ,#{user.pwd},#{user.userId},#{user.idfa},#{user.createUserId});
+    </insert>
 
 </mapper>

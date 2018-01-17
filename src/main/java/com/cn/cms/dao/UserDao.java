@@ -18,4 +18,8 @@ public interface UserDao {
     Integer queryUserCount();
 
     Integer queryAdmin(@Param(value = "userId") String userId);
+
+    void saveUser(@Param(value = "user") User user);
+
+    Integer queryUserName(@Param(value = "userName") String userName);
 }
