@@ -50,6 +50,21 @@ public class PermissionController extends BaseController{
     }
 
     /**
+     * 获取当前用户权限
+     * @param request
+     * @param userId
+     * @return
+     */
+    @CheckToken
+    @CheckAuth( name = PermissionNames.BACKSTAGE.ADMIN.LIST.READ)
+    @RequestMapping(value = "/listPermission",method = RequestMethod.GET)
+    public String listPermission(HttpServletRequest request,
+                                 @RequestParam(value = "userId") String userId){
+        List<PermissionBean> list = this.permissionBiz.findPermissionList(userId);
+        return ApiResponse.returnSuccess(list);
+    }
+
+    /**
      * 新增后台栏目
      * @param request
      * @param name

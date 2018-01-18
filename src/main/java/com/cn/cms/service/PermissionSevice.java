@@ -39,4 +39,5 @@ public interface PermissionSevice {
     /*更新后台栏目*/
     void updatePermissionColumn(Permission permission);
 
+
 }

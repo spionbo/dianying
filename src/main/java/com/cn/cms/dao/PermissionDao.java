@@ -36,4 +36,5 @@ public interface PermissionDao {
 
     void updatePermissionColumn(@Param(value = "p1") Permission permission);
 
+
 }

@@ -54,4 +54,6 @@ public class PermissionSeviceImpl implements PermissionSevice {
         permissionDao.updatePermissionColumn(permission);
     }
 
+
+
 }

@@ -46,6 +46,22 @@ public class PermissionBiz extends BaseBiz {
     @Resource
     private JedisClient jedisClient;
 
+    /**
+     * 获取权限列表
+     * @return
+     */
+    public List<PermissionBean> findPermissionList( String userId ){
+        String result = jedisClient.get(RedisKeyContants.getMenuPermission(userId));
+        if(StringUtils.isNotBlank(result)) {
+            return JSONArray.parseArray(result, PermissionBean.class);
+        }else{
+            result = setPermissionRedis(userId, PlatformEnum.CMS);
+        }
+        return null;
+
+       /* List<Permission> list = permissionSevice.findPermissionColumn(userId,PlatformEnum.CMS.getType());
+        return list;*/
+    }
 
     /**
      * 获取用户菜单权限
@@ -125,19 +141,21 @@ public class PermissionBiz extends BaseBiz {
 
 
 
-    public void setPermissionRedis(String userId, PlatformEnum platformEnum){
-        updateMenu(userId, platformEnum);
+    public String setPermissionRedis(String userId, PlatformEnum platformEnum){
+        String columns = updateMenu(userId, platformEnum);
         if(getAdnin(userId)){
             //记录超级管理员
             jedisClient.sadd(RedisKeyContants.getAdmin(userId),userId);
         };
+        return columns;
     }
 
     /**
      * 更新栏目
      */
-    private void updateMenu(String userId, PlatformEnum platformEnum){
+    private String updateMenu(String userId, PlatformEnum platformEnum){
         List<Permission> permissions = permissionSevice.findPermissionColumn(userId,platformEnum.getType());
+        String Lists = "";
         if(StringUtils.isNotEmpty(permissions)){
             Map<String,String> map = new HashMap<>();
             List<PermissionBean> columnBeans = new ArrayList<>();
@@ -155,6 +173,7 @@ public class PermissionBiz extends BaseBiz {
                 }
             }
             List<PermissionBean> permissionBeans = T.setColumn(columnBeans, catchList);
+            Lists = JSONArray.toJSONString(permissionBeans);
 
             if(StringUtils.isNotEmpty(permissionBeans)){
                 if(platformEnum.getType() == PlatformEnum.CMS.getType()) { //cms 为PC
@@ -163,16 +182,16 @@ public class PermissionBiz extends BaseBiz {
                         jedisClient.hmset(RedisKeyContants.getPermission(userId), map);
                     }
                     //获取MENU列表
-                    jedisClient.set(RedisKeyContants.getMenuPermission(userId), JSONArray.toJSONString(permissionBeans), StaticContants.DEFAULT_SECONDS);
+                    jedisClient.set(RedisKeyContants.getMenuPermission(userId), Lists, StaticContants.DEFAULT_SECONDS);
 
                 }else if(platformEnum.getType() == PlatformEnum.APP.getType()){
                     delAppPermissionRedis(userId);
                     //获取MENU列表
-                    jedisClient.set(RedisKeyContants.getAppMenuPermission(userId), JSONArray.toJSONString(permissionBeans), StaticContants.DEFAULT_SECONDS);
+                    jedisClient.set(RedisKeyContants.getAppMenuPermission(userId), Lists, StaticContants.DEFAULT_SECONDS);
                 }
             }
         }
-
+        return Lists;
     }
 
     /**
