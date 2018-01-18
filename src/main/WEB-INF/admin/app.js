@@ -31,8 +31,6 @@ if (isDev) {
     }));
     app.use(webpackHotMiddleware(compiler));
 
-
-
     require('./server/routes')(app);
 
     // add "reload" to express, see: https://www.npmjs.com/package/reload
