@@ -87,7 +87,7 @@
 				this.isShow=true;
 			}
 		},
-		computed:{//添加图片分类搜索动画start
+		computed:{//添加图片分类搜索动画start11
 			classifyList:function(){
 				var vm=this;
 				return this.list.filter(function(item){
