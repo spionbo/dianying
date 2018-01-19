@@ -36,27 +36,4 @@ public class Permission extends Base {
      */
     private String description;
 
-    /**
-     * 权限key
-     */
-    private String permissionKey;
-
-    /**
-     * 权限value
-     */
-    private String permissionVal;
-
-    public String getPermissionKey(){
-        if(StringUtils.isNotEmpty(permissionKey)){
-            return permissionKey;
-        }
-        return "";
-    }
-
-    public String getPermissionVal(){
-        if(StringUtils.isNotEmpty(permissionVal)){
-            return permissionVal;
-        }
-        return "";
-    }
 }

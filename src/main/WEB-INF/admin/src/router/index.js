@@ -96,7 +96,8 @@ window.router = new VueRouter({
 							path: "list",
 							component: () => import('../module/permission/list.vue')
 						},
-						{path:"myPermission",redirect:"/backstage/column/list"}
+						{path:"myPermission",redirect:"/backstage/column/list"},
+						{path:"adminPower",redirect:"/backstage/admin/list"}
 					]
 				}
 			]

@@ -139,8 +139,8 @@
 								}
 							}
 						});
-			});
-			});
+					});
+				});
 			},
 			del(item,$event){
 				this._del({
@@ -161,8 +161,16 @@
 			enter(el,done){//进入的时候
 				var delay=el.dataset.index*100;
 				setTimeout(function(){
-					Velocity(el,{opacity:1,height:"42px"},
-							{complete:done})
+					Velocity(el,
+						{
+							opacity:1,
+							height:"42px",
+							translateZ: "200px",
+						},
+						{
+							complete:done
+						}
+					)
 				},delay)
 			},
 			leave(el,done){//离开

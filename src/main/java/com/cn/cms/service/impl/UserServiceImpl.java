@@ -5,6 +5,7 @@ import com.cn.cms.dao.UserDao;
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
 import com.cn.cms.po.User;
+import com.cn.cms.po.UserPower;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.Page;
 import org.springframework.stereotype.Repository;
@@ -50,4 +51,12 @@ public class UserServiceImpl implements UserService {
     public void createUser( User user){
         userDao.saveUser(user);
     }
+
+    @Override
+    public void deleteUser(String userId){ userDao.deleteUser(userId);};
+
+    @Override
+    public UserPower userPermissionPower(String userId){
+        return userDao.userPermissionPower(userId);
+    };
 }

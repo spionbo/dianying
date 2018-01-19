@@ -19,6 +19,11 @@
         <result column="user_id" property="userId" />
         <result column="idfa" property="idfa" />
     </resultMap>
+    <resultMap id="userPower" type="com.cn.cms.po.UserPower" extends="base">
+        <result column="user_id" property="userId" />
+        <result column="permission_id" property="permissionId" />
+        <result column="power" property="power" />
+    </resultMap>
 
     <sql id="all_column">
         id,last_modify_user_id,
@@ -32,6 +37,10 @@
 
     </sql>
     <sql id="delTag"> where del_tag = 1 </sql>
+
+    <sql id="permission_user_power">
+        user_id,permission_id,power
+    </sql>
 
     <select id="findUserName" resultMap="user">
         select <include refid="all_column_find" /> from user <include refid="delTag" /> and user_name = #{userName};
@@ -61,5 +70,13 @@
         #{user.lastModifyUserId},#{user.userName},#{user.headImage},#{user.realName}
         ,#{user.pwd},#{user.userId},#{user.idfa},#{user.createUserId});
     </insert>
+
+    <delete id="deleteUser">
+        DELETE FROM user WHERE user_id = ${userId}
+    </delete>
+
+    <select id="userPermissionPower" resultMap="userPower">
+      SELECT <include refid="permission_user_power"/> from permission_user_power WHERE user_id = ${userId}
+    </select>
 
 </mapper>

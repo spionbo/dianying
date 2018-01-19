@@ -1,6 +1,7 @@
 package com.cn.cms.dao;
 
 import com.cn.cms.po.User;
+import com.cn.cms.po.UserPower;
 import com.cn.cms.utils.Page;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,4 +23,8 @@ public interface UserDao {
     void saveUser(@Param(value = "user") User user);
 
     Integer queryUserName(@Param(value = "userName") String userName);
+
+    void deleteUser(@Param(value="userId") String userId);
+
+    UserPower userPermissionPower(@Param(value = "userId") String userId);
 }

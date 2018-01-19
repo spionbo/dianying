@@ -1,5 +1,6 @@
 package com.cn.cms.web.controller;
 
+import com.cn.cms.biz.PermissionBiz;
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.PermissionNames;
@@ -7,6 +8,7 @@ import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.exception.BizException;
 import com.cn.cms.po.User;
+import com.cn.cms.po.UserPower;
 import com.cn.cms.utils.CookieUtil;
 import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
@@ -33,6 +35,9 @@ public class UserController extends BaseController{
 
     @Resource
     private UserBiz userBiz;
+
+    @Resource
+    private PermissionBiz permissionBiz;
 
     /**
      * 登录
@@ -99,7 +104,21 @@ public class UserController extends BaseController{
     }
 
     /**
-     * 新增管理员
+     * 获取用户权限 读 写 更 删
+     * @param userId
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.BACKSTAGE.ADMIN.LIST.READ)
+    @RequestMapping(value = "/userPermissionPower",method=RequestMethod.GET)
+    public String userPermissionPower(HttpServletRequest request,
+                                      @RequestParam(value = "userId") String userId){
+        UserPower userPower = userBiz.userPermissionPower(userId);
+        return ApiResponse.returnSuccess(userPower);
+    }
+
+    /**
+     * 新增管理员 则添加权限数据库，
      * @param request
      * @param userName
      * @param password
@@ -120,8 +139,26 @@ public class UserController extends BaseController{
         if(a>0){
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USERNAME_RE.getType(),ErrorCodeEnum.ERROR_USERNAME_RE.getMessage());
         }
-        userBiz.createUser(userName,password,realName,imageHead,userID);
+        User user = userBiz.createUser(userName,password,realName,imageHead,userID);
+        UserBean userBean = userBiz.getUserBean(userID);
+        permissionBiz.createUserPowerTable(user.getUserId(),userBean);
         return ApiResponse.returnSuccess();
     }
 
+    /**
+     * 删除用户，则需要删除用户权限
+     * @param request
+     * @param userId
+     * @return
+     * @throws BizException
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.BACKSTAGE.ADMIN.LIST.DELETE)
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public String deleteUser(HttpServletRequest request,
+                              @RequestParam(value = "userId") String userId) throws BizException{
+        userBiz.deleteUser(userId);
+        permissionBiz.deleteUserPowerTable(userId);
+        return ApiResponse.returnSuccess();
+    }
 }

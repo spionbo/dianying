@@ -1,6 +1,7 @@
 package com.cn.cms.service;
 
 import com.cn.cms.po.User;
+import com.cn.cms.po.UserPower;
 import com.cn.cms.utils.Page;
 
 import java.util.List;
@@ -45,4 +46,15 @@ public interface UserService {
     * @param user
     * */
     void createUser(User user);
+
+    /**
+     * 删除管理员
+     * @param userId
+     */
+    void deleteUser(String userId);
+
+    /**
+     * 查看用户权限 更 读 写 删
+     */
+    UserPower userPermissionPower(String userId);
 }

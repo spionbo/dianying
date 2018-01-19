@@ -2,10 +2,12 @@ package com.cn.cms.biz;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
+import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.contants.StaticContants;
 import com.cn.cms.enums.ErrorCodeEnum;
@@ -16,6 +18,7 @@ import com.cn.cms.enums.ShowFlagEnum;
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
+import com.cn.cms.po.UserPower;
 import com.cn.cms.service.ColumnService;
 import com.cn.cms.service.PermissionSevice;
 import com.cn.cms.service.UserService;
@@ -28,6 +31,7 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -46,16 +50,15 @@ public class PermissionBiz extends BaseBiz {
     @Resource
     private JedisClient jedisClient;
 
+
     /**
      * 获取权限列表
      * @return
      */
     public List<PermissionBean> findPermissionList( String userId ){
-        String result = jedisClient.get(RedisKeyContants.getMenuPermission(userId));
-        if(StringUtils.isNotBlank(result)) {
-            return JSONArray.parseArray(result, PermissionBean.class);
-        }else{
-            result = setPermissionRedis(userId, PlatformEnum.CMS);
+        List<UserPower> userPowers = permissionSevice.queryUserpower(userId);
+        if(StringUtils.isNotEmpty(userPowers)){
+
         }
         return null;
 
@@ -89,6 +92,7 @@ public class PermissionBiz extends BaseBiz {
         jedisClient.del(RedisKeyContants.getAppPermission(userId));
         jedisClient.del(RedisKeyContants.getAppMenuPermission(userId));
     }
+
 
     /**
      * 获取超级管理员权限
@@ -140,21 +144,30 @@ public class PermissionBiz extends BaseBiz {
     }
 
 
-
     public String setPermissionRedis(String userId, PlatformEnum platformEnum){
-        String columns = updateMenu(userId, platformEnum);
-        if(getAdnin(userId)){
-            //记录超级管理员
-            jedisClient.sadd(RedisKeyContants.getAdmin(userId),userId);
-        };
-        return columns;
+        Boolean isAdmin = getAdnin(userId);
+        return updateMenu(isAdmin ,userId, platformEnum);
+    }
+
+    /**
+     * 获取权限列表，
+     * @return
+     */
+    public List<PermissionBean> findPermissionListAndSort(){
+        //List<Permission> list = permissionSevice.findPermissionList();
+        return null;
     }
 
     /**
      * 更新栏目
      */
-    private String updateMenu(String userId, PlatformEnum platformEnum){
-        List<Permission> permissions = permissionSevice.findPermissionColumn(userId,platformEnum.getType());
+    private String updateMenu( Boolean isAdmin , String userId, PlatformEnum platformEnum){
+        List<Permission> permissions;
+        if(isAdmin){ //超级管理员
+            permissions = permissionSevice.queryPermissionAll();
+        }else{
+            permissions = permissionSevice.findPermissionColumn(userId,platformEnum.getType());
+        }
         String Lists = "";
         if(StringUtils.isNotEmpty(permissions)){
             Map<String,String> map = new HashMap<>();
@@ -163,7 +176,7 @@ public class PermissionBiz extends BaseBiz {
 
             for(int i = 0; i < permissions.size(); i++) {
                 Permission permission = permissions.get(i);
-                map.put(permission.getPermissionKey(), permission.getPermissionVal());
+                //map.put(permission.getPermissionKey(), permission.getPermissionVal());
                 if (permission.getParentId() == null) {
                     PermissionBean permissionBean = new PermissionBean();
                     permissionBean.setPermission(permission);
@@ -178,9 +191,10 @@ public class PermissionBiz extends BaseBiz {
             if(StringUtils.isNotEmpty(permissionBeans)){
                 if(platformEnum.getType() == PlatformEnum.CMS.getType()) { //cms 为PC
                     delPermissionRedis(userId);
-                    if(!isAdmin(userId)){//设置用户权限
-                        jedisClient.hmset(RedisKeyContants.getPermission(userId), map);
-                    }
+                    if(isAdmin){
+                        //记录超级管理员
+                        jedisClient.sadd(RedisKeyContants.getAdmin(userId),userId);
+                    };
                     //获取MENU列表
                     jedisClient.set(RedisKeyContants.getMenuPermission(userId), Lists, StaticContants.DEFAULT_SECONDS);
 
@@ -192,6 +206,59 @@ public class PermissionBiz extends BaseBiz {
             }
         }
         return Lists;
+    }
+
+    /**
+     * 创建用户权限(初始化) 表
+     * @param userId
+     * @param userBean
+     */
+    public void createUserPowerTable(String userId , UserBean userBean){
+        List<Permission> lists = permissionSevice.queryPermissionAll();
+        for (int i=0;i<lists.size();i++){
+            Permission permission = lists.get(i);
+            permission.setLastModifyUserId(userBean.getUserId());
+            permission.setCreateUserId(userBean.getUserId());
+            permission.setLastModifyUserName(userBean.getRealName());
+            permission.setUpdateTimeStr(userBean.getUpdateTimeStr());
+            permission.setCreateTimeStr(userBean.getCreateTimeStr());
+            permission.setCreateUserName(userBean.getRealName());
+        }
+        permissionSevice.createUserPowerTable(lists,userId);
+    }
+
+    //删除用户权限（清空） 表
+    public void deleteUserPowerTable(String userId){
+        permissionSevice.deleteUserPowerTable(userId);
+    }
+
+    /**
+     * 创建后台栏目权限 读 更 写 删
+     * @param str
+     */
+    public void savePermissionPower(String str){
+        JSONArray jsonArray = JSON.parseArray(str);
+        Iterator<?> it = jsonArray.iterator();
+        List<Map<String,String>> list = new ArrayList<>();
+
+        while (it.hasNext()){
+            JSONObject obj = (JSONObject) it.next();
+            Map<String,String> map = new HashMap<>();
+
+            try{
+                map.put("read",obj.get("read").toString());
+                map.put("update",obj.get("update").toString());
+                map.put("write",obj.get("write").toString());
+                map.put("delete",obj.get("delete").toString());
+                map.put("userId",obj.get("userId").toString());
+                map.put("permissionId",obj.get("permissionId").toString());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            list.add(map);
+        }
+
+        permissionSevice.savePermissionPower(list);
     }
 
     /**
@@ -226,7 +293,7 @@ public class PermissionBiz extends BaseBiz {
         permissionUser.setUserId(userID);
         permissionUser.setPositionId(permission.getId());
         permissionSevice.savePermissionColumnUser(permissionUser);
-        updateMenu(userID,platformEnum);
+        updateMenu(false,userID,platformEnum);
     }
 
     /**
@@ -237,7 +304,7 @@ public class PermissionBiz extends BaseBiz {
      */
     public void deletePermissionColumn(Integer columnId , String userId){
         permissionSevice.deletePermissionColumn(columnId);
-        updateMenu(userId,PlatformEnum.CMS);
+        updateMenu(false,userId,PlatformEnum.CMS);
     }
 
     /**
@@ -270,7 +337,7 @@ public class PermissionBiz extends BaseBiz {
             permission.setSort(sort);
         }
         permissionSevice.updatePermissionColumn(permission);
-        updateMenu(userID,PlatformEnum.CMS);
+        updateMenu(false,userID,PlatformEnum.CMS);
     }
 
 

@@ -1,5 +1,8 @@
 package com.cn.cms.web.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.cn.cms.biz.PermissionBiz;
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.ColumnBean;
@@ -20,7 +23,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/11/30 0030.
@@ -160,5 +164,24 @@ public class PermissionController extends BaseController{
                                    @RequestParam(value = "columnId") Integer columnId){
         Permission permission = permissionBiz.getPermissionColumn(columnId);
         return ApiResponse.returnSuccess(permission);
+    }
+
+    /**
+     * 创建后台栏目权限
+     * @param request
+     * @param str
+     * @return
+     */
+    @CheckToken
+    @CheckAuth( name = PermissionNames.BACKSTAGE.COLUMN.ADD.WRITE)
+    @RequestMapping(value = "/createPermission",method=RequestMethod.POST)
+    public String createPermission(HttpServletRequest request ,
+                                   @RequestParam(value = "permissions") String str){
+
+        if(StringUtils.isNotEmpty(str)){
+            permissionBiz.savePermissionPower(str);
+            return ApiResponse.returnSuccess();
+        }
+        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_COLUMN_CREATE.getType(),ErrorCodeEnum.ERROR_COLUMN_CREATE.getMessage());
     }
 }

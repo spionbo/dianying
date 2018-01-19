@@ -12,7 +12,9 @@
 	export default {
 		props:{
 			checked : Boolean,
-			data : Object
+			name : String,
+			data : Object,
+			parentData : Object
 		},
 		data() {
 			return {
@@ -25,6 +27,10 @@
 		methods:{
 			select(){
 				this.selected = !this.selected;
+				this.$store.commit("setCatch",{
+					[this.name] : this.selected
+				});
+				this.$emit("checkEvent",this.selected,this.data,this.parentData);
 			}
 		}
 	}

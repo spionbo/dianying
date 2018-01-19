@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Administrator on 2017/11/3 0003.
  */
 public class BaseController {
+
     public CommonLog log = CommonLogFactory.getLog(this.getClass());
 
     protected String getCurrentUserId(HttpServletRequest request){

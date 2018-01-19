@@ -10,6 +10,7 @@
 					<th align="left">真实姓名</th>
 					<th>管理员名称</th>
 					<th>管理员ID</th>
+					<th>创建人</th>
 					<th>创建时间</th>
 					<th>修改人</th>
 					<th>修改时间</th>
@@ -22,7 +23,8 @@
 					</td>
 					<td align="center">{{item.userName}}</td>
 					<td align="center">{{item.userId}}</td>
-					<td align="center">{{item.createTimeStr | formatTime}}</td>
+					<td align="center">{{item.createUserName}}</td>
+					<td align="center">{{item.createTimeStr}}</td>
 					<td align="center">{{item.lastModifyUserName||"-"}}</td>
 					<td align="center">{{item.updateTimeStr}}</td>
 					<td align="center">
@@ -62,8 +64,16 @@
 			edit(){
 
 			},
-			del(){
-
+			del(item,$event){
+				this._del({
+					item : item,
+					$event : $event,
+					url : "/user/delete",
+					name : `（${item.realName}）的帐号（${item.userName}）`,
+					data : {
+						userId : item.userId
+					}
+				});
 			},
 			pemission( item ){
 				let self = this;

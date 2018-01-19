@@ -9,6 +9,7 @@ import com.cn.cms.exception.BizException;
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.po.Base;
 import com.cn.cms.po.User;
+import com.cn.cms.po.UserPower;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.CookieUtil;
 import com.cn.cms.utils.EncryptUtil;
@@ -305,7 +306,7 @@ public class UserBiz extends BaseBiz{
      * @param lastModifyUserId
      * @throws BizException
      */
-    public void createUser( String userName , String password , String realName , String imageHead , String lastModifyUserId) throws BizException{
+    public User createUser( String userName , String password , String realName , String imageHead , String lastModifyUserId) throws BizException{
         User user = new User();
         user.setUserId(EncryptUtil.buildUserId());
         user.setUserName(userName);
@@ -318,6 +319,24 @@ public class UserBiz extends BaseBiz{
         }
         userService.createUser(user);
         refreshUserCache(user);
+        return user;
+    }
+
+    /**
+     * 删除管理人
+     * @param userId
+     */
+    public void deleteUser(String userId){
+        userService.deleteUser(userId);
+    }
+
+    /**
+     * 查看用户权限 write read update delete
+     * @param userId
+     * @return
+     */
+    public UserPower userPermissionPower(String userId){
+        return userService.userPermissionPower(userId);
     }
 
 }

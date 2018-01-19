@@ -86,7 +86,7 @@
 				if(!this.verification()) return;
 				this.$store.commit("setCatch",{
 					[this.name] : val
-				})
+				});
 			},
 			data( val ){
 				if(val){ this.value = val }

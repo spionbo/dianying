@@ -13,7 +13,8 @@ public enum ErrorCodeEnum {
     ERROR_USERNAME_RE("ERROR_USERNAME_RE",-210,"用户名重复"),
     ERROR_COLUMN_ER("ERROR_COLUMN_ER",-310,"栏目名重复"),
     ERROR_DELETE_COLUMN("ERROR_DELETE_COLUMN",-410,"栏目下面有子栏目，不能删除"),
-    ERROR_UPDATE_COLUMN("ERROR_UPDATE_COLUMN",-510,"不能将栏目更新到自己的子栏目下");
+    ERROR_UPDATE_COLUMN("ERROR_UPDATE_COLUMN",-510,"不能将栏目更新到自己的子栏目下"),
+    ERROR_COLUMN_CREATE("ERROR_COLUMN_CREATE",-610,"栏目权限不可创建，内容错误或没有权限");
 
     @Getter
     private int type;

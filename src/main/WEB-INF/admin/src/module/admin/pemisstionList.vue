@@ -20,9 +20,12 @@
 					<div class="td left flex" v-html="item.name"></div>
 					<div class="td center w80">{{item.parentId||"-"}}</div>
 					<div class="td center w300">
-						<checkbox v-for="obj in item.permissionVal"
+						<checkbox v-for="obj in item.power"
 						          v-bind:key="obj.id"
+						          name = "power"
+						          :parentData = "item"
 						          :checked="obj.checked"
+						          @checkEvent="powerEvent"
 						          :data="obj"></checkbox>
 					</div>
 					<div class="td center w100">
@@ -41,7 +44,9 @@
 </template>
 <script>
 	import checkbox from '../components/checkbox.vue';
+	import mixin from '../../common/mixin/_permission';
 	export default {
+		mixins : [mixin],
 		components:{
 			checkbox
 		},
@@ -51,127 +56,97 @@
 		},
 		data() {
 			return {
-				tablist : null
+				tablist : null ,
+				selecteds : {} ,
+				arrlist : [],
+				permissions : null,
 			}
 		},
 		mounted() {
-			this.setTabel(this.list);
+			this.getUserPermission();
+			this._setColumnToTree(this.list);
 		},
 		methods:{
-			setColumnEvent(){
-				let self = this;
-				let add = this.$el.querySelectorAll(".off");
-				add.forEach(obj=>{
-					obj.clicked = true;
-					obj.onclick=function(){
-						let selfobj = $(this),
-							tr = selfobj.parent().parent() ,
-							reg = /\d+$/,
-							trClass = tr.attr("class"),
-							className = trClass.search(reg);
-						obj.clicked = !obj.clicked;
-						if(className){
-							if(obj.clicked){
-								selfobj.find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
-							}else{
-								selfobj.find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
-							}
-							className = parseInt(trClass.match(reg)[0]);
-							let childs = self.getChilds(tr,className);
-							childs.forEach(ele=>{
-								let elem = $(ele) ,
-									off = elem.find(".off");
-								if(obj.clicked){
-									elem.removeClass("hide")
-									.find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
-								}else{
-									elem.addClass("hide")
-									.find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
-								}
-								if(off[0]) off[0].clicked = obj.clicked;
-							});
-						}
+			submit(){
+				this._pushSeleced();
+				this.ajax({
+					url : "/permission/createPermission",
+					type : "post",
+					data : {
+						permissions : JSON.stringify(this.arrlist)
 					}
+				}).then(data=>{
+					debugger;
 				})
 			},
-			getChilds(parent, parentNum){
-				let allNext = parent.nextAll() ,
-					childs = [];
-				for(let i=0;i<allNext.length;i++){
-					let trClass = $(allNext[i]).attr("class"),
-						parentName = trClass.includes("open"+parentNum),
-						childName = trClass.includes("open"+(parentNum+1));
-					if(parentName) break;
-					childs.push(allNext[i]);
-				}
-				return childs;
-			},
-			permissionName(val){
-				let item = {read:"读",update:"更",write:"写","delete":"删"},
-					vals ,
-					arr = [];
-
-				if((val && (vals=val.split(",")))){
-					vals.forEach(_val=>{
-						arr.push({
-							right:item[_val],
-							error:item[_val],
-							checked : true
-						})
-					});
-				}else{
-					for(let val in item){
-						arr.push({
-							right:item[val],
-							error:item[val],
-							checked : false
-						})
+			getUserPermission(){
+				let self = this;
+				this.ajax({
+					url : "/user/userPermissionPower",
+					data : {
+						userId : self.item.userId
 					}
-				}
-				return arr;
-			},
-			setTabel(list){
-				const self = this;
-				if(!list || !list.length) return;
-				let copyList = Array.from(list) ,
-					newArr = [];
-				function setChildName( copylist , val , index  ){ //栏目名称 按树状显示
-					copylist.forEach(obj=>{
-						let isChild = obj.permissionBeans ,
-							len = isChild?isChild.length:-1;
+				}).then(data=>{
+					self.permissions = data.data;
+					if(self.permissions){
 
-						let on =`<span class="off" data-length="${len}" v-if="item.isChild">
-								<i class="fa fa-plus-square"></i>
-							</span>`,
-							parent = val.replace(/\|\-/g,on);
-						newArr.push({
-							sort:obj.permission.sort,
-							id:obj.permission.id,
-							name:(isChild?parent:val)+obj.permission.name,
-							parentId:obj.permission.parentId,
-							permissionKey:obj.permission.permissionKey,
-							permissionVal:obj.permission.permissionVal,
-							delTag:obj.permission.delTag,
-							isChild : isChild,
-							className : "open"+index
-						});
-						if(isChild){
-							setChildName(obj.permissionBeans,"　　　"+val,(index+1));
+					}
+				});
+			},
+			powerEvent( selected , item , parentData ){//记录选择的权限
+				let obj = {
+					userId : this.item.userId,
+					permissionId : parentData.id,
+					read : false,
+					update : false,
+					write : false,
+					delete : false,
+				};
+				obj[item.key] = selected;
+				if(this.selecteds[parentData.id]){
+					Object.assign(this.selecteds[parentData.id],obj);
+				}else{
+					this.selecteds[parentData.id] = obj;
+				}
+			},
+			_pushSeleced( item ){
+				let arr = [] ,
+					newarr = [];
+				for(let key in this.selecteds){
+					arr.push(this.selecteds[key]);
+				}
+				if(this.arrlist.length){ //去重
+					for(let i=0;i<arr.length;i++){
+						let _pid = arr[i].permissionId ,
+							has = false;
+						for(let j=0;j<this.arrlist.length;j++){
+							let obj = this.arrlist[j];
+							if( obj.permissionId == _pid ){
+								has = true;
+								break;
+							}
 						}
-					});
-					return copylist;
+						if(!has){
+							newarr.push(arr[i]);
+						}
+					}
+					newarr = newarr.concat(this.arrlist);
+				}else{
+					newarr = arr;
 				}
-				setChildName(copyList,"|- ",1);
-				newArr.forEach(obj=>{
-					obj.permissionVal = self.permissionName(obj.permissionVal);
-				});
-				self.tablist = newArr;
-				self.$nextTick(()=>{
-					self.setColumnEvent();
-				});
+				this.arrlist = newarr;
+				//判断该ID权限是否发生改变
 			},
-			submit(){
-
+			del(item,$event){
+				this._del({
+					item : item,
+					$event : $event,
+					url : "/permission/deleteColumn",
+					name : item.name.replace(/\　+\|\-/g,""),
+					data : {
+						columnId : item.id
+					}
+				});
 			}
 		}
 	}

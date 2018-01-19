@@ -1,9 +1,8 @@
-create table `permission_user`(
+create table `permission_user_power`(
 	id int(11) not null auto_increment,
-	user_id int(11),
-	position_id int(11),
-	permission_key varchar(255),
-	permission_val varchar(255),
+	user_id varchar(255),
+	permission_id int(11),
+	power varchar(255),
 
 	`create_time` timestamp not null default CURRENT_TIMESTAMP,
 	update_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -14,5 +13,5 @@ create table `permission_user`(
 	create_time_str VARCHAR(255),
 	update_time_str varchar(255),
 	primary key(id),
-	foreign key(position_id) references `permission`(id) ON DELETE CASCADE
+	foreign key(permission_id) references `permission`(id) ON DELETE CASCADE
 )
