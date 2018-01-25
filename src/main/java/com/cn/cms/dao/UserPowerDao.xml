@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cn.cms.dao.PermissionUserPowerDao">
+<mapper namespace="com.cn.cms.dao.UserPowerDao">
 
     <resultMap id="base" type="com.cn.cms.po.Base">
         <id column="id" property="id"/>
@@ -20,7 +20,7 @@
         <result column="power" property="power" />
     </resultMap>
 
-    <sql id="sqlName">permission_ser_power</sql>
+    <sql id="sqlName">permission_user_power</sql>
 
     <sql id="all_base">
         id,last_modify_user_id,last_modify_user_name,
@@ -40,6 +40,32 @@
         SELECT <include refid="all_base"/>,<include refid="all_userPower"/> from <include refid="sqlName"/> WHERE user_id = ${userId}
     </select>
 
+    <insert id="createUserPower" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into <include refid="sqlName"/>
+        (<include refid="all_userPower"/>,<include refid="all_base"/>) VALUE
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{userId},#{item.id},null,
+            null,#{item.lastModifyUserId},#{item.lastModifyUserName},
+            #{item.createUserId},
+            null,#{item.createTimeStr},
+            null,#{item.updateTimeStr}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteUserPower">
+        <if test="permissionId == null">
+            DELETE from <include refid="sqlName"/> WHERE user_id = ${userId}
+        </if>
+        <if test="permissionId != null">
+            DELETE c,u FROM permission c inner join <include refid="sqlName"/> u on c.id=u.permission_id where c.id = ${permission_id}
+        </if>
+    </delete>
+
+    <delete id="deletePermissionColumn">
+        DELETE c,u FROM permission c inner join permission_user_power u on c.id=u.position_id where c.id = ${columnId}
+    </delete>
+
     <update id="updateUserPower" parameterType="java.util.List">
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
             update <include refid="sqlName"/>
@@ -49,6 +75,5 @@
             WHERE permission_id = "${item.permissionId}" AND user_id = "${item.userId}"
         </foreach>
     </update>
-
 
 </mapper>

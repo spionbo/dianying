@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cn.cms.biz.PermissionBiz;
 import com.cn.cms.biz.UserBiz;
+import com.cn.cms.biz.UserPowerBiz;
 import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.contants.PermissionNames;
@@ -37,34 +38,37 @@ public class PermissionController extends BaseController{
     @Resource
     private PermissionBiz permissionBiz;
 
+    @Resource
+    private UserPowerBiz userPowerBiz;
+
+    /**
+     * 获取所有栏目
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.BACKSTAGE.READ)
+    @RequestMapping(value = "/allColumn",method = RequestMethod.GET)
+    public String allColumn(HttpServletRequest request,
+                            @RequestParam(name = "isTree",required = false) Boolean isTree){
+        String userId = getCurrentUserId(request);
+        if(isTree){ //对像树状
+            return ApiResponse.returnSuccess(permissionBiz.getAllColumnBean(userId,PlatformEnum.CMS));
+        }
+        //1维数组
+        return ApiResponse.returnSuccess(permissionBiz.getAllColumn(userId,PlatformEnum.CMS));
+    }
 
     /**
      * 获取用户拥有的菜单栏权限
      * @param request
      * @return
      */
-
     @CheckToken
     @CheckAuth(name=PermissionNames.BACKSTAGE.READ)
     @RequestMapping(value = "/currentMenuPermission",method = RequestMethod.GET)
     public String currentMenuPermission(HttpServletRequest request){
         String userID = getCurrentUserId(request);
         List<PermissionBean> list = permissionBiz.getMenuPermission(userID);
-        return ApiResponse.returnSuccess(list);
-    }
-
-    /**
-     * 获取当前用户权限
-     * @param request
-     * @param userId
-     * @return
-     */
-    @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.ADMIN.LIST.READ)
-    @RequestMapping(value = "/listPermission",method = RequestMethod.GET)
-    public String listPermission(HttpServletRequest request,
-                                 @RequestParam(value = "userId") String userId){
-        List<PermissionBean> list = this.permissionBiz.findPermissionList(userId);
         return ApiResponse.returnSuccess(list);
     }
 
@@ -101,17 +105,17 @@ public class PermissionController extends BaseController{
     /**
      * 删除栏目，如果该栏目有子栏目，则删除失败。
      * @param request
-     * @param columnId
+     * @param permissionId
      * @return
      */
     @CheckToken
     @CheckAuth(name = PermissionNames.BACKSTAGE.COLUMN.DELETE)
     @RequestMapping(value = "/deleteColumn",method = RequestMethod.POST)
     public String deletePermissionColumn(HttpServletRequest request,
-                                         @RequestParam(value = "columnId") Integer columnId){
+                                         @RequestParam(value = "columnId") Integer permissionId){
         String userId = getCurrentUserId(request);
-        if(!permissionBiz.hasPermission(columnId , userId)){
-            permissionBiz.deletePermissionColumn(columnId , userId);
+        if(!permissionBiz.hasPermission(permissionId , userId)){
+            userPowerBiz.deleteUserPower(false,permissionId);
             return ApiResponse.returnSuccess();
         }
         return ApiResponse.returnFail(ErrorCodeEnum.ERROR_DELETE_COLUMN.getType(),ErrorCodeEnum.ERROR_DELETE_COLUMN.getMessage());
@@ -164,24 +168,5 @@ public class PermissionController extends BaseController{
                                    @RequestParam(value = "columnId") Integer columnId){
         Permission permission = permissionBiz.getPermissionColumn(columnId);
         return ApiResponse.returnSuccess(permission);
-    }
-
-    /**
-     * 创建后台栏目权限
-     * @param request
-     * @param str
-     * @return
-     */
-    @CheckToken
-    @CheckAuth( name = PermissionNames.BACKSTAGE.COLUMN.ADD.WRITE)
-    @RequestMapping(value = "/createPermission",method=RequestMethod.POST)
-    public String createPermission(HttpServletRequest request ,
-                                   @RequestParam(value = "permissions") String str){
-
-        if(StringUtils.isNotEmpty(str)){
-            permissionBiz.savePermissionPower(str);
-            return ApiResponse.returnSuccess();
-        }
-        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_COLUMN_CREATE.getType(),ErrorCodeEnum.ERROR_COLUMN_CREATE.getMessage());
     }
 }

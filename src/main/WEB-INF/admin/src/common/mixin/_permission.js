@@ -17,6 +17,7 @@ export default {
 					newArr.push({
 						sort:obj.permission.sort,
 						id:obj.permission.id,
+						powerKey:obj.permission.powerKey,
 						name:(isChild?parent:val)+obj.permission.name,
 						parentId:obj.permission.parentId,
 						delTag:obj.permission.delTag,

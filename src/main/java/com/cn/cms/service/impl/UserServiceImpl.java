@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
@@ -56,7 +57,8 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(String userId){ userDao.deleteUser(userId);};
 
     @Override
-    public UserPower userPermissionPower(String userId){
-        return userDao.userPermissionPower(userId);
-    };
+    public void updateUser(User user){
+        userDao.updateUser(user);
+    }
+
 }

@@ -5,6 +5,7 @@ import com.cn.cms.po.UserPower;
 import com.cn.cms.utils.Page;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
@@ -25,7 +26,7 @@ public interface UserService {
     User findUserName(String userName);
 
     /**
-     * 获取是否存在次用户名
+     * 获取是否存在用户名
      * @param userName
      * @return
      */
@@ -54,7 +55,9 @@ public interface UserService {
     void deleteUser(String userId);
 
     /**
-     * 查看用户权限 更 读 写 删
+     * 更新管理员 或 更改个人信息
+     * @param user
      */
-    UserPower userPermissionPower(String userId);
+    void updateUser(User user);
+
 }

@@ -117,7 +117,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.UPLOAD.IMG.WRITE )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.ADMIN.ADD.WRITE )
     @RequestMapping(value = "/createImages", method = RequestMethod.POST)
     public String createImages(HttpServletRequest request,
                                @RequestParam("imageUrl") String imageUrl,
@@ -173,7 +173,7 @@ public class ImagesController extends BaseController{
      * @return
      */
     @CheckToken
-    @CheckAuth( name = PermissionNames.UPLOAD.IMG.UPDATE )
+    @CheckAuth( name = PermissionNames.BACKSTAGE.ADMIN.LIST.UPDATE )
     @RequestMapping(value = "/updateImages", method = RequestMethod.POST)
     public String updateImages(HttpServletRequest request,
                                @RequestParam("id") Integer id,

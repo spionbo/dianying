@@ -43,23 +43,28 @@
 						imageHead = column.imageHead,
 						userName = column.userName;
 
-					this.ajax({
-						url : '/user/add',
-						type : "POST",
-						data : {
-							userName : userName,
-							password : pwd,
-							realName : realName,
-							imageHead : imageHead
-						},
-						load : true,
-					}).then(data=>{
-						this.$tips({
-							content:"添加成功!"
-						});
-						self.clearall();
-					})
+					require(['../../plug/md5.min.js'], function(md5) {
+						self.ajax({
+							url : '/user/add',
+							type : "POST",
+							data : {
+								userName : userName,
+								password : md5(md5(pwd)),
+								realName : realName,
+								imageHead : imageHead
+							},
+							load : true,
+						}).then(data=>{
+							self.$tips({
+								content:"添加成功!"
+							});
+							self.clearall();
+						})
+					});
 				}
+			},
+			clearall(){
+				this.$refs.form.clearall();
 			}
 		}
 	}

@@ -5,6 +5,7 @@
 			<div class="th center" style="width:150px;">ID</div>
 			<div class="th flex left">栏目名称</div>
 			<div class="th flex center">父类ID</div>
+			<div class="th left">权限名称</div>
 			<div class="th center" style="width:200px">操作</div>
 		</div>
 		<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
@@ -12,6 +13,7 @@
 			<div class="td center" style="width:150px;">{{item.id}}</div>
 			<div class="td flex left" v-html="item.name"></div>
 			<div class="td flex center">{{item.parentId||"-"}}</div>
+			<div class="td left">{{item.powerKey}}</div>
 			<div class="td center" style="width:200px">
 				<div class="btn" @click="edit(item)">编辑</div>
 				<div class="btn red" @click="del(item,$event)">删除</div>
@@ -23,21 +25,22 @@
 	import mixin from "../../common/mixin/_permission";
 	export default {
 		mixins : [mixin],
-		props:{
-			data:Array
+		props : {
+			data : Array
 		},
 		data(){
 			return {
 				tablist : null
 			}
 		},
-		watch:{
-			data(_data){
-				this._setColumnToTree(_data);
+		watch : {
+			data(val){
+				console.log(val);
 			}
 		},
 		mounted() {
-			this._setColumnToTree(this.data);
+			debugger;
+			//this._setColumnToTree(this.data);
 		},
 		filters:{
 			formatTime(str){
@@ -46,7 +49,6 @@
 		},
 		methods:{
 			edit(item){
-				console.log(item)
 				this.ajax({
 					url:"/permission/permissionColumn",
 					type : "get",

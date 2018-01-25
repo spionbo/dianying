@@ -6,10 +6,11 @@
 					type="text"
 					dataType="numAndLetter"
 					name = "userName"
-					:data = "obj.letter"
+					:data = "obj.userName"
 					:check="true"
+					:disabled="obj.disabled"
 					maxlength="20"
-					placeholder="请输入路经名称">
+					placeholder="请输入帐号">
 			</form-input>
 		</li>
 		<li>
@@ -21,7 +22,7 @@
 					:data = "obj.password"
 					:check="true"
 					maxlength="11"
-					placeholder="请输入路经名称">
+					placeholder="请输入密码">
 				<div slot='else' class="btn square blue" @click="randPwd">随机生成</div>
 			</form-input>
 		</li>
@@ -34,7 +35,7 @@
 					:data = "obj.name"
 					:check="true"
 					maxlength="5"
-					placeholder="请输入栏目名称">
+					placeholder="请输入真实姓名">
 			</form-input>
 		</li>
 		<li>
@@ -43,6 +44,7 @@
 					name = "imageHead"
 					text="请上传头像"
 					placeholder="请选择头像"
+					:url="obj.imageHead"
 			></upload>
 		</li>
 	</ul>
@@ -108,11 +110,11 @@
 				];
 				if(data){
 					self.obj = {
-						name : data.name,
-						columnId : data.id,
-						sort : data.sort,
-						description : data.description,
-						path : data.url.match(/\/\w+$/)[0]
+						userName : data.userName,
+						password : "",
+						name : data.realName,
+						imageHead : data.headImage||"",
+						disabled : true
 					};
 				}
 			},

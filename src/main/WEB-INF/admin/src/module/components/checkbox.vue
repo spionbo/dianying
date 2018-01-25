@@ -23,6 +23,10 @@
 		},
 		mounted() {
 			this.selected = this.checked;
+			if(this.data.checked != void 0){
+				this.selected = this.data.checked;
+			}
+
 		},
 		methods:{
 			select(){

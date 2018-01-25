@@ -1,63 +1,5 @@
 <style scoped>
-    .header{
-        height: 42px;
-        line-height:42px;
-        padding:0 10px;
-        color:#fff;
-        background:#212121;
-    }
-    .user-info{
-        float:right;
-        padding-right:20px;
-        position:relative;
-        z-index: 999;
-        .list{
-            display:none;
-            position: absolute;
-            right:20px;
-            padding:10px 0;
-            background:#fff;
-            border:1px solid #ccc;
-
-            li{
-                padding:0 20px;
-                line-height: 22px;
-                white-space:nowrap;
-                color:#444;
-                cursor:pointer;
-                text-align:center;
-                &:hover{
-                    background:#f2f2f2;
-                };
-            }
-        }
-        &:hover{
-            .list{
-                display:block;
-            }
-        };
-    }
-    .current-user{
-        cursor: pointer;
-        img{
-            width:30px;
-            height:30px;
-            border-radius:100%;
-            vertical-align: middle;
-            margin-top:-2px;
-        }
-    }
-   .leftside{
-		.logo{
-			span{
-				line-height:20px;
-				display:inline-block;
-				padding:2px 5px;
-				margin-right:3px;
-				background:#2181e6;
-			}
-		}
-   }
+    @import "base.css";
 </style>
 <template>
     <article class="header">
@@ -68,6 +10,10 @@
             </div>
             <div class="list">
                 <ul>
+	                <li @click='updatePwd'>
+		                <i class="fa fa-lock" aria-hidden="true"></i>
+		                更改密码
+	                </li>
                     <li @click='exit'>
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         退出
@@ -99,6 +45,25 @@
             })
 		},
         methods :{
+	        updatePwd(){
+	        	let self = this;
+		        require.ensure([],(require)=> {
+			        this.$requirePop(require('./edit'), {
+					        props : {
+						        data : self.currentUser,
+					        }
+				        },
+				        {
+					        props: {
+						        obj: {
+							        title: "标题",
+							        close: true,
+						        }
+					        }
+				        }
+			        );
+		        });
+	        },
             exit(){
                 this.ajax({
                     url:"/user/loginOut",

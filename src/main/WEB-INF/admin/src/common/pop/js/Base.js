@@ -35,7 +35,8 @@ export default class Base{
 	}
 	@D.deprecate("use import components")
 	requireEle( sys , data , popData ){ // popData 弹窗的props属性
-		let childName = "child"+new Date().getTime() ,
+		let self = this,
+			childName = "child"+new Date().getTime() ,
 			name = "elename"+new Date().getTime() ,
 			dataconfig = {
 				props:{
@@ -75,6 +76,7 @@ export default class Base{
 			el : '.'+childName ,
 			mounted(){
 				this.$refs.requirepop.show();
+				self.close = this.close;
 			},
 			render(h){
 				return h("pop",{...popData}, [
@@ -89,6 +91,11 @@ export default class Base{
 					),
 					h(name,{...data})
 				]);
+			},
+			methods : {
+				close(){
+					this.$refs.requirepop.close();
+				}
 			}
 		});
 	}
@@ -121,6 +128,7 @@ export default class Base{
 			mounted(){
 				self.$pop = this.$refs.pop;
 				this.$refs.pop.show();
+				self.close = this.close;
 			},
 			methods:{
 				okCallback(){
@@ -139,6 +147,9 @@ export default class Base{
 					};
 				},
 				$closePop(){
+					this.close();
+				},
+				close(){
 					this.$refs.pop.close();
 				}
 			}

@@ -25,13 +25,4 @@ public class UserPower extends Base{
      * 拥有权限
      */
     private String power;
-
-    /**
-     * 权限数组展示
-     */
-    private Array powerArray;
-
-    public String[] getPowerArray(){
-        return power.split(",");
-    }
 }

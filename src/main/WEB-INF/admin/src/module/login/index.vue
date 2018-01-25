@@ -40,8 +40,8 @@
     export default {
         data() {
             return {
-                userName : '',
-                pwd : '',
+                userName : 'admin',
+                pwd : '123456',
 
                 errorMsg : '',
                 error : false

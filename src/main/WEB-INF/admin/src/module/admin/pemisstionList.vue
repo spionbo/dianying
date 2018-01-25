@@ -6,7 +6,7 @@
 </style>
 <template>
 	<article class="form horizontal column-list" v-if="list.length">
-		<div class="table" v-if="tablist">
+		<div class="table" v-if="newlist">
 			<div class="tr">
 				<div class="th center w80">ID</div>
 				<div class="th left flex">栏目名称</div>
@@ -15,7 +15,7 @@
 				<div class="th center w100">是否展示</div>
 			</div>
 			<article class="tbody">
-				<div class="tr" v-for="item in tablist" v-bind:key="item.id" :class="item.className">
+				<div class="tr" v-for="item in newlist" v-bind:key="item.id" :class="item.className">
 					<div class="td center w80">{{item.id}}</div>
 					<div class="td left flex" v-html="item.name"></div>
 					<div class="td center w80">{{item.parentId||"-"}}</div>
@@ -24,7 +24,6 @@
 						          v-bind:key="obj.id"
 						          name = "power"
 						          :parentData = "item"
-						          :checked="obj.checked"
 						          @checkEvent="powerEvent"
 						          :data="obj"></checkbox>
 					</div>
@@ -56,27 +55,41 @@
 		},
 		data() {
 			return {
-				tablist : null ,
-				selecteds : {} ,
+				tablist : null , //处理后的列表
+				newlist : null, //权限 功能列表
+				selecteds : {} , //选择的读 更 删 写 列表
 				arrlist : [],
 				permissions : null,
 			}
 		},
 		mounted() {
-			this.getUserPermission();
 			this._setColumnToTree(this.list);
+
+		},
+		watch:{
+			tablist(arr){
+				if(arr.length){
+					this.getUserPermission();
+				};
+			}
 		},
 		methods:{
 			submit(){
+				let self = this;
 				this._pushSeleced();
+
 				this.ajax({
-					url : "/permission/createPermission",
+					url : "/user/updateUserColumnPower",
 					type : "post",
 					data : {
-						permissions : JSON.stringify(this.arrlist)
+						power : JSON.stringify(this.arrlist),
+						userId : self.item.userId
 					}
 				}).then(data=>{
-					debugger;
+					this.$tips({
+						content:"操作成功!"
+					});
+					this.$close();
 				})
 			},
 			getUserPermission(){
@@ -89,25 +102,62 @@
 				}).then(data=>{
 					self.permissions = data.data;
 					if(self.permissions){
-
+						self.permissions.forEach(obj=>{
+							self.tablist.forEach(tab=>{
+								if(obj.power && tab.id == obj.permissionId){
+									let objPowers = obj.power.replace(/\,$/,"").split(",");
+									for(let i =0 ; i <objPowers.length;i++){
+										let key = objPowers[i];
+										tab.power.forEach(power=>{
+											if(power.key==key){
+												power.checked = true;
+											}
+										});
+									}
+								}
+							});
+						});
 					}
+					self.newlist = self.tablist;
 				});
 			},
 			powerEvent( selected , item , parentData ){//记录选择的权限
-				let obj = {
-					userId : this.item.userId,
-					permissionId : parentData.id,
-					read : false,
-					update : false,
-					write : false,
-					delete : false,
-				};
-				obj[item.key] = selected;
-				if(this.selecteds[parentData.id]){
-					Object.assign(this.selecteds[parentData.id],obj);
-				}else{
-					this.selecteds[parentData.id] = obj;
+				let self = this;
+
+				if(!self.selecteds[parentData.id]){
+					self.selecteds[parentData.id] = {
+						userId : self.item.userId,
+						permissionId : parentData.id,
+						power : "",
+						read : false,
+						update : false,
+						write : false,
+						delete : false,
+					};
+					this.newlist.forEach(_obj=>{
+						if(_obj.id == parentData.id){
+							parentData.power.forEach(_obj1=>{
+								self.selecteds[parentData.id][_obj1.key] = _obj1.checked;
+							});
+						}
+					});
 				}
+				self.selecteds[parentData.id][item.key] = selected;
+				let power = "";
+				let select = self.selecteds[parentData.id];
+				if(select.read){
+					power += "read,";
+				}
+				if(select.update){
+					power += "update,";
+				}
+				if(select.write){
+					power += "write,";
+				}
+				if(select.delete){
+					power += "delete,";
+				}
+				self.selecteds[parentData.id].power = power;
 			},
 			_pushSeleced( item ){
 				let arr = [] ,
@@ -115,6 +165,8 @@
 				for(let key in this.selecteds){
 					arr.push(this.selecteds[key]);
 				}
+				if(!arr.length) return;
+
 				if(this.arrlist.length){ //去重
 					for(let i=0;i<arr.length;i++){
 						let _pid = arr[i].permissionId ,

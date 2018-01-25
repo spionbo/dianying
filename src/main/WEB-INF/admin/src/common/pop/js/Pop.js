@@ -73,6 +73,9 @@ MyPlugin.install = function (Vue, options) {
 		},
 		$tips(conf){
 			pop.tips(conf);
+		},
+		$close(){
+			pop.close();
 		}
 	})
 };

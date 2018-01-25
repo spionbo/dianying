@@ -2,8 +2,7 @@
 	<div class="form add edit">
 		<add-form ref="form" :data="data"></add-form>
 		<div class="submit">
-			<div class="btn" @click="submit">确定</div>
-			<div class="btn red" @click="clearall">清空</div>
+			<div class="btn" @click="submit">确定修改</div>
 		</div>
 	</div>
 </template>
@@ -35,45 +34,30 @@
 				if(!this.$refs.form.verification()) return;
 				let self = this,
 					column = this.column ,
-					select = this.column.selects,
-					len = select.length,
-					permission = this.columnInfo.permission,
-					id = permission.id,
-					parentId = permission.parentId,
-					name = column.name ,
-					path = column.path,
-					sort = column.sort,
-					parentUrl="",
-					description = column.description;
+					userId = this.data.userId,
+					userName = this.data.userName,
+					realName = column.name,
+					headImage = column.headImage,
+					pwd = column.password;
 
-				if(len){
-					select.forEach((obj,i)=>{
-						if(obj=="-1"){
-							parentId = null;
-							parentUrl = "";
-						}else if( i == (len-1)){
-							parentUrl = obj.item.url;
-							parentId = obj.item.id;
+				require(['../../plug/md5.min.js'], function(md5) {
+					self.ajax({
+						url : '/user/update',
+						type : "POST",
+						data : {
+							userId : userId,
+							userName : userName,
+							realName : realName,
+							headImage : headImage,
+							pwd : md5(md5(pwd))
 						}
-					});
-				}
-				this.ajax({
-					url : '/permission/updateColumn',
-					type : "POST",
-					data : {
-						id : id,
-						parentId : parentId,
-						name : name,
-						url : parentUrl+path,
-						sort : sort,
-						description : description
-					}
-				}).then(data=>{
-					this.$tips({
-						content : "成功！"
-					});
-					self.$closePop();
-				})
+					}).then(data=>{
+						self.$tips({
+							content : "成功！"
+						});
+						self.$closePop();
+					})
+				});
 			},
 			$closePop(){
 				this.$parent.close();

@@ -2,7 +2,7 @@
 </style>
 <template>
 	<div class="txt">
-		<div class="edit">
+		<div class="edit" v-if="!disabled">
 			<input
 					v-if="type=='text'"
 					type="text"
@@ -17,6 +17,17 @@
 					:placeholder="placeholder"
 					v-model="value"
 					:maxlength="maxlength"
+			>
+			</input>
+		</div>
+		<div class="edit" v-else>
+			<input
+					v-if="type=='text'"
+					type="text"
+					:placeholder="placeholder"
+					v-model="value"
+					:maxlength="maxlength"
+					disabled="disabled"
 			>
 			</input>
 		</div>
@@ -37,6 +48,9 @@
 		numAndLetter : {
 			default : "请输入内容，内容必需包含字母和数字",
 			error : "必需包含字母和数字相结合(6-20位)"
+		},numOrLetter : {
+			default : "请输入内容，内容为数字或字母",
+			error : "内容为数字或字母，以字母开头(6-20位)"
 		},
 		chinese : {
 			default : "请输入内容，不能大于5个中文字符",
@@ -70,6 +84,7 @@
 				required : true
 			},
 			name : String,
+			disabled : Boolean, //是否可以操作
 			check : Boolean
 		},
 		data() {

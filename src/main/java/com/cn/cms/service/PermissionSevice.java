@@ -31,9 +31,9 @@ public interface PermissionSevice {
     List<Permission> queryPermissionAll();
 
     /**
-     * 查找用户权限 决定用户点击栏目时，是否能请求接口
+     * 查询所有栏目 数量
      */
-    List<UserPower> queryUserpower(String userId);
+    Integer queryPermissionColumnCount(Integer delTag);
 
     /* 查询索引*/
     Integer queryPermissionName(Integer parentId,String name);
@@ -46,22 +46,6 @@ public interface PermissionSevice {
 
 
     // ===================== 创建 ========================
-
-    /**
-     * 创建后台栏目权限
-     */
-    void savePermissionPower(List<Map<String,String>> list);
-
-    /**
-     * 创建后台栏目权限
-     */
-    void savePermissionColumnUser(PermissionUser permissionUser);
-
-    /**
-     * 创建用户权限（初始化建表） 表
-     * @param userId
-     */
-    void createUserPowerTable(List<Permission> list , String userId);
 
     /**
      * 创建后台栏目
@@ -78,15 +62,6 @@ public interface PermissionSevice {
     // ===================== end 更新 =============================
 
     //==================== 删除 ===========================
-
-    /**
-     * 删除用户权限（清空） 表
-     * @param userId
-     */
-    void deleteUserPowerTable(String userId);
-
-    /*删除后台栏目*/
-    void deletePermissionColumn(Integer columnId);
 
 
     //===================== end 删除 =============================

@@ -6,6 +6,7 @@ import com.cn.cms.utils.Page;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/11/6 0006.
@@ -26,5 +27,7 @@ public interface UserDao {
 
     void deleteUser(@Param(value="userId") String userId);
 
-    UserPower userPermissionPower(@Param(value = "userId") String userId);
+    void updateUser(@Param(value = "user") User user);
+
+
 }

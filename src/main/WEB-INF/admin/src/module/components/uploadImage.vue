@@ -35,24 +35,29 @@
 			dataType : String,
 			prompt : String,
 			name : String,
-			placeholder : String
+			placeholder : String,
+			url : String,
 		},
 		data() {
 			return {
 				value : "",
-
 				info : {},
 				imgUrl : null,
 				text : "",
 				error : false
 			}
 		},
-		imgUrl:function( val ){
-			this.$store.commit("setCatch",{
-				[this.name] : val
-			})
+		watch : {
+			imgUrl( val ){
+				this.$store.commit("setCatch",{
+					[this.name] : val
+				})
+			},
 		},
 		mounted() {
+			if(this.url){
+				this.imgUrl=this.url;
+			}
 			this.setMsg();
 		},
 		methods:{

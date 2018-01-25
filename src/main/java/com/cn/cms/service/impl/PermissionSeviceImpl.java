@@ -28,34 +28,20 @@ public class PermissionSeviceImpl implements PermissionSevice {
     }
 
     @Override
-    public void savePermissionPower(List<Map<String,String>> list){
-        permissionDao.savePermissionPower(list);
-    }
-
-    @Override
     public List<Permission> queryPermissionAll(){
         return permissionDao.queryPermissionAll();
     };
+
+    @Override
+    public Integer queryPermissionColumnCount(Integer delTag){
+        return permissionDao.queryPermissionColumnCount(delTag);
+    }
 
     @Override
     public void savePermissionColumn(Permission permission){
         permissionDao.savePermissionColumn(permission);
     }
 
-    @Override
-    public void savePermissionColumnUser(PermissionUser permissionUser){
-        permissionDao.savePermissionColumnUser(permissionUser);
-    }
-
-    @Override
-    public void createUserPowerTable(List<Permission> list,String userId){
-        permissionDao.createUserPowerTable(list,userId);
-    };
-
-    @Override
-    public void deleteUserPowerTable(String userId){
-        permissionDao.deleteUserPowerTable(userId);
-    };
 
     @Override
     public Integer queryPermissionName(Integer parentId,String name){
@@ -68,17 +54,8 @@ public class PermissionSeviceImpl implements PermissionSevice {
     }
 
     @Override
-    public void deletePermissionColumn(Integer columnId){
-        permissionDao.deletePermissionColumn(columnId);
-    }
-
-    @Override
     public void updatePermissionColumn(Permission permission){
-        permissionDao.updatePermissionColumn(permission);
+        permissionDao.savePermissionColumn(permission);
     }
 
-    @Override
-    public List<UserPower> queryUserpower(String userId){
-        return permissionDao.queryUserPower(userId);
-    }
 }

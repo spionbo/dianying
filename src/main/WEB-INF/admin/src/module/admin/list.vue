@@ -61,8 +61,23 @@
 			})
 		},
 		methods:{
-			edit(){
-
+			edit( item ){
+				require.ensure([],(require)=> {
+					this.$requirePop(require('./edit'), {
+							props : {
+								data : item,
+							}
+						},
+						{
+							props: {
+								obj: {
+									title: "标题",
+									close: true,
+								}
+							}
+						}
+					);
+				});
 			},
 			del(item,$event){
 				this._del({

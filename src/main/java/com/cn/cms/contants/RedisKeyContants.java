@@ -15,8 +15,6 @@ public class RedisKeyContants {
 
     public static final String REDIS_POSITION_PERMISSION_KEY = "CMS_PERMISSION_USERID_";
 
-    public static final String REDIS_POSITION_PERMISSION_ADMIN = "CMS_PERMISSION_ADMIN_";
-
     public static final String REDIS_APP_POSITION_PERMISSION_KEY = "CMS_APP_PERMISSION_USERID_";
 
     public static final String REDIS_POSITION_PERMISSION_MENU_KEY = "CMS_PERMISSION_MENU_USERID_";
@@ -24,6 +22,10 @@ public class RedisKeyContants {
     public static final String REDIS_APP_POSITION_PERMISSION_MENU_KEY = "CMS_APP_PERMISSION_MENU_USERID_";
 
     public static final String REDIS_POSITION_PERMISSION_BUTTON_KEY = "CMS_PERMISSION_BUTTON_USERID_";
+
+    //用户拥有栏目权限
+    public static final String REDIS_USER_COLUMN_POWER = "REDIS_USER_COLUMN_POWER_";
+
 
     public static final String REDIS_PARENT_KEY = "_PARENT_";
 
@@ -89,8 +91,8 @@ public class RedisKeyContants {
         return REDIS_POSITION_PERMISSION_KEY + userId;
     }
 
-    public static String getAdmin(String userId){
-        return REDIS_POSITION_PERMISSION_ADMIN + userId;
+    public static String getUserColumnPower(String userId){
+        return REDIS_USER_COLUMN_POWER + userId;
     }
 
     public static String getAppPermission(String userId){

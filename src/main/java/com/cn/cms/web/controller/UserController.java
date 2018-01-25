@@ -1,15 +1,16 @@
 package com.cn.cms.web.controller;
 
 import com.cn.cms.biz.PermissionBiz;
+import com.cn.cms.biz.UserPowerBiz;
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.PermissionNames;
-import com.cn.cms.contants.StaticContants;
+import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.exception.BizException;
 import com.cn.cms.po.User;
 import com.cn.cms.po.UserPower;
-import com.cn.cms.utils.CookieUtil;
+import com.cn.cms.utils.EncryptUtil;
 import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.ann.CheckAuth;
@@ -38,6 +39,9 @@ public class UserController extends BaseController{
 
     @Resource
     private PermissionBiz permissionBiz;
+
+    @Resource
+    private UserPowerBiz userPowerBiz;
 
     /**
      * 登录
@@ -111,10 +115,26 @@ public class UserController extends BaseController{
     @CheckToken
     @CheckAuth(name = PermissionNames.BACKSTAGE.ADMIN.LIST.READ)
     @RequestMapping(value = "/userPermissionPower",method=RequestMethod.GET)
-    public String userPermissionPower(HttpServletRequest request,
+    public String getUserPermissionPower(HttpServletRequest request,
                                       @RequestParam(value = "userId") String userId){
-        UserPower userPower = userBiz.userPermissionPower(userId);
+        List<UserPower> userPower = userPowerBiz.getUserPower(userId);
         return ApiResponse.returnSuccess(userPower);
+    }
+
+    /**
+     * 更新用户查看栏目的权限权限
+     * @param request
+     * @param power
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.BACKSTAGE.ADMIN.LIST.UPDATE)
+    @RequestMapping(value = "/updateUserColumnPower",method = RequestMethod.POST)
+    public String updateUserPermission(HttpServletRequest request,
+                                       @RequestParam(value = "power") String power,
+                                       @RequestParam(value = "userId") String userId){
+        userPowerBiz.updateUserPower(power,userId);
+        return ApiResponse.returnSuccess();
     }
 
     /**
@@ -133,16 +153,61 @@ public class UserController extends BaseController{
                       @RequestParam(value = "userName") String userName,
                       @RequestParam(value = "password")  String password,
                       @RequestParam(value = "realName") String realName,
-                      @RequestParam(value = "imageHead",required = false) String imageHead) throws BizException{
+                      @RequestParam(value = "imageHead",required = false) String imageHead,
+                      @RequestParam(value = "updateUserName",required = false) String updateUserName) throws BizException{
         String userID = getCurrentUserId(request);
         Integer a = userBiz.queryUserName(userName);
         if(a>0){
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USERNAME_RE.getType(),ErrorCodeEnum.ERROR_USERNAME_RE.getMessage());
         }
-        User user = userBiz.createUser(userName,password,realName,imageHead,userID);
-        UserBean userBean = userBiz.getUserBean(userID);
-        permissionBiz.createUserPowerTable(user.getUserId(),userBean);
+        userBiz.createUser(userName,password,realName,imageHead,userID,updateUserName);
+        userPowerBiz.createUserPower(userID);
         return ApiResponse.returnSuccess();
+    }
+
+    /**
+     * 更新 用户信息
+     * @param request
+     * @param userId
+     * @param realName
+     * @param headImage
+     * @param pwd
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.BACKSTAGE.ADMIN.LIST.UPDATE)
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public String updateUser(HttpServletRequest request,
+                             @RequestParam("userId") String userId,
+                             @RequestParam("userName") String userName,
+                             @RequestParam(value = "realName",required = false) String realName,
+                             @RequestParam(value = "headImage",required = false) String headImage,
+                             @RequestParam(value = "pwd",required = false) String pwd){
+
+        User thisUser = userBiz.getUserCache(userId);
+        if(thisUser!=null){
+            userBiz.updateUser(getCurrentUserId(request),userId,userName, realName, headImage, pwd);
+            return ApiResponse.returnSuccess();
+        }
+        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USER_HASTRUE.getType(),ErrorCodeEnum.ERROR_USER_HASTRUE.getMessage());
+    }
+
+    @CheckToken
+    @RequestMapping(value = "/updateInfo",method = RequestMethod.POST)
+    public String updateInfo(HttpServletRequest request,
+                             @RequestParam(value = "userName",required = false) String userName,
+                             @RequestParam(value = "realName",required = false) String realName,
+                             @RequestParam(value = "headImage",required = false) String headImage,
+                             @RequestParam(value = "pwd") String pwd,
+                             @RequestParam(value = "pwd1") String pwd1){
+        String userId = getCurrentUserId(request);
+        User user = userBiz.getUserCache(userId);
+        String thispwd = EncryptUtil.encryptPwd(userName,pwd);
+        if(user.getPwd().equals(thispwd)){
+            userBiz.updateUserInfo(userId,userName,realName,headImage,pwd1);
+            return ApiResponse.returnSuccess();
+        };
+        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USER_PWD.getType(),ErrorCodeEnum.ERROR_USER_PWD.getMessage());
     }
 
     /**
@@ -158,7 +223,7 @@ public class UserController extends BaseController{
     public String deleteUser(HttpServletRequest request,
                               @RequestParam(value = "userId") String userId) throws BizException{
         userBiz.deleteUser(userId);
-        permissionBiz.deleteUserPowerTable(userId);
+        userPowerBiz.deleteUserPower(userId);
         return ApiResponse.returnSuccess();
     }
 }

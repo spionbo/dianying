@@ -9,13 +9,13 @@ import com.cn.cms.exception.BizException;
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.po.Base;
 import com.cn.cms.po.User;
-import com.cn.cms.po.UserPower;
 import com.cn.cms.service.UserService;
 import com.cn.cms.utils.CookieUtil;
 import com.cn.cms.utils.EncryptUtil;
 import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.result.ApiResponse;
+import freemarker.template.utility.StringUtil;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -37,7 +37,6 @@ public class UserBiz extends BaseBiz{
 
     @Resource
     private PermissionBiz permissionBiz;
-
 
     /**
      * 返回Map
@@ -114,7 +113,7 @@ public class UserBiz extends BaseBiz{
         if( user != null ){
             if(user.getPwd().equals(pwd)){
                 setCookie(response,user);
-                refreshUserCache(user);
+                setUserCache(user);
                 return ApiResponse.returnSuccess(StaticContants.SUCCESS_LOGIN);
             }else{
                 return ApiResponse.returnFail(StaticContants.ERROR_PWD);
@@ -141,17 +140,11 @@ public class UserBiz extends BaseBiz{
         CookieUtil.addCookie(response,StaticContants.COOKIE_USER_TOKEN,token,0);
         CookieUtil.addCookie(response,StaticContants.COOKIE_REAL_NAME,user.getRealName(),0);
         jedisClient.set(RedisKeyContants.getToken(user.getUserId()), token, StaticContants.DEFAULT_SECONDS);
-        permissionBiz.setPermissionRedis(user.getUserId(), PlatformEnum.CMS);
+        permissionBiz.updatePermissionColumn(user.getUserId(), PlatformEnum.CMS);
 
     }
 
-    /**
-     * refresh用户缓存
-     * @param user
-     */
-    public void refreshUserCache(User user){
-        this.jedisClient.set(RedisKeyContants.getUserKey(user.getUserId()), JSONObject.toJSONString(user));
-    }
+
 
     /**
      * 清理Cookie信息
@@ -200,14 +193,6 @@ public class UserBiz extends BaseBiz{
         User user = this.getUserCache(userId);
         UserBean userBean = new UserBean(user);
         return userBean;
-    }
-
-    public User getUserCache(String userId){
-        String str = jedisClient.get(RedisKeyContants.getUserKey(userId));
-        if(StringUtils.isNotBlank(str)){
-            return JSONObject.parseObject(str, User.class);
-        }
-        return null;
     }
 
     /**
@@ -306,21 +291,69 @@ public class UserBiz extends BaseBiz{
      * @param lastModifyUserId
      * @throws BizException
      */
-    public User createUser( String userName , String password , String realName , String imageHead , String lastModifyUserId) throws BizException{
+    public User createUser( String userName , String password , String realName , String imageHead , String lastModifyUserId,String lastModifyUserName) throws BizException{
         User user = new User();
         user.setUserId(EncryptUtil.buildUserId());
         user.setUserName(userName);
         user.setPwd(EncryptUtil.encryptPwd(user.getUserName(),password));
         user.setRealName(realName);
         user.setLastModifyUserId(lastModifyUserId);
+        if(StringUtils.isNotEmpty(lastModifyUserName)){
+            user.setLastModifyUserName(lastModifyUserName);
+        }
         user.setCreateUserId(lastModifyUserId);
         if(StringUtils.isNotEmpty(imageHead)){
             user.setHeadImage(imageHead);
         }
         userService.createUser(user);
-        refreshUserCache(user);
+        setUserCache(user);
         return user;
     }
+
+    /**
+     * 修改管理人
+     * @param updateUserId
+     * @param userId
+     * @param userName
+     * @param realName
+     * @param headImage
+     * @param pwd
+     */
+    public void updateUser( String updateUserId, String userId, String userName, String realName, String headImage, String pwd){
+
+
+        User updateUser = getUserCache(updateUserId);
+        User user = new User();
+        user.setUserId(userId);
+        user.setPwd(EncryptUtil.encryptPwd(userName,pwd));
+        user.setRealName(realName);
+        if(StringUtils.isNotEmpty(headImage)){
+            user.setHeadImage(headImage);
+        }
+        user.setLastModifyUserId(updateUser.getUserId());
+        user.setLastModifyUserName(updateUser.getUserName());
+        user.setUpdateTimeStr(updateUser.getUpdateTimeStr());
+        userService.updateUser(user);
+        updateUserCache(user);
+    }
+
+     public void updateUserInfo(String userId,String userName,String realName,String headImage, String pwd){
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        if (StringUtils.isNotEmpty(realName)){
+            user.setRealName(realName);
+        }
+        if(StringUtils.isNotEmpty(headImage)){
+            user.setHeadImage(headImage);
+        }
+        user.setPwd(EncryptUtil.encryptPwd(user.getUserName(),pwd));
+        user.setLastModifyUserId(user.getUserId());
+        user.setLastModifyUserName(user.getUserName());
+        user.setUpdateTimeStr(user.getUpdateTimeStr());
+        userService.updateUser(user);
+        updateUserCache(user);
+     };
 
     /**
      * 删除管理人
@@ -328,15 +361,43 @@ public class UserBiz extends BaseBiz{
      */
     public void deleteUser(String userId){
         userService.deleteUser(userId);
+        deleteUserCache(userId);
     }
 
     /**
-     * 查看用户权限 write read update delete
+     * refresh用户缓存
+     * @param user
+     */
+    public void setUserCache(User user){
+        this.jedisClient.set(RedisKeyContants.getUserKey(user.getUserId()), JSONObject.toJSONString(user));
+    }
+
+    /**
+     * 更新用户缓存
+     * @param user
+     */
+    public void updateUserCache(User user){
+        setUserCache(user);
+    }
+    /**
+     * 删除用户缓存
+     * @param userId
+     */
+    public void deleteUserCache(String userId){
+        jedisClient.del(RedisKeyContants.getUserKey(userId));
+    }
+
+    /**
+     * 获取用户信息
      * @param userId
      * @return
      */
-    public UserPower userPermissionPower(String userId){
-        return userService.userPermissionPower(userId);
+    public User getUserCache(String userId){
+        String str = jedisClient.get(RedisKeyContants.getUserKey(userId));
+        if(StringUtils.isNotBlank(str)){
+            return JSONObject.parseObject(str, User.class);
+        }
+        return null;
     }
 
 }

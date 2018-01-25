@@ -21,10 +21,7 @@
         <result column="description" property="description" />
     </resultMap>
 
-    <resultMap type="com.cn.cms.po.UserPower" id="userpower">
-        <id column="permission_id" property="columnId"/>
-        <result column="power" property="power" />
-    </resultMap>
+    <sql id="sqlName">permission</sql>
 
     <sql id="all_permission">
         id,create_time,
@@ -40,34 +37,14 @@
         last_modify_user_id,create_user_id
     </sql>
 
-    <sql id="all_permission_user_power">
-        	id,
-        	user_id,
-            permission_id,
-            power,
-            create_time,
-            update_time,
-            del_tag,
-            last_modify_user_id,
-            create_user_id,
-            last_modify_user_name,
-            create_time_str,
-            update_time_str
-    </sql>
-
     <select id="findPermissionColumn" resultMap="permission">
-        select * from permission a inner join permission_user_power b on a.id = b.permission_id and a.del_tag = 1 and b.del_tag = 1 and
+        select * from <include refid="sqlName"/> a inner join permission_user_power b on a.id = b.permission_id and a.del_tag = 1 and b.del_tag = 1 and
         b.user_id=${userId}
     </select>
 
-    <select id="queryUserPower" resultMap="userpower">
-        select position_id,power from permission_user_power
-        <include refid="delTag"/> and
-        user_id=${userId}
-    </select>
 
-    <select id="queryColumnCount" resultType="java.lang.Integer">
-        select count(1) from permission WHERE
+    <select id="queryPermissionColumnCount" resultType="java.lang.Integer">
+        select count(1) from <include refid="sqlName"/> WHERE
         <choose>
             <when test="delTag != null">
                 del_tag = ${delTag}
@@ -76,86 +53,32 @@
                 del_tag = 1
             </otherwise>
         </choose>
-    </select>
-
-    <select id="queryColumnList" resultMap="permission">
-        select <include refid="all_permission_find"/> , <include refid="all_permission" /> from permission
-        where
-        <choose>
-            <when test="delTag != null">
-                del_tag = ${delTag}
-            </when>
-            <otherwise>
-                del_tag = 1
-            </otherwise>
-        </choose>
-        <if test="userId!=null">
-            and id in(select position_id from permission_user_power <include refid="delTag"/>  and user_id=${userId})
-        </if>
     </select>
 
     <select id="queryPermissionAll" resultMap="permission">
-        select <include refid="all_permission_find"/> , <include refid="all_permission" /> from permission
+        select <include refid="all_permission_find"/> , <include refid="all_permission" /> from <include refid="sqlName"/>
     </select>
 
     <select id="queryPermissionName" resultType="java.lang.Integer">
-        SELECT count(1) from permission WHERE name="${permissionName}"
+        SELECT count(1) from <include refid="sqlName"/> WHERE name="${permissionName}"
         <if test="parentId != null">
             and parent_id = ${parentId}
         </if>
     </select>
 
     <insert id="savePermissionColumn" useGeneratedKeys="true" keyProperty="p1.id">
-        insert into permission (<include refid="sql_column"/>) VALUE (null,
+        insert into <include refid="sqlName"/> (<include refid="sql_column"/>) VALUE (null,
           #{p1.name},#{p1.parentId},#{p1.url},#{p1.description},#{p1.sort},
           #{p1.lastModifyUserId},#{p1.createUserId}
         )
     </insert>
-    <insert id="savePermissionColumnUser" useGeneratedKeys="true" keyProperty="p1.id">
-        insert into permisstion_user_power(id,user_id,position_id,
-        last_modify_user_id,create_user_id) VALUE (null,
-          #{p1.userId},#{p1.positionId},
-          #{p1.lastModifyUserId},#{p1.createUserId}
-        )
-    </insert>
-    <insert id="createUserPowerTable" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
-        insert into permisstion_user_power
-        (<include refid="all_permission_user_power"/>) VALUE
-        <foreach collection="list" item="item" index="index" separator=",">
-            (
-            null,
-            #{userId},#{item.id},null,null,null,1,
-            #{item.lastModifyUserId},#{item.createUserId},
-            #{item.lastModifyUserName},
-            #{item.createTimeStr},#{item.updateTimeStr}
-            )
-        </foreach>
-
-    </insert>
-    <delete id="deleteUserPowerTable">
-        DELETE from permisstion_user_power WHERE user_id = ${userId}
-    </delete>
-    <update id="savePermissionPower" parameterType="java.util.List">
-        <foreach collection="list" item="item" index="index">
-            UPDATE permission_user_power
-            <set>
-              power = #{item.power}
-            </set>
-            WHERE user_id = #{item.userId} and permission_id = #{item.permissionId}
-        </foreach>
-    </update>
 
     <select id="queryPermissionColumn" resultMap="permission">
-        select <include refid="all_permission_find"/>,<include refid="all_permission"/> from permission WHERE id="${id}"
+        select <include refid="all_permission_find"/>,<include refid="all_permission"/> from <include refid="sqlName"/> WHERE id="${id}"
     </select>
 
-    <delete id="deletePermissionColumn">
-        DELETE c,u FROM permission c inner join permission_user_power u on c.id=u.position_id where c.id = ${columnId}
-    </delete>
-
-
     <update id="updatePermissionColumn">
-        update permission
+        update <include refid="sqlName"/>
         <set>
             <if test="p1.name != null">
                 name = #{p1.name},
