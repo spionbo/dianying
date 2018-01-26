@@ -50,6 +50,9 @@ public class PermissionBiz extends BaseBiz {
     private PermissionSevice permissionSevice;
 
     @Resource
+    private UserPowerBiz userPowerBiz;
+
+    @Resource
     private JedisClient jedisClient;
 
 
@@ -138,11 +141,27 @@ public class PermissionBiz extends BaseBiz {
     }
 
     public boolean checkPermission(String userId, String permission){
-        Long result = jedisClient.zrank(RedisKeyContants.getPermission(userId), permission);
-        if(result!=null && result > 0){
+        if(getAdmin(userId)){
             return true;
         }
-        return getAdmin(userId);
+        List<UserPower> userPowers = userPowerBiz.getUserPower(userId);
+        String arr[] = permission.split(":");
+        String key = arr[0];
+        String val = arr[1];
+        if(PermissionNames.map==null){
+            updatePermissionColumn(userId,PlatformEnum.CMS);
+        }
+        Integer id = PermissionNames.map.get(key);
+        for (int i = 0;i<userPowers.size();i++){
+            UserPower userPower = userPowers.get(i);
+            if(userPower.getPermissionId() == id){
+                String power = userPower.getPower();
+                if(power.indexOf(val)>-1){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -178,12 +197,38 @@ public class PermissionBiz extends BaseBiz {
          */
 
         if(!isAdmin){ //非超级管理员
-            permissions = permissionSevice.findPermissionColumn(userId,platformEnum.getType());
-            permissionBeans = setColumnToTree(permissions);
+            permissionBeans = setColumnToTree(getUserPowerList(userId,PermissionNames.getAllcolumn()));
         }
-        //添加栏目权限列表
+        //添加栏目权限列表  缓存
         addPermissionCatch(permissionBeans , userId , platformEnum);
         return JSONArray.toJSONString(permissionBeans);
+    }
+
+    /**
+     * 获取用户栏目权限
+     * @param list
+     * @return
+     */
+    private List<Permission> getUserPowerList(String userId,List<Permission> list){
+        List<UserPower> userPowers = userPowerBiz.getUserPower(userId);
+        List<Permission> newList = new ArrayList<>();
+
+        for(int j=0;j<userPowers.size();j++){
+            UserPower userPower = userPowers.get(j);
+            String power = userPower.getPower();
+            Integer permissionId = userPower.getPermissionId();
+            if( power!=null && power.indexOf("read")>-1){
+                for(int i=0;i<list.size();i++) {
+                    Permission permission = list.get(i);
+                    Integer id = permission.getId();
+                    if(id.equals(permissionId)){
+                        newList.add(permission);
+                        break;
+                    }
+                }
+            }
+        }
+        return newList;
     }
 
     /**

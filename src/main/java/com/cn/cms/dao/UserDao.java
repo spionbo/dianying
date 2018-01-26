@@ -15,6 +15,8 @@ public interface UserDao {
 
     User findUserName(@Param(value = "userName") String userName);
 
+    User getUserInfo(@Param(value = "userId") String userId);
+
     List<User> queryUserList(@Param(value = "page") Page page);
 
     Integer queryUserCount();

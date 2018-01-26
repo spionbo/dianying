@@ -196,6 +196,17 @@ public class UserBiz extends BaseBiz{
     }
 
     /**
+     * 数据库查询用户信息
+     * @param userId
+     * @return
+     */
+    public UserBean getUserInfo(String userId){
+        User user = userService.getUserInfo(userId);
+        UserBean userBean = new UserBean(user);
+        return userBean;
+    }
+
+    /**
      * 加载创建人和修改人
      * @param list
      */

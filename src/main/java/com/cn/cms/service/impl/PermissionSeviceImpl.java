@@ -23,11 +23,6 @@ public class PermissionSeviceImpl implements PermissionSevice {
     PermissionDao permissionDao;
 
     @Override
-    public List<Permission> findPermissionColumn(String user, Integer platform){
-        return permissionDao.findPermissionColumn(user,platform);
-    }
-
-    @Override
     public List<Permission> queryPermissionAll(){
         return permissionDao.queryPermissionAll();
     };

@@ -26,6 +26,13 @@ public interface UserService {
     User findUserName(String userName);
 
     /**
+     *根据ID查询用户
+     * @param userId
+     * @return
+     */
+    User getUserInfo(String userId);
+
+    /**
      * 获取是否存在用户名
      * @param userName
      * @return

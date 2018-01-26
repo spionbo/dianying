@@ -25,7 +25,7 @@ public class PermissionNames {
     /**
      * 存储key val 权限字段
      */
-    private static Map<String,Integer> map;
+    public static Map<String,Integer> map;
 
     /**
      * 所有栏目

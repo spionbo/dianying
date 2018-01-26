@@ -184,12 +184,15 @@ public class UserController extends BaseController{
                              @RequestParam(value = "headImage",required = false) String headImage,
                              @RequestParam(value = "pwd",required = false) String pwd){
 
-        User thisUser = userBiz.getUserCache(userId);
-        if(thisUser!=null){
-            userBiz.updateUser(getCurrentUserId(request),userId,userName, realName, headImage, pwd);
-            return ApiResponse.returnSuccess();
+        UserBean thisUser = userBiz.getUserBean(userId);
+        if(thisUser.getUserId()==null){
+            UserBean userBean = userBiz.getUserInfo(userId);
+            if(userBean.getUserId()==null){
+                return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USER_HASTRUE.getType(),ErrorCodeEnum.ERROR_USER_HASTRUE.getMessage());
+            }
         }
-        return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USER_HASTRUE.getType(),ErrorCodeEnum.ERROR_USER_HASTRUE.getMessage());
+        userBiz.updateUser(getCurrentUserId(request),userId,userName, realName, headImage, pwd);
+        return ApiResponse.returnSuccess();
     }
 
     @CheckToken
@@ -199,11 +202,12 @@ public class UserController extends BaseController{
                              @RequestParam(value = "realName",required = false) String realName,
                              @RequestParam(value = "headImage",required = false) String headImage,
                              @RequestParam(value = "pwd") String pwd,
-                             @RequestParam(value = "pwd1") String pwd1){
+                             @RequestParam(value = "pwd1") String pwd1,
+                             @RequestParam(value = "pwd2") String pwd2){
         String userId = getCurrentUserId(request);
         User user = userBiz.getUserCache(userId);
         String thispwd = EncryptUtil.encryptPwd(userName,pwd);
-        if(user.getPwd().equals(thispwd)){
+        if((pwd1.equals(pwd2)) && user.getPwd().equals(thispwd)){
             userBiz.updateUserInfo(userId,userName,realName,headImage,pwd1);
             return ApiResponse.returnSuccess();
         };

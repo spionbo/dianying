@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserInfo(String userId){
+        return userDao.getUserInfo(userId);
+    }
+
+    @Override
     public List<User>queryUserList(Page page){
         return userDao.queryUserList(page);
     }

@@ -17,14 +17,6 @@ public interface PermissionSevice {
     //================= 查询 ==============================
 
     /**
-     * 根据positionId列表获取权限  决定是否展示栏目
-     * @param userId
-     * @paream platform
-     * @return
-     */
-    List<Permission> findPermissionColumn(String userId, Integer platform);
-
-    /**
      * 查询所有栏目
      * @return
      */
