@@ -40,7 +40,6 @@ public class UploadController extends BaseController{
 
     @NotSaveBody
     @CheckToken
-    @CheckAuth(name = PermissionNames.UPLOAD.IMG.WRITE)
     @RequestMapping(value = "/uploadImage",method = RequestMethod.POST)
     public String upload(HttpServletRequest request,
                          @RequestParam(value = "baseCode") String baseCode,

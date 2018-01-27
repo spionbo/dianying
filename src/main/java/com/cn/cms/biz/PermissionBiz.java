@@ -156,7 +156,7 @@ public class PermissionBiz extends BaseBiz {
             UserPower userPower = userPowers.get(i);
             if(userPower.getPermissionId() == id){
                 String power = userPower.getPower();
-                if(power.indexOf(val)>-1){
+                if(power!=null&&power.indexOf(val)>-1){
                     return true;
                 }
             }
@@ -408,6 +408,8 @@ public class PermissionBiz extends BaseBiz {
          */
         private static List<PermissionBean> setColumn(List<PermissionBean> parentBeans,List<Permission> allList){
 
+            List<Permission> newList = new ArrayList<>();
+
             for(int i=0;i<parentBeans.size();i++){
                 PermissionBean parent = parentBeans.get(i);
                 Permission parentPermission = parent.getPermission();
@@ -416,20 +418,24 @@ public class PermissionBiz extends BaseBiz {
                 List<Permission> firstChild = new ArrayList<>();
                 List<PermissionBean> list = new ArrayList<>();
 
+                //添加 子类 到父类
                 for(int j=0;j<allList.size();j++){
                     Permission child = allList.get(j);
                     if(child.getParentId() == parentPermission.getId()){
                         firstChild.add(child);
+                    }else{
+                        newList.add(child);
                     }
                 }
 
+                //Permission 转 PermissionBean
                 for(int k=0;k<firstChild.size();k++){
                     PermissionBean permissionBean = new PermissionBean();
                     permissionBean.setPermission(firstChild.get(k));
                     list.add(permissionBean);
                 }
                 if(list.size()>0){//(一级)子类获取(二级)子类
-                    setColumn(list,allList);
+                    setColumn(list,newList);
                     parent.setPermissionBeans(list);
                 }
             }

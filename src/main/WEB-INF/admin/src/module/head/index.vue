@@ -56,7 +56,7 @@
 				        {
 					        props: {
 						        obj: {
-							        title: "标题",
+							        title: "更改密码",
 							        close: true,
 						        }
 					        }

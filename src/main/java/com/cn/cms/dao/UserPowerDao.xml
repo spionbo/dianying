@@ -37,7 +37,7 @@
     </select>
 
     <select id="getUserPower" resultMap="userPower">
-        SELECT <include refid="all_base"/>,<include refid="all_userPower"/> from <include refid="sqlName"/> WHERE user_id = ${userId}
+        SELECT <include refid="all_base"/>,<include refid="all_userPower"/> from <include refid="sqlName"/> WHERE user_id = "${userId}"
     </select>
 
     <insert id="createUserPower" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">

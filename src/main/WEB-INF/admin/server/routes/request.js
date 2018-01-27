@@ -8,7 +8,7 @@ module.exports = function(request,response){
         port = '8080';*/
         /*host = '106.15.181.92' ,
         port = '80';*/
-        host = '192.168.0.17' ,
+        host = 'localhost' ,
         port = '8080';
 
     let pathname = URL.parse(request.url).pathname;
