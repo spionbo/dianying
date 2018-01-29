@@ -30,6 +30,9 @@
     <sql id="all_column">
         user_name,head_image,real_name,pwd,user_id,idfa
     </sql>
+    <sql id="not_admin">
+      SELECT user_id FROM fhvkxetpgjkm
+    </sql>
 
     <sql id="delTag"> where del_tag = 1 </sql>
 
@@ -39,7 +42,7 @@
 
     <select id="getUserInfo" resultMap="user">
         select <include refid="all_base"/>,<include refid="all_column" /> from <include refid="name"/>
-        where user_id = #{userId}
+        where user_id = "${userId}"
     </select>
 
     <select id="queryUserName" resultType="java.lang.Integer">
@@ -47,18 +50,20 @@
     </select>
 
     <select id="queryUserCount" resultType="java.lang.Integer">
-          select count(1) from <include refid="name"/> <include refid="delTag" />;
+          select count(1) from <include refid="name"/> <include refid="delTag" />,and user_id not in(<include refid="not_admin"/>);
     </select>
 
     <select id="queryUserList" resultMap="user">
-        select <include refid="all_base"/>,<include refid="all_column" /> from <include refid="name"/> order by id desc limit ${page.start},${page.pageSize};
+        select <include refid="all_base"/>,<include refid="all_column" /> from <include refid="name"/>
+        WHERE user_id not in(<include refid="not_admin"/>)
+        order by id desc limit ${page.start},${page.pageSize};
     </select>
 
     <select id="queryAdmin" resultType="java.lang.Integer">
         SELECT count(1) from <include refid="name"/>
-        inner join fhvkxetpgjkm on ${userId}=fhvkxetpgjkm.user_id
+        inner join fhvkxetpgjkm on "${userId}"=fhvkxetpgjkm.user_id
         where user.del_tag = 1
-        and user.user_id = ${userId}
+        and user.user_id = "${userId}"
     </select>
 
     <insert id="saveUser" useGeneratedKeys="true" keyProperty="user.id">
@@ -72,7 +77,7 @@
     </insert>
 
     <delete id="deleteUser">
-        DELETE FROM <include refid="name"/> WHERE user_id = ${userId}
+        DELETE FROM <include refid="name"/> WHERE user_id = "${userId}"
     </delete>
 
     <update id="updateUser">
@@ -94,7 +99,7 @@
             last_modify_user_name = #{user.lastModifyUserName},
             update_time_str = #{user.updateTimeStr}
         </set>
-        WHERE user_id = #{user.userId}
+        WHERE user_id = "#{user.userId}"
     </update>
 
 </mapper>
