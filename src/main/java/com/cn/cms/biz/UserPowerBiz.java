@@ -105,7 +105,9 @@ public class UserPowerBiz {
      * @param power
      */
     public void updateUserPower(String power , String userId){
+        //获取栏目数量
         Integer count = permissionBiz.queryPermissionColumnCount(1);
+        //获取用户对栏目权限控制的库。不存在则创建
         Integer powerCount = getUserPowerCount(userId);
         if(powerCount > 0 && count > powerCount){  //权限表里面的字段和实际permission栏目表的字段对不上，则说明创建用户后，又创建栏目了。
             //管理员拥有多少权限，则只能指定其他人最多拥有管理员相同的权限

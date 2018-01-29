@@ -181,7 +181,6 @@ public class PermissionBiz extends BaseBiz {
      */
     public String updatePermissionColumn(String userId, PlatformEnum platformEnum){
         Boolean isAdmin = getAdmin(userId);
-        List<Permission> permissions;
         List<PermissionBean> permissionBeans = PermissionNames.getAllcolumnPermissionBeans();
 
         /**
@@ -408,15 +407,16 @@ public class PermissionBiz extends BaseBiz {
          */
         private static List<PermissionBean> setColumn(List<PermissionBean> parentBeans,List<Permission> allList){
 
-            List<Permission> newList = new ArrayList<>();
-
+            //筛选出来的list
+            List<Permission> screenList;
             for(int i=0;i<parentBeans.size();i++){
                 PermissionBean parent = parentBeans.get(i);
                 Permission parentPermission = parent.getPermission();
 
                 //获取子类
                 List<Permission> firstChild = new ArrayList<>();
-                List<PermissionBean> list = new ArrayList<>();
+
+                List<Permission> newList = new ArrayList<>();
 
                 //添加 子类 到父类
                 for(int j=0;j<allList.size();j++){
@@ -427,15 +427,18 @@ public class PermissionBiz extends BaseBiz {
                         newList.add(child);
                     }
                 }
-
-                //Permission 转 PermissionBean
-                for(int k=0;k<firstChild.size();k++){
-                    PermissionBean permissionBean = new PermissionBean();
-                    permissionBean.setPermission(firstChild.get(k));
-                    list.add(permissionBean);
-                }
-                if(list.size()>0){//(一级)子类获取(二级)子类
-                    setColumn(list,newList);
+                allList = newList;
+                screenList = newList;
+                if(firstChild.size()>0){
+                    List<PermissionBean> list = new ArrayList<>();
+                    //Permission 转 PermissionBean
+                    for(int k=0;k<firstChild.size();k++){
+                        PermissionBean permissionBean = new PermissionBean();
+                        permissionBean.setPermission(firstChild.get(k));
+                        list.add(permissionBean);
+                    }
+                    //(一级)子类获取(二级)子类
+                    setColumn(list,screenList);
                     parent.setPermissionBeans(list);
                 }
             }
