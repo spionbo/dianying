@@ -17,7 +17,7 @@ Vue.mixin({
 			if(!(/^[a-z|A-Z]{1,}/.test(val))) return false;
 			return (new RegExp("[a-z|A-Z]+").test(val) && new RegExp("\\d+").test(val));
 		},
-		_numOrLetter( val ){ //包含数字和字母且开头是字每
+		_numOrLetter( val ){ //包含数字和字母
 			if(val.length<5||val.length>20) return false;
 			if(!(/^[a-z|A-Z]{1,}/.test(val))) return false;
 			return (new RegExp("[\\w|\\d]+").test(val));
@@ -73,6 +73,8 @@ Vue.mixin({
 							self.$tips({
 								content: "删除成功!"
 							});
+							obj.callback && obj.callback();
+							//window.location.reload();
 							obj.update();
 						});
 					}

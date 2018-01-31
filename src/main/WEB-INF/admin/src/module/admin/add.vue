@@ -58,7 +58,11 @@
 							self.$tips({
 								content:"添加成功!"
 							});
-							self.clearall();
+					//self.clearall();
+//						setTimeout(function(){
+//							window.location.reload();
+//						},500)
+
 						})
 					});
 				}

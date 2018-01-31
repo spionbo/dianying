@@ -11,12 +11,12 @@
                 <div @click='clearError'>
                     <div class="item">
                         <div class="input">
-                            <input type='text' class="text" v-model="userName" placeholder="请输入帐号">
+                            <input type='text' class="text" v-model="userName" placeholder="请输入帐号"  @keyup.13="listenKeyDown($event)">
                         </div>
                     </div>
                     <div class="item">
                         <div class="input">
-                            <input type='password' class="text" v-model="pwd" placeholder="请输入密码">
+                            <input type='password' class="text" v-model="pwd" placeholder="请输入密码"  @keyup.13="listenKeyDown($event)">
                         </div>
                     </div>
                     <div class="item">
@@ -111,6 +111,11 @@
                     });
                 });
 
+            },
+            listenKeyDown(evt){
+                if(evt.keyCode==13){
+                    this.submit();
+                }
             }
         }
     }

@@ -21,7 +21,7 @@
 					name = "password"
 					:data = "obj.password"
 					:check="true"
-					maxlength="11"
+					maxlength="20"
 					placeholder="请输入密码">
 				<div slot='else' class="btn square blue" @click="randPwd">随机生成</div>
 			</form-input>
@@ -98,7 +98,12 @@
 				return false;
 			},
 			randPwd(){
-				this.obj.password = Math.random().toString(36).substr(2);
+				//this.obj.password = Math.random().toString(36).substr(2);
+				/*解决第一位是数字不通过的情况*/
+				let text = "",
+				 letter='abcdefghijklmnopqrstuvwxyz',
+				 number="0123456789";
+				this.obj.password=letter.charAt(Math.floor(Math.random() * letter.length))+Math.random().toString(36).substr(2)+number.charAt(Math.floor(Math.random() * number.length));
 			},
 			setData(){
 				let [

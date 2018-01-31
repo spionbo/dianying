@@ -1,5 +1,19 @@
 <style scoped>
 	@import "./style/list.css";
+	@keyframes move {
+		from{
+			/*height:36px;*/
+			opacity:1;
+			transform: translate(0,0);
+		}
+		to{
+			transform:translate(0,-100px);
+			opacity:0;
+		}
+	}
+	.anima{
+		animation:move linear 1s 1;
+	}
 </style>
 <template>
 	<div class="form horizontal userlist">
@@ -16,7 +30,8 @@
 					<th>修改时间</th>
 					<th align="center">操作</th>
 				</tr>
-				<tr v-for="item in list" :key="item.id">
+				<!--<tr v-for="item in list" :key="item.id">-->
+				<tr v-for="(item,index) in list" :id='item.userId' :key="item.id">
 					<td>
 						<img :src="item.headImage"/>
 						{{item.realName}}
@@ -43,12 +58,14 @@
 		computed : {
 			...mapGetters({
 				permissions : 'currentMenuPermission'
-			})
+			}),
+
 		},
 		data() {
 			return {
 				list : [],
-				page : null
+				page : null,
+				msg:""
 			}
 		},
 		mounted() {
@@ -87,6 +104,13 @@
 					name : `（${item.realName}）的帐号（${item.userName}）`,
 					data : {
 						userId : item.userId
+					},
+					callback : function(){
+						$("#"+item.userId).children().addClass("anima");
+						setTimeout(function(){
+							$("#"+item.userId).remove();
+						},500)
+
 					}
 				});
 			},
@@ -109,7 +133,7 @@
 							}
 						});
 				});
-			}
+			},
 		}
 	}
 </script>
