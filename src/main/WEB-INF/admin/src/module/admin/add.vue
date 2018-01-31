@@ -59,9 +59,9 @@
 								content:"添加成功!"
 							});
 					//self.clearall();
-//						setTimeout(function(){
-//							window.location.reload();
-//						},500)
+						setTimeout(function(){
+							window.location.reload();
+						},500)
 
 						})
 					});
