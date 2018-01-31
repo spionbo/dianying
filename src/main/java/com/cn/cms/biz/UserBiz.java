@@ -36,6 +36,9 @@ public class UserBiz extends BaseBiz{
     private UserService userService;
 
     @Resource
+    private UserPowerBiz userPowerBiz;
+
+    @Resource
     private PermissionBiz permissionBiz;
 
     /**
@@ -317,6 +320,7 @@ public class UserBiz extends BaseBiz{
             user.setHeadImage(imageHead);
         }
         userService.createUser(user);
+        userPowerBiz.createUserPower(user.getUserId());
         setUserCache(user);
         return user;
     }

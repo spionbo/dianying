@@ -161,7 +161,6 @@ public class UserController extends BaseController{
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_USERNAME_RE.getType(),ErrorCodeEnum.ERROR_USERNAME_RE.getMessage());
         }
         userBiz.createUser(userName,password,realName,imageHead,userID,updateUserName);
-        userPowerBiz.createUserPower(userID);
         return ApiResponse.returnSuccess();
     }
 
