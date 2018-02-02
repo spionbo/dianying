@@ -17,8 +17,8 @@ public class XiaoshuoBiz extends BaseBiz {
     @Resource
     private XiaoshuoDao xiaoshuoDao;
 
-    public void saveClassify(String name){
-        xiaoshuoDao.saveClassify(name);
+    public void addClassify(String name){
+        xiaoshuoDao.addClassify(name);
     }
 
     /**

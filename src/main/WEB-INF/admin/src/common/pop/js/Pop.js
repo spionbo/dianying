@@ -52,7 +52,7 @@ let MyPlugin = function(){
 MyPlugin.install = function (Vue, options) {
 	let pop = new Pop(options) ,
 		loading = pop.load();
-	// 4. 添加实例方法
+		// 4. 添加实例方法
 	Object.assign(Vue.prototype,{
 		$pop(config){
 			pop.init(config);

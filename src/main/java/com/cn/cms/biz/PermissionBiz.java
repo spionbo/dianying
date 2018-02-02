@@ -55,7 +55,6 @@ public class PermissionBiz extends BaseBiz {
     @Resource
     private JedisClient jedisClient;
 
-
     /**
      * 获取所有栏目
      * @return
@@ -67,6 +66,7 @@ public class PermissionBiz extends BaseBiz {
             return PermissionNames.getAllcolumn();
         }
         return list;
+
     }
 
     /**

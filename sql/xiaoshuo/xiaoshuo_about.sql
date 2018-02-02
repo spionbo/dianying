@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50631
 File Encoding         : 65001
 
-Date: 2018-01-31 17:20:32
+Date: 2018-02-02 11:09:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,11 +26,12 @@ CREATE TABLE `xiaoshuo_about` (
   `status` tinyint(2) DEFAULT '0' COMMENT '状态 0  1  0完结，1正在更新',
   `author` varchar(20) DEFAULT NULL COMMENT '作者',
   `dec` varchar(500) DEFAULT NULL COMMENT '简介',
-  `sort` bigint(20) NOT NULL COMMENT '排序，展示列表时，小说优先级',
+  `sort` bigint(20) DEFAULT '1' COMMENT '排序，展示列表时，小说优先级',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '修改人ID',
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `count` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`),
   CONSTRAINT `parent_id` FOREIGN KEY (`parent_id`) REFERENCES `xiaoshuo_classify` (`id`)

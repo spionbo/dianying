@@ -43,7 +43,7 @@ public class XiaoshuoController extends BaseController{
     @RequestMapping(value = "/addClassify",method = RequestMethod.POST)
     public String addClassify(HttpServletRequest request,
                               @RequestParam(value = "name") String name){
-        xiaoshuoBiz.saveClassify(name);
+        xiaoshuoBiz.addClassify(name);
         return ApiResponse.returnSuccess();
     }
 

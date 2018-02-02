@@ -15,7 +15,7 @@ public class XiaoshuoServiceImpl implements XiaoshuoService {
     @Resource
     private XiaoshuoBiz xiaoshuoBiz;
 
-    public void saveClassify(String name){
-        xiaoshuoBiz.saveClassify(name);
+    public void addClassify(String name){
+        xiaoshuoBiz.addClassify(name);
     };
 }

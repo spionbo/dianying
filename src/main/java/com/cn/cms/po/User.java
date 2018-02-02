@@ -14,7 +14,6 @@ public class User extends Base {
      * 用户名
      */
     private String userName;
-
     /**
      * 头像
      */
@@ -42,6 +41,5 @@ public class User extends Base {
 
     /*超级管理员身份*/
     private Boolean administrator = false;
-
 
 }

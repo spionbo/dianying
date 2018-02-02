@@ -13,7 +13,7 @@ public interface XiaoshuoDao {
 
     Integer queryClassifyCount();
 
-    void saveClassify(@Param("name") String name);
+    void addClassify(@Param("name") String name);
 
     List<XiaoshuoClassification> queryClassifyList(@Param(value="page") Page page);
 

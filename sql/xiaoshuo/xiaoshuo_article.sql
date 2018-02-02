@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50631
 File Encoding         : 65001
 
-Date: 2018-01-31 17:20:38
+Date: 2018-02-02 11:09:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `xiaoshuo_article` (
   `int` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `title` varchar(255) NOT NULL COMMENT '文章名称',
   `content` text NOT NULL COMMENT '内容',
-  `sort` bigint(20) NOT NULL COMMENT '小说排序，按章节排序',
+  `sort` bigint(20) DEFAULT '1' COMMENT '小说排序，按章节排序',
   `parent_id` bigint(20) DEFAULT NULL COMMENT '小说简介id',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -32,7 +32,7 @@ CREATE TABLE `xiaoshuo_article` (
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人id',
   PRIMARY KEY (`int`),
   KEY `parentid` (`parent_id`),
-  CONSTRAINT `parentid` FOREIGN KEY (`parent_id`) REFERENCES `xiaoshuo_about` (`id`)
+  CONSTRAINT `parentid` FOREIGN KEY (`parent_id`) REFERENCES `xiaoshuo_chapter` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

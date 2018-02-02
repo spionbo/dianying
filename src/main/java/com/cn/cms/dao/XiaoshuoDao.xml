@@ -15,26 +15,27 @@
         <result column="classify_name" property="classifyName" />
     </resultMap>
 
+    <sql id="name">xiaoshuo_classify</sql>
     <sql id="all_column">
         id,create_time,
-        update_time,last_modify_user_id,create_user_id,last_modify_user_name,create_time_str,update_time_str,del_tag
+        update_time,last_modify_user_id,create_user_id,del_tag
     </sql>
     <sql id="delTag"> where del_tag = 1 </sql>
 
     <select id="queryClassifyCount" resultType="java.lang.Integer">
-        select count(1) from xiaoshuo_classify <include refid="delTag" />
+        select count(1) from <include refid="name"/> <include refid="delTag" />
     </select>
 
-    <insert id="saveClassify">
-        INSERT INTO xiaoshuo_classify (classify_name) VALUE (#{name})
+    <insert id="addClassify">
+        INSERT INTO <include refid="name"/> (classify_name) VALUE (#{name})
     </insert>
 
     <select id="queryClassifyList" resultMap="classify">
-        SELECT <include refid="all_column"/>,classify_name FROM xiaoshuo_classify order by id desc limit ${page.start},${page.pageSize};
+        SELECT <include refid="all_column"/>,classify_name FROM <include refid="name"/> order by id desc limit ${page.start},${page.pageSize};
     </select>
 
     <update id="updateClassify">
-        update xiaoshuo_classify set classify_name=#{p1.classifyName} where id = ${p1.id};
+        update <include refid="name"/> set classify_name=#{p1.classifyName} where id = ${p1.id};
     </update>
 
 </mapper>
