@@ -17,7 +17,7 @@ class AtilceClassify(Base):
         app_label = "app"
 
 #小说相关信息
-class AticleAbout(Base,models.Model):
+class AticleAbout(Base):
     #文章名称
     title = models.CharField(max_length=255)
     #约束 classify id
@@ -37,4 +37,4 @@ class AticleAbout(Base,models.Model):
         #表名
         db_table="xiaoshuo_about"
         # 包名
-        app_label = "xiaoshuo"
+        app_label = "app"

@@ -12,3 +12,7 @@ class Base(models.Model):
     last_modify_user_id = models.BigIntegerField(null=True)
     #创建人id
     create_user_id = models.BigIntegerField(null=True)
+
+    class Meta:
+        #抽象类 不会建表
+        abstract = True
