@@ -14,5 +14,5 @@ class Base(models.Model):
     create_user_id = models.BigIntegerField(null=True)
 
     class Meta:
-        #抽象类 不会建表
+        #抽象
         abstract = True

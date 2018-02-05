@@ -2,10 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db import models
 from app.base import Base
-
 # Create your models here.
-
 #小说栏目分类
 class AtilceClassify(Base):
     #文章类别名称
@@ -36,5 +35,40 @@ class AticleAbout(Base):
     class Meta:
         #表名
         db_table="xiaoshuo_about"
+        # 包名
+        app_label = "app"
+
+
+#小说章节
+class AticleChapter(Base):
+    #章节名称
+    title = models.CharField(max_length=255)
+    #第几章
+    num = models.BigIntegerField(20,null=False)
+    #约束 aticleabout
+    parent_id = models.ForeignKey(AticleAbout)
+
+    class Meta:
+        #表名
+        db_table="xiaoshuo_chapter"
+        # 包名
+        app_label = "app"
+
+#小说内容
+class AticleArticle(Base):
+    #章节名称
+    title = models.CharField(max_length=255)
+    #内容
+    content = models.TextField()
+    #id
+    article_id = models.BigIntegerField()
+    # 约束 xiaoshuo_about id
+    parent_id = models.ForeignKey(AticleChapter)
+    #排序
+    sort = models.BigIntegerField(20,null=False)
+
+    class Meta:
+        #表名
+        db_table="xiaoshuo_article"
         # 包名
         app_label = "app"

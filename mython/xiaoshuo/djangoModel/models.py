@@ -47,6 +47,12 @@ class AticleChapter(Base,models.Model):
     num = models.BigIntegerField(20,null=False)
     #约束 aticleabout
     parent_id = models.ForeignKey(AticleAbout)
+    
+    class Meta:
+        #表名
+        db_table="xiaoshuo_chapter"
+        # 包名
+        app_label = "app"
 
 #小说内容
 class AticleArticle(Base,models.Model):
