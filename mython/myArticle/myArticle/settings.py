@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for crawler project
+# Scrapy settings for myArticle project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -8,26 +8,20 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-from scrapyArticle import setup_django_env
-setup_django_env()
+import pymysql
+pymysql.install_as_MySQLdb()
 
-BOT_NAME = 'crawler'
+BOT_NAME = 'myArticle'
 
-SPIDER_MODULES = ['crawler.spiders']
-NEWSPIDER_MODULE = 'crawler.spiders'
-
-DOWNLOAD_HANDLERS = {'s3': None}
-DOWNLOAD_DELAY = 0.5
-DOWNLOAD_TIMEOUT = 100
-
-CONCURRENT_REQUESTS_PER_IP=1
+SPIDER_MODULES = ['myArticle.spiders']
+NEWSPIDER_MODULE = 'myArticle.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'crawler (+http://www.yourdomain.com)'
+#USER_AGENT = 'myArticle (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -55,13 +49,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'crawler.middlewares.CrawlerSpiderMiddleware': 543,
+#    'myArticle.middlewares.MyarticleSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'crawler.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'myArticle.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -72,9 +66,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'crawler.pipelines.CrawlerPipeline': 300,
-}
+#ITEM_PIPELINES = {
+#    'myArticle.pipelines.MyarticlePipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

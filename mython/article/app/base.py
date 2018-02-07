@@ -7,7 +7,7 @@ class Base(models.Model):
     #更新时间
     update_time = models.DateTimeField(auto_now=True)
     #是否逻辑删除
-    del_tag = models.BooleanField(default=1)
+    del_tag = models.BooleanField(default=True)
     #修改人ID
     last_modify_user_id = models.BigIntegerField(null=True)
     #创建人id

@@ -29,17 +29,21 @@ class XiaoshuoSpider(scrapy.Spider):
             yield self.request(url)
 
     def parse(self, response):
-        print(1111111)
         for query in response.css("div.booklist li[class!=t]"):
             item = AticleAboutItem()
-            item['title'] = query.css("span.sm a b::text").extract()
-            item['author'] = query.css("span.zz::text").extract()
-            item['count'] = query.css("span.zs::text").extract()[0][:-1]
+            item['title'] = query.css("span.sm a b::text").extract_first()
+            item['author'] = query.css("span.zz::text").extract_first()
+            item['count'] = query.css("span.zs::text").extract_first()[:-1]
             item['status'] = 1
-            link = response.url[:23]+query.css("span.sm a::attr(href)").extract()[0]
+            item['parent_id'] = 1
+            link = response.url[:23]+query.css("span.sm a::attr(href)").extract_first()
+
+            print(item)
 
             #设置下一页
-            next_pages = response.css("div#pagelink a[class=next]::attr(href)").extract()
+            next_pages = response.css("div#pagelink a[class=next]::attr(href)").extract_first()
+
+            yield item
 
 
             # if next_pages:
