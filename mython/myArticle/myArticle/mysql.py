@@ -53,9 +53,11 @@ class Mysql :
         sql = "insert into xiaoshuo_about(parent_id,title,`dec`,`count`,author,status,sort) values(%s,%s,%s,%s,%s,%s,%s)"
         try:
             cursor.executemany(sql,list)
-            db.commit()
             list = []
         except:
-            print("失败了")
+            print("mysql失败了:"+''.join(list))
             db.rollback()
-        db.close()
+        finally:
+            cursor.close()
+            db.commit()
+            db.close()

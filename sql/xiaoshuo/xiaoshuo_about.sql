@@ -25,6 +25,7 @@ CREATE TABLE `xiaoshuo_about` (
   `parent_id` bigint(20) DEFAULT NULL COMMENT '约束分类id',
   `status` tinyint(2) DEFAULT '0' COMMENT '状态 0  1  0完结，1正在更新',
   `author` varchar(20) DEFAULT NULL COMMENT '作者',
+  `author_id` varchar(20) DEFAULT NULL COMMENT '作者id',
   `dec` varchar(500) DEFAULT NULL COMMENT '简介',
   `sort` bigint(20) DEFAULT '1' COMMENT '排序，展示列表时，小说优先级',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
