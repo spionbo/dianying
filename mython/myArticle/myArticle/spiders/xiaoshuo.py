@@ -36,7 +36,6 @@ class XiaoshuoSpider(scrapy.Spider):
 
     def parse(self, response):
         data = []
-        self.getAboutItem(response)
 
         # for i, query in enumerate(response.css("div.booklist li[class!=t]")):
         #     item = AticleAbout()
@@ -64,9 +63,7 @@ class XiaoshuoSpider(scrapy.Spider):
         #Mysql.xiaoshuoAbout(data)
 
     def getAboutItem(self,response):
-        booklist = list(enumerate(response.css("div.booklist li[class!=t]")))
-        length = len(booklist)
-        for i, query in booklist:
+        for i, query in enumerate(response.css("div.booklist li[class!=t]")):
             item = AticleAbout()
             item['parent_id'] = item['status'] = 1
             item['title'] = query.css("span.sm a b::text").extract_first()
@@ -78,26 +75,43 @@ class XiaoshuoSpider(scrapy.Spider):
 
             # 进文章列表页及文章相关说明
             if (link):
-                yield self.request(link, self.getList, item , length )
+                yield self.request(link, self.getAboutDec, item )
 
-    itemlist = []
     #进入章节
-    def getList(self,response):
+    aboutIndex = 0
+    def getAboutDec(self,response):
         #获取总共有多少条数据
-        count = response.meta['obj']
         item = response.meta['item']
         dec = response.css("div.intro::text").extract_first()
         item["dec"] = dec.strip()
-        length = len(self.itemlist)
-        val = (item['parent_id'], item['title'], item['dec'],
-               item['count'], item['author'], item['status'], length
-               )
-        self.itemlist.append(val)
-        #总共有30条数据，
-        if(count == (length+1)):
-            Mysql.xiaoshuoAbout(self.itemlist)
-            self.itemlist = []
-        return item
+        self.aboutIndex += 1
+        lists = [item['parent_id'],item['title'],item['dec'],item['count'],item['author'],item['status'],self.aboutIndex]
+
+        #文章相关信息入库
+        mysql = Mysql()
+        cursor = mysql.xiaoshuoAbout(lists)
+        #填充章节列表
+        parentId = cursor.lastrowid
+        for i, query in enumerate(response.css("div.mulu li")):
+            try:
+                link = response.url[:23] + query.css("a::attr(href)").extract_first()
+            except:
+                print("link错误")
+                
+            title = query.css("a::text").extract_first()
+            val = [parentId, title, (i + 1)]
+            mysql.xiaoshuoList(val)
+
+    #填充章节目录
+    # def getList(self,cursor,response):
+    #     #当前id
+    #     parentId = cursor.lastrowid
+    #     for i, query in enumerate(response.css("div.mulu li")):
+    #         link = response.url[:23] + query.css("a::attr(href)").extract_first()
+    #         title = query.css("a::text").extract_first()
+    #         val = [parentId,title,(i+1)]
+    #         mysql = Mysql()
+    #         mysql.xiaoshuoList(val)
 
     #进入说情页
     def getArticle(self,response):

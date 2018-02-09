@@ -14,14 +14,16 @@ config = {
     'charset': 'utf8',
     #'allowMultiQueries': 'true'
 }
+class Mysql(object) :
+    def connect(self):
+        # 打开数据库连接
+        db = MySQLdb.connect(**config)
+        return db
 
-# 打开数据库连接
-db = MySQLdb.connect(**config)
-# 使用cursor()方法获取操作游标
-cursor = db.cursor()
-class Mysql :
     #获取数据库版本号
     def getVersion(self):
+        db = self.connect()
+        cursor = db.cursor()
         # 使用execute方法执行SQL语句
         cursor.execute("SELECT VERSION()")
 
@@ -33,11 +35,13 @@ class Mysql :
         db.close()
 
     #插入数据
-    def inset(self , sql):
+    def insert(self , sql , lists):
+        db = self.connect()
+        cursor = db.cursor()
         try:
             # 执行sql语句
-
-            cursor.execute(sql)
+            cursor.execute(sql,lists)
+            #cursor.execute("insert into xiaoshuo_about(parent_id,title,`dec`,`count`,author,status,sort) values(%s,%s,%s,%s,%s,%s,%s)")
             # 提交到数据库执行
             db.commit()
         except:
@@ -45,19 +49,39 @@ class Mysql :
             db.rollback()
         # 关闭数据库连接
         db.close()
+        return cursor
 
     #小说信息
-    @staticmethod
-    def xiaoshuoAbout(list):
+    def xiaoshuoAbout(self,val):
+        db = self.connect()
+        cursor = db.cursor()
         # 打开数据库连接
         sql = "insert into xiaoshuo_about(parent_id,title,`dec`,`count`,author,status,sort) values(%s,%s,%s,%s,%s,%s,%s)"
         try:
-            cursor.executemany(sql,list)
-            list = []
+            cursor.execute(sql,val)
         except:
-            print("mysql失败了:"+''.join(list))
+            print("mysql失败了:"+''.join(val))
             db.rollback()
         finally:
-            cursor.close()
             db.commit()
             db.close()
+        if cursor is None:
+            print(1111)
+
+        return cursor
+
+    #插入章节要 例如 该书的第一章，第二章
+    def xiaoshuoList(self,val):
+        db = self.connect()
+        cursor = db.cursor()
+        # 打开数据库连接
+        sql = "insert into xiaoshuo_chapter(parent_id,title,`num`) values(%s,%s,%s)"
+        try:
+            cursor.execute(sql, val)
+        except:
+            print("mysql失败了:" + ''.join(val))
+            db.rollback()
+        finally:
+            db.commit()
+            db.close()
+        return cursor
