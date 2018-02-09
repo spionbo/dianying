@@ -17,6 +17,7 @@ class XiaoshuoSpider(scrapy.Spider):
         request = Request(url,
                     meta={'cookiejar': 1},
                     headers=Info.headers,
+                    dont_filter=False,
                     callback=callback)
         if(item):
             request.meta["item"] = item
