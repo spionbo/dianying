@@ -65,8 +65,6 @@ class Mysql(object) :
         finally:
             db.commit()
             db.close()
-        if cursor is None:
-            print(1111)
 
         return cursor
 
@@ -76,6 +74,22 @@ class Mysql(object) :
         cursor = db.cursor()
         # 打开数据库连接
         sql = "insert into xiaoshuo_chapter(parent_id,title,`num`) values(%s,%s,%s)"
+        try:
+            cursor.execute(sql, val)
+        except:
+            print("mysql失败了:" + val)
+            db.rollback()
+        finally:
+            db.commit()
+            db.close()
+        return cursor
+
+    #插入内容
+    def xiaoshuoArticle(self,val):
+        db = self.connect()
+        cursor = db.cursor()
+        # 打开数据库连接
+        sql = "insert into xiaoshuo_article(parent_id,content) values(%s,%s)"
         try:
             cursor.execute(sql, val)
         except:
