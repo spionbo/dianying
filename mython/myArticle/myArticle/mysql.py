@@ -10,7 +10,7 @@ config = {
     'port': 3306,
     'user': 'root',
     'passwd': '123456',
-    'db': 'test',
+    'db': 'tt528',
     'charset': 'utf8',
     #'allowMultiQueries': 'true'
 }

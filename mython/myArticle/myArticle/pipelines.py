@@ -9,3 +9,6 @@
 class MyarticlePipeline(object):
     def process_item(self, item, spider):
         return item
+
+class RedisPipeline():
+    pass

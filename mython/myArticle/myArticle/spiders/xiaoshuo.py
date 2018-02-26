@@ -7,6 +7,8 @@ from myArticle.items import AticleAbout
 
 class XiaoshuoSpider(scrapy.Spider):
     name = "xiaoshuo"
+    allowed_domains = ['www.88dushu.com']
+
     start_urls = [
         #玄幻魔法
         'https://www.88dushu.com/sort9/1/',
@@ -47,8 +49,8 @@ class XiaoshuoSpider(scrapy.Spider):
             link = response.url[:23] + query.css("span.sm a::attr(href)").extract_first()
 
             # 进文章列表页及文章相关说明
-            # if (link):
-            #     yield self.request(link, self.getAboutDec, item )
+            if (link):
+                yield self.request(link, self.getAboutDec, item )
 
         #设置下一页
         next_pages = response.css("div#pagelink a[class=next]::attr(href)").extract_first()

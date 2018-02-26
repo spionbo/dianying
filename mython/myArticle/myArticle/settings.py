@@ -16,6 +16,25 @@ BOT_NAME = 'myArticle'
 SPIDER_MODULES = ['myArticle.spiders']
 NEWSPIDER_MODULE = 'myArticle.spiders'
 
+# redis 设置
+# 指定使用scrapy-redis的Scheduler
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# # 在redis中保持scrapy-redis用到的各个队列，从而允许暂停和暂停后恢复
+# SCHEDULER_PERSIST = True
+# # 指定排序爬取地址时使用的队列，默认是按照优先级排序
+# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+# # 可选的先进先出排序
+# # SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderQueue'
+# # 可选的后进先出排序
+# # SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderStack'
+# # 只在使用SpiderQueue或者SpiderStack是有效的参数,，指定爬虫关闭的最大空闲时间
+# SCHEDULER_IDLE_BEFORE_CLOSE = 10
+#
+# # 指定redis的连接参数，REDIS_PASS是我自己加上的redis连接密码，需要简单修改scrapy-redis的源代码以支持使用密码连接redis
+# REDIS_HOST = '127.0.0.1'
+# REDIS_PORT = 6379
+# REDIS_PASS = 'password'
+# end redis
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'myArticle (+http://www.yourdomain.com)'
@@ -66,9 +85,15 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'myArticle.pipelines.MyarticlePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'myArticle.pipelines.MyarticlePipeline': 300,
+    #'scrapy_redis.pipelines.RedisPipeline': 400,
+}
+# 指定RedisPipeline用以在redis中保存爬取到的item
+# ITEM_PIPELINES = {
+#     'example.pipelines.ExamplePipeline': 300,
+#     'scrapy_redis.pipelines.RedisPipeline': 400
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
