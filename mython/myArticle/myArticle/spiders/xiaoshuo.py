@@ -41,7 +41,7 @@ class XiaoshuoSpider(scrapy.Spider):
         for i, query in enumerate(response.css("div.booklist li[class!=t]")):
             item = AticleAbout()
             item['parent_id'] = item['status'] = 1
-            item['title'] = query.css("span.sm a b::text").extract_first()
+            #item['title'] = query.css("span.sm a b::text").extract_first()
             item['author'] = query.css("span.zz::text").extract_first()
             item['count'] = query.css("span.zs::text").extract_first()[:-1]
             status = query.css("span.zt::text").extract_first()
@@ -63,6 +63,7 @@ class XiaoshuoSpider(scrapy.Spider):
         #获取总共有多少条数据
         item = response.meta['item']
         dec = response.css("div.intro::text").extract_first()
+        item['title'] = response.css("div.jieshao h1::text").extract_first()
         item["dec"] = dec.strip()
         self.aboutIndex += 1
         lists = [item['parent_id'],item['title'],item['dec'],item['count'],item['author'],item['status'],self.aboutIndex]

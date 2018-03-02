@@ -245,5 +245,14 @@ public class PermissionNames {
             public static final String DELETE = name+":delete";
         }
 
+        //小说回收站
+        public static class DELETE{
+            private static final String name = XIAOSHUO.name+"Delete";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
+
     }
 }

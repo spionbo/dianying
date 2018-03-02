@@ -181,16 +181,16 @@ public class PermissionBiz extends BaseBiz {
      */
     public String updatePermissionColumn(String userId, PlatformEnum platformEnum){
         Boolean isAdmin = getAdmin(userId);
-        List<PermissionBean> permissionBeans = PermissionNames.getAllcolumnPermissionBeans();
+        List<PermissionBean> permissionBeans; //= PermissionNames.getAllcolumnPermissionBeans();
 
         /**
          * 设置静态属性
          */
-        if(StringUtils.isEmpty(permissionBeans)){
+       // if(StringUtils.isEmpty(permissionBeans)){
             List<Permission> list = permissionSevice.queryPermissionAll();
             permissionBeans = setColumnToTree(list);
             PermissionNames.init( list , permissionBeans );
-        }
+        //}
         /**
          * end 设置静态属性
          */

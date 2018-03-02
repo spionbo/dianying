@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost_3306
 Source Server Version : 50631
 Source Host           : localhost:3306
-Source Database       : test
+Source Database       : tt528
 
 Target Server Type    : MYSQL
 Target Server Version : 50631
 File Encoding         : 65001
 
-Date: 2018-02-02 11:09:39
+Date: 2018-03-02 10:25:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,12 +32,12 @@ CREATE TABLE `xiaoshuo_about` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '修改人ID',
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
-  `count` bigint(20) DEFAULT NULL,
+  `count` bigint(20) DEFAULT NULL COMMENT '文字总数',
+  `del_tag` int(2) DEFAULT '1' COMMENT '逻辑删除',
+  `source` varchar(255) DEFAULT NULL COMMENT '来源',
+  `create_user_name` varchar(20) DEFAULT NULL COMMENT '创建人名称',
+  `last_modify_user_name` varchar(20) DEFAULT NULL COMMENT '最后修改人',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`),
   CONSTRAINT `parent_id` FOREIGN KEY (`parent_id`) REFERENCES `xiaoshuo_classify` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of xiaoshuo_about
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;

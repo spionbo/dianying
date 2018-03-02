@@ -3,6 +3,9 @@ package com.cn.cms.web.controller;
 import com.cn.cms.biz.XiaoshuoBiz;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.contants.PermissionNames;
+import com.cn.cms.po.Images;
+import com.cn.cms.po.XiaoshuoAbout;
+import com.cn.cms.po.XiaoshuoChapter;
 import com.cn.cms.po.XiaoshuoClassification;
 import com.cn.cms.utils.Page;
 import com.cn.cms.web.ann.CheckAuth;
@@ -90,5 +93,46 @@ public class XiaoshuoController extends BaseController{
         return ApiResponse.returnSuccess();
     }
 
+    /**
+     * 查看小说列表
+     * @param request
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.XIAOSHUO.LIST.READ)
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    public String getList(HttpServletRequest request,
+                          @RequestParam(value = "page",required = false) Integer page,
+                          @RequestParam(value="pageSize",required = false)Integer pageSize){
+        Page pageObj = new Page(page,pageSize);
+        List<XiaoshuoAbout> xiaoshuoAbouts = xiaoshuoBiz.getList(pageObj);
+        Map<String, Object> result = new HashMap<>();
+        result.put("page",pageObj);
+        result.put("list",xiaoshuoAbouts);
+        return ApiResponse.returnSuccess(result);
+    }
 
+    /**
+     * 获取章节列表
+     * @param request
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.XIAOSHUO.LIST.READ)
+    @RequestMapping(value = "/chapterList",method = RequestMethod.GET)
+    public String chapterList(HttpServletRequest request,
+                              @RequestParam(value = "id") long id,
+                              @RequestParam(value = "page",required = false) Integer page,
+                              @RequestParam(value="pageSize",required = false)Integer pageSize) {
+        Page pageObj = new Page(page,pageSize);
+        List<XiaoshuoChapter> xiaoshuoChapters = xiaoshuoBiz.getChapterList(pageObj , id);
+        Map<String, Object> result = new HashMap<>();
+        result.put("page",pageObj);
+        result.put("list",xiaoshuoChapters);
+        return ApiResponse.returnSuccess(result);
+    }
 }

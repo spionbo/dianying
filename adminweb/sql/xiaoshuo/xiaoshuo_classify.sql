@@ -27,6 +27,8 @@ CREATE TABLE `xiaoshuo_classify` (
   `del_tag` int(2) NOT NULL DEFAULT '1' COMMENT '逻辑删除',
   `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '最后修改人ID',
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人id',
+  `create_user_name` varchar(20) DEFAULT NULL COMMENT '创建人名称',
+  `last_modify_user_name` varchar(20) DEFAULT NULL COMMENT '最后修改人',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
