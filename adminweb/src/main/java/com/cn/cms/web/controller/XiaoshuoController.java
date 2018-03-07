@@ -11,7 +11,6 @@ import com.cn.cms.utils.Page;
 import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Administrator on 2018/1/10 0010.
@@ -35,6 +36,8 @@ public class XiaoshuoController extends BaseController{
 
     @Resource
     private XiaoshuoBiz xiaoshuoBiz;
+
+    private static Logger logger = LoggerFactory.getLogger(XiaoshuoController.class);
 
     /**
      * 新增分类
@@ -63,11 +66,16 @@ public class XiaoshuoController extends BaseController{
     public String classifyList(HttpServletRequest request,
                                @RequestParam(value = "page",required = false) Integer page,
                                @RequestParam(value="pageSize",required = false)Integer pageSize){
+
         Page pageObj = new Page(page,pageSize);
         List<XiaoshuoClassification> xiaoshuoClassifications = xiaoshuoBiz.queryClassifyList(pageObj);
         Map<String, Object> result = new HashMap<>();
         result.put("page",pageObj);
         result.put("list",xiaoshuoClassifications);
+        /*logger.info("[GET] /user/all getAllUsers");
+        logger.debug("This is log of level of debug");
+        logger.trace("log4j2 Demo");
+        logger.error("哎呀，出错啦~");*/
         return ApiResponse.returnSuccess(result);
     }
 

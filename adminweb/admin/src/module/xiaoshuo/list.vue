@@ -3,7 +3,7 @@
 <template>
 	<article>
 		<div class="search-box">
-			
+
 		</div>
 		<div class="form horizontal userlist">
 			<div class="title">分类列表</div>
