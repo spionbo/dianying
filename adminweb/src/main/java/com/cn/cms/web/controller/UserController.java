@@ -16,16 +16,15 @@ import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
