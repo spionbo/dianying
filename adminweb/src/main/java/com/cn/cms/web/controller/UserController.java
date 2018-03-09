@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Administrator on 2017/11/3 0003.
@@ -42,6 +44,8 @@ public class UserController extends BaseController{
 
     @Resource
     private UserPowerBiz userPowerBiz;
+
+    private static Logger log = LogManager.getLogger(UserController.class);
 
     /**
      * 登录
@@ -82,6 +86,10 @@ public class UserController extends BaseController{
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_LOGIN_FAIL.getType(),ErrorCodeEnum.ERROR_LOGIN_FAIL.getMessage());
         }
         UserBean userBean = userBiz.getUserBean(userID);
+        log.info("你好啊");
+        log.debug("我是debug");
+        log.error("错了");
+        log.trace("这是什么");
         return ApiResponse.returnSuccess(userBean);
     }
 

@@ -1,14 +1,14 @@
 package com.cn.cms.web.controller;
 
-import com.cn.cms.contants.PermissionNames;
+import com.cn.cms.middleware.RestSearchClient;
 import com.cn.cms.middleware.bo.XiaoshuoSearch;
-import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.apache.http.HttpHost;
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 
 /**
@@ -20,6 +20,8 @@ import java.text.SimpleDateFormat;
 @ResponseBody
 public class SearchController extends BaseController {
 
+   /* @Resource
+    private RestSearchClient restSearchClient;*/
 
     /**
      * 全文检索小说
@@ -54,6 +56,9 @@ public class SearchController extends BaseController {
             @RequestParam(value = "pageSize", required = false) Integer pageSize
             ){
 
+        /*RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(
+                new HttpHost("localhost", 9200, "http")));*/
+
         SimpleDateFormat sdf = new SimpleDateFormat();
         XiaoshuoSearch xiaoshuoSearch = new XiaoshuoSearch();
         xiaoshuoSearch.setTitle(title);
@@ -63,7 +68,7 @@ public class SearchController extends BaseController {
         xiaoshuoSearch.setLastModifyUserName(lastModifyUserName);
         xiaoshuoSearch.setId(id);
         xiaoshuoSearch.setDelTag(delTag);
-
+        //restSearchClient.searchXiaoshuo();
         return null;
     }
 }

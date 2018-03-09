@@ -37,7 +37,7 @@ public class XiaoshuoController extends BaseController{
     @Resource
     private XiaoshuoBiz xiaoshuoBiz;
 
-    private static Logger logger = LoggerFactory.getLogger(XiaoshuoController.class);
+    //private static Logger logger = LoggerFactory.getLogger(XiaoshuoController.class);
 
     /**
      * 新增分类
