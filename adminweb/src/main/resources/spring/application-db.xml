@@ -38,10 +38,10 @@
     </bean>
 
     <!-- scan for mappers and let them be autowired -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.cn.cms.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
-    </bean>
+    </bean>-->
 
     <!-- JDBC事务管理器 -->
     <bean id="transactionManager"

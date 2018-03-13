@@ -13,7 +13,7 @@
     </settings>
 
     <mappers>
-        <mapper resource = "com/cn/cms/dao/UserDao.xml" />
+        <!--<mapper resource = "com/cn/cms/dao/UserDao.xml" />-->
         <!--<mapper class="com.cn.cms.dao.UserDao" />-->
     </mappers>
 

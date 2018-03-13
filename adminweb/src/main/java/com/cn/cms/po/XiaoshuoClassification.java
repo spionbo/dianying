@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class XiaoshuoClassification extends Base{
+public class XiaoshuoClassification extends XiaoshuoBase{
 
     /*名称*/
     private String classifyName;

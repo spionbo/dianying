@@ -16,8 +16,11 @@ import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
+import org.apache.http.HttpHost;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -43,8 +46,6 @@ public class UserController extends BaseController{
 
     @Resource
     private UserPowerBiz userPowerBiz;
-
-    private static Logger log = LogManager.getLogger(UserController.class);
 
     /**
      * 登录
@@ -85,11 +86,14 @@ public class UserController extends BaseController{
             return ApiResponse.returnFail(ErrorCodeEnum.ERROR_LOGIN_FAIL.getType(),ErrorCodeEnum.ERROR_LOGIN_FAIL.getMessage());
         }
         UserBean userBean = userBiz.getUserBean(userID);
-        log.info("你好啊");
-        log.debug("我是debug");
-        log.error("错了");
-        log.trace("这是什么");
-        return ApiResponse.returnSuccess(userBean);
+
+        RestHighLevelClient client = new RestHighLevelClient(
+                RestClient.builder(
+                        new HttpHost("localhost", 9200, "http")
+                )
+        );
+
+         return ApiResponse.returnSuccess(userBean);
     }
 
     /**

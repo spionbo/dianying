@@ -11,11 +11,11 @@
     </Properties>
     <!-- appender们的定义 -->
     <Appenders>
-        <!-- 定义一个console类型定定义，如果需要，可以以这个为原型粘贴复制修改再定义适合自己的 -->
+        <!-- 输出到控制台 -->
         <Console name="consoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="${genericPattern}" />
         </Console>
-        <!-- 定义一个文件appender，如果需要，可以以这个为原型粘贴复制修改再定义适合自己的，该appender的详细解释会在教程接下来的部分给出 -->
+        <!-- 输出到文件，按天或者超过80MB分割 -->
         <RollingRandomAccessFile name="rollingRandomAccessFileAppender" fileName="${logDir}/app.log"
                                  filePattern="${logDir}/app-${genericFilePattern}.log.zip" append="true">
             <PatternLayout pattern="${genericPattern}" />
@@ -43,6 +43,10 @@
         <Logger name="com.foo.Bar.common" level="info" additivity="false">
             <AppenderRef ref="consoleAppender" />
             <AppenderRef ref="rollingRandomAccessFileAppender" />
+        </Logger>-->
+        <!-- 为sql语句配置特殊的Log级别，方便调试 -->
+        <!--<Logger name="com.cn.cms.dao" level="${log.sql.level}" additivity="false">
+            <AppenderRef ref="Console" />
         </Logger>-->
     </Loggers>
 </Configuration>

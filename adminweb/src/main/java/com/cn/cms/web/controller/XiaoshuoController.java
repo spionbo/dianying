@@ -22,8 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by Administrator on 2018/1/10 0010.
@@ -36,8 +34,6 @@ public class XiaoshuoController extends BaseController{
 
     @Resource
     private XiaoshuoBiz xiaoshuoBiz;
-
-    //private static Logger logger = LoggerFactory.getLogger(XiaoshuoController.class);
 
     /**
      * 新增分类
@@ -72,10 +68,7 @@ public class XiaoshuoController extends BaseController{
         Map<String, Object> result = new HashMap<>();
         result.put("page",pageObj);
         result.put("list",xiaoshuoClassifications);
-        /*logger.info("[GET] /user/all getAllUsers");
-        logger.debug("This is log of level of debug");
-        logger.trace("log4j2 Demo");
-        logger.error("哎呀，出错啦~");*/
+
         return ApiResponse.returnSuccess(result);
     }
 
@@ -90,7 +83,7 @@ public class XiaoshuoController extends BaseController{
     @CheckAuth(name=PermissionNames.XIAOSHUO.CLASS_LIST.UPDATE)
     @RequestMapping(value = "/updateClassify",method = RequestMethod.POST)
     public String updateClassify(HttpServletRequest request,
-                                 @RequestParam(value = "id") Integer id ,
+                                 @RequestParam(value = "id") Long id ,
                                  @RequestParam(value = "classifyName") String classifyName){
         String userID = getCurrentUserId(request);
         XiaoshuoClassification classify = new XiaoshuoClassification();

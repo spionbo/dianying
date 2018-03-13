@@ -12,22 +12,6 @@ import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
-import org.elasticsearch.action.delete.DeleteResponse;
-import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.SearchType;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.common.xcontent.XContentBuilder;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.rest.RestStatus;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
-import org.elasticsearch.search.sort.SortOrder;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -36,7 +20,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 /**
  * Created by ADMIN on 17/1/5.
@@ -47,7 +30,7 @@ public class ESearchClient {
 
     private CommonLog log = CommonLogFactory.getLog(this.getClass());
 
-    private TransportClient client;
+   // private TransportClient client;
 
     private List<String> clusterList;
 
@@ -133,11 +116,11 @@ public class ESearchClient {
      */
     public boolean delete(Long id, ESSearchTypeEnum esSearchTypeEnum){
         boolean bool = false;
-        DeleteResponse response = client.prepareDelete(esSearchTypeEnum.getIndex(),
+        /*DeleteResponse response = client.prepareDelete(esSearchTypeEnum.getIndex(),
                 esSearchTypeEnum.getName(), String.valueOf(id)).get();
         if(response.status() == RestStatus.OK) {
             bool = true;
-        }
+        }*/
         return bool;
     }
 
@@ -149,7 +132,7 @@ public class ESearchClient {
      */
     public boolean updateImages(Images images){
         boolean bool = false;
-        try {
+        /*try {
             XContentBuilder builder = jsonBuilder().startObject();
             builder = builder.field("id", images.getId());
             builder = builder.field("imageUrl", images.getImageUrl());
@@ -180,7 +163,7 @@ public class ESearchClient {
             bool = true;
         } catch (IOException e) {
             log.error(e);
-        }
+        }*/
         return bool;
     }
 
@@ -190,7 +173,7 @@ public class ESearchClient {
      * 初始化
      */
     public void open(){
-        try {
+        /*try {
             Settings settings = Settings.builder()
                     .put("client.transport.sniff", false)
                     .put("cluster.name", clusterName)
@@ -207,18 +190,18 @@ public class ESearchClient {
             }
         } catch (UnknownHostException e) {
             log.error(e);
-        }
+        }*/
     }
 
     /**
      * 销毁
      */
     public void close(){
-        if (this.client == null) {
+        /*if (this.client == null) {
             return;
         }
         this.client.close();
-        this.client = null;
+        this.client = null;*/
     }
 
     public static void main(String[] args){
