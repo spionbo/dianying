@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.cms.dao.PermissionDao">
+    <resultMap id="base" type="com.cn.cms.po.Base">
+        <id column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_tag" property="delTag" />
+        <result column="last_modify_user_id" property="lastModifyUserId" />
+        <result column="create_user_id" property="createUserId" />
+        <result column="last_modify_user_name" property="lastModifyUserName" />
+    </resultMap>
+
+    <resultMap type="com.cn.cms.po.Permission" id="permission" extends="base" >
+        <result column="name" property="name" />
+        <result column="parent_id" property="parentId" />
+        <result column="url" property="url" />
+        <result column="sort" property="sort" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <sql id="sqlName">permission</sql>
+
+    <sql id="all_permission">
+        id,create_time,
+        update_time,last_modify_user_id,create_user_id,last_modify_user_name,create_time_str,update_time_str,del_tag
+    </sql>
+    <sql id="all_permission_find">
+        name,parent_id,url,description,sort
+    </sql>
+    <sql id="delTag"> where del_tag = 1 </sql>
+
+    <sql id="sql_column">
+        id,name,parent_id,url,description,sort,
+        last_modify_user_id,create_user_id
+    </sql>
+
+    <select id="queryPermissionColumnCount" resultType="java.lang.Integer">
+        select count(1) from <include refid="sqlName"/> WHERE
+        <choose>
+            <when test="delTag != null">
+                del_tag = ${delTag}
+            </when>
+            <otherwise>
+                del_tag = 1
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="queryPermissionAll" resultMap="permission">
+        select <include refid="all_permission_find"/> , <include refid="all_permission" /> from <include refid="sqlName"/>
+    </select>
+
+    <select id="queryPermissionName" resultType="java.lang.Integer">
+        SELECT count(1) from <include refid="sqlName"/> WHERE name="${permissionName}"
+        <if test="parentId != null">
+            and parent_id = ${parentId}
+        </if>
+    </select>
+
+    <insert id="savePermissionColumn" useGeneratedKeys="true" keyProperty="p1.id">
+        insert into <include refid="sqlName"/> (<include refid="sql_column"/>) VALUE (null,
+          #{p1.name},#{p1.parentId},#{p1.url},#{p1.description},#{p1.sort},
+          #{p1.lastModifyUserId},#{p1.createUserId}
+        )
+    </insert>
+
+    <select id="queryPermissionColumn" resultMap="permission">
+        select <include refid="all_permission_find"/>,<include refid="all_permission"/> from <include refid="sqlName"/> WHERE id="${id}"
+    </select>
+
+    <update id="updatePermissionColumn">
+        update <include refid="sqlName"/>
+        <set>
+            <if test="p1.name != null">
+                name = #{p1.name},
+            </if>
+            <if test="p1.parentId != null">
+                parent_id = #{p1.parentId},
+            </if>
+            <if test="p1.parentId == null">
+                parent_id = null,
+            </if>
+            <if test="p1.url != null">
+                url = #{p1.url},
+            </if>
+            <if test="p1.description != null">
+                description = #{p1.description},
+            </if>
+            <if test="p1.sort != null">
+                sort = #{p1.sort},
+            </if>
+            last_modify_user_id = #{p1.lastModifyUserId}
+        </set>
+        WHERE id = ${p1.id}
+    </update>
+
+</mapper>

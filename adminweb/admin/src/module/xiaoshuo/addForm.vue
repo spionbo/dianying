@@ -2,11 +2,7 @@
 	<ul>
 		<li>
 			<div class="label">小说标题</div>
-			<searchInput
-					placeholder="请输入小说标题进行搜索"
-			>
 
-			</searchInput>
 		</li>
 		<li>
 			<div class="label">请选择分类</div>
@@ -79,12 +75,10 @@
 	import texta from "../components/texta.vue";
 	import editor from "../components/editor.vue";
 	import mSelect from "../components/selects";
-	import searchInput from "../components/xiaoshuo/searchInput";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {
 			formInput,
-			searchInput,
 			inputNumber,
 			texta,
 			editor,

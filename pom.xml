@@ -221,7 +221,6 @@
             <version>6.2.2</version>
         </dependency>
 
-        <!-- log4j2 -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -238,11 +237,57 @@
             <artifactId>log4j-core</artifactId>
             <version>2.6.2</version>
         </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
 
-        <!-- log4j2 -->
+        <!-- slf4j + log4j2 begin -->
+        <!--<dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.10</version>
+        </dependency>
+
+        <dependency> &lt;!&ndash; 桥接：告诉Slf4j使用Log4j2 &ndash;&gt;
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency> &lt;!&ndash; 桥接：告诉commons logging使用Log4j2 &ndash;&gt;
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jcl</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>-->
+        <!-- log4j end-->
 
     </dependencies>
+    <!-- 使用aliyun镜像 -->
+    <!--<repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>-->
 
 
     <build>

@@ -6,10 +6,7 @@ import lombok.Getter;
  * Created by Administrator on 2017/12/25 0025.
  */
 public enum ESSearchTypeEnum {
-    news("news", "cmsindex", 1),
-    topic("topic", "cmsindex", 2),
-    images("images", "cmsindex", 3),
-    video("video", "cmsindex", 4);
+    news("news", "cmsindex", 1);
 
     @Getter
     private int type;

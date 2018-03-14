@@ -20,8 +20,8 @@ import java.text.SimpleDateFormat;
 @ResponseBody
 public class SearchController extends BaseController {
 
-   /* @Resource
-    private RestSearchClient restSearchClient;*/
+    @Resource
+    private RestSearchClient restSearchClient;
 
     /**
      * 全文检索小说
@@ -68,7 +68,7 @@ public class SearchController extends BaseController {
         xiaoshuoSearch.setLastModifyUserName(lastModifyUserName);
         xiaoshuoSearch.setId(id);
         xiaoshuoSearch.setDelTag(delTag);
-        //restSearchClient.searchXiaoshuo();
+        restSearchClient.searchXiaoshuo();
         return null;
     }
 }

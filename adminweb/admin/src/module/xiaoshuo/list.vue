@@ -1,9 +1,10 @@
 <style>
+	@import './style/search.css';
 </style>
 <template>
 	<article>
 		<div class="search-box">
-
+			<search-title></search-title>
 		</div>
 		<div class="form horizontal userlist">
 			<div class="title">分类列表</div>
@@ -45,7 +46,11 @@
 	</article>
 </template>
 <script>
+	import searchTitle from './components/searchTitle.vue';
 	export default {
+		components:{
+			searchTitle
+		},
 		data() {
 			return {
 				list : [],

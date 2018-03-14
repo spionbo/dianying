@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.cms.dao.UserPowerDao">
+
+    <resultMap id="base" type="com.cn.cms.po.Base">
+        <id column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_tag" property="delTag" />
+        <result column="last_modify_user_id" property="lastModifyUserId" />
+        <result column="create_user_id" property="createUserId" />
+        <result column="last_modify_user_name" property="lastModifyUserName" />
+    </resultMap>
+
+    <resultMap id="userPower" type="com.cn.cms.po.UserPower" extends="base">
+        <result column="user_id" property="userId" />
+        <result column="permission_id" property="permissionId" />
+        <result column="power" property="power" />
+    </resultMap>
+
+    <sql id="sqlName">permission_user_power</sql>
+
+    <sql id="all_base">
+        id,last_modify_user_id,last_modify_user_name,
+        create_user_id,create_time,create_time_str,update_time,update_time_str
+    </sql>
+
+    <sql id="all_userPower">
+        user_id,permission_id,power
+    </sql>
+
+    <select id="getUserPowerCount" resultType="java.lang.Integer">
+        select count(1) FROM <include refid="sqlName"/>
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="getUserPower" resultMap="userPower">
+        SELECT <include refid="all_base"/>,<include refid="all_userPower"/> from <include refid="sqlName"/> WHERE user_id = "${userId}"
+    </select>
+
+    <insert id="createUserPower" parameterType="java.util.List">
+        insert into <include refid="sqlName"/>
+        (<include refid="all_userPower"/>,<include refid="all_base"/>) VALUE
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{userId},#{item.id},null,
+            null,#{item.lastModifyUserId},#{item.lastModifyUserName},
+            #{item.createUserId},
+            null,#{item.createTimeStr},
+            null,#{item.updateTimeStr}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteUserPower">
+        <if test="userId != false">
+            DELETE from <include refid="sqlName"/> WHERE user_id = ${userId}
+        </if>
+        <if test="userId == false">
+            DELETE c,u FROM permission c inner join <include refid="sqlName"/> u on c.id=u.permission_id where c.id = ${permission_id}
+        </if>
+    </delete>
+
+    <delete id="deletePermissionColumn">
+        DELETE c,u FROM permission c inner join permission_user_power u on c.id=u.position_id where c.id = ${columnId}
+    </delete>
+
+    <update id="updateUserPower" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update <include refid="sqlName"/>
+            <set>
+                power = "${item.power}"
+            </set>
+            WHERE permission_id = "${item.permissionId}" AND user_id = "${item.userId}"
+        </foreach>
+    </update>
+
+</mapper>
