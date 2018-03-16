@@ -63,5 +63,5 @@ public interface XiaoshuoService {
      * 获取所有章节
      * @return
      */
-    List<XiaoshuoChapter> getAllChapterList(long id);
+    List<XiaoshuoChapter> getAllChapterList(Page page);
 }

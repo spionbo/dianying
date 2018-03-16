@@ -55,13 +55,42 @@ public class RestTestController extends BaseController {
                 List<XiaoshuoAbout> list = xiaoshuoBiz.getList(page);
                 if(StringUtils.isNotEmpty(list)){
                     for (XiaoshuoAbout about : list){
-                        List<XiaoshuoChapter> chapters = xiaoshuoBiz.getAllChapterList(about.getId());
-                        if(chapters != null){
-                            XiaoshuoBean xiaoshuoBean = new XiaoshuoBean();
-                            xiaoshuoBean.setXiaoshuoAbout(about);
-                            xiaoshuoBean.setXiaoshuoChapters(chapters);
-                            restSearchClient.updateXiaoshuo(xiaoshuoBean);
-                        }
+                        restSearchClient.updateXiaoshuoAbout(about);
+                    }
+                    log.info("执行更新索引完毕.当前页：{" + page.getPage() + "},总条数：{" + page.getCount() + "}.");
+                } else {
+                    log.info("查询结果为空，结束本次更新.当前页：{" + page.getPage() + "},总条数：{" + page.getCount() + "}.");
+                    break;
+                }
+
+            }while (page.hasNextPage());
+            log.info("完成任务");
+        };
+        threadPoolTaskExecutor.execute(runnable);
+
+        return null;
+    }
+
+    @RequestMapping(value = "/updateXiaoshuoChapter",method = RequestMethod.POST)
+    public String updateXiaoshuoChapter(@RequestParam(value = "p",required = false) final Integer p){
+        Page page = new Page();
+        page.setPage(0);
+        page.setCount(p);
+        if (p >= PAGE_SIZE) {
+            page.setPageSize(PAGE_SIZE);
+        } else {
+            page.setPageSize(p);
+        }
+
+        Runnable runnable = ()->{
+            do{
+                page.setPage(page.getPage()+1);
+                log.info("开始执行查询操作..当前页：{" + page.getPage() + "},总条数：{" + page.getCount() + "}.");
+
+                List<XiaoshuoChapter> list = xiaoshuoBiz.getAllChapterList(page);
+                if(StringUtils.isNotEmpty(list)){
+                    for (XiaoshuoChapter chapter : list){
+                        restSearchClient.updateXiaoshuoChapter(chapter);
                     }
                     log.info("执行更新索引完毕.当前页：{" + page.getPage() + "},总条数：{" + page.getCount() + "}.");
                 } else {

@@ -6,7 +6,8 @@ import lombok.Getter;
  * Created by Administrator on 2017/12/25 0025.
  */
 public enum ESSearchTypeEnum {
-    xiaoshuo("xiaoshuo", "cmsxiaoshuoindex", 1);
+    xiaoshuoAbout("xiaoshuoabout", "cmsxiaoshuo_index", 1),
+    xiaoshuoChapter("xiaoshuo_list","cmsxiaoshuolist_index", 2);
 
     @Getter
     private int type;

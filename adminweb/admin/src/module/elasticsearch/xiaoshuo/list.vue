@@ -17,7 +17,11 @@
 			<div class="content">
 				<div class="editor">
 					<input type="number" class="text" maxlength="99999" v-model="val"/>
-					<div class="btn" @click="updateList">更新数据</div>
+					<div class="btn" @click="updateList">更新数据小说名称</div>
+				</div>
+				<div class="editor">
+					<input type="number" class="text" maxlength="99999" v-model="val1"/>
+					<div class="btn" @click="updateXiaoshuoChapter">更新数据小说章节</div>
 				</div>
 			</div>
 		</div>
@@ -29,7 +33,8 @@
 		},
 		data() {
 			return {
-				val : 5
+				val : 5,
+				val1 : 5
 			}
 		},
 		mounted() {
@@ -42,6 +47,17 @@
 					type : "POST",
 					data : {
 						p : this.val
+					}
+				}).then(data=>{
+					console.log(data);
+				})
+			},
+			updateXiaoshuoChapter(){
+				this.ajax({
+					url : "/test/updateXiaoshuoChapter",
+					type : "POST",
+					data : {
+						p : this.val1
 					}
 				}).then(data=>{
 					console.log(data);

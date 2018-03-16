@@ -29,5 +29,5 @@ public interface XiaoshuoDao {
 
     List<XiaoshuoChapter> getXiaoshuoChapterList(@Param("page") Page page , @Param("id") long id);
 
-    List<XiaoshuoChapter> getAllChapterList(@Param("id") long id);
+    List<XiaoshuoChapter> getAllChapterList(@Param("page") Page page);
 }

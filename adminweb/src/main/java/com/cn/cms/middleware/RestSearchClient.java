@@ -48,7 +48,7 @@ public class RestSearchClient {
      * 创建xioashuo索引
      */
     private void createXiaoshuoIndex(){
-        CreateIndexRequest request = new CreateIndexRequest(ESSearchTypeEnum.xiaoshuo.getName());
+        CreateIndexRequest request = new CreateIndexRequest(ESSearchTypeEnum.xiaoshuoAbout.getName());
         request.settings(Settings.builder()
             .put("index.number_of_shards",1)
             .put("index.number_of_replicas",0)
@@ -83,9 +83,11 @@ public class RestSearchClient {
 
     }
 
-    public void updateXiaoshuo(XiaoshuoBean xiaoshuoBean){
-        XiaoshuoAbout about = xiaoshuoBean.getXiaoshuoAbout();
-        List<XiaoshuoChapter> chapters = xiaoshuoBean.getXiaoshuoChapters();
+    /**
+     * 更新与创建xiaoshuo
+     * @param about
+     */
+    public void updateXiaoshuoAbout(XiaoshuoAbout about){
         try {
             XContentBuilder builder = JsonXContent.contentBuilder()
                     .startObject()
@@ -106,7 +108,37 @@ public class RestSearchClient {
                         .endObject()
                     .endObject();
 
-            IndexRequest indexRequest = new IndexRequest(ESSearchTypeEnum.xiaoshuo.getIndex(), ESSearchTypeEnum.xiaoshuo.getName(), String.valueOf(about.getId()))
+            IndexRequest indexRequest = new IndexRequest(ESSearchTypeEnum.xiaoshuoAbout.getIndex(), ESSearchTypeEnum.xiaoshuoAbout.getName(), String.valueOf(about.getId()))
+                    .source(builder);
+
+            IndexResponse indexResponse = client.index(indexRequest);
+        }catch (IOException e){
+            log.error(e);
+        }
+    }
+
+    /**
+     * 更新列表
+     * @param chapter
+     */
+    public void updateXiaoshuoChapter(XiaoshuoChapter chapter){
+        try {
+            XContentBuilder builder = JsonXContent.contentBuilder()
+                    .startObject()
+                        .startObject("xiaoshuoChapter")
+                            .field("id",chapter.getId())
+                            .field("parentId",chapter.getParentId())
+                            .field("title",chapter.getTitle())
+                            .field("num",chapter.getNum())
+                            .field("createTime",chapter.getCreateTime())
+                            .field("createTimeStr",chapter.getCreateTimeStr())
+                            .field("delTag",chapter.getDelTag())
+                            .field("updateTime",chapter.getUpdateTime())
+                            .field("updateTimeStr",chapter.getUpdateTimeStr())
+                        .endObject()
+                    .endObject();
+
+            IndexRequest indexRequest = new IndexRequest(ESSearchTypeEnum.xiaoshuoChapter.getIndex(), ESSearchTypeEnum.xiaoshuoChapter.getName(), String.valueOf(chapter.getId()))
                     .source(builder);
 
             IndexResponse indexResponse = client.index(indexRequest);
