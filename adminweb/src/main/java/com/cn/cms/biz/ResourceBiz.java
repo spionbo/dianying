@@ -59,13 +59,13 @@ public class ResourceBiz {
      * @param images
      */
     public void saveImages(Images images){
-        if(images.getId()!=null && images.getId()>0){
+        /*if(images.getId()!=null && images.getId()>0){
             resourceService.updateImages(images);
             sendIndex(images, ESSearchTypeEnum.images);
         }else{
             resourceService.saveImages(images);
             sendIndex(images, ESSearchTypeEnum.images);
-        }
+        }*/
     }
 
     /**
@@ -74,8 +74,8 @@ public class ResourceBiz {
      * @param id
      */
     public void delImages(String lastModifyUserId, Integer id){
-        resourceService.delImages(lastModifyUserId, id);
-        delIndex(id, ESSearchTypeEnum.images);
+        /*resourceService.delImages(lastModifyUserId, id);
+        delIndex(id, ESSearchTypeEnum.images);*/
     }
 
 

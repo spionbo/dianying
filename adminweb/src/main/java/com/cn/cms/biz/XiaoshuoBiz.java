@@ -74,4 +74,13 @@ public class XiaoshuoBiz extends BaseBiz {
         }
         return null;
     }
+
+    /**
+     * 获取所有章节
+     * @param id
+     * @return
+     */
+    public List<XiaoshuoChapter> getAllChapterList(Long id){
+        return xiaoshuoService.getAllChapterList(id);
+    }
 }

@@ -4,7 +4,7 @@
 			<div class="label">栏目名称<em>*</em></div>
 			<form-input
 				type="text"
-				dataType="chinese"
+				dataType="letterOrChinese"
 				name = "name"
 				:data = "obj.name"
 				:check="true"

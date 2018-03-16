@@ -97,10 +97,10 @@ public class ESearchClient {
 
         switch (esSearchTypeEnum){
 
-            case images:{
+            /*case images:{
                 bool = this.updateImages((Images) base);
                 break;
-            }
+            }*/
             default:{
                 break;
             }

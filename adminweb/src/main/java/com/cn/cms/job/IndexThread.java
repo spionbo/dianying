@@ -40,11 +40,11 @@ public class IndexThread extends BaseTask {
         boolean bool = false;
         switch (esSearchTypeEnum){
 
-            case images:{
+            /*case images:{
                 Base base = resourceBiz.doGetImagesManage(id);
                 bool = eSearchClient.update(base, esSearchTypeEnum);
                 break;
-            }
+            }*/
             default:{
                 break;
             }

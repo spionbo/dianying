@@ -79,5 +79,8 @@
     <select id="getXiaoshuoChapterList" resultMap="chapterList">
         SELECT <include refid="base"/>,<include refid="all_chapter_column"/> from <include refid="chapter"/><include refid="delTag" /> and parent_id = #{id} ORDER by num limit ${page.start},${page.pageSize};
     </select>
+    <select id="getAllChapterList" resultMap="chapterList">
+        SELECT <include refid="base"/>,<include refid="all_chapter_column"/> from <include refid="chapter"/><include refid="delTag" /> and parent_id = #{id} ORDER by num;
+    </select>
 
 </mapper>

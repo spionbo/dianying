@@ -12,6 +12,14 @@ Vue.mixin({
 		_letter( val ){ //字母不能小于6位
 			return new RegExp("^[a-z|A-Z]{5,20}$").test(val);
 		},
+		_chinese( val ){
+			let reg = /^[\u4e00-\u9fa5]{1,9}$/;
+			if(reg.test(val)) return true;
+			return false;
+		},
+		_letterOrChinese( val ){ //字母或中文
+			return new RegExp("^[a-z|A-Z|\u4e00-\u9fa5]{1,9}$").test(val);
+		},
 		_numAndLetter( val ){ //包含数字和字母且开头是字每
 			if(val.length<5||val.length>20) return false;
 			if(!(/^[a-z|A-Z]{1,}/.test(val))) return false;
@@ -24,11 +32,6 @@ Vue.mixin({
 		},
 		_password(val){
 			return this._numAndLetter(val);
-		},
-		_chinese( val ){
-			let reg = /^[\u4e00-\u9fa5]{1,9}$/;
-			if(reg.test(val)) return true;
-			return false;
 		},
 		_path(val){
 			let reg = /^([\/|\w|\-|\:])+/,

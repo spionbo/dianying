@@ -58,4 +58,10 @@ public interface XiaoshuoService {
      * @return
      */
     List<XiaoshuoChapter> getXiaoshuoChapterList(Page page , long id);
+
+    /**
+     * 获取所有章节
+     * @return
+     */
+    List<XiaoshuoChapter> getAllChapterList(long id);
 }

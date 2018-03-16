@@ -56,6 +56,10 @@
 			default : "请输入内容，不能大于5个中文字符",
 			error : "内容必需为中文，不能大于5个中文字符"
 		},
+		letterOrChinese : {
+			default : "请输入内容，内容为中文或字母",
+			error : "内容必需为中文或字母"
+		},
 		path : {
 			default : "例：\"/name\"",
 			error : "路经输入错误。"

@@ -64,4 +64,7 @@ public class XiaoshuoServiceImpl implements XiaoshuoService {
     public List<XiaoshuoChapter> getXiaoshuoChapterList(Page page , long id){
         return xiaoshuoDao.getXiaoshuoChapterList(page , id);
     }
+    public List<XiaoshuoChapter> getAllChapterList( long id){
+        return xiaoshuoDao.getAllChapterList(id);
+    }
 }
