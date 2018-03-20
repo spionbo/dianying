@@ -1,14 +1,19 @@
 package com.cn.cms.web.controller;
 
 import com.cn.cms.middleware.RestSearchClient;
-import com.cn.cms.middleware.bo.XiaoshuoSearch;
+import com.cn.cms.middleware.bo.XiaoshuoAboutSearch;
+import com.cn.cms.po.XiaoshuoAbout;
 import com.cn.cms.web.ann.CheckToken;
+import com.cn.cms.web.result.ApiResponse;
+import org.apache.http.Header;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.apache.http.HttpHost;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 
 /**
@@ -40,8 +45,8 @@ public class SearchController extends BaseController {
      * @return
      */
     @CheckToken
-    @RequestMapping(value = "/searchXiaoshuoChapter")
-    public String searchChapter(
+    @RequestMapping(value = "/searchXiaoshuoAbout")
+    public String searchXiaoshuoAbout(
             @RequestParam(value = "title",required = false) String title,
             @RequestParam(value = "author",required = false) String author,
             @RequestParam(value = "classifyId",required = false) Integer classifyId,
@@ -56,10 +61,56 @@ public class SearchController extends BaseController {
             @RequestParam(value = "pageSize", required = false) Integer pageSize
             ){
 
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        XiaoshuoAboutSearch searchAbout = new XiaoshuoAboutSearch();
+        searchAbout.setTitle(title);
+        searchAbout.setAuthor(author);
+        searchAbout.setClassifyId(classifyId);
+        searchAbout.setLastModifyUserId(setLastModifyUserId);
+        searchAbout.setLastModifyUserName(lastModifyUserName);
+        searchAbout.setId(id);
+        searchAbout.setDelTag(delTag);
+        XiaoshuoAbout about = restSearchClient.searchXiaoshuoAbout(searchAbout);
+        return ApiResponse.returnSuccess(about);
+    }
+
+    /**
+     * 全文检索小说
+     * @param title
+     * @param author
+     * @param classifyId
+     * @param startTime
+     * @param endTime
+     * @param status
+     * @param id
+     * @param setLastModifyUserId
+     * @param lastModifyUserName
+     * @param delTag
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @CheckToken
+    @RequestMapping(value = "/searchXiaoshuoChapter")
+    public String searchXiaoshuoChapter(
+            @RequestParam(value = "title",required = false) String title,
+            @RequestParam(value = "author",required = false) String author,
+            @RequestParam(value = "classifyId",required = false) Integer classifyId,
+            @RequestParam(value = "startTime", required = false) String startTime,
+            @RequestParam(value = "endTime", required = false) String endTime,
+            @RequestParam(value = "status", required = false) Boolean status,
+            @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "setLastModifyUserId", required = false) String setLastModifyUserId,
+            @RequestParam(value = "lastModifyUserName", required = false) String lastModifyUserName,
+            @RequestParam(value = "delTag", required = false, defaultValue = "1") Integer delTag,
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "pageSize", required = false) Integer pageSize
+    ){
+
         /*RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(
                 new HttpHost("localhost", 9200, "http")));*/
 
-        SimpleDateFormat sdf = new SimpleDateFormat();
+        /*SimpleDateFormat sdf = new SimpleDateFormat();
         XiaoshuoSearch xiaoshuoSearch = new XiaoshuoSearch();
         xiaoshuoSearch.setTitle(title);
         xiaoshuoSearch.setAuthor(author);
@@ -68,7 +119,7 @@ public class SearchController extends BaseController {
         xiaoshuoSearch.setLastModifyUserName(lastModifyUserName);
         xiaoshuoSearch.setId(id);
         xiaoshuoSearch.setDelTag(delTag);
-        restSearchClient.searchXiaoshuo();
+        restSearchClient.searchXiaoshuo();*/
         return null;
     }
 }

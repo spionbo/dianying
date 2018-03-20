@@ -24,7 +24,7 @@ public class XiaoshuoAbout extends XiaoshuoBase {
     /**
      *状态 0完结，1正在更新 2断更
      */
-    private byte status;
+    private Integer status;
 
     /**
      * 作者

@@ -6,9 +6,9 @@ import lombok.Setter;
 /**
  * Created by Administrator on 2018/3/2 0002.
  */
-@Getter
 @Setter
-public class XiaoshuoSearch {
+@Getter
+public class XiaoshuoAboutSearch {
     /**
      * 标题
      */

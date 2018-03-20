@@ -41,11 +41,12 @@ public class RestTestController extends BaseController {
         Page page = new Page();
         page.setPage(0);
         page.setCount(p);
-        if (p >= PAGE_SIZE) {
+        /*if (p >= PAGE_SIZE) {
             page.setPageSize(PAGE_SIZE);
         } else {
             page.setPageSize(p);
-        }
+        }*/
+        page.setPageSize(p);
 
         Runnable runnable = ()->{
             do{
@@ -76,12 +77,12 @@ public class RestTestController extends BaseController {
         Page page = new Page();
         page.setPage(0);
         page.setCount(p);
-        if (p >= PAGE_SIZE) {
+        /*if (p >= PAGE_SIZE) {
             page.setPageSize(PAGE_SIZE);
         } else {
             page.setPageSize(p);
-        }
-
+        }*/
+        page.setPageSize(p);
         Runnable runnable = ()->{
             do{
                 page.setPage(page.getPage()+1);

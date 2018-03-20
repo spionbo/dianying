@@ -14,7 +14,7 @@
 	<div class="txt">
 		<input
 			type="text"
-			placeholder="请输入标题"
+			placeholder="请输入小说标题"
 			v-model="value"
 			maxlength="50"
 		>
@@ -47,7 +47,7 @@
 				if(!this.isSearch){
 					//this.isSearch = true;
 					this.ajax({
-						url:'/search/searchXiaoshuoChapter',
+						url:'/search/searchXiaoshuoAbout',
 						type : "get"
 					}).then(data=>{
 						self.isSearch = false;

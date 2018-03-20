@@ -3,6 +3,7 @@ import com.cn.cms.bo.XiaoshuoBean;
 import com.cn.cms.enums.ESSearchTypeEnum;
 import com.cn.cms.logfactory.CommonLog;
 import com.cn.cms.logfactory.CommonLogFactory;
+import com.cn.cms.middleware.bo.XiaoshuoAboutSearch;
 import com.cn.cms.po.XiaoshuoAbout;
 import com.cn.cms.po.XiaoshuoChapter;
 import com.cn.cms.utils.StringUtils;
@@ -11,6 +12,7 @@ import lombok.Setter;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.entity.ContentType;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.nio.entity.NStringEntity;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.admin.indices.alias.Alias;
@@ -18,18 +20,29 @@ import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.text.Text;
+import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.common.xcontent.json.JsonXContent;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import java.io.IOException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import org.apache.http.Header;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2018/3/8 0008.
@@ -40,8 +53,36 @@ public class RestSearchClient {
 
     private RestHighLevelClient client = null;
 
+    private Calendar calendar = Calendar.getInstance();
+
     public void searchXiaoshuo(){
 
+    }
+
+    /**
+     * 转换类型
+     * @param obj
+     * @return
+     */
+    public Long convertLong(Object obj){
+        if(obj!=null){
+            return Long.parseLong(obj.toString());
+        }
+        return 0L;
+    }
+    /**
+     * 转换类型
+     * @param obj
+     * @return
+     */
+    public Date convertLongAndDate(Object obj){
+        SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss.SSS Z");
+        if(obj!=null){
+            String str = obj.toString().replace("Z", " UTC");
+            Date date =  formatter.parse(str,new ParsePosition(0));
+            return date;
+        }
+        return null;
     }
 
     /**
@@ -91,21 +132,19 @@ public class RestSearchClient {
         try {
             XContentBuilder builder = JsonXContent.contentBuilder()
                     .startObject()
-                        .startObject("xiaoshuoAbout")
-                            .field("id",about.getId())
-                            .field("parentId",about.getParentId())
-                            .field("author",about.getAuthor())
-                            .field("count",about.getCount())
-                            .field("createTime",about.getCreateTime())
-                            .field("createTimeStr",about.getCreateTimeStr())
-                            .field("dec",about.getDec())
-                            .field("delTag",about.getDelTag())
-                            .field("sort",about.getSort())
-                            .field("status",about.getStatus())
-                            .field("title",about.getTitle())
-                            .field("updateTime",about.getUpdateTime())
-                            .field("updateTimeStr",about.getUpdateTimeStr())
-                        .endObject()
+                        .field("id",about.getId())
+                        .field("parentId",about.getParentId())
+                        .field("author",about.getAuthor())
+                        .field("count",about.getCount())
+                        .field("createTime",about.getCreateTime())
+                        .field("createTimeStr",about.getCreateTimeStr())
+                        .field("dec",about.getDec())
+                        .field("delTag",about.getDelTag())
+                        .field("sort",about.getSort())
+                        .field("status",about.getStatus())
+                        .field("title",about.getTitle())
+                        .field("updateTime",about.getUpdateTime())
+                        .field("updateTimeStr",about.getUpdateTimeStr())
                     .endObject();
 
             IndexRequest indexRequest = new IndexRequest(ESSearchTypeEnum.xiaoshuoAbout.getIndex(), ESSearchTypeEnum.xiaoshuoAbout.getName(), String.valueOf(about.getId()))
@@ -125,17 +164,15 @@ public class RestSearchClient {
         try {
             XContentBuilder builder = JsonXContent.contentBuilder()
                     .startObject()
-                        .startObject("xiaoshuoChapter")
-                            .field("id",chapter.getId())
-                            .field("parentId",chapter.getParentId())
-                            .field("title",chapter.getTitle())
-                            .field("num",chapter.getNum())
-                            .field("createTime",chapter.getCreateTime())
-                            .field("createTimeStr",chapter.getCreateTimeStr())
-                            .field("delTag",chapter.getDelTag())
-                            .field("updateTime",chapter.getUpdateTime())
-                            .field("updateTimeStr",chapter.getUpdateTimeStr())
-                        .endObject()
+                        .field("id",chapter.getId())
+                        .field("parentId",chapter.getParentId())
+                        .field("title",chapter.getTitle())
+                        .field("num",chapter.getNum())
+                        .field("createTime",chapter.getCreateTime())
+                        .field("createTimeStr",chapter.getCreateTimeStr())
+                        .field("delTag",chapter.getDelTag())
+                        .field("updateTime",chapter.getUpdateTime())
+                        .field("updateTimeStr",chapter.getUpdateTimeStr())
                     .endObject();
 
             IndexRequest indexRequest = new IndexRequest(ESSearchTypeEnum.xiaoshuoChapter.getIndex(), ESSearchTypeEnum.xiaoshuoChapter.getName(), String.valueOf(chapter.getId()))
@@ -145,6 +182,55 @@ public class RestSearchClient {
         }catch (IOException e){
             log.error(e);
         }
+    }
+
+    /**
+     * 搜索about
+     * @param about
+     * @return
+     */
+
+    public XiaoshuoAbout searchXiaoshuoAbout(XiaoshuoAboutSearch about){
+        SearchRequest searchRequest = new SearchRequest(ESSearchTypeEnum.xiaoshuoAbout.getIndex());
+        searchRequest.types(ESSearchTypeEnum.xiaoshuoAbout.getName());
+
+        /*SearchRequest searchRequest = new SearchRequest();*/
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+        sourceBuilder.query(QueryBuilders.termQuery("sort", "16"));
+        sourceBuilder.from(0);
+        sourceBuilder.size(10);
+        /*sourceBuilder.timeout(new TimeValue(60,TimeUnit.SECONDS));*/
+        searchRequest.source(sourceBuilder);
+
+        try{
+            SearchResponse searchResponse = this.client.search(searchRequest);
+            SearchHits hits = searchResponse.getHits();
+            List<XiaoshuoAbout> list = new ArrayList<>();
+            for(SearchHit hit : hits){
+                XiaoshuoAbout about1 = new XiaoshuoAbout();
+                about1.setId(Long.parseLong(hit.getId()));
+                Map<String, Object> sourceAsMap = hit.getSourceAsMap();
+                about1.setParentId(convertLong(sourceAsMap.get("parentId")));
+                about1.setTitle((String) sourceAsMap.get("title"));
+                about1.setAuthor((String) sourceAsMap.get("author"));
+                about1.setCount(convertLong(sourceAsMap.get("count")));
+                about1.setDelTag((Integer) sourceAsMap.get("delTag"));
+                about1.setUpdateTime(convertLongAndDate(sourceAsMap.get("updateTime")));
+                about1.setStatus((Integer) sourceAsMap.get("status"));
+                about1.setDec((String) sourceAsMap.get("dec"));
+
+                /*//转字符串
+                String sourceAsString = hit.getSourceAsString();*/
+
+                list.add(about1);
+            }
+            return null;
+        }catch (IOException e){
+            log.error(e);
+        }
+        /*SearchResponse searchResponse = this.client.search(searchRequest);
+        SearchHits hits = searchResponse.getHits();*/
+        return null;
     }
 
     /**
