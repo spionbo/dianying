@@ -3,6 +3,7 @@ package com.cn.cms.web.controller;
 import com.cn.cms.middleware.RestSearchClient;
 import com.cn.cms.middleware.bo.XiaoshuoAboutSearch;
 import com.cn.cms.po.XiaoshuoAbout;
+import com.cn.cms.utils.Page;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
 import org.apache.http.Header;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * 搜索相关  搜索还没有做限制
@@ -70,7 +72,8 @@ public class SearchController extends BaseController {
         searchAbout.setLastModifyUserName(lastModifyUserName);
         searchAbout.setId(id);
         searchAbout.setDelTag(delTag);
-        XiaoshuoAbout about = restSearchClient.searchXiaoshuoAbout(searchAbout);
+        Page pageObj = new Page(page,pageSize);
+        List<XiaoshuoAbout> about = restSearchClient.searchXiaoshuoAbout(searchAbout,pageObj);
         return ApiResponse.returnSuccess(about);
     }
 

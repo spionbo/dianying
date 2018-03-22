@@ -6,7 +6,9 @@ import com.cn.cms.logfactory.CommonLogFactory;
 import com.cn.cms.middleware.bo.XiaoshuoAboutSearch;
 import com.cn.cms.po.XiaoshuoAbout;
 import com.cn.cms.po.XiaoshuoChapter;
+import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
+import freemarker.template.utility.StringUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.http.HttpEntity;
@@ -190,15 +192,16 @@ public class RestSearchClient {
      * @return
      */
 
-    public XiaoshuoAbout searchXiaoshuoAbout(XiaoshuoAboutSearch about){
+    public List<XiaoshuoAbout> searchXiaoshuoAbout(XiaoshuoAboutSearch about , Page page){
         SearchRequest searchRequest = new SearchRequest(ESSearchTypeEnum.xiaoshuoAbout.getIndex());
         searchRequest.types(ESSearchTypeEnum.xiaoshuoAbout.getName());
 
-        /*SearchRequest searchRequest = new SearchRequest();*/
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        sourceBuilder.query(QueryBuilders.termQuery("sort", "16"));
-        sourceBuilder.from(0);
-        sourceBuilder.size(10);
+        if(StringUtils.isNotEmpty(about.getTitle())){
+            sourceBuilder.query(QueryBuilders.termQuery("title", about.getTitle()));
+        }
+        sourceBuilder.from(page.getStart());
+        sourceBuilder.size(page.getPageSize());
         /*sourceBuilder.timeout(new TimeValue(60,TimeUnit.SECONDS));*/
         searchRequest.source(sourceBuilder);
 
@@ -224,12 +227,10 @@ public class RestSearchClient {
 
                 list.add(about1);
             }
-            return null;
+            return list;
         }catch (IOException e){
             log.error(e);
         }
-        /*SearchResponse searchResponse = this.client.search(searchRequest);
-        SearchHits hits = searchResponse.getHits();*/
         return null;
     }
 

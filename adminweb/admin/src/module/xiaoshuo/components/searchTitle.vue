@@ -39,7 +39,7 @@
 			}
 		},
 		mounted() {
-
+			
 		},
 		methods:{
 			search( val ){
@@ -48,6 +48,9 @@
 					//this.isSearch = true;
 					this.ajax({
 						url:'/search/searchXiaoshuoAbout',
+						data : {
+							title : val
+						},
 						type : "get"
 					}).then(data=>{
 						self.isSearch = false;
