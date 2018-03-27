@@ -51,11 +51,11 @@ public class SearchController extends BaseController {
     public String searchXiaoshuoAbout(
             @RequestParam(value = "title",required = false) String title,
             @RequestParam(value = "author",required = false) String author,
-            @RequestParam(value = "classifyId",required = false) Integer classifyId,
             @RequestParam(value = "startTime", required = false) String startTime,
             @RequestParam(value = "endTime", required = false) String endTime,
             @RequestParam(value = "status", required = false) Boolean status,
             @RequestParam(value = "id", required = false) Long id,
+            @RequestParam(value = "classifyId", required = false) Integer classifyId,
             @RequestParam(value = "setLastModifyUserId", required = false) String setLastModifyUserId,
             @RequestParam(value = "lastModifyUserName", required = false) String lastModifyUserName,
             @RequestParam(value = "delTag", required = false, defaultValue = "1") Integer delTag,

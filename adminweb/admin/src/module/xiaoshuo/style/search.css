@@ -1,4 +1,21 @@
 .search-box{
 	margin-bottom:10px;
 	overflow:hidden;
+	line-height:35px;
+
+	.text,.date,.select{
+		height:18px;
+		line-height:18px;
+		margin-right:5px;
+		padding:5px;
+		border:1px solid #ccc;
+		border-radius:4px;
+	}
+	.select{
+		height:31px;
+		line-height:31px;
+	}
+	.btn{
+		border-radius:5px;
+	}
 }
