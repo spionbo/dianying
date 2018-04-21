@@ -3,3 +3,10 @@ target/
 out/
 classes/
 .DS_Store
+*.iml
+.settings
+*.classpath
+*.project
+**/*.log
+**/classes/
+*.jar
