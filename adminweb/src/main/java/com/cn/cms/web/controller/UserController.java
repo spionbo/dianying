@@ -5,7 +5,6 @@ import com.cn.cms.biz.UserPowerBiz;
 import com.cn.cms.biz.UserBiz;
 import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.PermissionNames;
-import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.exception.BizException;
 import com.cn.cms.po.User;
@@ -17,8 +16,6 @@ import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
 import org.apache.http.HttpHost;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 用户登录等操作
  * Created by Administrator on 2017/11/3 0003.
  */
 

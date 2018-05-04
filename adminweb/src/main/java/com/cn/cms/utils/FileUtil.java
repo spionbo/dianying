@@ -5,7 +5,6 @@ import com.cn.cms.enums.WatermarkEnum;
 import com.cn.cms.exception.BizException;
 import com.cn.cms.logfactory.CommonLog;
 import com.cn.cms.logfactory.CommonLogFactory;
-import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,13 +26,13 @@ public class FileUtil {
      * @return
      */
     public static byte[] base64Upload(String baseCode){
-        BASE64Decoder base64Decoder = new BASE64Decoder();
+        //BASE64Decoder base64Decoder = new BASE64Decoder();
+        Base64.Decoder encoder = Base64.getDecoder();
         byte[] bytes = null;
-        byte[] bytes1 = null;
         try {
-            bytes = base64Decoder.decodeBuffer(baseCode);
-            //bytes1 = Base64.getDecoder().decode(baseCode);
-        } catch (IOException e) {
+            //bytes = base64Decoder.decodeBuffer(baseCode);
+            bytes = encoder.decode(baseCode);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return bytes;

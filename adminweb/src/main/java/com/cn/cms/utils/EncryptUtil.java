@@ -4,10 +4,6 @@ import com.cn.cms.contants.StaticContants;
 import com.cn.cms.logfactory.CommonLog;
 import com.cn.cms.logfactory.CommonLogFactory;
 import org.apache.commons.codec.digest.DigestUtils;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-/*import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;*/
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
@@ -97,13 +93,23 @@ public class EncryptUtil {
      * @return
      */
     public static String md5Base64(String key){
-        try {
-            BASE64Encoder base64en = new BASE64Encoder();
-            //加密后的字符串
-            return base64en.encode(md5(key).getBytes(StaticContants.UTF8));
-        } catch (UnsupportedEncodingException e) {
+        byte[] bytes = hexStrToByteArray(key);
+        try{
+            Base64.Encoder encoder = Base64.getEncoder();
+            String encode = encoder.encodeToString(bytes);
+            return encode;
+        }catch(Exception e){
             log.error("密码生成异常!",e);
         }
+        /*try {
+            //BASE64Encoder base64en = new BASE64Encoder();
+            Base64.Encoder base64en = Base64.getEncoder();
+            //加密后的字符串
+            //return base64en.encode(md5(key).getBytes(StaticContants.UTF8));
+            //return base64en.encode(md5(key));
+        } catch (UnsupportedEncodingException e) {
+            log.error("密码生成异常!",e);
+        }*/
         return "";
 
     }
@@ -143,18 +149,18 @@ public class EncryptUtil {
     }
 
     public static String base64(byte[] bytes){
-        BASE64Encoder base64Encoder = new BASE64Encoder();
-        return base64Encoder.encodeBuffer(bytes).replaceAll("\\r|\\n", "");
+        //BASE64Encoder base64Encoder = new BASE64Encoder();
+        //return base64Encoder.encodeBuffer(bytes).replaceAll("\\r|\\n", "");
+        Base64.Encoder base64Encoder = Base64.getEncoder();
+        return base64Encoder.encodeToString(bytes).replaceAll("\\r|\\n", "");
     }
 
-    public static byte[] decode64(String string) throws IOException {
-        BASE64Decoder base64Encoder = new BASE64Decoder();
-        return base64Encoder.decodeBuffer(string);
+    public static byte[] decode64(String string) throws Exception {
+        Base64.Decoder base64Encoder = Base64.getDecoder();
+        return base64Encoder.decode(string);
+        /*BASE64Decoder base64Encoder = new BASE64Decoder();
+        return base64Encoder.decodeBuffer(string);*/
     }
-
-
-
-
 
 
     /**
@@ -248,9 +254,24 @@ public class EncryptUtil {
     }
 
 
+    /**
+     * String转byte
+     * @param str
+     * @return
+     */
+    public static byte[] strToByte(String str){
+        if(str == null){
+            return null;
+        }
+        byte[] bytes = str.getBytes();
+        return bytes;
+    }
 
-
-
+    /**
+     * bytes 16进制转换
+     * @param src
+     * @return
+     */
     public static String bytesToHexString(byte[] src){
         StringBuilder stringBuilder = new StringBuilder("");
         if (src == null || src.length <= 0) {
@@ -266,6 +287,27 @@ public class EncryptUtil {
         }
         return stringBuilder.toString();
     }
+
+    /**
+     * string 转16进制byte[]
+     * @param str
+     * @return
+     */
+    public static byte[] hexStrToByteArray(String str){
+        if (str == null) {
+            return null;
+        }
+        if (str.length() == 0) {
+            return new byte[0];
+        }
+        byte[] byteArray = new byte[str.length() / 2];
+        for (int i = 0; i < byteArray.length; i++){
+            String subStr = str.substring(2 * i, 2 * i + 2);
+            byteArray[i] = ((byte)Integer.parseInt(subStr, 16));
+        }
+        return byteArray;
+    }
+
     /**
      * Convert hex string to byte[]
      * @param hexString the hex string
