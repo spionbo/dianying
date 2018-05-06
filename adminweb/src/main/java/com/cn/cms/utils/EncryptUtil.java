@@ -93,8 +93,8 @@ public class EncryptUtil {
      * @return
      */
     public static String md5Base64(String key){
-        byte[] bytes = hexStrToByteArray(key);
         try{
+            byte[] bytes = md5(key).getBytes("utf-8");
             Base64.Encoder encoder = Base64.getEncoder();
             String encode = encoder.encodeToString(bytes);
             return encode;
@@ -254,21 +254,9 @@ public class EncryptUtil {
     }
 
 
-    /**
-     * String转byte
-     * @param str
-     * @return
-     */
-    public static byte[] strToByte(String str){
-        if(str == null){
-            return null;
-        }
-        byte[] bytes = str.getBytes();
-        return bytes;
-    }
 
     /**
-     * bytes 16进制转换
+     * bytes 16进制转换 String
      * @param src
      * @return
      */
@@ -309,6 +297,7 @@ public class EncryptUtil {
     }
 
     /**
+     * 把16进制字符串转换成字节数组
      * Convert hex string to byte[]
      * @param hexString the hex string
      * @return byte[]

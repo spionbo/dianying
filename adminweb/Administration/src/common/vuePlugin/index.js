@@ -25,7 +25,7 @@ MyPlugin.install = function (Vue, options) {
 	Object.assign(Vue.prototype, {
 		ajax(obj) {
 			let self = this;
-			obj.type = obj.type || 'POST';
+			obj.type = obj.type || 'GET';
 			obj.data = obj.data || {};
 			if (obj.load) self.$pops.loadding();
 			return new Promise((resolve, reject) => {

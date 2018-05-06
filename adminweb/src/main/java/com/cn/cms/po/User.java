@@ -1,6 +1,5 @@
 package com.cn.cms.po;
 
-import com.cn.cms.utils.Hardware;
 import lombok.Getter;
 import lombok.Setter;
 
