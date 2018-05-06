@@ -6,6 +6,7 @@
 			<input
 					v-if="type=='text'"
 					type="text"
+                    :style="{width:width+'px'}"
 					:placeholder="placeholder"
 					v-model="value"
 					:maxlength="maxlength"
@@ -16,6 +17,7 @@
 					:placeholder="placeholder"
 					v-model="value"
 					:maxlength="maxlength"
+                    :style="{width:width+'px'}"
 			/>
 		</div>
 		<div class="edit" v-else>
@@ -26,6 +28,7 @@
 					v-model="value"
 					:maxlength="maxlength"
 					disabled="disabled"
+                    :style="{width:width+'px'}"
 			/>
 		</div>
 		<div class="else">
@@ -86,15 +89,18 @@
 			},
 			name : String,
 			disabled : Boolean, //是否可以操作
-			check : Boolean
+			check : Boolean,
+            width : {
+                type : Number,
+                default : 200
+            }
 		},
 		data() {
 			return {
 				info : null ,
 				text : "",
 				value : "",
-
-				error : false
+				error : false,
 			}
 		},
 		watch : {

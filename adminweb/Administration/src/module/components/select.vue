@@ -1,12 +1,22 @@
 <template>
-<select v-model="selectObj" v-if="list">
-	<option value="-1" selected>{{placeholder}}</option>
-	<option v-for="item in list" :key="item.item.id"
-	        v-bind:value="item"
-	>
-		{{item.item.name}}
-	</option>
-</select>
+    <div v-if="list">
+        <select v-model="selectObj" v-if="!disabled">
+            <option value="-1" selected>{{placeholder}}</option>
+            <option v-for="item in list" :key="item.item.id"
+                    v-bind:value="item"
+            >
+                {{item.item.name}}
+            </option>
+        </select>
+        <select v-model="selectObj" v-else disabled="disabled">
+            <option value="-1" selected>{{placeholder}}</option>
+            <option v-for="item in list" :key="item.item.id"
+                    v-bind:value="item"
+            >
+                {{item.item.name}}
+            </option>
+        </select>
+    </div>
 </template>
 <script>
 	export default {
@@ -15,6 +25,7 @@
 			index : String, //第几个select
 			select : Number, //显示哪个 option
 			placeholder : String,
+            disabled : Boolean
 		},
 		data() {
 			return {

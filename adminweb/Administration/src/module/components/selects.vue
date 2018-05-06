@@ -8,22 +8,25 @@
 					:placeholder="placeholder"
 					v-on:$change="change"
 			        :list = "list"
-			        :select="selected1"
-			></choose>
+			        :select="selected[0]"
+                    :disabled="edit[0]"
+			/>
 			<choose v-if="list2.length" ref="select2"
 			        index="2"
 					:placeholder="placeholder"
 					v-on:$change="change"
 					:list = "list2"
-					:select="selected2"
-			></choose>
+					:select="selected[1]"
+                    :disabled="edit[1]"
+			/>
 			<choose v-if="list3.length" ref="select3"
 			        index="3"
 					:placeholder="placeholder"
 					v-on:$change="change"
 					:list = "list3"
-					:select="selected3"
-			></choose>
+					:select="selected[2]"
+                    :disabled="edit[2]"
+			/>
 		</div>
 		<div class="cnt" :class="{cur:error}">
 			请选择分类
@@ -44,7 +47,7 @@
 			columnObjName : String, //数组对像名称转换
 			columnListName : String,//数组列表名称转换
 			name : String,
-
+            disabled:Array,//是否可操作,
 			placeholder : String,
 			check : Array,//目前最多3个
 		},
@@ -59,12 +62,12 @@
 				list2 : [],
 				list3 : [],
 
-				selected1 : -1,
-				selected2 : -1,
-				selected3 : -1,
+				selected : [-1,-1,-1],
 				selects : [], //0为第1个选择匡，1为第二个，。。。
 
-				error : false
+				error : false,
+                //是否可编辑
+                edit : [false,false,false]
 			}
 		},
 		watch:{
@@ -80,7 +83,7 @@
 			}
 		},
 		mounted() {
-
+            Object.assign(this.edit,this.disabled);
 		},
 		methods : {
 			clear(){
@@ -118,7 +121,7 @@
 			},
 			setSelected(i,arr){ //设置select选择项
 				if(!arr || !arr[i+1]) return;
-				this['selected'+(i+1)] = arr[i];
+				this.selected[i+1] = arr[i];
 			},
 			setSelect( parent , list , id ){ //查找当前选择的栏目
 				let obj;
@@ -144,8 +147,8 @@
 			change( obj , index ){
 				index = parseInt(index);
 				//把后面的select设置为-1
-				if(this['selected'+(index+1)]){
-					this['selected'+(index+1)] = -1;
+				if(this.selected[index+1]){
+					this.selected[index+1] = -1;
 				}
 				const self = this ,
 					arr = this.column[this.name] || [];

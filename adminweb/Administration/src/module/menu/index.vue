@@ -52,7 +52,6 @@
                     </li>
                 </ul>
             </li>
-
         </ul>
     </article>
 </template>
@@ -254,12 +253,10 @@
                 taga.isShow = false;
 	            taga.onclick = function(){
                     this.isShow = !this.isShow;
-
                     //如果点了首页
                     if($(this).parent().attr('class')=='home') return;
                     //如果展开了
                     //if(tag.className.indexOf('open')>-1) return;
-
                     //清除其他tag ishow = false
                     self.parent().children("li").each(function(){
                         let a = $(this).children('a')[0];

@@ -4,10 +4,12 @@
             <div class="label">标题<em>*</em></div>
             <form-input
                 type="text"
-                name = "name"
+                name = "title"
                 dataType=""
                 :data = "obj.title"
+                :width="400"
                 :prompt="prompt"
+                :check="true"
                 maxlength="50"
                 placeholder="请输入标题"/>
 		</li>
@@ -23,6 +25,7 @@
 			          columnListName="permissionBeans"
 			          dataType="path"
 			          :check="[false,false,false]"
+                      :disabled="[true]"
 			          placeholder="请选择栏目">
 			</m-select>
 		</li>
@@ -44,7 +47,7 @@
 		</li>
 		<li>
 			<div class="label">状态<em>*</em></div>
-            <m-select ref="status"
+            <!--<m-select ref="status"
                       type="text"
                       :arr="list"
                       name = "status"
@@ -55,7 +58,7 @@
                       dataType="path"
                       :check="[false,false,false]"
                       placeholder="请选择状态">
-            </m-select>
+            </m-select>-->
 		</li>
 		<li>
 			<div class="label">简介<em>*</em></div>
@@ -73,6 +76,7 @@
 	import textArea from "../components/texta.vue";
 	import editor from "../components/editor.vue";
 	import mSelect from "../components/selects";
+	import {CLASSIFY_LIST} from "../../contant/URLS/XIAOSHUO";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {
@@ -94,21 +98,30 @@
 		data() {
 			return {
 				list : null,
+                classifyList : null,//分类
 				obj : {},
                 prompt:{
-                    default : "请输入新的密码，密码为6位数以上必需包含英文和数字",
-                    error : "密码为6位数以上必需包含英文和数字",
-                    verification( val , callback ){
-                        let reg = this._numAndLetter(val);
-                        newPwd = val;
-                        callback(reg);
+                    default : "标题在5-50个字符之间",
+                    error : "错误，标题在5-50个字符之间",
+                    verification( val , _callback ){
+                        _callback(val.length>5 && val.length<50);
                     }
                 },
 			}
 		},
 		mounted() {
+		    let self = this;
 			this.setData();
 			this.list = this.menu;
+			this.ajax({
+                url : CLASSIFY_LIST
+            }).then(data=>{
+                let arr = data.data.list;
+                arr.forEach(obj=>{
+                    obj.name = obj.classifyName
+                });
+                self.classifyList = arr;
+            })
 		},
 		methods:{
 			verification(){
