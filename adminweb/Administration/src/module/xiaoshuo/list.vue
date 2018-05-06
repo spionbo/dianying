@@ -32,6 +32,7 @@
 <script>
 	import formInput from "../components/formInput";
 	import list from './components/list.vue';
+	import {XIAOSHUO_ABOUT} from "../../contant/URLS/SEARCH";
 	export default {
 		components:{
 			formInput,
@@ -62,7 +63,7 @@
 				if(!this.isSearch){
 					this.isSearch = true;
 					this.ajax({
-						url:'/search/searchXiaoshuoAbout',
+						url:XIAOSHUO_ABOUT,
 						data : {
 							title : this.title,
 							id : "",

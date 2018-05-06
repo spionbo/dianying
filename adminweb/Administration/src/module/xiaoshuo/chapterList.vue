@@ -30,6 +30,7 @@
 	</div>
 </template>
 <script>
+    import {CHAPTER_LIST} from "../../contant/URLS/XIAOSHUO";
 	export default {
 		data() {
 			return {
@@ -54,7 +55,7 @@
 			update(){
 				const self = this;
 				this.ajax({
-					url : "/xiaoshuo/chapterList",
+					url : CHAPTER_LIST,
 					data : {
 						id : self.about.id,
 						page : self.pageStart,

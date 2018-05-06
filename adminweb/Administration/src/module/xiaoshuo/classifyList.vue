@@ -34,6 +34,7 @@
 	</div>
 </template>
 <script>
+    import {CLASSIFY_LIST} from "../../contant/URLS/XIAOSHUO";
 	export default {
 		data() {
 			return {
@@ -47,7 +48,7 @@
 			update(){
 				const self = this;
 				this.ajax({
-					url : "/xiaoshuo/classifyList",
+					url : CLASSIFY_LIST,
 				}).then(data=>{
 					self.list = data.data.list;
 				})
@@ -72,7 +73,7 @@
 				});
 			},
 			del(item,$event){
-				this._del({
+				/*this._del({
 					item : item,
 					$event : $event,
 					url : "/images/delImagesClassify",
@@ -81,7 +82,7 @@
 					data : {
 						id : item.id
 					}
-				});
+				});*/
 			}
 		}
 	}

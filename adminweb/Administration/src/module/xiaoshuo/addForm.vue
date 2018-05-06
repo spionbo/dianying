@@ -1,8 +1,15 @@
 <template>
 	<ul>
 		<li>
-			<div class="label">小说标题</div>
-
+            <div class="label">标题<em>*</em></div>
+            <form-input
+                type="text"
+                name = "name"
+                dataType=""
+                :data = "obj.title"
+                :prompt="prompt"
+                maxlength="50"
+                placeholder="请输入标题"/>
 		</li>
 		<li>
 			<div class="label">请选择分类</div>
@@ -20,18 +27,6 @@
 			</m-select>
 		</li>
 		<li>
-			<div class="label">标题<em>*</em></div>
-			<form-input
-				type="text"
-				dataType="chinese"
-				name = "name"
-				:data = "obj.name"
-				:check="true"
-				maxlength="10"
-				placeholder="请输入栏目名称">
-			</form-input>
-		</li>
-		<li>
 			<div class="label">作者<em>*</em></div>
 			<m-select ref="myselect"
 			          type="text"
@@ -44,35 +39,38 @@
 			          dataType="path"
 			          :check="[false,false,false]"
 			          placeholder="请选择栏目">
+                新增作者
 			</m-select>
-			新增作者
 		</li>
 		<li>
 			<div class="label">状态<em>*</em></div>
-			<form-input
-					type="text"
-					dataType="chinese"
-					name = "name"
-					:data = "obj.name"
-					:check="true"
-					maxlength="10"
-					placeholder="请输入栏目名称">
-			</form-input>
+            <m-select ref="status"
+                      type="text"
+                      :arr="list"
+                      name = "status"
+                      columnName="status"
+                      :columnId = "obj.columnId"
+                      columnObjName="permission"
+                      columnListName="permissionBeans"
+                      dataType="path"
+                      :check="[false,false,false]"
+                      placeholder="请选择状态">
+            </m-select>
 		</li>
 		<li>
 			<div class="label">简介<em>*</em></div>
-
+            <textArea/>
 		</li>
 		<li>
 			<div class="label">内容<em>*</em></div>
-			<editor :width="width" :height="500"></editor>
+			<editor :height="500"></editor>
 		</li>
 	</ul>
 </template>
 <script>
 	import formInput from "../components/formInput";
 	import inputNumber from "../components/inputNumber.vue";
-	import texta from "../components/texta.vue";
+	import textArea from "../components/texta.vue";
 	import editor from "../components/editor.vue";
 	import mSelect from "../components/selects";
 	import { mapGetters } from 'vuex';
@@ -80,7 +78,7 @@
 		components: {
 			formInput,
 			inputNumber,
-			texta,
+            textArea,
 			editor,
 			mSelect
 		},
@@ -97,7 +95,15 @@
 			return {
 				list : null,
 				obj : {},
-				width : window.innerWidth-500
+                prompt:{
+                    default : "请输入新的密码，密码为6位数以上必需包含英文和数字",
+                    error : "密码为6位数以上必需包含英文和数字",
+                    verification( val , callback ){
+                        let reg = this._numAndLetter(val);
+                        newPwd = val;
+                        callback(reg);
+                    }
+                },
 			}
 		},
 		mounted() {

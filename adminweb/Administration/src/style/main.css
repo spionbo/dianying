@@ -5,7 +5,7 @@ body{
 	margin:0 auto;
 	-webkit-appearance: none;
 	background:#fff;
-	font-family:"Microsoft YaHei","\5fae\8f6f\96c5\9ed1";
+	font-family:"Hiragino Sans GB","STHeiti","Microsoft Yahei";
 	color: #000;
 	font-size:14px;
 }
@@ -50,10 +50,10 @@ i{ display:inline-block; }
 	position:relative;
 	z-index:2;
 	flex:1;
-	padding:15px; 
+	padding:15px;
 	overflow-y: scroll;
-	box-sizing:border-box; 
-	transition-duration:.3s; 
+	box-sizing:border-box;
+	transition-duration:.3s;
 }
 
 .btn{
@@ -202,8 +202,8 @@ i{ display:inline-block; }
     &.add{
     	input[type='text'],input[type='password'],input[type="number"]{
     		min-width: 200px;
-    	 	padding:4px; 
-    	 	height:20px; 
+    	 	padding:4px;
+    	 	height:20px;
     	 	line-height: 20px;
     	 	border:1px solid #ddd;
     	 	border-top:1px solid #ccc;
@@ -253,7 +253,7 @@ i{ display:inline-block; }
 		    max-height:200px;
 		    max-width:200px;
 		    overflow:hidden;
-		    
+
 		    img{
 			    display:block;
 			    width:100%;
@@ -264,8 +264,7 @@ i{ display:inline-block; }
 			float:left;
 			min-width:400px;
 			max-width:600px;
-			height:100px;
-
+			padding:0;
 			.text{
 				width:100%;
 				padding:5px;
@@ -289,7 +288,7 @@ i{ display:inline-block; }
 			float:left;
 			width:100px;
 			height:30px;
-			
+
 			text-align:right;
 			em{
 				display: inline-block;
@@ -317,9 +316,6 @@ i{ display:inline-block; }
 				padding-right:5px;
 			}
 		}
-	    .textarea{
-		    padding:5px;
-	    }
     }
 	.submit{
 		margin: 20px -20px 0;

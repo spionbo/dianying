@@ -80,10 +80,9 @@
 			},
 			maxlength : String,
 			placeholder : String,
-			prompt : String,
-			dataType : {
-				type:String,
-				required : true
+			prompt : Object, //自定义验证
+			dataType : { //验证方法，mixin/index.js 中的方法
+				type:String
 			},
 			name : String,
 			disabled : Boolean, //是否可以操作

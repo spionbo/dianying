@@ -4,11 +4,18 @@
 		padding:0;
 		border:none;
 	}
+    .text{
+        .auto{
+            padding:0;
+        }
+    }
 </style>
 <template>
-	<iframe class="iframe" src="http://localhost:501/"
-		:width="width" :height="height"
-	></iframe>
+    <article class="txt">
+        <iframe class="iframe" src="../../../static/ueditor1_4_3_3-utf8-jsp"
+            width="100%" :height="height"
+        ></iframe>
+    </article>
 </template>
 <script>
 	export default {

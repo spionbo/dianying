@@ -9,6 +9,7 @@
 <script>
 	import addForm from "./classfyForm.vue";
 	import { mapGetters } from 'vuex';
+	import {UPDATE_CLASSIFY} from "../../contant/URLS/XIAOSHUO";
 	export default {
 		components : {
 			addForm
@@ -35,7 +36,7 @@
 					id = this.data.id,
 					classifyName = this.column.classifyName;
 				this.ajax({
-					url : '/xiaoshuo/updateClassify',
+					url : UPDATE_CLASSIFY,
 					type : "POST",
 					data : {
 						id : id,
