@@ -31,6 +31,7 @@
 </template>
 <script>
 	import mixin from "../../mixin/_permission";
+	import {PERMISSION_COLUMN} from "../../contant/URLS/PERMISSION";
 	import { mapGetters } from 'vuex';
 	export default {
 		mixins : [mixin],
@@ -55,9 +56,8 @@
 		},
 		methods:{
 			edit(item){
-				console.log(item)
 				this.ajax({
-					url:"/permission/permissionColumn",
+					url:PERMISSION_COLUMN,
 					type : "get",
 					load : true,
 					data : {
@@ -74,7 +74,7 @@
 							{
 								props: {
 									obj: {
-										title: "标题",
+										title: "栏目管理",
 										close: true,
 									}
 								}
@@ -87,7 +87,7 @@
 				this._del({
 					item : item,
 					$event : $event,
-					url : "/permission/deleteColumn",
+					url : PERMISSION_DELETE,
 					name : item.name.replace(/\+\|\-/g,""),
 					data : {
 						columnId : item.id

@@ -79,7 +79,7 @@
 				let obj = this.setSelect(this.list,this.list,val) ,
 					arr = this.getIndex(obj);
 				this.selects = arr;
-				this.setSelected(0,arr);
+                this.setSelected(0,arr);
 			}
 		},
 		mounted() {
@@ -119,9 +119,12 @@
 
 				return arr;
 			},
-			setSelected(i,arr){ //设置select选择项
-				if(!arr || !arr[i+1]) return;
-				this.selected[i+1] = arr[i];
+            setSelected(i,arr){ //设置select选择项
+				if(!arr || !arr[i]) return;
+				this.$set(this.selected,i,arr[i]);
+				/*this.selected[i] = arr[i];
+				debugger;*/
+				//selected 更改时会触发change事件
 			},
 			setSelect( parent , list , id ){ //查找当前选择的栏目
 				let obj;
@@ -147,8 +150,8 @@
 			change( obj , index ){
 				index = parseInt(index);
 				//把后面的select设置为-1
-				if(this.selected[index+1]){
-					this.selected[index+1] = -1;
+				if(this.selected[index]){
+					this.selected[index] = -1;
 				}
 				const self = this ,
 					arr = this.column[this.name] || [];
@@ -161,6 +164,7 @@
 					self['list'+(index+1)] = obj.list;
 					this.$nextTick(()=>{ //更新第一个select时，第二个才会出来，所以需要监听
 						this.setSelected(index,this.selects);
+						//触发 selected
 					});
 				}
 				this.verification();
@@ -180,41 +184,47 @@
 				this.clearError();
 				return _callback(true);
 			},
-			setList(parent,arr){
-				if(!arr || !arr.length) return arr;
-
-				let self = this,
-					columnName = this.columnName,
-					columnObjName = this.columnObjName,
-					columnListName = this.columnListName,
-					_arr = [];
-				$.each(arr,function( i, obj ){
-					let _obj = obj[columnObjName],
-						_list = obj[columnListName] ,
-						_parent , newList;
-
-					_obj.name = _obj[columnName];
-					if(_list){
-						newList = [];
-						_list.forEach(obj=>{
-							newList.push(obj[columnObjName]);
-						});
-					}
-					_parent = {
-						item : _obj,
-						list : newList
-					};
-					if(_list && _list.length){
-						_list = self.setList(_parent,_list);
-					}
-					_arr.push({
-						item : _obj,
-						list : _list,
-						parent : parent
-					});
-				});
-				return _arr;
-			}
+			setList(parent,arr) {
+                if (!arr || !arr.length) return arr;
+                if (this.columnName) { //如果需要转换
+                    let self = this,
+                        columnName = this.columnName,
+                        columnObjName = this.columnObjName,
+                        columnListName = this.columnListName,
+                        _arr = [];
+                    $.each(arr, function (i, obj) {
+                        let _obj = obj[columnObjName],
+                            _list = obj[columnListName],
+                            _parent, newList;
+                        _obj.name = _obj[columnName];
+                        if (_list) {
+                            newList = [];
+                            _list.forEach(obj => {
+                                newList.push(obj[columnObjName]);
+                            });
+                        }
+                        _parent = {
+                            item: _obj,
+                            list: newList
+                        };
+                        if (_list && _list.length) {
+                            _list = self.setList(_parent, _list);
+                        }
+                        _arr.push({
+                            item: _obj,
+                            list: _list,
+                            parent: parent
+                        });
+                    });
+                    return _arr;
+                }else{
+                    let _arr1 = [];
+                    arr.forEach(obj=>{
+                        _arr1.push({item:obj});
+                    });
+                    return _arr1;
+                }
+            }
 		}
 	}
 </script>

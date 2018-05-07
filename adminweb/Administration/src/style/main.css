@@ -262,11 +262,12 @@ i{ display:inline-block; }
 	    }
 		.textarea{
 			float:left;
-			min-width:400px;
-			max-width:600px;
+			min-width:500px;
+            margin-right:5px;
 			padding:0;
 			.text{
 				width:100%;
+                border:1px solid #ddd;
 				padding:5px;
 				box-sizing:border-box;
 			}

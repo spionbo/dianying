@@ -5,6 +5,6 @@
  */
 const URL = require("./index").URL+"/search";
 module.exports={
-    //登录
+    //搜索文章
     XIAOSHUO_ABOUT: URL + "searchXiaoshuoAbout",
 };

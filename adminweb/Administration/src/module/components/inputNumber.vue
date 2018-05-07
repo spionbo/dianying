@@ -24,9 +24,15 @@
 	};
 	export default {
 		props: {
-			data : String,
-			min : Number,
-			max : Number,
+			data : Number,
+			min : {
+			    type : Number,
+                default : 1
+            },
+			max : {
+			    type : Number,
+                default : 999
+            },
 			prompt : String,
 			name : String,
 			check : Boolean

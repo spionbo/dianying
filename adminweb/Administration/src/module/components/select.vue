@@ -1,5 +1,5 @@
 <template>
-    <div v-if="list">
+    <span v-if="list">
         <select v-model="selectObj" v-if="!disabled">
             <option value="-1" selected>{{placeholder}}</option>
             <option v-for="item in list" :key="item.item.id"
@@ -16,14 +16,14 @@
                 {{item.item.name}}
             </option>
         </select>
-    </div>
+    </span>
 </template>
 <script>
 	export default {
 		props:{
 			list : Array,
 			index : String, //第几个select
-			select : Number, //显示哪个 option
+			select : [Object,Number], //显示哪个 option
 			placeholder : String,
             disabled : Boolean
 		},

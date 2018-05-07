@@ -44,8 +44,8 @@
 			<input-number
 				name = "sort"
 				:data = "obj.sort"
-				min="1"
-				max="99">
+				:min="1"
+				:max="99">
 			</input-number>
 		</li>
 		<li>
@@ -53,7 +53,7 @@
 			<texta
 					name="description"
 					:data = "obj.description"
-					maxlength="100"
+					:maxlength="100"
 					placeholder="描述内容不得超过100字"
 			></texta>
 		</li>

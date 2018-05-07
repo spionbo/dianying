@@ -1,3 +1,4 @@
+const URL = require("../../contant/URLS/PERMISSION");
 module.exports={
 	state : {
 		allColumn : null, //所有栏目
@@ -18,7 +19,7 @@ module.exports={
 	actions:{
 		setAllColumn(context , callback){
 			this._vm.ajax({
-				url : "/permission/allColumn",
+				url : URL.ALL_COLUMN,
 			}).then(data=>{
 				context.commit("setAllColumn",data.data);
 				callback && callback(data.data);
@@ -26,7 +27,7 @@ module.exports={
 		},
 		setAllColumnTree(context , callback){
 			this._vm.ajax({
-				url : "/permission/allColumn",
+				url : URL.ALL_COLUMN,
 				data : {
 					isTree : true
 				}

@@ -17,15 +17,11 @@
 			<div class="label">请选择分类</div>
 			<m-select ref="myselect"
 			          type="text"
-			          :arr="list"
+			          :arr="classifyList"
 			          name = "selects"
-			          columnName="name"
 			          :columnId = "obj.columnId"
-			          columnObjName="permission"
-			          columnListName="permissionBeans"
 			          dataType="path"
 			          :check="[false,false,false]"
-                      :disabled="[true]"
 			          placeholder="请选择栏目">
 			</m-select>
 		</li>
