@@ -1,4 +1,7 @@
-﻿http://rank.chinaz.com/
+﻿redis:
+redis-server /usr/local/redis/etc/redis.conf
+
+http://rank.chinaz.com/
 https://pan.baidu.com/share/link?uk=3173524616&shareid=1897513694
 https://biliworld.com
 http://pan.ibying.com/
