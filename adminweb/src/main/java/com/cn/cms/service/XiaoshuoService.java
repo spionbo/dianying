@@ -1,6 +1,7 @@
 package com.cn.cms.service;
 
 import com.cn.cms.po.XiaoshuoAbout;
+import com.cn.cms.po.XiaoshuoAuthor;
 import com.cn.cms.po.XiaoshuoChapter;
 import com.cn.cms.po.XiaoshuoClassification;
 import com.cn.cms.utils.Page;
@@ -64,4 +65,10 @@ public interface XiaoshuoService {
      * @return
      */
     List<XiaoshuoChapter> getAllChapterList(Page page);
+    
+    /**
+     * 新增作者
+     * @param xiaoshuoAuthor
+     */
+    void addAuthor(XiaoshuoAuthor xiaoshuoAuthor);
 }

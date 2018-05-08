@@ -2,10 +2,12 @@ package com.cn.cms.biz;
 
 import com.cn.cms.dao.XiaoshuoDao;
 import com.cn.cms.po.XiaoshuoAbout;
+import com.cn.cms.po.XiaoshuoAuthor;
 import com.cn.cms.po.XiaoshuoChapter;
 import com.cn.cms.po.XiaoshuoClassification;
 import com.cn.cms.service.XiaoshuoService;
 import com.cn.cms.utils.Page;
+import com.cn.cms.utils.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -82,5 +84,26 @@ public class XiaoshuoBiz extends BaseBiz {
      */
     public List<XiaoshuoChapter> getAllChapterList(Page page){
         return xiaoshuoService.getAllChapterList(page);
+    }
+    
+    public void addAuthor(String name,String alas,String birh,String addess,String dateOfBirth,String description){
+        XiaoshuoAuthor author = new XiaoshuoAuthor();
+        author.setName(name);
+        if(StringUtils.isNotEmpty(alas)){
+            author.setAlas(alas);
+        }
+        if(StringUtils.isNotEmpty(birh)){
+            author.setBirh(birh);
+        }
+        if(StringUtils.isNotEmpty(addess)){
+            author.setAddess(addess);
+        }
+        if(StringUtils.isNotEmpty(dateOfBirth)){
+            author.setDateOfBirth(dateOfBirth);
+        }
+        if(StringUtils.isNotEmpty(description)){
+            author.setDescription(description);
+        }
+        xiaoshuoService.addAuthor(author);
     }
 }

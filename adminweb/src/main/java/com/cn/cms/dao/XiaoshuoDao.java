@@ -1,6 +1,7 @@
 package com.cn.cms.dao;
 
 import com.cn.cms.po.XiaoshuoAbout;
+import com.cn.cms.po.XiaoshuoAuthor;
 import com.cn.cms.po.XiaoshuoChapter;
 import com.cn.cms.po.XiaoshuoClassification;
 import com.cn.cms.utils.Page;
@@ -30,4 +31,12 @@ public interface XiaoshuoDao {
     List<XiaoshuoChapter> getXiaoshuoChapterList(@Param("page") Page page , @Param("id") long id);
 
     List<XiaoshuoChapter> getAllChapterList(@Param("page") Page page);
+    
+    Integer getAuthor(@Param("name") String name);
+    
+    void addAuthor(@Param("author")XiaoshuoAuthor author);
+    
+    void updateAuthor(@Param("author") XiaoshuoAuthor author);
+    
+    void deleteAuthor(@Param("id") long id);
 }

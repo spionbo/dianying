@@ -29,10 +29,19 @@
         <result column="title" property="title"/>
         <result column="num" property="num"/>
     </resultMap>
+    <resultMap id="author" type="com.cn.cms.po.XiaoshuoAuthor" extends="base">
+        <result column="name" property="name"/>
+        <result column="alas" property="alas"/>
+        <result column="birh" property="birh"/>
+        <result column="addess" property="addess"/>
+        <result column="date_of_birth" property="dateOfBirth"/>
+        <result column="description" property="description"/>
+    </resultMap>
 
     <sql id="name">xiaoshuo_classify</sql>
     <sql id="about">xiaoshuo_about</sql>
     <sql id="chapter">xiaoshuo_chapter</sql>
+    <sql id="author">xiaoshuo_author</sql>
     <sql id="base">
         id,create_time,update_time,del_tag,last_modify_user_id,create_user_id
     </sql>
@@ -63,6 +72,16 @@
     <update id="updateClassify">
         update <include refid="name"/> set classify_name=#{p1.classifyName} where id = ${p1.id};
     </update>
+
+    <!--作者相关操作-->
+    <select id="getAuthor" resultType="java.lang.Integer">
+        select * count(1) from <include refid="author"/>
+    </select>
+    <insert id="addAuthor">
+        INSERT INTO <include refid="author"/> (`name`,alas,birh,addess,date_of_birth,description) VALUE
+        (#{author.name},#{author.alas}#{author.birh}#{author.addess}#{author.dateOfBirth},#{author.description})
+    </insert>
+    <!-- end 作者相关操作-->
 
     <select id="getXiaoshuoList" resultMap="xiaoshuoList">
         SELECT <include refid="base"/>,<include refid="all_about_column"/> from <include refid="about"/> ORDER by sort limit ${page.start},${page.pageSize};

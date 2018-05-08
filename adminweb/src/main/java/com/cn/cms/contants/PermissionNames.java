@@ -253,6 +253,15 @@ public class PermissionNames {
             public static final String WRITE = name+":write";
             public static final String DELETE = name+":delete";
         }
+        
+        //新增小说作者
+        public static class ADD_AUTHOR{
+            private static final String name = XIAOSHUO.name+"AddAuthor";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
 
     }
 }

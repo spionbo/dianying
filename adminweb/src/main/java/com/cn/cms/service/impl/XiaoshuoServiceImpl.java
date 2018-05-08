@@ -3,6 +3,7 @@ package com.cn.cms.service.impl;
 import com.cn.cms.biz.XiaoshuoBiz;
 import com.cn.cms.dao.XiaoshuoDao;
 import com.cn.cms.po.XiaoshuoAbout;
+import com.cn.cms.po.XiaoshuoAuthor;
 import com.cn.cms.po.XiaoshuoChapter;
 import com.cn.cms.po.XiaoshuoClassification;
 import com.cn.cms.service.XiaoshuoService;
@@ -67,4 +68,7 @@ public class XiaoshuoServiceImpl implements XiaoshuoService {
     public List<XiaoshuoChapter> getAllChapterList( Page page){
         return xiaoshuoDao.getAllChapterList(page);
     }
+    public void addAuthor(XiaoshuoAuthor xiaoshuoAuthor){
+        xiaoshuoDao.addAuthor(xiaoshuoAuthor);
+    };
 }

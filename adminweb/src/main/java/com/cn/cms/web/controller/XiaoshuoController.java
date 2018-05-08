@@ -136,4 +136,29 @@ public class XiaoshuoController extends BaseController{
         result.put("list",xiaoshuoChapters);
         return ApiResponse.returnSuccess(result);
     }
+    
+    /**
+     * 新增作者
+     * @param request
+     * @param name
+     * @param alas
+     * @param birh
+     * @param addess
+     * @param dateOfBirth
+     * @param description
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.XIAOSHUO.ADD_AUTHOR.WRITE)
+    @RequestMapping(value = "/addAuthor",method = RequestMethod.GET)
+    public String addAuthor(HttpServletRequest request,
+                            @RequestParam(value = "name" , required = false) String name,
+                            @RequestParam(value = "alas") String alas,
+                            @RequestParam(value = "birh" , required = false) String birh,
+                            @RequestParam(value = "addess" , required = false) String addess,
+                            @RequestParam(value = "dateOfBirth" , required = false) String dateOfBirth,
+                            @RequestParam(value = "description" , required = false) String description){
+        xiaoshuoBiz.addAuthor(name,alas,birh,addess,dateOfBirth,description);
+        return ApiResponse.returnSuccess();
+    }
 }

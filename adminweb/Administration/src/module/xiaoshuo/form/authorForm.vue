@@ -16,7 +16,8 @@
                 :prompt="prompt"
                 :check="true"
                 maxlength="50"
-                placeholder="请输入标题"/>
+                placeholder="请输入标题">
+            </form-input>
         </li>
         <li>
             <div class="label">请选择分类</div>
