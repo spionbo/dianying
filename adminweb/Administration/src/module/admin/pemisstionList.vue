@@ -44,6 +44,8 @@
 <script>
 	import checkbox from '../components/checkbox.vue';
 	import mixin from '../../mixin/_permission';
+	import {UPDATE_USER_COLUMN_POWER,GET_USER_PERMISSION_POWER} from "../../contant/URLS/ADMIN";
+	import {DELETE_COLUMN} from "../../contant/URLS/PERMISSION";
 	export default {
 		mixins : [mixin],
 		components:{
@@ -79,7 +81,7 @@
 				this._pushSeleced();
 
 				this.ajax({
-					url : "/user/updateUserColumnPower",
+					url : UPDATE_USER_COLUMN_POWER,
 					type : "post",
 					data : {
 						power : JSON.stringify(this.arrlist),
@@ -95,7 +97,7 @@
 			getUserPermission(){
 				let self = this;
 				this.ajax({
-					url : "/user/userPermissionPower",
+					url : GET_USER_PERMISSION_POWER,
 					data : {
 						userId : self.item.userId
 					}
@@ -193,7 +195,7 @@
 				this._del({
 					item : item,
 					$event : $event,
-					url : "/permission/deleteColumn",
+					url : DELETE_COLUMN,
 					name : item.name.replace(/\+\|\-/g,""),
 					data : {
 						columnId : item.id

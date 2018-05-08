@@ -54,6 +54,7 @@
 </template>
 <script>
 	import { mapGetters } from 'vuex';
+    import {USER_LIST,DELETE} from "../../contant/URLS/ADMIN";
 	export default {
 		computed : {
 			...mapGetters({
@@ -71,7 +72,7 @@
 		mounted() {
 			const self = this;
 			this.ajax({
-				url : "/user/userlist"
+				url : USER_LIST
 			}).then(data=>{
 				self.list = data.data.list;
 				self.page = data.data.page;
@@ -100,7 +101,7 @@
 				this._del({
 					item : item,
 					$event : $event,
-					url : "/user/delete",
+					url : DELETE,
 					name : `（${item.realName}）的帐号（${item.userName}）`,
 					data : {
 						userId : item.userId

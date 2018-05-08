@@ -15,7 +15,7 @@
 	</article>
 </template>
 <script>
-	import addForm from "./classfyForm.vue";
+	import addForm from "./form/classfyForm.vue";
 	import { mapGetters } from 'vuex';
 	export default {
 		computed : {

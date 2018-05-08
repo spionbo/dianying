@@ -67,12 +67,12 @@
 	</ul>
 </template>
 <script>
-	import formInput from "../components/formInput";
-	import inputNumber from "../components/inputNumber.vue";
-	import textArea from "../components/texta.vue";
-	import editor from "../components/editor.vue";
-	import mSelect from "../components/selects";
-	import {CLASSIFY_LIST} from "../../contant/URLS/XIAOSHUO";
+	import formInput from "../../components/formInput";
+	import inputNumber from "../../components/inputNumber.vue";
+	import textArea from "../../components/texta.vue";
+	import editor from "../../components/editor.vue";
+	import mSelect from "../../components/selects";
+	import {CLASSIFY_LIST} from "../../../contant/URLS/XIAOSHUO";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {

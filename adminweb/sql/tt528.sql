@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : utf-8
 
- Date: 05/06/2018 11:22:37 AM
+ Date: 05/08/2018 12:44:49 PM
 */
 
 SET NAMES utf8;
@@ -186,6 +186,30 @@ CREATE TABLE `xiaoshuo_article` (
   KEY `parentid` (`parent_id`),
   CONSTRAINT `parentid` FOREIGN KEY (`parent_id`) REFERENCES `xiaoshuo_chapter` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53524 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `xiaoshuo_author`
+-- ----------------------------
+DROP TABLE IF EXISTS `xiaoshuo_author`;
+CREATE TABLE `xiaoshuo_author` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `name` varchar(18) DEFAULT NULL COMMENT '姓名',
+  `alas` varchar(18) NOT NULL COMMENT '别名',
+  `birh` varchar(18) DEFAULT NULL COMMENT '出生地',
+  `addess` varchar(18) DEFAULT NULL COMMENT '地址',
+  `date_of_birth` datetime DEFAULT NULL COMMENT '出生日期',
+  `description` varchar(255) DEFAULT NULL COMMENT '说明',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '修改人ID',
+  `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `count` bigint(20) DEFAULT NULL COMMENT '文字总数',
+  `del_tag` int(2) DEFAULT '1' COMMENT '逻辑删除',
+  `source` varchar(255) DEFAULT NULL COMMENT '来源',
+  `create_user_name` varchar(20) DEFAULT NULL COMMENT '创建人名称',
+  `last_modify_user_name` varchar(20) DEFAULT NULL COMMENT '最后修改人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `xiaoshuo_chapter`

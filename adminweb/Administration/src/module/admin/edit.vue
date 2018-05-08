@@ -9,6 +9,7 @@
 <script>
 	import addForm from "./addForm.vue";
 	import { mapGetters } from 'vuex';
+	import {UPDATE} from "../../contant/URLS/ADMIN";
 	export default {
 		components : {
 			addForm
@@ -42,7 +43,7 @@
 
 				require(['../../../static/plug/md5.min.js'], function(md5) {
 					self.ajax({
-						url : '/user/update',
+						url : UPDATE,
 						type : "POST",
 						data : {
 							userId : userId,

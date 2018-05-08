@@ -11,4 +11,8 @@ module.exports={
     PERMISSION_COLUMN : URL + "/permissionColumn",
     //删除栏目
     PERMISSION_DELETE : URL + "/deleteColumn",
+    //新增栏目
+    ADD_COLUMN : URL+"/addColumn",
+    //删除栏目权限
+    DELETE_COLUMN : URL + "/deleteColumn",
 };

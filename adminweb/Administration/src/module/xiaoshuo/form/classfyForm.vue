@@ -15,7 +15,7 @@
 	</ul>
 </template>
 <script>
-	import formInput from "../components/formInput";
+	import formInput from "../../components/formInput";
 	export default {
 		components: {
 			formInput

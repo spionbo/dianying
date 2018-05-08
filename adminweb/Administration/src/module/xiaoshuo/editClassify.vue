@@ -7,7 +7,7 @@
 	</div>
 </template>
 <script>
-	import addForm from "./classfyForm.vue";
+	import addForm from "./form/classfyForm.vue";
 	import { mapGetters } from 'vuex';
 	import {UPDATE_CLASSIFY} from "../../contant/URLS/XIAOSHUO";
 	export default {

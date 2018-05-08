@@ -16,6 +16,7 @@
 </template>
 <script>
 	import addForm from "./addForm.vue";
+    import {ADD_COLUMN} from "../../contant/URLS/PERMISSION";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {
@@ -54,7 +55,7 @@
 						});
 					}
 					this.ajax({
-						url : '/permission/addColumn',
+						url : ADD_COLUMN,
 						type : "POST",
 						data : {
 							name : column.name,

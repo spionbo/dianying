@@ -15,7 +15,7 @@
 	</article>
 </template>
 <script>
-	import addForm from "./addForm.vue";
+	import addForm from "./form/addForm.vue";
 	import { mapGetters } from 'vuex';
 	export default {
 		components: {
