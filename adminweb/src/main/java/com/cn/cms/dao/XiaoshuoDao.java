@@ -39,4 +39,6 @@ public interface XiaoshuoDao {
     void updateAuthor(@Param("author") XiaoshuoAuthor author);
     
     void deleteAuthor(@Param("id") long id);
+
+    List<XiaoshuoAuthor> getAuthorList(@Param("page") Page page);
 }

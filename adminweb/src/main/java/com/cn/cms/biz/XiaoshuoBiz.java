@@ -85,7 +85,16 @@ public class XiaoshuoBiz extends BaseBiz {
     public List<XiaoshuoChapter> getAllChapterList(Page page){
         return xiaoshuoService.getAllChapterList(page);
     }
-    
+
+    /**
+     * 新增小说作者
+     * @param name
+     * @param alas
+     * @param birh
+     * @param addess
+     * @param dateOfBirth
+     * @param description
+     */
     public void addAuthor(String name,String alas,String birh,String addess,String dateOfBirth,String description){
         XiaoshuoAuthor author = new XiaoshuoAuthor();
         author.setName(name);
@@ -105,5 +114,52 @@ public class XiaoshuoBiz extends BaseBiz {
             author.setDescription(description);
         }
         xiaoshuoService.addAuthor(author);
+    }
+
+    /**
+     * 修改作者信息
+     * @param name
+     * @param alas
+     * @param birh
+     * @param addess
+     * @param dateOfBirth
+     * @param description
+     */
+    public void updateAuthor(String name,String alas,String birh,String addess,String dateOfBirth,String description){
+        XiaoshuoAuthor author = new XiaoshuoAuthor();
+        author.setName(name);
+        if(StringUtils.isNotEmpty(alas)){
+            author.setAlas(alas);
+        }
+        if(StringUtils.isNotEmpty(birh)){
+            author.setBirh(birh);
+        }
+        if(StringUtils.isNotEmpty(addess)){
+            author.setAddess(addess);
+        }
+        if(StringUtils.isNotEmpty(dateOfBirth)){
+            author.setDateOfBirth(dateOfBirth);
+        }
+        if(StringUtils.isNotEmpty(description)){
+            author.setDescription(description);
+        }
+        xiaoshuoService.updateAuthor(author);
+    }
+
+    /**
+     * 删除作者
+     * @param id
+     */
+    public void deleteAuthor(long id){
+        xiaoshuoService.deleteAuthor(id);
+    }
+
+    /**
+     * 获取小说作者列表
+     * @param page
+     * @return
+     */
+    public List<XiaoshuoAuthor> getAuthorList(Page page){
+        return xiaoshuoService.getAuthorList(page);
     }
 }

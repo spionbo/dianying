@@ -3,10 +3,7 @@ package com.cn.cms.web.controller;
 import com.cn.cms.biz.XiaoshuoBiz;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.contants.PermissionNames;
-import com.cn.cms.po.Images;
-import com.cn.cms.po.XiaoshuoAbout;
-import com.cn.cms.po.XiaoshuoChapter;
-import com.cn.cms.po.XiaoshuoClassification;
+import com.cn.cms.po.*;
 import com.cn.cms.utils.Page;
 import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
@@ -161,4 +158,66 @@ public class XiaoshuoController extends BaseController{
         xiaoshuoBiz.addAuthor(name,alas,birh,addess,dateOfBirth,description);
         return ApiResponse.returnSuccess();
     }
+
+    /**
+     * 修改作者
+     * @param request
+     * @param name
+     * @param alas
+     * @param birh
+     * @param addess
+     * @param dateOfBirth
+     * @param description
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.XIAOSHUO.AUTHOR_LIST.UPDATE)
+    @RequestMapping(value="/updateAuthor",method = RequestMethod.POST)
+    public String updateAuthor(HttpServletRequest request,
+                               @RequestParam(value = "name" , required = false) String name,
+                               @RequestParam(value = "alas") String alas,
+                               @RequestParam(value = "birh" , required = false) String birh,
+                               @RequestParam(value = "addess" , required = false) String addess,
+                               @RequestParam(value = "dateOfBirth" , required = false) String dateOfBirth,
+                               @RequestParam(value = "description" , required = false) String description){
+        xiaoshuoBiz.updateAuthor(name,alas,birh,addess,dateOfBirth,description);
+        return ApiResponse.returnSuccess();
+    }
+
+    /**
+     * 删除作者
+     * @param request
+     * @param id
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.XIAOSHUO.AUTHOR_LIST.DELETE)
+    @RequestMapping(value = "/deleteAuthor",method = RequestMethod.POST)
+    public String deleteAuthor(HttpServletRequest request,
+                               @RequestParam("id") long id){
+        xiaoshuoBiz.deleteAuthor(id);
+        return ApiResponse.returnSuccess();
+    }
+
+    /**
+     * 获取小说作者列表
+     * @param request
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @CheckToken
+    @CheckAuth(name = PermissionNames.XIAOSHUO.AUTHOR_LIST.READ)
+    @RequestMapping(value = "/getAuthorList",method = RequestMethod.GET)
+    public String getAuthorList(HttpServletRequest request,
+                                @RequestParam(value = "page",required = false) Integer page,
+                                @RequestParam(value="pageSize",required = false)Integer pageSize){
+        Page pageObj = new Page(page,pageSize);
+        List<XiaoshuoAuthor> authors = xiaoshuoBiz.getAuthorList(pageObj);
+        Map<String, Object> result = new HashMap<>();
+        result.put("page",pageObj);
+        result.put("list",authors);
+        return ApiResponse.returnSuccess(result);
+    }
+
 }

@@ -71,4 +71,14 @@ public class XiaoshuoServiceImpl implements XiaoshuoService {
     public void addAuthor(XiaoshuoAuthor xiaoshuoAuthor){
         xiaoshuoDao.addAuthor(xiaoshuoAuthor);
     };
+    public List<XiaoshuoAuthor> getAuthorList(Page page){
+        return xiaoshuoDao.getAuthorList(page);
+    }
+    public void updateAuthor(XiaoshuoAuthor xiaoshuoAuthor){
+        xiaoshuoDao.updateAuthor(xiaoshuoAuthor);
+    };
+
+    public void deleteAuthor(long id){
+        xiaoshuoDao.deleteAuthor(id);
+    };
 }

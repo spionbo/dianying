@@ -262,6 +262,13 @@ public class PermissionNames {
             public static final String WRITE = name+":write";
             public static final String DELETE = name+":delete";
         }
-
+        //作者列表
+        public static class AUTHOR_LIST{
+            private static final String name = XIAOSHUO.name+"AuthorList";
+            public static final String READ = name+":read";
+            public static final String UPDATE = name+":update";
+            public static final String WRITE = name+":write";
+            public static final String DELETE = name+":delete";
+        }
     }
 }

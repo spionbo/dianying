@@ -71,4 +71,15 @@ public interface XiaoshuoService {
      * @param xiaoshuoAuthor
      */
     void addAuthor(XiaoshuoAuthor xiaoshuoAuthor);
+
+    /**
+     * 获取小说作者列表
+     * @param page
+     * @return
+     */
+    List<XiaoshuoAuthor> getAuthorList(Page page);
+
+    void updateAuthor(XiaoshuoAuthor xiaoshuoAuthor);
+
+    void deleteAuthor(long id);
 }
