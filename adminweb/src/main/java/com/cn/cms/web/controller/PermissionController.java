@@ -1,30 +1,21 @@
 package com.cn.cms.web.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.cn.cms.biz.PermissionBiz;
-import com.cn.cms.biz.UserBiz;
 import com.cn.cms.biz.UserPowerBiz;
-import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
 import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.enums.ErrorCodeEnum;
 import com.cn.cms.enums.PlatformEnum;
 import com.cn.cms.po.Permission;
-import com.cn.cms.utils.StringUtils;
 import com.cn.cms.web.ann.CheckAuth;
 import com.cn.cms.web.ann.CheckToken;
 import com.cn.cms.web.result.ApiResponse;
-import com.mchange.lang.IntegerUtils;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**

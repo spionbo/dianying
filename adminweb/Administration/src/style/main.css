@@ -50,7 +50,6 @@ i{ display:inline-block; }
 	position:relative;
 	z-index:2;
 	flex:1;
-	padding:15px;
 	overflow-y: scroll;
 	box-sizing:border-box;
 	transition-duration:.3s;

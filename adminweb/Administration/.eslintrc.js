@@ -57,5 +57,6 @@ module.exports = {
         "eqeqeq": 0,//必须使用全等
         "no-useless-call": 0,//禁止不必要的call和apply
         "no-callback-literal":0,
+        "no-unused-vars" : 0,
     }
 }

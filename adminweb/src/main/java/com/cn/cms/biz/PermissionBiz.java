@@ -1,39 +1,22 @@
 package com.cn.cms.biz;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.parser.Feature;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.cn.cms.bo.ColumnBean;
 import com.cn.cms.bo.PermissionBean;
-import com.cn.cms.bo.UserBean;
 import com.cn.cms.contants.PermissionNames;
 import com.cn.cms.contants.RedisKeyContants;
 import com.cn.cms.contants.StaticContants;
-import com.cn.cms.enums.ErrorCodeEnum;
-import com.cn.cms.enums.PermissionTypeEnum;
 import com.cn.cms.enums.PlatformEnum;
-import com.cn.cms.enums.ShowFlagEnum;
 
 import com.cn.cms.middleware.JedisClient;
 import com.cn.cms.po.Permission;
 import com.cn.cms.po.PermissionUser;
 import com.cn.cms.po.UserPower;
-import com.cn.cms.service.ColumnService;
 import com.cn.cms.service.PermissionSevice;
 import com.cn.cms.service.UserService;
-import com.cn.cms.utils.Page;
 import com.cn.cms.utils.StringUtils;
-import com.cn.cms.web.ann.CheckAuth;
-import com.cn.cms.web.ann.CheckToken;
-import com.cn.cms.web.result.ApiResponse;
-import freemarker.template.utility.StringUtil;
-import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -385,9 +368,9 @@ public class PermissionBiz extends BaseBiz {
         if(StringUtils.isNotBlank(result)) {
             List<PermissionBean> permissionBean = JSONArray.parseArray(result, PermissionBean.class);
             PermissionBean parent = T.getTagColumn(permissionBean,parentId);
-            Permission obj = parent.getPermission();
-            List<PermissionBean> list = parent.getPermissionBeans();
-            if(obj.getId() == id || (obj.getParentId()!=null && obj.getParentId() == id)){
+            //Permission obj = parent.getPermission();
+            List<PermissionBean> list = parent.getList();
+            if(parent.getId() == id || (parent.getParentId()!=null && parent.getParentId() == id)){
                 return true;
             }
             if(list!=null){
@@ -411,7 +394,7 @@ public class PermissionBiz extends BaseBiz {
             List<Permission> screenList;
             for(int i=0;i<parentBeans.size();i++){
                 PermissionBean parent = parentBeans.get(i);
-                Permission parentPermission = parent.getPermission();
+                //Permission parentPermission = parent.getPermission();
 
                 //获取子类
                 List<Permission> firstChild = new ArrayList<>();
@@ -421,7 +404,7 @@ public class PermissionBiz extends BaseBiz {
                 //添加 子类 到父类
                 for(int j=0;j<allList.size();j++){
                     Permission child = allList.get(j);
-                    if(child.getParentId() == parentPermission.getId()){
+                    if(child.getParentId() == parent.getId()){
                         firstChild.add(child);
                     }else{
                         newList.add(child);
@@ -439,7 +422,7 @@ public class PermissionBiz extends BaseBiz {
                     }
                     //(一级)子类获取(二级)子类
                     setColumn(list,screenList);
-                    parent.setPermissionBeans(list);
+                    parent.setList(list);
                 }
             }
             return parentBeans;
@@ -455,9 +438,9 @@ public class PermissionBiz extends BaseBiz {
             Boolean bool = false;
             for(int i=0;i<list.size();i++){
                 PermissionBean permissionBean1 = list.get(i);
-                Permission permission = permissionBean1.getPermission();
-                List<PermissionBean> permissionBeans = permissionBean1.getPermissionBeans();
-                if(permission.getParentId()!=null && permission.getParentId() == id){
+                //Permission permission = permissionBean1.getPermission();
+                List<PermissionBean> permissionBeans = permissionBean1.getList();
+                if(permissionBean1.getParentId()!=null && permissionBean1.getParentId() == id){
                     bool = true;
                     break;
                 };
@@ -477,14 +460,14 @@ public class PermissionBiz extends BaseBiz {
             PermissionBean parentBean = new PermissionBean();
             for(int i=0;i<list.size();i++){
                 PermissionBean permissionBean1 = list.get(i);
-                Permission permission = permissionBean1.getPermission();
-                List<PermissionBean> permissionBeans = permissionBean1.getPermissionBeans();
-                if(permission.getId() == parentId){
-                    parentBean.setPermission(permission);
-                    parentBean.setPermissionBeans(permissionBeans);
+                //Permission permission = permissionBean1.getPermission();
+                List<PermissionBean> permissionBeans = permissionBean1.getList();
+                if(permissionBean1.getId() == parentId){
+                    parentBean.setPermission(permissionBean1);
+                    parentBean.setList(permissionBeans);
                     break;
                 };
-                if(parentBean.getPermission()==null && permissionBeans!=null){
+                if(parentBean.getId()==null && permissionBeans!=null){
                     parentBean = getTagColumn(permissionBeans,parentId);
                 }
             }
