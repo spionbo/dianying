@@ -72,6 +72,9 @@
                 }).then(data=>{
                     Main.setLoginStatus(false);
                 })
+            },
+            handleCommand(command) {
+                this.$message('click on item ' + command);
             }
         }
 	}

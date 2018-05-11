@@ -3,36 +3,105 @@
 * created by bo.peng
 * email:spion@qq.com
 */
-<style scoped>
+<style>
 .header{
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: #545c64;
+    color: #fff;
     line-height: 60px;
 }
+    .aside-right{
+        float:right;
+    }
+    .el-dropdown-link{
+        color:#fff;
+        cursor:pointer;
+        img{
+            width:20px;
+            height:20px;
+            border-radius:100%;
+            vertical-align: middle;
+        }
+    }
 </style>
 <template>
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">处理中心</el-menu-item>
-        <el-submenu index="2">
-            <template slot="title">我的工作台</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
-            <el-submenu index="2-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="2-4-1">选项1</el-menu-item>
-                <el-menu-item index="2-4-2">选项2</el-menu-item>
-                <el-menu-item index="2-4-3">选项3</el-menu-item>
-            </el-submenu>
-        </el-submenu>
-        <el-menu-item index="3" disabled>消息中心</el-menu-item>
-        <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+    <el-menu class="el-menu-demo" mode="horizontal"
+             background-color="#545c64"
+             text-color="#fff"
+             active-text-color="#ffd04b">
+        <div class="aside-right">
+            <el-dropdown v-if="currentUser" @command="handleCommand">
+                <span class="el-dropdown-link">
+                    <img :src='currentUser.headImage'>
+                    {{currentUser.realName}}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="updatePwd">更改密码</el-dropdown-item>
+                    <el-dropdown-item command="exit">退出</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        </div>
+        <div class="logo">
+            logo
+        </div>
     </el-menu>
 </template>
 
 <script>
+    //import {Menu,MenuItem,Submenu} from "element-ui";
+    import {CURRENT_USER_INFO} from "../../contant/URLS";
+    import {LOGIN_OUT} from "../../contant/URLS/LOGIN";
 	export default {
         components:{
+            /*elMenu : Menu,
+            elSubmenu : Submenu,
+            elMenuItem : MenuItem,*/
         },
+        data() {
+            return {
+                currentUser : null
+            }
+        },
+        mounted() {
+            this.getUserInfo();
+        },
+        methods:{
+            getUserInfo(){
+                const self = this;
+                this.ajax({
+                    url:CURRENT_USER_INFO,
+                }).then(data=>{
+                    self.currentUser = data.data;
+                })
+            },
+            exit(){
+                this.ajax({
+                    url:LOGIN_OUT,
+                }).then(data=>{
+                    Main.setLoginStatus(false);
+                })
+            },
+            updatePwd(){
+                let self = this;
+                require.ensure([],(require)=> {
+                    this.$requirePop(require('./edit'), {
+                            props : {
+                                data : self.currentUser,
+                            }
+                        },
+                        {
+                            props: {
+                                obj: {
+                                    title: "更改密码",
+                                    close: true,
+                                }
+                            }
+                        }
+                    );
+                });
+            },
+            handleCommand(command) {
+                this[command]();
+            }
+        }
 	}
 </script>

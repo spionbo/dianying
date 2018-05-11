@@ -154,7 +154,7 @@ public class PermissionController extends BaseController{
      */
     @CheckToken
     @CheckAuth(name = PermissionNames.BACKSTAGE.COLUMN.READ)
-    @RequestMapping(value = "/permissionColumn", method = RequestMethod.GET)
+    @RequestMapping(value = "/permissionColumnInfo", method = RequestMethod.GET)
     public String permissionColumn(HttpServletRequest request,
                                    @RequestParam(value = "columnId") Integer columnId){
         Permission permission = permissionBiz.getPermissionColumn(columnId);

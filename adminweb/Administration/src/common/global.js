@@ -11,28 +11,6 @@ let T = {
 	},
 	getItem : function( name ){
 		return JSON.parse(localStorage.getItem(name));
-	},
-    setImgSize() {
-        T.update();
-        let originWidth = T.Mobile?375:750,
-            ratio = T.width / originWidth;
-        $('.img-size').each(function () {
-            let self = $(this);
-            $.each(['height', 'width', 'fontSize', 'left',
-                'right', 'bottom', 'top', 'paddingTop',
-                'margin',
-                'padding',
-                'borderWidth',
-                'lineHeight', 'paddingLeft', 'paddingRight',
-                'paddingBottom', 'marginTop', 'marginLeft',
-                'marginRight', 'marginBottom'], function (i, str) {
-                let num = self.attr('data-' + str);
-                if (num) {
-                    num = num * ratio / 2 / 16 + 'rem';
-                    self.css(str, num)
-                }
-            });
-        });
-    },
+	}
 }
 export default T;

@@ -74,8 +74,7 @@ MyPlugin.install = function (Vue, options) {
 					}
 				});
 			})
-		},
-		setImgSize : T.setImgSize
+		}
 	});
 };
 MyPlugin();

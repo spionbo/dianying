@@ -5,14 +5,8 @@
  */
 const URL = require("./index").URL+"/permission";
 module.exports={
-    //显示所有栏目菜单
-    ALL_COLUMN : URL + "/allColumn",
-    //显示栏目信息
-    PERMISSION_COLUMN : URL + "/permissionColumn",
-    //删除栏目
-    PERMISSION_DELETE : URL + "/deleteColumn",
-    //新增栏目
-    ADD_COLUMN : URL+"/addColumn",
-    //删除栏目权限
-    DELETE_COLUMN : URL + "/deleteColumn",
+    //显示当前用户的栏目信息
+    CURRENT_USER_PERMISSION_COLUMN : URL + "/currentMenuPermission",
+    //当前栏目信息
+    CURRENT_PERMISSION_COLUMN : URL + "/permissionColumnInfo",
 };

@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import cath from "./modules/catch";
-import power from "./modules/power";
+import column from "./modules/column";
+import permission from "./modules/permission";
 import xiaoshuo from "./modules/xiaoshuo";
 Vue.use(Vuex);
 export default new Vuex.Store({
@@ -9,7 +10,8 @@ export default new Vuex.Store({
 	mutations,*/
 	modules : {
 		catch : cath,//缓存
-		power,//后台栏目管理 权限
+        column,//后台栏目
+        permission,//后台栏目权限
 		xiaoshuo,
 	}
 })

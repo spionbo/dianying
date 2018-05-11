@@ -64,7 +64,7 @@ window.Main = new Vue({
 	template: `
 	    <div id="app">
             <el-container v-if="isLogin">
-                <el-header><header-bar></header-bar></el-header>
+                <el-header class="header"><header-bar></header-bar></el-header>
                 <el-container>
                     <menu-bar></menu-bar>
                     <el-main class="view">
